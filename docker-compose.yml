@@ -1,0 +1,17 @@
+version: '3.8'
+name: fsh-microservices
+
+services:
+  catalog:
+    container_name: catalog-service
+    image: fsh-microservices/catalog:latest
+    ports:
+      - 44301:44301
+      - 5028:5028
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:44301;http://+:5028
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dev_cert.pfx
+    volumes:
+      - ${USERPROFILE}\.aspnet\https:/https

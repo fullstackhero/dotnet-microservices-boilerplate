@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FSH.Infrastructure.Logging.Serilog;
 
 public static class Extensions
 {
-    public static RegisterSerilog(IServiceCollection serviceCollection)
+    internal static IServiceCollection RegisterSerilog(IServiceCollection services)
     {
-
+        return services;
     }
 }

@@ -7,9 +7,17 @@
     <RootNamespace>Catalog.Host</RootNamespace>
     <AssemblyName>Catalog.Host</AssemblyName>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <ContainerImageName>fsh-microservices/catalog</ContainerImageName>    
+  </PropertyGroup>
+  <ItemGroup>
+    <ContainerPort Include="44301" Type="tcp" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
+    <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.3.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 

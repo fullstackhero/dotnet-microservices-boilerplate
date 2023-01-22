@@ -1,0 +1,7 @@
+<Project>
+    <PropertyGroup>
+        <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+        <PublishProfile>DefaultContainer</PublishProfile>
+        <ContainerImageTags>0.0.1;latest</ContainerImageTags>
+    </PropertyGroup>
+</Project>
