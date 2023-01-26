@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Catalog.Domain</RootNamespace>
+    <AssemblyName>Catalog.Domain</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\building-blocks\Core\Core.csproj" />
+    <ProjectReference Include="..\..\..\shared\Events\Events.csproj" />
+  </ItemGroup>
+
+</Project>

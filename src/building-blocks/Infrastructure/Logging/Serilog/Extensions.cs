@@ -1,10 +1,9 @@
-using System.Reflection;
 using Figgle;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Serilog;
-using Serilog.Events;
 using Serilog.Exceptions;
+using System.Reflection;
 
 namespace FSH.Infrastructure.Logging.Serilog;
 
@@ -15,7 +14,7 @@ public static class Extensions
         app.UseSerilogRequestLogging();
         return app;
     }
-    public static WebApplicationBuilder RegisterSerilog(this WebApplicationBuilder builder)
+    public static string RegisterSerilog(this WebApplicationBuilder builder)
     {
         string appName = builder.Configuration.GetValue<string>("App:Name") ?? Assembly.GetEntryAssembly().GetName().Name;
         _ = builder.Host.UseSerilog((_, _, loggerConfig) =>
@@ -31,6 +30,6 @@ public static class Extensions
 
         Console.WriteLine(FiggleFonts.Standard.Render(appName!));
 
-        return builder;
+        return appName;
     }
 }

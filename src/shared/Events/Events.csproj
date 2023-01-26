@@ -4,8 +4,11 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>FSH.Microservices.Shared.Events</RootNamespace>
-    <AssemblyName>FSH.Microservices.Shared.Events</AssemblyName>
+    <RootNamespace>FSH.Shared.Events</RootNamespace>
+    <AssemblyName>FSH.Shared.Events</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\building-blocks\Core\Core.csproj" />
+  </ItemGroup>
 </Project>
