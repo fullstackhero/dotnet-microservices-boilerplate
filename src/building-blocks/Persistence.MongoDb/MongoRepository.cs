@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace Persistence.MongoDb;
+namespace FSH.Persistence.MongoDb;
 
 internal class MongoRepository<TEntity, TId> : IMongoRepository<TEntity, TId>
     where TEntity : class

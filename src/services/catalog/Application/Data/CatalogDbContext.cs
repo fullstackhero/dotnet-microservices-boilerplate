@@ -1,7 +1,7 @@
 ﻿using Catalog.Domain.Entities;
+using FSH.Persistence.MongoDb;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using Persistence.MongoDb;
 
 namespace Catalog.Application.Data
 {

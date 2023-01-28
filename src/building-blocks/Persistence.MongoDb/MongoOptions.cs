@@ -1,4 +1,4 @@
-﻿namespace Persistence.MongoDb;
+﻿namespace FSH.Persistence.MongoDb;
 
 public class MongoOptions
 {

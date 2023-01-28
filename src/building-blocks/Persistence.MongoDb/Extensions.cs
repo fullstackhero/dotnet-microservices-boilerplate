@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Persistence.MongoDb;
+namespace FSH.Persistence.MongoDb;
 
 public static class Extensions
 {

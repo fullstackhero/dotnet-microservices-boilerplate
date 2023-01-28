@@ -5,8 +5,8 @@ using Catalog.Domain.Entities;
 using FluentValidation;
 using FSH.Core.Mediator;
 using FSH.Infrastructure.Pagination;
+using FSH.Persistence.MongoDb;
 using MongoDB.Driver;
-using Persistence.MongoDb;
 
 namespace Catalog.Application.Products;
 

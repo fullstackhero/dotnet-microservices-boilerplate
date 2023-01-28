@@ -4,7 +4,7 @@ using FSH.Infrastructure.Pagination;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
-namespace Persistence.MongoDb;
+namespace FSH.Persistence.MongoDb;
 
 public static class QueryableExtensions
 {

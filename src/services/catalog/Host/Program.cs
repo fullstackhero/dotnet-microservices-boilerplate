@@ -4,7 +4,7 @@ using FSH.Core.Mediator;
 using FSH.Infrastructure.Logging.Serilog;
 using FSH.Infrastructure.Swagger;
 using FSH.Infrastructure.Validations;
-using Persistence.MongoDb;
+using FSH.Persistence.MongoDb;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);

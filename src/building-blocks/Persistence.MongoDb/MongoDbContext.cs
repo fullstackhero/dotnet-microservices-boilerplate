@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 
-namespace Persistence.MongoDb;
+namespace FSH.Persistence.MongoDb;
 
 public class MongoDbContext : IMongoDbContext
 {
