@@ -14,16 +14,16 @@ public abstract class EntityBase
 
 public abstract class EntityRootBase : EntityBase, IAggregateRoot
 {
-    private readonly List<EventBase> _domainEvents = new();
-    public IReadOnlyList<EventBase> DomainEvents => _domainEvents.AsReadOnly();
+    private readonly List<IDomainEvent> _domainEvents = new();
+    public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-    public void AddDomainEvent(EventBase eventItem)
+    public void AddDomainEvent(IDomainEvent domainEvent)
     {
-        _domainEvents.Add(eventItem);
+        _domainEvents.Add(domainEvent);
     }
 
-    public void RemoveDomainEvent(EventBase eventItem)
+    public void RemoveDomainEvent(IDomainEvent domainEvent)
     {
-        _domainEvents?.Remove(eventItem);
+        _domainEvents?.Remove(domainEvent);
     }
 }
