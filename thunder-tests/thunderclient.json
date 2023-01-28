@@ -1,0 +1,49 @@
+[
+  {
+    "_id": "5a0cdc1a-379b-4a17-8f92-b9e05c2ab9fc",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "8c16e0a8-2f0b-4999-82e4-7cb2fc3b96e5",
+    "name": "get-products",
+    "url": "{{catalog-api-url}}/api/products",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-01-28T00:55:18.125Z",
+    "modified": "2023-01-28T00:55:45.055Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c091e8fa-ada0-433b-bac2-a3d46c86de55",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "8c16e0a8-2f0b-4999-82e4-7cb2fc3b96e5",
+    "name": "get-product-by-id",
+    "url": "{{catalog-api-url}}/api/products/a8456eec-8155-4f5a-9c44-7dfe95d13497",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-01-28T00:58:10.184Z",
+    "modified": "2023-01-28T00:58:32.770Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "5048fe15-cb4f-4d8f-947a-94745db96dd9",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "8c16e0a8-2f0b-4999-82e4-7cb2fc3b96e5",
+    "name": "create-product",
+    "url": "{{catalog-api-url}}/api/products",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-01-28T00:58:47.708Z",
+    "modified": "2023-01-28T00:59:28.790Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n  \"name\": \"Samsung S21 Ultra\",\r\n  \"quantity\": 10,\r\n  \"price\": 1299\r\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]

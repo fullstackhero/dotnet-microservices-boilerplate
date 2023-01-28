@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "f78ffc63-1e4b-4865-b407-b446502a957d",
+    "name": "local",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2023-01-28T00:56:06.534Z",
+    "modified": "2023-01-28T00:56:06.534Z",
+    "data": [
+      {
+        "name": "catalog-api-url",
+        "value": "https://localhost:5200"
+      }
+    ]
+  },
+  {
+    "_id": "2a1fec2c-abd8-472d-aa81-49e64d1674f1",
+    "name": "docker",
+    "default": false,
+    "sortNum": 20000,
+    "created": "2023-01-28T00:57:50.602Z",
+    "modified": "2023-01-28T00:57:50.602Z",
+    "data": []
+  }
+]
