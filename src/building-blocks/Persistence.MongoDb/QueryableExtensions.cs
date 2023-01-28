@@ -14,11 +14,10 @@ public static class QueryableExtensions
 
         if (resultsPerPage <= 0) resultsPerPage = 10;
         var skipSize = (page - 1) * resultsPerPage;
-        var isEmpty = await collection.AnyAsync(cancellationToken: cancellationToken) == false;
+        var isEmpty = !await collection.AnyAsync(cancellationToken: cancellationToken);
         if (isEmpty) return new(Enumerable.Empty<R>(), 0, 0, 0);
 
         var totalItems = await collection.CountAsync(cancellationToken: cancellationToken);
-        var totalPages = (int)Math.Ceiling((decimal)totalItems / resultsPerPage);
         var data = collection.Skip(skipSize).Take(resultsPerPage).ProjectTo<R>(configuration).ToList();
 
         return new PagedList<R>(data, totalItems, page, resultsPerPage);

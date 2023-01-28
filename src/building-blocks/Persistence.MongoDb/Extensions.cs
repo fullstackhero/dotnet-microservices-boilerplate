@@ -6,14 +6,14 @@ namespace FSH.Persistence.MongoDb;
 public static class Extensions
 {
     public static IServiceCollection AddMongoDbContext<TContext>(
-        this IServiceCollection services, IConfiguration configuration, Action<MongoOptions>? configurator = null)
+        this IServiceCollection services, IConfiguration configuration)
         where TContext : MongoDbContext
     {
-        return services.AddMongoDbContext<TContext, TContext>(configuration, configurator);
+        return services.AddMongoDbContext<TContext, TContext>(configuration);
     }
 
     public static IServiceCollection AddMongoDbContext<TContextService, TContextImplementation>(
-        this IServiceCollection services, IConfiguration configuration, Action<MongoOptions>? configurator = null)
+        this IServiceCollection services, IConfiguration configuration)
         where TContextService : IMongoDbContext
         where TContextImplementation : MongoDbContext, TContextService
     {

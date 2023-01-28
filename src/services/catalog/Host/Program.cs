@@ -1,3 +1,4 @@
+using System.Reflection;
 using Catalog.Application;
 using Catalog.Application.Data;
 using FSH.Core.Mediator;
@@ -5,7 +6,6 @@ using FSH.Infrastructure.Logging.Serilog;
 using FSH.Infrastructure.Swagger;
 using FSH.Infrastructure.Validations;
 using FSH.Persistence.MongoDb;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 var appName = builder.RegisterSerilog();
@@ -24,7 +24,6 @@ builder.Services.RegisterMediatR(assembly);
 builder.Services.RegisterSwagger(appName);
 builder.Services.RegisterValidators(assembly);
 ///
-
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {

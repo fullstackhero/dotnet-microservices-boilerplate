@@ -36,12 +36,12 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2023-01-28T00:58:47.708Z",
-    "modified": "2023-01-28T00:59:28.790Z",
+    "modified": "2023-01-28T01:45:44.569Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\r\n  \"name\": \"Samsung S21 Ultra\",\r\n  \"quantity\": 10,\r\n  \"price\": 1299\r\n}",
+      "raw": "{\r\n  \"name\": \"Samsung S22 Ultra\",\r\n  \"quantity\": 10,\r\n  \"price\": 1299\r\n}",
       "form": []
     },
     "tests": []

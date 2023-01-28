@@ -10,7 +10,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Application.Products;
 
-public class GetProducts
+public static class GetProducts
 {
     //Request
     public record Request(int PageNumber, int PageSize) : ICommand<PagedList<ProductDto>>;

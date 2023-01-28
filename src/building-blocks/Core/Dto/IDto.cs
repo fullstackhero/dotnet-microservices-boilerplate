@@ -7,5 +7,4 @@ namespace FSH.Core.Dto;
 
 public interface IDto
 {
-
 }

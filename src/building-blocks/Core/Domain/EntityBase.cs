@@ -12,19 +12,18 @@ public abstract class EntityBase
     public DateTime? Updated { get; protected set; }
 }
 
-
 public abstract class EntityRootBase : EntityBase, IAggregateRoot
 {
-    public HashSet<EventBase> DomainEvents { get; private set; }
+    private readonly List<EventBase> _domainEvents = new();
+    public IReadOnlyList<EventBase> DomainEvents => _domainEvents.AsReadOnly();
 
     public void AddDomainEvent(EventBase eventItem)
     {
-        DomainEvents ??= new HashSet<EventBase>();
-        DomainEvents.Add(eventItem);
+        _domainEvents.Add(eventItem);
     }
 
     public void RemoveDomainEvent(EventBase eventItem)
     {
-        DomainEvents?.Remove(eventItem);
+        _domainEvents?.Remove(eventItem);
     }
 }

@@ -7,7 +7,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Application.Products;
 
-public class GetProductById
+public static class GetProductById
 {
     //Request
     public record Request(Guid Id) : ICommand<ProductDto>;

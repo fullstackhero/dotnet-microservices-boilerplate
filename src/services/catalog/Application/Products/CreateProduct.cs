@@ -7,13 +7,13 @@ using FSH.Core.Mediator;
 
 namespace Catalog.Application.Products;
 
-public class CreateProduct
+public static class CreateProduct
 {
     //Request
     public record Request(string Name, int Quantity, decimal Price) : ICommand<Response>;
 
     //Response
-    public record Response(Guid id) : IDto;
+    public record Response(Guid Id) : IDto;
 
     //Validator
     public class Validator : AbstractValidator<Request>
@@ -39,7 +39,7 @@ public class CreateProduct
         {
             Guard.Against.Null(request, nameof(request));
             var product = Product.Create(request.Name, request.Quantity, request.Price);
-            await _context.Products.InsertOneAsync(product);
+            await _context.Products.InsertOneAsync(product, cancellationToken: cancellationToken);
             return new Response(product.Id);
         }
     }
