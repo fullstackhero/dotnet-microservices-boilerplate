@@ -1,6 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using AutoMapper;
 using Catalog.Application.Data;
+using Catalog.Domain.Entities;
 using FluentValidation;
 using FSH.Core.Mediator;
 using MongoDB.Driver;
@@ -28,6 +29,7 @@ public static class GetProductById
         {
             Guard.Against.Null(request, nameof(request));
             var product = await _context.Products.Find(doc => doc.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
+            if (product is null) throw new ProductNotFoundException(request.Id);
             return _mapper.Map<ProductDto>(product);
         }
     }

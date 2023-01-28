@@ -1,8 +1,8 @@
+using System.Net;
 using Catalog.Application.Products;
 using FSH.Core.Web;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Net;
 
 namespace Catalog.Host.Controllers;
 
@@ -34,6 +34,15 @@ public class ProductsController : BaseController
     public async Task<IActionResult> GetAllAsync(int pageNumber, int pageSize, CancellationToken cancellationToken)
     {
         var result = await Mediator.Send(new GetProducts.Request(pageNumber, pageSize), cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpDelete("{id:guid}")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    [SwaggerOperation(Summary = "delete product by id.", Description = "delete product by id.")]
+    public async Task<IActionResult> DeleteAsync(Guid id, CancellationToken cancellationToken)
+    {
+        var result = await Mediator.Send(new DeleteProduct.Request(id), cancellationToken);
         return Ok(result);
     }
 }

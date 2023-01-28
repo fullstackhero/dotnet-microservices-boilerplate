@@ -18,11 +18,11 @@
     "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
     "containerId": "8c16e0a8-2f0b-4999-82e4-7cb2fc3b96e5",
     "name": "get-product-by-id",
-    "url": "{{catalog-api-url}}/api/products/a8456eec-8155-4f5a-9c44-7dfe95d13497",
+    "url": "{{catalog-api-url}}/api/products/2745a8ec-35f4-43ab-871b-cab80c1240f1",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-01-28T00:58:10.184Z",
-    "modified": "2023-01-28T00:58:32.770Z",
+    "modified": "2023-01-28T08:29:18.711Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -36,14 +36,28 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2023-01-28T00:58:47.708Z",
-    "modified": "2023-01-28T01:45:44.569Z",
+    "modified": "2023-01-28T01:52:30.006Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\r\n  \"name\": \"Samsung S22 Ultra\",\r\n  \"quantity\": 10,\r\n  \"price\": 1299\r\n}",
+      "raw": "{\r\n  \"name\": \"Samsung S23 Ultra\",\r\n  \"quantity\": 10,\r\n  \"price\": 1299\r\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "06681dcf-8743-41e6-b35e-f773d8072850",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "8c16e0a8-2f0b-4999-82e4-7cb2fc3b96e5",
+    "name": "delete-product",
+    "url": "{{catalog-api-url}}/api/products/4f64f2f2-f7f5-4207-a920-61567a33371b",
+    "method": "DELETE",
+    "sortNum": 40000,
+    "created": "2023-01-28T08:20:30.054Z",
+    "modified": "2023-01-28T08:20:43.551Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
