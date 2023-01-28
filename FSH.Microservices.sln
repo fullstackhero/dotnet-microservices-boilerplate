@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\services
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\services\catalog\Domain\Domain.csproj", "{5BDC9E63-5A60-48C0-82E8-D0FB6759F624}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.MongoDb", "src\building-blocks\Persistence.MongoDb\Persistence.MongoDb.csproj", "{67B93D30-B360-49AB-84F8-714C97549F70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{5BDC9E63-5A60-48C0-82E8-D0FB6759F624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BDC9E63-5A60-48C0-82E8-D0FB6759F624}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BDC9E63-5A60-48C0-82E8-D0FB6759F624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67B93D30-B360-49AB-84F8-714C97549F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67B93D30-B360-49AB-84F8-714C97549F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67B93D30-B360-49AB-84F8-714C97549F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67B93D30-B360-49AB-84F8-714C97549F70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +100,7 @@ Global
 		{C474DC06-7AB9-438D-84C8-0947548B8ABC} = {E26DDE95-483B-48AB-8FF4-68162B910F6E}
 		{902D5A73-6160-4355-A908-A316E9BE77FC} = {5533D00E-E9EA-42E6-9427-47C04E892170}
 		{5BDC9E63-5A60-48C0-82E8-D0FB6759F624} = {5533D00E-E9EA-42E6-9427-47C04E892170}
+		{67B93D30-B360-49AB-84F8-714C97549F70} = {E26DDE95-483B-48AB-8FF4-68162B910F6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {74F6B94F-F99A-4A42-B62B-8865E548F7CA}

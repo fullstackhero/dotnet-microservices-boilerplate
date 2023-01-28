@@ -1,8 +1,11 @@
 using Catalog.Application;
+using Catalog.Application.Data;
 using FSH.Core.Mediator;
 using FSH.Infrastructure.Logging.Serilog;
 using FSH.Infrastructure.Swagger;
 using FSH.Infrastructure.Validations;
+using Persistence.MongoDb;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 var appName = builder.RegisterSerilog();
@@ -11,8 +14,12 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddOptions();
+builder.Services.AddMongoDbContext<CatalogDbContext>(builder.Configuration);
+
 ///
-var assembly = typeof(CatalogApplicationRoot).Assembly;
+var assembly = typeof(CatalogApplicationRoot).GetTypeInfo().Assembly;
+builder.Services.AddAutoMapper(assembly);
 builder.Services.RegisterMediatR(assembly);
 builder.Services.RegisterSwagger(appName);
 builder.Services.RegisterValidators(assembly);

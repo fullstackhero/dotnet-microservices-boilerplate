@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\building-blocks\Core\Core.csproj" />
     <ProjectReference Include="..\..\..\building-blocks\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\Persistence.MongoDb\Persistence.MongoDb.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 

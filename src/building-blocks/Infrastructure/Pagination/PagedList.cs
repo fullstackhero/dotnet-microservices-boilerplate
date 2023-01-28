@@ -1,26 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace FSH.Infrastructure.Pagination;
 
-public class PagedList<T> : IReadOnlyList<T>
+public class PagedList<T>
 {
-    private readonly IList<T> subset;
-    public PagedList(IEnumerable<T> items, int count, int pageNumber, int pageSize)
+    public IList<T> Data { get; }
+    public PagedList(IEnumerable<T> items, int totalItems, int pageNumber, int pageSize)
     {
         PageNumber = pageNumber;
-        TotalPages = (int)Math.Ceiling(count / (double)pageSize);
-        subset = items as IList<T> ?? new List<T>(items);
+        TotalItems = totalItems;
+        TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+        Data = items as IList<T> ?? new List<T>(items);
     }
     public int PageNumber { get; }
     public int TotalPages { get; }
+    public int TotalItems { get; }
     public bool IsFirstPage => PageNumber == 1;
     public bool IsLastPage => PageNumber == TotalPages;
-    public int Count => subset.Count;
-    public T this[int index] => subset[index];
-    public IEnumerator<T> GetEnumerator() => subset.GetEnumerator();
-    IEnumerator IEnumerable.GetEnumerator() => subset.GetEnumerator();
 }
