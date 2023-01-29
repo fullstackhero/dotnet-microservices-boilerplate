@@ -30,9 +30,8 @@ public static class GetProducts
         public async Task<PagedList<ProductDto>> Handle(Request request, CancellationToken cancellationToken)
         {
             Guard.Against.Null(request, nameof(request));
-            var products = await _context.Products.AsQueryable()
+            return await _context.Products.AsQueryable()
                 .ApplyPagingAsync<Product, ProductDto>(_mapper.ConfigurationProvider, request.PageNumber, request.PageSize, cancellationToken);
-            return products;
         }
     }
 }

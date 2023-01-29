@@ -9,10 +9,18 @@ namespace Catalog.Domain.Entities;
 
 public class Product : EntityRootBase
 {
-    public string Name { get; private init; } = default!;
-    public bool Active { get; private init; }
-    public int Quantity { get; private init; }
-    public decimal Price { get; private init; }
+    public string Name { get; private set; } = default!;
+    public bool Active { get; private set; }
+    public int Quantity { get; private set; }
+    public decimal Price { get; private set; }
+
+    public Product Update(string? name, int quantity, decimal? price)
+    {
+        if (name is not null && Name?.Equals(name) is not true) Name = name;
+        Quantity = quantity;
+        if (price.HasValue && Price != price) Price = price.Value;
+        return this;
+    }
 
     public static Product Create(string name, int quantity, decimal price)
     {

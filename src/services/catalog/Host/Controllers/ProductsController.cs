@@ -30,7 +30,7 @@ public class ProductsController : BaseController
 
     [HttpGet]
     [ProducesResponseType((int)HttpStatusCode.OK)]
-    [SwaggerOperation(Summary = "gets products.", Description = "gets products.")]
+    [SwaggerOperation(Summary = "get products.", Description = "get products.")]
     public async Task<IActionResult> GetAllAsync(int pageNumber, int pageSize, CancellationToken cancellationToken)
     {
         var result = await Mediator.Send(new GetProducts.Request(pageNumber, pageSize), cancellationToken);
@@ -44,5 +44,15 @@ public class ProductsController : BaseController
     {
         var result = await Mediator.Send(new DeleteProduct.Request(id), cancellationToken);
         return Ok(result);
+    }
+
+    [HttpPut("{id:guid}")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    [SwaggerOperation(Summary = "update product by id.", Description = "update product by id.")]
+    public async Task<IActionResult> UpdateAsync(UpdateProduct.Request request, Guid id, CancellationToken cancellationToken)
+    {
+        return id != request.Id
+            ? BadRequest()
+            : Ok(await Mediator.Send(request, cancellationToken));
     }
 }

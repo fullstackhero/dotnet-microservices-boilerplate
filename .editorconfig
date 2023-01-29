@@ -1,0 +1,7 @@
+root = true
+
+[*.cs]
+csharp_style_namespace_declarations = file_scoped:warning
+
+# Implement exception constructors
+dotnet_diagnostic.RCS1194.severity = none

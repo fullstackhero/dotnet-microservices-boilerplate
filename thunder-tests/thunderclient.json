@@ -59,5 +59,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "0afe5088-d972-4723-a113-bc61e8e07e2f",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "8c16e0a8-2f0b-4999-82e4-7cb2fc3b96e5",
+    "name": "update-product",
+    "url": "{{catalog-api-url}}/api/products/2745a8ec-35f4-43ab-871b-cab80c1240f7",
+    "method": "PUT",
+    "sortNum": 50000,
+    "created": "2023-01-29T15:18:27.978Z",
+    "modified": "2023-01-29T15:20:01.804Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"2745a8ec-35f4-43ab-871b-cab80c1240f7\",\n  \"name\": \"Samsung S22 Ultra\",\n  \"quantity\": 10,\n  \"price\": 1099\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
