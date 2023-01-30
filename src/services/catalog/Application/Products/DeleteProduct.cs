@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using Catalog.Application.Data;
+using Catalog.Domain.Entities;
 using FluentValidation;
+using FSH.Core.Common;
 using FSH.Core.Dto;
 using FSH.Core.Mediator;
 using MongoDB.Driver;
@@ -27,10 +29,12 @@ public static class DeleteProduct
     public class Handler : ICommandHandler<Request, Response>
     {
         private readonly CatalogDbContext _context;
+        private readonly ICacheService _cache;
 
-        public Handler(CatalogDbContext context)
+        public Handler(CatalogDbContext context, ICacheService cache)
         {
             _context = context;
+            _cache = cache;
         }
 
         public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
@@ -38,6 +42,7 @@ public static class DeleteProduct
             Guard.Against.Null(request, nameof(request));
             var result = await _context.Products.DeleteOneAsync(x => x.Id == request.Id, cancellationToken: cancellationToken);
             if (result.DeletedCount == 0) throw new ProductNotFoundException(request.Id);
+            await _cache.RemoveAsync(Product.GenerateCacheKey(request.Id), cancellationToken);
             return new Response(request.Id);
         }
     }

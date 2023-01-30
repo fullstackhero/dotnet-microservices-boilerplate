@@ -48,4 +48,9 @@ public class Product : EntityRootBase
 
         return product;
     }
+
+    public static string GenerateCacheKey(Guid id)
+    {
+        return $"Product:{id}";
+    }
 }

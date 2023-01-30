@@ -2,6 +2,8 @@ using System.Reflection;
 using Catalog.Application;
 using Catalog.Application.Data;
 using FSH.Core.Mediator;
+using FSH.Infrastructure;
+using FSH.Infrastructure.Caching;
 using FSH.Infrastructure.Logging.Serilog;
 using FSH.Infrastructure.Swagger;
 using FSH.Infrastructure.Validations;
@@ -23,6 +25,7 @@ builder.Services.AddAutoMapper(assembly);
 builder.Services.RegisterMediatR(assembly);
 builder.Services.RegisterSwagger(appName);
 builder.Services.RegisterValidators(assembly);
+builder.Services.AddCaching().AddInfrastructureServices();
 ///
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

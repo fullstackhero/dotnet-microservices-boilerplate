@@ -18,11 +18,11 @@
     "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
     "containerId": "8c16e0a8-2f0b-4999-82e4-7cb2fc3b96e5",
     "name": "get-product-by-id",
-    "url": "{{catalog-api-url}}/api/products/2745a8ec-35f4-43ab-871b-cab80c1240f1",
+    "url": "{{catalog-api-url}}/api/products/2745a8ec-35f4-43ab-871b-cab80c1240f7",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-01-28T00:58:10.184Z",
-    "modified": "2023-01-28T08:29:18.711Z",
+    "modified": "2023-01-30T05:29:59.091Z",
     "headers": [],
     "params": [],
     "tests": []

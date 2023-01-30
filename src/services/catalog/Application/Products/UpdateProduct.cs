@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using Catalog.Application.Data;
-using Catalog.Domain.Entities;
 using FSH.Core.Dto;
 using FSH.Core.Mediator;
 using MongoDB.Driver;
@@ -35,7 +30,7 @@ public static class UpdateProduct
             var product = _context.Products.AsQueryable().FirstOrDefault(a => a.Id == request.Id);
             if (product is null) throw new ProductNotFoundException(request.Id);
             var updatedProduct = product.Update(request.Name, request.Quantity, request.Price);
-            var result = await _context.Products.ReplaceOneAsync(x => x.Id == request.Id, updatedProduct, cancellationToken: cancellationToken);
+            _ = await _context.Products.ReplaceOneAsync(x => x.Id == request.Id, updatedProduct, cancellationToken: cancellationToken);
             return new Response(product.Id);
         }
     }

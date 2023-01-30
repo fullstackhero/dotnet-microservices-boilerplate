@@ -3,6 +3,7 @@ using AutoMapper;
 using Catalog.Application.Data;
 using Catalog.Domain.Entities;
 using FluentValidation;
+using FSH.Core.Common;
 using FSH.Core.Mediator;
 using FSH.Infrastructure.Pagination;
 using FSH.Persistence.MongoDb;
@@ -20,11 +21,13 @@ public static class GetProducts
     {
         private readonly CatalogDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ICacheService _cache;
 
-        public Handler(CatalogDbContext context, IMapper mapper)
+        public Handler(CatalogDbContext context, IMapper mapper, ICacheService cache)
         {
             _context = context;
             _mapper = mapper;
+            _cache = cache;
         }
 
         public async Task<PagedList<ProductDto>> Handle(Request request, CancellationToken cancellationToken)

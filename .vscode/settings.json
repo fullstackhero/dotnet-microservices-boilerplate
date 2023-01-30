@@ -4,6 +4,7 @@
         "Dtos",
         "Figgle",
         "mediatr",
+        "Newtonsoft",
         "Swashbuckle"
     ]
 }
