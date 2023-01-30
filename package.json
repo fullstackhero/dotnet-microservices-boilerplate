@@ -1,6 +1,6 @@
 {
   "name": "dotnet-microservices-boilerplate",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "description": "",
   "scripts": {
     "release": "release-it"
@@ -8,8 +8,7 @@
   "dependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
-    "@release-it/conventional-changelog": "^5.1.1",
-    "release-it": "^15.6.0"
+    "@release-it/conventional-changelog": "^5.1.1"
   },
   "repository": {
     "type": "git",
@@ -59,6 +58,7 @@
     }
   },
   "devDependencies": {
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "release-it": "^15.6.0"
   }
 }
