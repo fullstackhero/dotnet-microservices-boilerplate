@@ -1,6 +1,6 @@
 {
   "name": "dotnet-microservices-boilerplate",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "",
   "scripts": {
     "release": "release-it"
@@ -25,7 +25,8 @@
       "commitMessage": "chore: release v${version}"
     },
     "github": {
-      "release": true
+      "release": true,
+      "web": true
     },
     "npm": {
       "publish": false
