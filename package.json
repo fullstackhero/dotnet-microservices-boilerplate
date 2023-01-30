@@ -1,14 +1,18 @@
 {
   "name": "dotnet-microservices-boilerplate",
-  "version": "0.2.7",
-  "description": "",
-  "scripts": {
-    "release": "release-it"
+  "version": "0.0.1",
+  "description": "Currently maintaining on Trello, might move to Github later on.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
   },
-  "dependencies": {
-    "@commitlint/cli": "^17.4.2",
-    "@commitlint/config-conventional": "^17.4.2",
-    "@release-it/conventional-changelog": "^5.1.1"
+  "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.7",
+    "semantic-release": "^20.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,47 +23,5 @@
   "bugs": {
     "url": "https://github.com/fullstackhero/dotnet-microservices-boilerplate/issues"
   },
-  "homepage": "https://github.com/fullstackhero/dotnet-microservices-boilerplate#readme",
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release v${version}"
-    },
-    "github": {
-      "release": true,
-      "web": true
-    },
-    "npm": {
-      "publish": false
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "infile": "CHANGELOG.md",
-        "preset": {
-          "name": "conventionalcommits",
-          "types": [
-            {
-              "type": "feat",
-              "section": "Features"
-            },
-            {
-              "type": "fix",
-              "section": "Bug Fixes"
-            },
-            {
-              "type": "misc",
-              "section": "Miscellaneous"
-            },
-            {
-              "type": "docs",
-              "section": "Documentation"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "devDependencies": {
-    "husky": "^8.0.3",
-    "release-it": "^15.6.0"
-  }
+  "homepage": "https://github.com/fullstackhero/dotnet-microservices-boilerplate#readme"
 }
