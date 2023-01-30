@@ -1,6 +1,6 @@
 {
   "name": "dotnet-microservices-boilerplate",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "scripts": {
     "release": "release-it"
@@ -48,6 +48,10 @@
             {
               "type": "misc",
               "section": "Miscellaneous"
+            },
+            {
+              "type": "docs",
+              "section": "Documentation"
             }
           ]
         }
