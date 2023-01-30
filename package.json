@@ -1,0 +1,64 @@
+{
+  "name": "dotnet-microservices-boilerplate",
+  "version": "0.2.2",
+  "description": "",
+  "scripts": {
+    "release": "release-it"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "@release-it/conventional-changelog": "^5.1.1",
+    "release-it": "^15.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullstackhero/dotnet-microservices-boilerplate.git"
+  },
+  "author": "Mukesh Murugan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fullstackhero/dotnet-microservices-boilerplate/issues"
+  },
+  "homepage": "https://github.com/fullstackhero/dotnet-microservices-boilerplate#readme",
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {
+              "type": "misc",
+              "section": "Miscellaneous"
+            },
+            {
+              "type": "docs",
+              "section": "Documentation"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "husky": "^8.0.3"
+  }
+}
