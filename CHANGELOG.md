@@ -1,5 +1,7 @@
 
 
+## [0.2.7](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/0.2.6...0.2.7) (2023-01-30)
+
 ## [0.2.6](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/0.2.3...0.2.6) (2023-01-30)
 
 
