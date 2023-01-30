@@ -8,7 +8,7 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-01-28T00:55:18.125Z",
-    "modified": "2023-01-28T00:55:45.055Z",
+    "modified": "2023-01-30T07:26:02.901Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -22,7 +22,7 @@
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-01-28T00:58:10.184Z",
-    "modified": "2023-01-30T05:29:59.091Z",
+    "modified": "2023-01-30T09:52:58.277Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -36,12 +36,12 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2023-01-28T00:58:47.708Z",
-    "modified": "2023-01-28T01:52:30.006Z",
+    "modified": "2023-01-30T09:18:38.222Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\r\n  \"name\": \"Samsung S23 Ultra\",\r\n  \"quantity\": 10,\r\n  \"price\": 1299\r\n}",
+      "raw": "{\n  \"name\": \"Samsung S24 Ultra\",\n  \"quantity\": 10,\n  \"price\": 1299\n}",
       "form": []
     },
     "tests": []
@@ -51,11 +51,11 @@
     "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
     "containerId": "8c16e0a8-2f0b-4999-82e4-7cb2fc3b96e5",
     "name": "delete-product",
-    "url": "{{catalog-api-url}}/api/products/4f64f2f2-f7f5-4207-a920-61567a33371b",
+    "url": "{{catalog-api-url}}/api/products/2745a8ec-35f4-43ab-871b-cab80c1240f7",
     "method": "DELETE",
     "sortNum": 40000,
     "created": "2023-01-28T08:20:30.054Z",
-    "modified": "2023-01-28T08:20:43.551Z",
+    "modified": "2023-01-30T09:53:03.388Z",
     "headers": [],
     "params": [],
     "tests": []

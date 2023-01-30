@@ -1,9 +1,9 @@
+using System.Reflection;
 using Figgle;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Exceptions;
-using System.Reflection;
 
 namespace FSH.Infrastructure.Logging.Serilog;
 
@@ -11,7 +11,7 @@ public static class Extensions
 {
     public static IApplicationBuilder ConfigureSerilog(this IApplicationBuilder app)
     {
-        app.UseSerilogRequestLogging();
+        // app.UseSerilogRequestLogging();
         return app;
     }
     public static string RegisterSerilog(this WebApplicationBuilder builder)

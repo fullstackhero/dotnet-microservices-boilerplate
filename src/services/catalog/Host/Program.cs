@@ -11,6 +11,8 @@ using FSH.Persistence.MongoDb;
 
 var builder = WebApplication.CreateBuilder(args);
 var appName = builder.RegisterSerilog();
+
+builder.Services.AddDaprClient();
 builder.Services.AddControllers();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddEndpointsApiExplorer();
@@ -41,5 +43,6 @@ app.ConfigureSwagger();
 app.UseAuthorization();
 app.UseAuthentication();
 app.MapControllers();
+app.MapSubscribeHandler();
 app.MapGet("/", () => "Hello From Catalog Service!");
 app.Run();

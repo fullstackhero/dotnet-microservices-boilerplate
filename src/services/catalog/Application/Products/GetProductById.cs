@@ -41,8 +41,12 @@ public static class GetProductById
                 var product = await _context.Products.Find(doc => doc.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
                 if (product is null) throw new ProductNotFoundException(request.Id);
                 productDto = _mapper.Map<ProductDto>(product);
-                _logger.LogInformation("Setting Cache with Key {cacheKey}", cacheKey);
+                _logger.LogInformation("Setting Cache, Key {cacheKey}", cacheKey);
                 await _cache.SetAsync(cacheKey, productDto, cancellationToken: cancellationToken);
+            }
+            else
+            {
+                _logger.LogInformation("Fetching Data from Cache, Key {cacheKey}", cacheKey);
             }
             return productDto;
         }

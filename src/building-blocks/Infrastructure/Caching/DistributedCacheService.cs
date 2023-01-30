@@ -66,7 +66,7 @@ public class DistributedCacheService : ICacheService
         try
         {
             await _cache.RefreshAsync(key, token);
-            _logger.LogDebug(string.Format("Cache Refreshed : {0}", key));
+            _logger.LogDebug("Cache Refreshed : {key}", key);
         }
         catch
         {
@@ -103,7 +103,7 @@ public class DistributedCacheService : ICacheService
         try
         {
             _cache.Set(key, value, GetOptions(slidingExpiration));
-            _logger.LogDebug($"Added to Cache : {key}");
+            _logger.LogDebug("Added to Cache : {key}", key);
         }
         catch
         {
@@ -118,7 +118,7 @@ public class DistributedCacheService : ICacheService
         try
         {
             await _cache.SetAsync(key, value, GetOptions(slidingExpiration), token);
-            _logger.LogDebug($"Added to Cache : {key}");
+            _logger.LogDebug("Added to Cache : {key}", key);
         }
         catch
         {

@@ -1,0 +1,19 @@
+name: fsh-on-dapr
+containerEngine: docker
+
+extensions:
+- name: dapr
+  log-level: debug
+  app-ssl: true
+
+services:
+
+- name: catalog-api
+  project: src/services/catalog/Host/Host.csproj
+  bindings:
+    - port: 5200
+      name:  test
+      protocol: https
+    - port: 5020
+      name:  test1
+      protocol: http    
