@@ -1,5 +1,12 @@
 
 
+## [0.2.6](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/0.2.3...0.2.6) (2023-01-30)
+
+
+### Bug Fixes
+
+* added github web release ([c6c410a](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/c6c410a3241c9ea41e622236fd94c3b0bf4b196f))
+
 ## [0.2.5](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/0.2.3...0.2.5) (2023-01-30)
 
 ## [0.2.4](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/0.2.3...0.2.4) (2023-01-30)
