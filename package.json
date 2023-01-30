@@ -1,0 +1,27 @@
+{
+  "name": "dotnet-microservices-boilerplate",
+  "version": "0.0.1",
+  "description": "Currently maintaining on Trello, might move to Github later on.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.7",
+    "semantic-release": "^20.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullstackhero/dotnet-microservices-boilerplate.git"
+  },
+  "author": "Mukesh Murugan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fullstackhero/dotnet-microservices-boilerplate/issues"
+  },
+  "homepage": "https://github.com/fullstackhero/dotnet-microservices-boilerplate#readme"
+}
