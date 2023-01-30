@@ -1,5 +1,17 @@
 
 
+## [0.2.2](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/0.2.0...0.2.2) (2023-01-30)
+
+
+### Documentation
+
+* modified license ([cbabf6b](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/cbabf6b0de3ebc4356912b9a1d978361ab07ecb3))
+
+
+### Miscellaneous
+
+* changed release-it actions ([48b987a](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/48b987aace1e5f7df739db86c060ce5785fcde32))
+
 ## 0.2.0 (2023-01-30)
 
 
