@@ -1,7 +1,5 @@
 using FSH.Core.Common;
-using FSH.Infrastructure.Common;
 using Microsoft.Extensions.DependencyInjection;
-using ProblemDetailsOptions = Hellang.Middleware.ProblemDetails.ProblemDetailsOptions;
 
 namespace FSH.Infrastructure;
 
