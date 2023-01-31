@@ -1,5 +1,7 @@
 using FSH.Core.Common;
+using FSH.Infrastructure.Common;
 using Microsoft.Extensions.DependencyInjection;
+using ProblemDetailsOptions = Hellang.Middleware.ProblemDetails.ProblemDetailsOptions;
 
 namespace FSH.Infrastructure;
 
@@ -7,9 +9,9 @@ public static class ServiceRegistrations
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
     {
-        return services
+        services
                 .AddServices(typeof(ITransientService), ServiceLifetime.Transient);
-        //.AddServices(typeof(IScopedService), ServiceLifetime.Scoped);
+        return services;
     }
 
     internal static IServiceCollection AddServices(this IServiceCollection services, Type interfaceType, ServiceLifetime lifetime)

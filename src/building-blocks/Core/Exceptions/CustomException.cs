@@ -8,14 +8,11 @@ namespace FSH.Core.Exceptions;
 
 public class CustomException : Exception
 {
-    public List<string> Messages { get; }
-
     public HttpStatusCode StatusCode { get; }
 
-    public CustomException(string message, List<string> errors = default, HttpStatusCode statusCode = HttpStatusCode.NotFound)
+    public CustomException(string message, HttpStatusCode statusCode = HttpStatusCode.InternalServerError)
         : base(message)
     {
-        Messages = errors;
         StatusCode = statusCode;
     }
 }
