@@ -1,11 +1,11 @@
 <Project>
     <PropertyGroup>
         <PublishProfile>DefaultContainer</PublishProfile>
-        <ContainerImageTags>0.0.1;latest</ContainerImageTags>
+        <ContainerImageTags>1.3.0;latest</ContainerImageTags>
     </PropertyGroup>
 
     <PropertyGroup Label="Package information">
-        <Version>0.2.0</Version>
+        <Version>1.3.0</Version>
         <Authors>Mukesh Murugan</Authors>
         <Company>codewithmukesh.com</Company>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
