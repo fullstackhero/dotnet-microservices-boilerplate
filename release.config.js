@@ -12,7 +12,19 @@ const config = {
                 "changelogFile": "docs/CHANGELOG.md"
             }
         ],
-        '@semantic-release/github'
+        '@semantic-release/github',
+        [
+            "@droidsolutions-oss/semantic-release-update-file",
+            {
+                "files": [
+                    {
+                        "path": ["Directory.Build.props"],
+                        "type": "xml",
+                        "replacements": [{ "key": "Version", "value": "${nextRelease.version}" }, { "key": "ContainerImageTags", "value": "${nextRelease.version};latest" }]
+                    }
+                ]
+            }
+        ],
     ]
 };
 
