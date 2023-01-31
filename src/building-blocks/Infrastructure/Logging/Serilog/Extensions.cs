@@ -2,6 +2,7 @@ using System.Reflection;
 using Figgle;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Exceptions;
 
@@ -12,6 +13,7 @@ public static class Extensions
     public static IApplicationBuilder ConfigureSerilog(this IApplicationBuilder app)
     {
         // app.UseSerilogRequestLogging();
+        app.UseMiddleware<ExceptionMiddleware>();
         return app;
     }
     public static string RegisterSerilog(this WebApplicationBuilder builder)
@@ -29,6 +31,7 @@ public static class Extensions
         });
 
         Console.WriteLine(FiggleFonts.Standard.Render(appName!));
+        builder.Services.AddScoped<ExceptionMiddleware>();
 
         return appName;
     }
