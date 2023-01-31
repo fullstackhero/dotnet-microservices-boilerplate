@@ -21,10 +21,3 @@
 * test feat ([d3722ab](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/d3722ab1fe9bc3752a57c09f60ddb7db03c81c50))
 * update release.yml ([6af8591](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/6af85913e19cc97e170ad0f206e7194fdd824ed5))
 * updated release ([9162ed3](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/9162ed321632ee70c5e885428cf41f9cd29bc861))
-
-# [1.6.0](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.5.0...v1.6.0) (2023-01-31)
-
-
-### Features
-
-* updated release ([9162ed3](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/9162ed321632ee70c5e885428cf41f9cd29bc861))
