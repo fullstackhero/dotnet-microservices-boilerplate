@@ -27,7 +27,9 @@ public class ExceptionMiddleware : IMiddleware
         {
             string errorId = Guid.NewGuid().ToString();
             LogContext.PushProperty("ErrorId", errorId);
-            LogContext.PushProperty("StackTrace", exception.StackTrace);
+            LogContext.PushProperty("StackTrace", exception.StackTrace.Trim());
+            LogContext.PushProperty("ErrorMessage", exception.Message.Trim());
+            LogContext.PushProperty("ErrorType", exception.GetType().FullName);
             var errorResult = new ProblemDetails
             {
                 Status = context.Response.StatusCode,
@@ -36,7 +38,6 @@ public class ExceptionMiddleware : IMiddleware
                 Detail = exception.Message.Trim(),
                 Instance = errorId
             };
-            //errorResult.Messages.Add(exception.Message);
             if (exception is not CustomException && exception.InnerException != null)
             {
                 while (exception.InnerException != null)
