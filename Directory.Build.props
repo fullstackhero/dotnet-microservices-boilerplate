@@ -13,6 +13,7 @@
         <PackageProjectUrl>https://github.com/fullstackhero/dotnet-microservices-boilerplate</PackageProjectUrl>
         <RepositoryUrl>https://github.com/fullstackhero/dotnet-microservices-boilerplate</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
+        <RepositoryCommit>test</RepositoryCommit>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>

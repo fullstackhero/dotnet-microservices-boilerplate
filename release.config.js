@@ -1,12 +1,38 @@
 const config = {
     branches: ['main'],
     plugins: [
-        '@semantic-release/commit-analyzer',
-        '@semantic-release/release-notes-generator',
+        [
+            "@semantic-release/commit-analyzer",
+            {
+                "preset": "conventionalcommits"
+            }
+        ],
+        "@semantic-release/release-notes-generator",
+        [
+            "@semantic-release/changelog",
+            {
+                "changelogFile": "CHANGELOG.md",
+                "changelogTitle": "# Changelog"
+            }
+        ],
+        [
+            "@droidsolutions-oss/semantic-release-update-file",
+            {
+                "files": [
+                    {
+                        "path": ["Directory.Build.props"],
+                        "type": "xml",
+                        "replacements": [
+                            { "key": "Version", "value": "${nextRelease.version}" },
+                            { "key": "ContainerImageTags", "value": "${nextRelease.version};latest" },
+                            { "key": "RepositoryCommit", "value": "${nextRelease.gitHead}" }
+                        ]
+                    }
+                ]
+            }
+        ],
         ["@semantic-release/git", {
             "assets": [
-                "package.json",
-                "package-lock.json",
                 "CHANGELOG.md",
                 "Directory.Build.props"
             ],
@@ -15,22 +41,19 @@ const config = {
         [
             "@semantic-release/changelog",
             {
-                "changelogFile": "docs/CHANGELOG.md"
+                "changelogFile": "CHANGELOG.md"
             }
         ],
-        '@semantic-release/github',
         [
-            "@droidsolutions-oss/semantic-release-update-file",
+            "@semantic-release/github",
             {
-                "files": [
+                "assets": [
                     {
-                        "path": ["Directory.Build.props"],
-                        "type": "xml",
-                        "replacements": [{ "key": "Version", "value": "${nextRelease.version}" }, { "key": "ContainerImageTags", "value": "${nextRelease.version};latest" }]
+                        "path": "out/**"
                     }
                 ]
             }
-        ],
+        ]
     ]
 };
 
