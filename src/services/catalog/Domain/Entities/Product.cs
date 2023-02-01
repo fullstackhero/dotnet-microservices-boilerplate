@@ -7,7 +7,7 @@ using FSH.Shared.Events.Catalog;
 
 namespace Catalog.Domain.Entities;
 
-public class Product : EntityRootBase
+public class Product : AuditableEntity
 {
     public string Name { get; private set; } = default!;
     public bool Active { get; private set; }
@@ -33,7 +33,6 @@ public class Product : EntityRootBase
             Id = id,
             Name = name,
             Quantity = quantity,
-            Created = DateTime.UtcNow,
             Active = true,
             Price = price
         };
