@@ -8,12 +8,22 @@ extensions:
 
 services:
 
+- name: identity-server
+  project: src/identity-server/Host/Host.csproj
+  bindings:
+    - port: 5100
+      name:  secure
+      protocol: https
+    - port: 5010
+      name:  non-secure
+      protocol: http
+
 - name: catalog-api
   project: src/services/catalog/Host/Host.csproj
   bindings:
     - port: 5200
-      name:  test
+      name:  secure
       protocol: https
     - port: 5020
-      name:  test1
+      name:  non-secure
       protocol: http    

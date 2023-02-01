@@ -8,8 +8,6 @@ namespace FSH.Core.Domain;
 public abstract class EntityBase
 {
     public Guid Id { get; protected init; } = Guid.NewGuid();
-    public DateTime Created { get; protected init; } = DateTime.UtcNow;
-    public DateTime? Updated { get; protected set; }
 }
 
 public abstract class EntityRootBase : EntityBase, IAggregateRoot
