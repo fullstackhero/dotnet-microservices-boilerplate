@@ -1,0 +1,22 @@
+using FSH.Core.Common;
+using FSH.Infrastructure;
+using FSH.Infrastructure.Logging.Serilog;
+using FSH.Persistence.EfCore;
+using IDS.Host;
+using IDS.Host.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.RegisterSerilog();
+builder.Services.AddAuthorization();
+builder.Services.AddInfrastructureServices();
+builder.Services.RegisterContext<IdentityContext>(builder.Configuration, Database.PostgreSQL, "DefaultConnection");
+builder.Services.AddScoped<IDataSeeder, IdentityDataSeeder>();
+builder.Services.AddIdentityServer(builder.Environment);
+var app = builder.Build();
+app.ConfigureMigrations<IdentityContext>(builder.Environment);
+app.ConfigureSerilog();
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseIdentityServer();
+app.Run();
