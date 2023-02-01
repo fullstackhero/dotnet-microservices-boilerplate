@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace FSH.Core.Web;
 
 [ApiController]
-//[Authorize]
+[Authorize]
 [Route("api/[controller]")]
 public abstract class BaseController : ControllerBase
 {
