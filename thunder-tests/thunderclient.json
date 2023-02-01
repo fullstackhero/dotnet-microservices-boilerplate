@@ -8,9 +8,13 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-01-28T00:55:18.125Z",
-    "modified": "2023-01-30T07:26:02.901Z",
+    "modified": "2023-02-01T09:20:13.603Z",
     "headers": [],
     "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{access_token}}"
+    },
     "tests": []
   },
   {
@@ -18,13 +22,17 @@
     "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
     "containerId": "8c16e0a8-2f0b-4999-82e4-7cb2fc3b96e5",
     "name": "get-product-by-id",
-    "url": "{{catalog-api-url}}/api/products/2745a8ec-35f4-43ab-871b-cab80c1240f7",
+    "url": "{{catalog-api-url}}/api/products/2b0401bd-4a9e-449c-a170-67344e0812f4",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-01-28T00:58:10.184Z",
-    "modified": "2023-01-30T09:52:58.277Z",
+    "modified": "2023-02-01T18:35:20.395Z",
     "headers": [],
     "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{access_token}}"
+    },
     "tests": []
   },
   {
@@ -36,13 +44,18 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2023-01-28T00:58:47.708Z",
-    "modified": "2023-01-30T09:18:38.222Z",
+    "modified": "2023-02-01T18:37:48.578Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Samsung S24 Ultra\",\n  \"quantity\": 10,\n  \"price\": 1299\n}",
+      "raw": "{\n  \"name\": \"Samsung S11\",\n  \"quantity\": 99,\n  \"price\": 99\n}",
       "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{access_token}}",
+      "bearerPrefix": "Bearer "
     },
     "tests": []
   },
@@ -55,9 +68,13 @@
     "method": "DELETE",
     "sortNum": 40000,
     "created": "2023-01-28T08:20:30.054Z",
-    "modified": "2023-01-30T09:53:03.388Z",
+    "modified": "2023-02-01T18:31:09.853Z",
     "headers": [],
     "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{access_token}}"
+    },
     "tests": []
   },
   {
@@ -69,7 +86,7 @@
     "method": "PUT",
     "sortNum": 50000,
     "created": "2023-01-29T15:18:27.978Z",
-    "modified": "2023-01-29T15:20:01.804Z",
+    "modified": "2023-02-01T18:31:20.754Z",
     "headers": [],
     "params": [],
     "body": {
@@ -77,6 +94,61 @@
       "raw": "{\n  \"id\": \"2745a8ec-35f4-43ab-871b-cab80c1240f7\",\n  \"name\": \"Samsung S22 Ultra\",\n  \"quantity\": 10,\n  \"price\": 1099\n}",
       "form": []
     },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{access_token}}"
+    },
     "tests": []
+  },
+  {
+    "_id": "7f1a7fab-bec4-4a50-b868-db79c2caba36",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "bfc736ae-2d7c-4525-8903-3cea928689f8",
+    "name": "get-token",
+    "url": "{{identity-server-url}}/connect/token",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2023-02-01T03:29:24.617Z",
+    "modified": "2023-02-01T03:37:12.707Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "client_id",
+          "value": "client"
+        },
+        {
+          "name": "client_secret",
+          "value": "secret"
+        },
+        {
+          "name": "username",
+          "value": "mukesh.murugan"
+        },
+        {
+          "name": "password",
+          "value": "123Pa$$word!"
+        },
+        {
+          "name": "grant_type",
+          "value": "password"
+        },
+        {
+          "name": "scope",
+          "value": "catalog-api"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{access_token}}"
+      }
+    ]
   }
 ]

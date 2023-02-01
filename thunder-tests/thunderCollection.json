@@ -11,6 +11,13 @@
         "containerId": "",
         "created": "2023-01-28T00:53:21.372Z",
         "sortNum": 10000
+      },
+      {
+        "_id": "bfc736ae-2d7c-4525-8903-3cea928689f8",
+        "name": "identity-server",
+        "containerId": "",
+        "created": "2023-02-01T03:29:17.173Z",
+        "sortNum": 20000
       }
     ],
     "settings": {

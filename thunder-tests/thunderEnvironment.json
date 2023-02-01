@@ -10,6 +10,14 @@
       {
         "name": "catalog-api-url",
         "value": "https://localhost:5200"
+      },
+      {
+        "name": "identity-server-url",
+        "value": "https://localhost:5100"
+      },
+      {
+        "name": "access_token",
+        "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkM2N0QxMjgzNDQ5QkI4RDc5MDExRjFENUVDM0RDOTcxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MTAwIiwibmJmIjoxNjc1Mjc2NTM2LCJpYXQiOjE2NzUyNzY1MzYsImV4cCI6MTY3NTI4MDEzNiwic2NvcGUiOlsiY2F0YWxvZy1hcGkiXSwiYW1yIjpbImN1c3RvbSJdLCJjbGllbnRfaWQiOiJjbGllbnQiLCJzdWIiOiI2NTdlMDBlOC0yMzVmLTRhZDctODZlYy1kODZmZWVhMDE0YzgiLCJhdXRoX3RpbWUiOjE2NzUyNzY1MzYsImlkcCI6ImxvY2FsIiwianRpIjoiNDAxNjYwQzZDMTJDMzA0RUZFRTJGQjZCMkRCQUE0NTQifQ.rHB-HsWmNZfacp-BDsHePMfp7R2x_fvn97QZr3rJOLM4hoIDoxS2pdVGIb1rJUEsF08wvX2BjQRXhRlN0MwtLc2fS2TdQ-U-OLm0KJ9c_IH0xXDDuRr38F12VQc9q1ylTei0Z3Wcmy4CEaxhsdVHXKJP6zi8QeMVC9Bu23Jxyj_2qtqYPuIYzuD6kb8o95tA7f-bQRLSMc62ZoqxPDO1W4rOXGVeFm8ABmDrnysnMYDYZKgmpkoTEawyj_A211bGexdbVUi5N3mgRrL-VLcrbYlLCgnM-F5F1I0DETS1wLdegbRX2ukVL7hDEcmutpj4emoL_hWZswON19yiA5ZjDw"
       }
     ]
   },
