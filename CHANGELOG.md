@@ -1,5 +1,15 @@
 # Changelog
 
+# [1.1.0](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.0.0...v1.1.0) (2023-02-01)
+
+
+### Features
+
+* added ef-core ([0ecdd29](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/0ecdd299baf48cf2063646fead7cd71fce661b35))
+* added identity server ([c610d78](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/c610d78bdf41816812f027d8942e4c2fc758422a))
+* added required classes to infra ([5a53b6c](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/5a53b6c9dc5f7602be79cd399d460995664aff1a))
+* secured catalog api ([e64a6b8](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/e64a6b8c8ed880b12b61a1964e864db7edb4e86c))
+
 # 1.0.0 (2023-01-31)
 
 

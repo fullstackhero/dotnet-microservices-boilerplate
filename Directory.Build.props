@@ -1,11 +1,11 @@
 <Project>
     <PropertyGroup>
         <PublishProfile>DefaultContainer</PublishProfile>
-        <ContainerImageTags>1.0.0;latest</ContainerImageTags>
+        <ContainerImageTags>1.1.0;latest</ContainerImageTags>
     </PropertyGroup>
 
     <PropertyGroup Label="Package information">
-        <Version>1.0.0</Version>
+        <Version>1.1.0</Version>
         <Authors>Mukesh Murugan</Authors>
         <Company>codewithmukesh.com</Company>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -13,7 +13,7 @@
         <PackageProjectUrl>https://github.com/fullstackhero/dotnet-microservices-boilerplate</PackageProjectUrl>
         <RepositoryUrl>https://github.com/fullstackhero/dotnet-microservices-boilerplate</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <RepositoryCommit>cdb4e3ceb6a3421adcd6e17c34f5362616e2c469</RepositoryCommit>
+        <RepositoryCommit>1391e5bf5a965d46e3291aa2b5cd3a3674ba4966</RepositoryCommit>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
