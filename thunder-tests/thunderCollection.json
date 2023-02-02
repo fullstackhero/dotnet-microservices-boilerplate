@@ -18,6 +18,27 @@
         "containerId": "",
         "created": "2023-02-01T03:29:17.173Z",
         "sortNum": 20000
+      },
+      {
+        "_id": "e02ce5ec-2712-4db7-9d72-3e5afa098634",
+        "name": "api-gateway",
+        "containerId": "",
+        "created": "2023-02-02T11:42:09.607Z",
+        "sortNum": 30000
+      },
+      {
+        "_id": "253fa856-2548-4c1f-a2d0-c9e909b93c9e",
+        "name": "catalog-api",
+        "containerId": "e02ce5ec-2712-4db7-9d72-3e5afa098634",
+        "created": "2023-02-02T11:42:17.652Z",
+        "sortNum": 40000
+      },
+      {
+        "_id": "23ebf66c-8db6-4021-950a-285247a9db10",
+        "name": "identity-server",
+        "containerId": "e02ce5ec-2712-4db7-9d72-3e5afa098634",
+        "created": "2023-02-02T11:42:23.651Z",
+        "sortNum": 50000
       }
     ],
     "settings": {

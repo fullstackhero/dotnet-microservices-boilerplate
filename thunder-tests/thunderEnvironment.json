@@ -8,16 +8,20 @@
     "modified": "2023-01-28T00:56:06.534Z",
     "data": [
       {
-        "name": "catalog-api-url",
-        "value": "https://localhost:5200"
-      },
-      {
-        "name": "identity-server-url",
+        "name": "api-gateway-url",
         "value": "https://localhost:5100"
       },
       {
+        "name": "identity-server-url",
+        "value": "https://localhost:5200"
+      },
+      {
+        "name": "catalog-api-url",
+        "value": "https://localhost:5300"
+      },
+      {
         "name": "access_token",
-        "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkM2N0QxMjgzNDQ5QkI4RDc5MDExRjFENUVDM0RDOTcxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MTAwIiwibmJmIjoxNjc1Mjc2NTM2LCJpYXQiOjE2NzUyNzY1MzYsImV4cCI6MTY3NTI4MDEzNiwic2NvcGUiOlsiY2F0YWxvZy1hcGkiXSwiYW1yIjpbImN1c3RvbSJdLCJjbGllbnRfaWQiOiJjbGllbnQiLCJzdWIiOiI2NTdlMDBlOC0yMzVmLTRhZDctODZlYy1kODZmZWVhMDE0YzgiLCJhdXRoX3RpbWUiOjE2NzUyNzY1MzYsImlkcCI6ImxvY2FsIiwianRpIjoiNDAxNjYwQzZDMTJDMzA0RUZFRTJGQjZCMkRCQUE0NTQifQ.rHB-HsWmNZfacp-BDsHePMfp7R2x_fvn97QZr3rJOLM4hoIDoxS2pdVGIb1rJUEsF08wvX2BjQRXhRlN0MwtLc2fS2TdQ-U-OLm0KJ9c_IH0xXDDuRr38F12VQc9q1ylTei0Z3Wcmy4CEaxhsdVHXKJP6zi8QeMVC9Bu23Jxyj_2qtqYPuIYzuD6kb8o95tA7f-bQRLSMc62ZoqxPDO1W4rOXGVeFm8ABmDrnysnMYDYZKgmpkoTEawyj_A211bGexdbVUi5N3mgRrL-VLcrbYlLCgnM-F5F1I0DETS1wLdegbRX2ukVL7hDEcmutpj4emoL_hWZswON19yiA5ZjDw"
+        "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkM2N0QxMjgzNDQ5QkI4RDc5MDExRjFENUVDM0RDOTcxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MjAwIiwibmJmIjoxNjc1MzM4ODE4LCJpYXQiOjE2NzUzMzg4MTgsImV4cCI6MTY3NTM0MjQxOCwic2NvcGUiOlsiY2F0YWxvZy1hcGkiXSwiYW1yIjpbImN1c3RvbSJdLCJjbGllbnRfaWQiOiJjbGllbnQiLCJzdWIiOiI2NTdlMDBlOC0yMzVmLTRhZDctODZlYy1kODZmZWVhMDE0YzgiLCJhdXRoX3RpbWUiOjE2NzUzMzg4MTgsImlkcCI6ImxvY2FsIiwianRpIjoiNjJGMDYyREE5OEJCRTBCMTlDMzJFQ0RGMkQ0RkJDQkYifQ.XmMLcFJ5Z7UKhJCmsFlzIsvBEcxNb57Ht2wICfhHOpTW-ORZ4mW6qwqiZsuy_swBI4OjhYqIr5pUjEN1m_4UIkWuxvauBVn0FAayOvzOm5pRS3fd-28rUFiJFey0w4t8z77XU_8uSa8VdyvlzdTQ7hQfOczaVoJTblaxea0wzPhuZXMuCoDX6u_w2Bpy8VnxmNHoMPQftlxE-MrZQdPmKL0shLkOQnn0i2lC8onHx96hWlAnFT8mcGtMmqOQNw0mMvDcI5hEChjTbC3D-xXBu07pchIyOUYb9A_fXcVFEq5Oj8ouw3BfERXPRt8G9e1dFXc6rYHlKOUmz7s3K5YWDA"
       }
     ]
   },

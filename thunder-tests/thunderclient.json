@@ -150,5 +150,74 @@
         "value": "{{access_token}}"
       }
     ]
+  },
+  {
+    "_id": "97deba5b-07a4-41df-b301-c91852112692",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "23ebf66c-8db6-4021-950a-285247a9db10",
+    "name": "get-token",
+    "url": "{{api-gateway-url}}/identity/connect/token",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-02-02T11:42:27.360Z",
+    "modified": "2023-02-02T11:53:34.979Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "client_id",
+          "value": "client"
+        },
+        {
+          "name": "client_secret",
+          "value": "secret"
+        },
+        {
+          "name": "username",
+          "value": "mukesh.murugan"
+        },
+        {
+          "name": "password",
+          "value": "123Pa$$word!"
+        },
+        {
+          "name": "grant_type",
+          "value": "password"
+        },
+        {
+          "name": "scope",
+          "value": "catalog-api"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{access_token}}"
+      }
+    ]
+  },
+  {
+    "_id": "0a477551-4cee-4ee9-9dec-cef1215ff87e",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "253fa856-2548-4c1f-a2d0-c9e909b93c9e",
+    "name": "get-products",
+    "url": "{{api-gateway-url}}/catalog/api/products",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-02-02T11:53:49.377Z",
+    "modified": "2023-02-02T11:54:11.007Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{access_token}}"
+    },
+    "tests": []
   }
 ]

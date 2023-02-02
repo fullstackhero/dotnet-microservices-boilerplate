@@ -1,25 +1,28 @@
+using FSH.Infrastructure;
+using FSH.Infrastructure.Authentication;
+using FSH.Infrastructure.Logging.Serilog;
+using Microsoft.AspNetCore.Authentication;
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
+builder.RegisterSerilog();
+builder.Services.RegisterJWTAuthentication();
+builder.Services.AddInfrastructureServices();
+builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
+app.MapGet("/", () => "Hello From Gateway");
+app.UseStaticFiles(); // The middleware runs before routing happens => no route was found
+app.UseAuthentication();
 app.UseAuthorization();
+app.ConfigureSerilog();
+app.UseRouting();
+app.MapReverseProxy(config =>
+{
+    config.Use(async (context, next) =>
+    {
+        var token = await context.GetTokenAsync("access_token");
+        context.Request.Headers["Authorization"] = $"Bearer {token}";
 
-app.MapControllers();
+        await next().ConfigureAwait(false);
+    });
+});
 
 app.Run();

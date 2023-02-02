@@ -3,12 +3,17 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>enable</ImplicitUsings>   
+    <RootNamespace>FSH.Gateway</RootNamespace>
+    <AssemblyName>FSH.Gateway</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Yarp.ReverseProxy" Version="1.1.1" />
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\..\building-blocks\Core\Core.csproj" />
+    <ProjectReference Include="..\..\building-blocks\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\..\building-blocks\Persistence.EfCore\Persistence.EfCore.csproj" />
+  </ItemGroup>
 </Project>
