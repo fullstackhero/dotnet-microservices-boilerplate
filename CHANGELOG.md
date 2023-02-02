@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.2.0](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.1.0...v1.2.0) (2023-02-02)
+
+
+### Features
+
+* added api gateway - yarp ([4f96e98](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/4f96e98a315248119d7e7fd3c00d35286c7bbf2a))
+
 # [1.1.0](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.0.0...v1.1.0) (2023-02-01)
 
 
