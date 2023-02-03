@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.2.0...v1.2.1) (2023-02-03)
+
+
+### Bug Fixes
+
+* release test ([e81b2c0](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/e81b2c0a6e59b9babcc3fcbcb0291915dd2785d4))
+* release.yml ([fce7454](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/fce745424cf58c628157399dd995442bcea166d2))
+
 # [1.2.0](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.1.0...v1.2.0) (2023-02-02)
 
 
