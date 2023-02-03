@@ -60,11 +60,23 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build Gateway Image
+      working-directory: ./
+      run: dotnet publish src/api-gateway/Gateway/Gateway.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ github.actor }}/fsh-microservices.gateway
+    - name: Push Gateway Image
+      run: docker push ${{ github.actor }}/fsh-microservices.gateway --all-tags
+
+    - name: Build Identity Server Image
+      working-directory: ./
+      run: dotnet publish src/identity-server/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ github.actor }}/fsh-microservices.identity-server
+    - name: Push Identity Server Image
+      run: docker push ${{ github.actor }}/fsh-microservices.identity-server --all-tags
+
     - name: Build Catalog Service Image
       working-directory: ./
       run: dotnet publish src/services/catalog/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ github.actor }}/fsh-microservices.catalog
     - name: Push Catalog Service Image
-      run: docker push ${{ github.actor }}/fsh-microservices.catalog --all-tags    
+      run: docker push ${{ github.actor }}/fsh-microservices.catalog --all-tags        
   cleanup:
     name:  Cleanup
     needs:

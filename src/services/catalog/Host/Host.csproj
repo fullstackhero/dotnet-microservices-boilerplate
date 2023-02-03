@@ -9,10 +9,10 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <ContainerImageName>fsh-microservices/catalog</ContainerImageName>    
+    <ContainerImageName>fsh-microservices.catalog</ContainerImageName>    
   </PropertyGroup>
   <ItemGroup>
-    <ContainerPort Include="44301" Type="tcp" />
+    <ContainerPort Include="5030" Type="tcp" />
   </ItemGroup>
 
   <ItemGroup>

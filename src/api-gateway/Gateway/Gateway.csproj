@@ -7,8 +7,14 @@
     <RootNamespace>FSH.Gateway</RootNamespace>
     <AssemblyName>FSH.Gateway</AssemblyName>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <ContainerImageName>fsh-microservices.gateway</ContainerImageName>    
+  </PropertyGroup>
   <ItemGroup>
+    <ContainerPort Include="5010" Type="tcp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.3.2" />
     <PackageReference Include="Yarp.ReverseProxy" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup>
