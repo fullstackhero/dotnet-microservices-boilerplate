@@ -1,6 +1,6 @@
 # .NET Microservices Boilerplate
-### Built With Dapr and other cool stuff
 
+[![build-test](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/build.yml/badge.svg)](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/build.yml) [![release](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/release.yml/badge.svg)](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/release.yml)
 
 ## Roadmap
 
