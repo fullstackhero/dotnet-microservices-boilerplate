@@ -2,26 +2,37 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build-all",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/services/catalog/Host/Host.csproj",
+                "${workspaceFolder}/FSH.Microservices.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
-            "label": "publish",
+            "label": "publish catalog-api",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "publish",
                 "${workspaceFolder}/src/services/catalog/Host/Host.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "--os",
+                "linux",
+                "--arch",
+                "x64",
+                "-c",
+                "Release",
+                "-p:PublishProfile=DefaultContainer",
+                "-p:ContainerImageTags=latest",
+                "--self-contained"
             ],
             "problemMatcher": "$msCompile"
         },

@@ -4,7 +4,7 @@ name: fsh-microservices
 services:
   catalog:
     container_name: catalog-service
-    image: fsh-microservices/catalog:latest
+    image: fsh-microservices.catalog:latest
     ports:
       - 44301:44301
       - 5028:5028
