@@ -63,7 +63,7 @@ jobs:
       run: docker push ${{ github.actor }}/fsh-microservices.catalog --all-tags    
   cleanup:
     needs:
-      - release
+      - docker
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
