@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.3.0](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.2.1...v1.3.0) (2023-02-04)
+
+
+### Features
+
+* added complete support for docker compose ([898c1c9](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/898c1c92dc43f32e2b04ffb2d3153bb84a3c71b4))
+
 ## [1.2.1](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.2.0...v1.2.1) (2023-02-03)
 
 
