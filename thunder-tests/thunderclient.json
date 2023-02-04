@@ -109,7 +109,7 @@
     "method": "POST",
     "sortNum": 60000,
     "created": "2023-02-01T03:29:24.617Z",
-    "modified": "2023-02-01T03:37:12.707Z",
+    "modified": "2023-02-04T17:08:10.129Z",
     "headers": [],
     "params": [],
     "body": {
@@ -217,6 +217,30 @@
     "auth": {
       "type": "bearer",
       "bearer": "{{access_token}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "eca97a57-0bc1-48e6-b7cf-7a96aaa7c926",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "253fa856-2548-4c1f-a2d0-c9e909b93c9e",
+    "name": "create-product",
+    "url": "{{api-gateway-url}}/catalog/api/products",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2023-02-04T18:00:23.659Z",
+    "modified": "2023-02-04T18:00:49.849Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Samsung S11\",\n  \"quantity\": 99,\n  \"price\": 99\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{access_token}}",
+      "bearerPrefix": "Bearer "
     },
     "tests": []
   }
