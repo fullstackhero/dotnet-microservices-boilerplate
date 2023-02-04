@@ -64,9 +64,9 @@ jobs:
 
     - name: Build Identity Server Image
       working-directory: ./
-      run: dotnet publish src/identity-server/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ github.actor }}/fsh-microservices.identity-server
+      run: dotnet publish src/identity-server/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ github.actor }}/fsh-microservices.identity
     - name: Push Identity Server Image
-      run: docker push ${{ github.actor }}/fsh-microservices.identity-server --all-tags
+      run: docker push ${{ github.actor }}/fsh-microservices.identity --all-tags
 
     - name: Build Catalog Service Image
       working-directory: ./
