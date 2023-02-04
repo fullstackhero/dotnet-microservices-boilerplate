@@ -9,11 +9,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <ContainerImageName>fsh-microservices.identity-server</ContainerImageName>    
+    <ContainerImageName>fsh-microservices.identity</ContainerImageName>    
   </PropertyGroup>
-  <ItemGroup>
-    <ContainerPort Include="5020" Type="tcp" />
-  </ItemGroup>
 
   <ItemGroup>
       

@@ -33,7 +33,7 @@ public static class Extensions
     where T : DbContext
     {
         MigrateDatabaseAsync<T>(applicationBuilder.ApplicationServices).GetAwaiter().GetResult();
-        if (webHostEnvironment.IsDevelopment())
+        if (webHostEnvironment.IsDevelopment() || webHostEnvironment.EnvironmentName == "docker")
         {
             SeedDataAsync(applicationBuilder.ApplicationServices).GetAwaiter().GetResult();
         }
