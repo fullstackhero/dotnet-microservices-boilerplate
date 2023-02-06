@@ -34,13 +34,13 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build Docker Image
       working-directory: ./
-      if: ${{ github.ref == 'refs/heads/develop' && success() }}
+      if: ${{ github.ref == 'refs/heads/main' && success() }}
       run: | 
         dotnet publish src/api-gateway/Gateway/Gateway.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fsh-microservices.gateway
         dotnet publish src/identity-server/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fsh-microservices.identity
         dotnet publish src/services/catalog/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fsh-microservices.catalog
     - name: Publish Docker Image
-      if: ${{ github.ref == 'refs/heads/develop' && success() }}
+      if: ${{ github.ref == 'refs/heads/main' && success() }}
       run: |
         docker push ${{ secrets.DOCKER_USERNAME }}/fsh-microservices.gateway --all-tags
         docker push ${{ secrets.DOCKER_USERNAME }}/fsh-microservices.identity --all-tags
