@@ -39,7 +39,7 @@
 	  <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="Duende.IdentityServer" Version="6.2.2" />
     <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="6.2.2" />
-    <PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.2.2" />
+    <PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.2.3" />
     <PackageReference Include="Duende.IdentityServer.EntityFramework.Storage" Version="6.2.2" />
   </ItemGroup>
 
