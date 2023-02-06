@@ -1,6 +1,0 @@
-version: '3.8'
-name: fsh-microservices
-
-networks:
-  fsh-microservices:
-    name:  fsh-microservices

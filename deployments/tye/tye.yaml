@@ -1,0 +1,36 @@
+name: fsh-microservices
+containerEngine: docker
+
+extensions:
+  - name: dapr
+    log-level: debug
+    app-ssl: true
+
+services:
+  - name: gateway
+    project: ../../src/api-gateway/Gateway/Gateway.csproj
+    bindings:
+      - port: 5100
+        name:  secure
+        protocol: https
+      - port: 5010
+        name:  non-secure
+        protocol: http
+  - name: identity
+    project: ../../src/identity-server/Host/Host.csproj
+    bindings:
+      - port: 5200
+        name:  secure
+        protocol: https
+      - port: 5020
+        name:  non-secure
+        protocol: http
+  - name: catalog
+    project: ../../src/services/catalog/Host/Host.csproj
+    bindings:
+      - port: 5300
+        name:  secure
+        protocol: https
+      - port: 5030
+        name:  non-secure
+        protocol: http
