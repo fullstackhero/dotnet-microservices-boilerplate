@@ -33,12 +33,10 @@ dotnet dev-certs https --trust
 
 ### Docker-Compose
 
- Once the certificates are installed, you will have to build and push the required docker images to your local instance of docker, and run `docker compose up`.
+ Once the certificates are installed, you will have to build and push the required docker images to your local instance of docker, and run `docker-compose up`.
 
- Note that, each of the service have their own docker-compose file. This helped me in including the services and resources that a particular microservice would need. In case, there are services that has to be shared by multiple microservices, it would go into the docker-compose.yml at the root of the project. 
+ Note that, the docker-compose, tye and any deployment related file would live within the `./deployments` folder.
  
- Now how to enable docker-compose up` to read multiple docker compose files? Simple, Navigate to ./.env file. Here, you see the paths to all the present docker-compose files.
-
  But first, let's build the docker images. There are 2 ways for this:
   - Navigate to each of the service, api-gateway & identity server and run the following command to build and push the docker image to your local docker-desktop setup.
   ```
@@ -46,10 +44,13 @@ dotnet dev-certs https --trust
   ```
 - Else, to make your lives simpler, I have also included the commands in the Visual Code Tasks. Simply hit CTRL+SHIFT+P and type in Tasks. Here select the required publish:xxxxxx task. This would also push the docker image. 
 
-Once all the images are built and pushed, you can run the `docker-compose up` command at the root of the solution. If everything goes well, all the required containers would spin up and you will have access to https://localhost:5100 AKA, the API Gateway. You can use the Thunder-Tests in Visual Code to test the gateway!
+Once all the images are built and pushed, you can run the `docker-compose up` command from the `./deployments/docker-compose/` folder. If everything goes well, all the required containers would spin up and you will have access to https://localhost:5100 AKA, the API Gateway. You can use the Thunder-Tests in Visual Code to test the gateway! 
+
+P.S, you find the API Tests at `./thunder-tests` folder. Ensure that you are using Visual Code with the ThunderClient extension installed.
+
 ### Tye
 
-To run locally, you can also use the `tye` tool. I use this for rapid development. Simply run the `tye run` command at the root directory. You can view all the application logs at the tye dashboard which is available at http://127.0.0.1:8000
+To run locally, you can also use the `tye` tool. I use this for rapid development. Simply run the `tye run` command at the `./deployments/tye/` directory. You can view all the application logs at the tye dashboard which is available at http://127.0.0.1:8000
 ## Contributing
 #### PS, Currently not accepting any contributions. Once the project is stable, will start accepting PRs.
 
