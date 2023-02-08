@@ -8,7 +8,7 @@
             "name": "catalog-api",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build-all",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/src/services/catalog/Host/bin/Debug/net7.0/Catalog.Host.dll",
             "args": [],
