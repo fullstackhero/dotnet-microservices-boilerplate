@@ -20,13 +20,11 @@ public static class InMemoryConfiguration
             new(Constants.StandardScopes.Roles, new List<string> {"role"})
         };
 
-
     public static IEnumerable<ApiScope> ApiScopes =>
         new List<ApiScope>
         {
             new(Constants.StandardScopes.CatalogApi)
         };
-
 
     public static IList<ApiResource> ApiResources =>
         new List<ApiResource>

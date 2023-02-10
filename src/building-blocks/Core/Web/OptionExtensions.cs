@@ -41,4 +41,3 @@ public static class OptionExtensions
         return model;
     }
 }
-

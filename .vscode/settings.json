@@ -9,6 +9,7 @@
         "Hellang",
         "mediatr",
         "Newtonsoft",
+        "statestore",
         "Swashbuckle"
     ]
 }

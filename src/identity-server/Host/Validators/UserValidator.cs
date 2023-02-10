@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace IDS.Host.Validators;
 
-
 public class UserValidator : IResourceOwnerPasswordValidator
 {
     private readonly SignInManager<ApplicationUser> _signInManager;
