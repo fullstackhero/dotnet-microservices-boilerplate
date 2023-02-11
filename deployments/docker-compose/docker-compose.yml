@@ -58,6 +58,7 @@ services:
     image: fsh-microservices.catalog:latest
     depends_on:
       - catalog-mongo
+      - placement
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
     volumes:
@@ -65,14 +66,18 @@ services:
     networks:
      - fsh-microservices
   catalog-dapr:
+    container_name: catalog-dapr
     image: "daprio/daprd:edge"
     command: ["./daprd",
      "-app-id", "catalog",
-     "-placement-host-address", "placement:50003"]
+     "-placement-host-address", "placement:50006",
+     "-app-port", "80",
+     "-components-path", ".././dapr"]
+    volumes:
+      - ".././dapr/:/dapr" 
     depends_on:
       - catalog
-    networks:
-     - fsh-microservices
+    network_mode: "service:catalog"
   catalog-mongo:
     image: mongo
     container_name: catalog-mongo
@@ -81,6 +86,22 @@ services:
       - 27017:27017
     volumes:
       - catalog-mongo-data:/data/db
+    networks:
+      - fsh-microservices
+  #Dapr
+  placement:
+    container_name: dapr-placement
+    image: "daprio/dapr"
+    command: ["./placement", "-port", "50006"]
+    ports:
+      - 50006:50006
+    networks:
+      - fsh-microservices
+  redis:
+    container_name: dapr-redis
+    image: "redis:alpine"
+    ports:
+      - 6379:6379
     networks:
       - fsh-microservices
 

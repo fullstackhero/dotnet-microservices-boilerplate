@@ -24,8 +24,18 @@ public class DaprCacheService : ICacheService
         throw new NotImplementedException();
     }
 
-    public async Task<T> GetAsync<T>(string key, CancellationToken token = default) =>
-        await _daprClient.GetStateAsync<T>("statestore", key, ConsistencyMode.Eventual, cancellationToken: token);
+    public async Task<T> GetAsync<T>(string key, CancellationToken token = default)
+    {
+        try
+        {
+            return await _daprClient.GetStateAsync<T>("statestore", key, ConsistencyMode.Eventual, cancellationToken: token);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("{stackTrace}", ex.StackTrace);
+            return default;
+        }
+    }
 
     public void Refresh(string key)
     {
@@ -48,8 +58,9 @@ public class DaprCacheService : ICacheService
         {
             await _daprClient.DeleteStateAsync("statestore", key, cancellationToken: token);
         }
-        catch
+        catch (Exception ex)
         {
+            _logger.LogError("{stackTrace}", ex.StackTrace);
         }
     }
 

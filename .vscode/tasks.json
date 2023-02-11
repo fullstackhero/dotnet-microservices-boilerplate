@@ -80,7 +80,10 @@
             "dockerCompose": {
                 "up": {
                     "detached": true
-                }
+                },
+                "files": [
+                    "${workspaceFolder}/deployments/docker-compose/docker-compose.yml"
+                ]
             }
         }
     ]
