@@ -3,7 +3,7 @@ using FluentAssertions;
 
 namespace Catalog.UnitTests.Domain;
 
-public class CreateProductTests
+public class ProductTests
 {
     [Fact]
     public void Product_Create()
