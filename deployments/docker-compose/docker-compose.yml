@@ -28,27 +28,8 @@ services:
     volumes:
       - ${USERPROFILE}\.aspnet\https:/https
     depends_on:
-      identity-pg:
+      postgres:
         condition: service_healthy 
-    networks:
-     - fsh-microservices
-  identity-pg:
-    container_name: "identity-pg"
-    image: postgres:15-alpine
-    environment:
-      - POSTGRES_DATABASE=admin
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-      - PGPORT=5210
-    ports:
-      - 5210:5210
-    volumes:
-      - identity-pg-data:/data/db
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
     networks:
      - fsh-microservices
 
@@ -57,7 +38,7 @@ services:
     container_name: catalog-service
     image: fsh-microservices.catalog:latest
     depends_on:
-      - catalog-mongo
+      - mongo
       - placement
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
@@ -78,37 +59,3 @@ services:
     depends_on:
       - catalog
     network_mode: "service:catalog"
-  catalog-mongo:
-    image: mongo
-    container_name: catalog-mongo
-    restart: on-failure
-    ports:
-      - 27017:27017
-    volumes:
-      - catalog-mongo-data:/data/db
-    networks:
-      - fsh-microservices
-  #Dapr
-  placement:
-    container_name: dapr-placement
-    image: "daprio/dapr"
-    command: ["./placement", "-port", "50006"]
-    ports:
-      - 50006:50006
-    networks:
-      - fsh-microservices
-  redis:
-    container_name: dapr-redis
-    image: "redis:alpine"
-    ports:
-      - 6379:6379
-    networks:
-      - fsh-microservices
-
-volumes:
-  identity-pg-data:
-  catalog-mongo-data:
-
-networks:
-  fsh-microservices:
-    name:  fsh-microservices

@@ -44,7 +44,13 @@ dotnet dev-certs https --trust
   ```
 - Else, to make your lives simpler, I have also included the commands in the Visual Code Tasks. Simply hit CTRL+SHIFT+P and type in Tasks. Here select the required publish:xxxxxx task. This would also push the docker image. 
 
-Once all the images are built and pushed, you can run the `docker-compose up` command from the `./deployments/docker-compose/` folder. If everything goes well, all the required containers would spin up and you will have access to https://localhost:5100 AKA, the API Gateway. You can use the Thunder-Tests in Visual Code to test the gateway! 
+Once all the images are built and pushed, you can run the following commands from the root of the solution. 
+
+- If you want to bring up only the infrastructure, run this command `docker compose -f "./deployments/docker-compose/infrastructure.yml" up`
+- To bring up both the services + infrastructure, `docker compose -f "./deployments/docker-compose/infrastructure.yml" -f "./deployments/docker-compose/docker-compose.yml" up`
+
+
+If everything goes well, all the required containers would spin up and you will have access to https://localhost:5100 AKA, the API Gateway. You can use the Thunder-Tests in Visual Code to test the gateway! 
 
 P.S, you find the API Tests at `./thunder-tests` folder. Ensure that you are using Visual Code with the ThunderClient extension installed.
 

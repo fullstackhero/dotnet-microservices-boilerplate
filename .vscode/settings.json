@@ -7,9 +7,12 @@
         "droidsolutions",
         "Dtos",
         "Figgle",
+        "healthcheck",
         "Hellang",
+        "isready",
         "mediatr",
         "Newtonsoft",
+        "PGPORT",
         "statestore",
         "Swashbuckle"
     ]

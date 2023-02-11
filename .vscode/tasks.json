@@ -18,7 +18,7 @@
             }
         },
         {
-            "label": "publish:catalog-api",
+            "label": "publish : catalog-api",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -37,7 +37,7 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish:identity-server",
+            "label": "publish : identity-server",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -75,14 +75,40 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "docker-compose up",
+            "label": "docker-compose : up services",
             "type": "docker-compose",
             "dockerCompose": {
                 "up": {
                     "detached": true
                 },
                 "files": [
+                    "${workspaceFolder}/deployments/docker-compose/infrastructure.yml",
                     "${workspaceFolder}/deployments/docker-compose/docker-compose.yml"
+                ]
+            }
+        },
+        {
+            "label": "docker-compose : down",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "down": {
+                    "detached": true
+                },
+                "files": [
+                    "${workspaceFolder}/deployments/docker-compose/infrastructure.yml",
+                    "${workspaceFolder}/deployments/docker-compose/docker-compose.yml"
+                ]
+            }
+        },
+        {
+            "label": "docker-compose : up infrastructure",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "up": {
+                    "detached": true
+                },
+                "files": [
+                    "${workspaceFolder}/deployments/docker-compose/infrastructure.yml",
                 ]
             }
         }
