@@ -17,7 +17,7 @@ builder.Services.AddDaprClient();
 builder.Services.AddControllers();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options => options.CustomSchemaIds(type => type.ToString()));
 
 builder.Services.AddOptions();
 builder.Services.AddMongoDbContext<CatalogDbContext>(builder.Configuration);
