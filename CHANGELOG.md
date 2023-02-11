@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.1](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.3.0...v1.3.1) (2023-02-11)
+
+
+### Bug Fixes
+
+* git workflow ([45a6bc5](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/45a6bc50215a7cb8eee57c5924e54b923ff17678))
+* minor code cleanups ([c98ac86](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/c98ac866e0cfe8fe22e3dd27d402b6504b0b914d))
+* minor fixes ([3bc2bde](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/3bc2bde3e12a27a8bb78a87fbd967c295ca94196))
+
 # [1.3.0](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.2.1...v1.3.0) (2023-02-04)
 
 
