@@ -4,6 +4,7 @@
         "Bson",
         "Cacheable",
         "conventionalcommits",
+        "daprio",
         "droidsolutions",
         "Dtos",
         "Figgle",
@@ -13,6 +14,7 @@
         "mediatr",
         "Newtonsoft",
         "PGPORT",
+        "sebp",
         "statestore",
         "Swashbuckle"
     ]

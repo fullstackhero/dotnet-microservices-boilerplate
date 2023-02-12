@@ -56,7 +56,7 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish:api-gateway",
+            "label": "publish : api-gateway",
             "command": "dotnet",
             "type": "process",
             "args": [
