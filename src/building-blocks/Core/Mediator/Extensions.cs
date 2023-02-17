@@ -12,7 +12,7 @@ public static class Extensions
 {
     public static IServiceCollection RegisterMediatR(this IServiceCollection services, Assembly mediatrAssembly)
     {
-        services.AddMediatR(mediatrAssembly);
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(mediatrAssembly));
         return services;
     }
 }
