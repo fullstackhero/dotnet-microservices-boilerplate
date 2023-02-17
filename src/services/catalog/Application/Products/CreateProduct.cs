@@ -7,6 +7,7 @@ using FSH.Core.Common;
 using FSH.Core.Dto;
 using FSH.Core.Mediator;
 using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 
 namespace Catalog.Application.Products;
 
@@ -21,9 +22,11 @@ public static class CreateProduct
     //Validator
     public class Validator : AbstractValidator<Request>
     {
-        public Validator()
+        public Validator(CatalogDbContext context)
         {
-            RuleFor(p => p.Name).NotEmpty().MaximumLength(75);
+            RuleFor(p => p.Name).NotEmpty().MaximumLength(75)
+                .MustAsync(async (name, ct) => !await context.Products.Find(doc => doc.Name == name).AnyAsync(cancellationToken: ct))
+                .WithMessage((_, name) => $"Product {name} already Exists.");
             RuleFor(p => p.Price).GreaterThanOrEqualTo(1);
         }
     }
