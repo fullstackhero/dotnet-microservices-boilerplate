@@ -1,5 +1,19 @@
 # Changelog
 
+# [1.4.0](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.3.1...v1.4.0) (2023-02-18)
+
+
+### Bug Fixes
+
+* **docker:** segregated infra and services in compose file ([6e469f6](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/6e469f69b843497787c8fce385920609232dad3a))
+* swagger ([9df68f1](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/9df68f10ccd7970361a6eac6a6b682fbfed1a5bf))
+
+
+### Features
+
+* added elasticsearch + kibana for distributed logging ([2b2cd3a](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/2b2cd3a6932f15c99bf91319369802f3d7aedb12))
+* major revamp of project structure ([54c7f0b](https://github.com/fullstackhero/dotnet-microservices-boilerplate/commit/54c7f0b63dc9312a6341b122c8fe7958fd4eb0d7))
+
 ## [1.3.1](https://github.com/fullstackhero/dotnet-microservices-boilerplate/compare/v1.3.0...v1.3.1) (2023-02-11)
 
 
