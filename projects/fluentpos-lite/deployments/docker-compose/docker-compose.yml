@@ -1,11 +1,11 @@
 version: '3.8'
-name: fsh-microservices
+name: fluentpos-lite
 
 services:
   # Gateway
   gateway:
     container_name: "gateway"
-    image: fsh-microservices.gateway:latest
+    image: fluentpos-lite.gateway:latest
     ports:
       - 5010:5010
       - 5100:5100
@@ -17,12 +17,12 @@ services:
     volumes:
       - ${USERPROFILE}\.aspnet\https:/https
     networks:
-     - fsh-microservices
+     - fluentpos-lite
   
   # Identity 
   identity:
     container_name: identity
-    image: fsh-microservices.identity:latest
+    image: fluentpos-lite.identity:latest
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
     volumes:
@@ -31,12 +31,12 @@ services:
       postgres:
         condition: service_healthy 
     networks:
-     - fsh-microservices
+     - fluentpos-lite
 
   # Catalog
   catalog:
     container_name: catalog-service
-    image: fsh-microservices.catalog:latest
+    image: fluentpos-lite.catalog:latest
     depends_on:
       - mongo
       - placement
@@ -45,7 +45,7 @@ services:
     volumes:
       - ${USERPROFILE}\.aspnet\https:/https
     networks:
-     - fsh-microservices
+     - fluentpos-lite
   catalog-dapr:
     container_name: catalog-dapr
     image: "daprio/daprd:edge"

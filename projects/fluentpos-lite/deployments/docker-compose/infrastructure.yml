@@ -1,5 +1,5 @@
 version: '3.8'
-name: fsh-microservices
+name: fluentpos-lite
 
 services:
   postgres:
@@ -19,7 +19,7 @@ services:
       timeout: 5s
       retries: 5
     networks:
-     - fsh-microservices
+     - fluentpos-lite
 
   mongo:
     image: mongo
@@ -30,7 +30,7 @@ services:
     volumes:
       - mongo-data:/data/db
     networks:
-      - fsh-microservices
+      - fluentpos-lite
 
   placement:
     container_name: dapr-placement
@@ -39,7 +39,7 @@ services:
     ports:
       - 50006:50006
     networks:
-      - fsh-microservices
+      - fluentpos-lite
 
   redis:
     container_name: dapr-redis
@@ -47,7 +47,7 @@ services:
     ports:
       - 6379:6379
     networks:
-      - fsh-microservices
+      - fluentpos-lite
   
   elk:
     container_name:  elasticsearch-kibana
@@ -60,7 +60,7 @@ services:
       - 5601:5601
       - 9200:9200
     networks:
-      - fsh-microservices
+      - fluentpos-lite
 
 volumes:
   postgres-data:
@@ -68,5 +68,5 @@ volumes:
   sebp-elk-data:
 
 networks:
-  fsh-microservices:
-    name:  fsh-microservices
+  fluentpos-lite:
+    name:  fluentpos-lite
