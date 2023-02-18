@@ -44,12 +44,12 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2023-01-28T00:58:47.708Z",
-    "modified": "2023-02-01T18:37:48.578Z",
+    "modified": "2023-02-17T20:38:48.833Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Samsung S11\",\n  \"quantity\": 99,\n  \"price\": 99\n}",
+      "raw": "{\n  \"name\": \"Samsung S12\",\n  \"quantity\": 99,\n  \"price\": 99\n}",
       "form": []
     },
     "auth": {

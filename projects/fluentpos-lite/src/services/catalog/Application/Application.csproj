@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>FluentPOS.Lite.Catalog.Application</RootNamespace>
+    <AssemblyName>FluentPOS.Lite.Catalog.Application</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\src\Core\Core.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\src\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\src\Persistence.MongoDb\Persistence.MongoDb.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+</Project>

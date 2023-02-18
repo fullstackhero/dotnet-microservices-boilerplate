@@ -36,12 +36,12 @@ jobs:
       working-directory: ./
       if: ${{ github.ref == 'refs/heads/main' && success() }}
       run: | 
-        dotnet publish src/api-gateway/Gateway/Gateway.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fsh-microservices.gateway
-        dotnet publish src/identity-server/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fsh-microservices.identity
-        dotnet publish src/services/catalog/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fsh-microservices.catalog
+        dotnet publish projects/fluentpos-lite/src/api-gateway/Gateway/Gateway.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fluentpos-lite.gateway
+        dotnet publish projects/fluentpos-lite/src/identity-server/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fluentpos-lite.identity
+        dotnet publish projects/fluentpos-lite/src/services/catalog/Host/Host.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fluentpos-lite.catalog
     - name: Publish Docker Image
       if: ${{ github.ref == 'refs/heads/main' && success() }}
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/fsh-microservices.gateway --all-tags
-        docker push ${{ secrets.DOCKER_USERNAME }}/fsh-microservices.identity --all-tags
-        docker push ${{ secrets.DOCKER_USERNAME }}/fsh-microservices.catalog --all-tags
+        docker push ${{ secrets.DOCKER_USERNAME }}/fluentpos-lite.gateway --all-tags
+        docker push ${{ secrets.DOCKER_USERNAME }}/fluentpos-lite.identity --all-tags
+        docker push ${{ secrets.DOCKER_USERNAME }}/fluentpos-lite.catalog --all-tags

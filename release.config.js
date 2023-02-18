@@ -20,7 +20,7 @@ const config = {
             {
                 "files": [
                     {
-                        "path": ["Directory.Build.props"],
+                        "path": ["src/package.props"],
                         "type": "xml",
                         "replacements": [
                             { "key": "Version", "value": "${nextRelease.version}" },

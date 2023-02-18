@@ -18,12 +18,12 @@
             }
         },
         {
-            "label": "publish : catalog-api",
+            "label": "publish : fluentpos-lite/catalog-api",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/services/catalog/Host/Host.csproj",
+                "${workspaceFolder}/projects/fluentpos-lite/src/services/catalog/Host/Host.csproj",
                 "--os",
                 "linux",
                 "--arch",
@@ -37,12 +37,12 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish : identity-server",
+            "label": "publish : fluentpos-lite/identity-server",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/identity-server/Host/Host.csproj",
+                "${workspaceFolder}/projects/fluentpos-lite/src/identity-server/Host/Host.csproj",
                 "--os",
                 "linux",
                 "--arch",
@@ -56,12 +56,12 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish : api-gateway",
+            "label": "publish : fluentpos-lite/api-gateway",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/api-gateway/Gateway/Gateway.csproj",
+                "${workspaceFolder}/projects/fluentpos-lite/src/api-gateway/Gateway/Gateway.csproj",
                 "--os",
                 "linux",
                 "--arch",
@@ -75,40 +75,40 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "docker-compose : up services",
+            "label": "docker-compose : up fluentpos-lite/services",
             "type": "docker-compose",
             "dockerCompose": {
                 "up": {
                     "detached": true
                 },
                 "files": [
-                    "${workspaceFolder}/deployments/docker-compose/infrastructure.yml",
-                    "${workspaceFolder}/deployments/docker-compose/docker-compose.yml"
+                    "${workspaceFolder}/projects/fluentpos-lite/deployments/docker-compose/infrastructure.yml",
+                    "${workspaceFolder}/projects/fluentpos-lite/deployments/docker-compose/docker-compose.yml"
                 ]
             }
         },
         {
-            "label": "docker-compose : down",
+            "label": "docker-compose : fluentpos-lite/down",
             "type": "docker-compose",
             "dockerCompose": {
                 "down": {
                     "detached": true
                 },
                 "files": [
-                    "${workspaceFolder}/deployments/docker-compose/infrastructure.yml",
-                    "${workspaceFolder}/deployments/docker-compose/docker-compose.yml"
+                    "${workspaceFolder}/projects/fluentpos-lite/deployments/docker-compose/infrastructure.yml",
+                    "${workspaceFolder}/projects/fluentpos-lite/deployments/docker-compose/docker-compose.yml"
                 ]
             }
         },
         {
-            "label": "docker-compose : up infrastructure",
+            "label": "docker-compose : up fluentpos-lite/infrastructure",
             "type": "docker-compose",
             "dockerCompose": {
                 "up": {
                     "detached": true
                 },
                 "files": [
-                    "${workspaceFolder}/deployments/docker-compose/infrastructure.yml",
+                    "${workspaceFolder}/projects/fluentpos-lite/deployments/docker-compose/infrastructure.yml",
                 ]
             }
         }
