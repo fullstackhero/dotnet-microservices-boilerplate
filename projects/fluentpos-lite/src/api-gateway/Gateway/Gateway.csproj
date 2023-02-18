@@ -8,7 +8,7 @@
     <AssemblyName>FluentPOS.Lite.Gateway</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
-    <ContainerImageName>fsh-microservices.gateway</ContainerImageName>    
+    <ContainerImageName>fluentpos-lite.gateway</ContainerImageName>    
   </PropertyGroup>
   <ItemGroup>
     <ContainerPort Include="5010" Type="tcp" />

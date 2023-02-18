@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <ContainerImageName>fsh-microservices.identity</ContainerImageName>    
+    <ContainerImageName>fluentpos-lite.identity</ContainerImageName>    
   </PropertyGroup>
 
   <ItemGroup>

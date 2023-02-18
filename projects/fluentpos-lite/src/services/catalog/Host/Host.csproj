@@ -9,7 +9,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <ContainerImageName>fsh-microservices.catalog</ContainerImageName>    
+    <ContainerImageName>fluentpos-lite.catalog</ContainerImageName>    
   </PropertyGroup>
   <ItemGroup>
     <ContainerPort Include="5030" Type="tcp" />
