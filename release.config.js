@@ -24,8 +24,14 @@ const config = {
                         "type": "xml",
                         "replacements": [
                             { "key": "Version", "value": "${nextRelease.version}" },
-                            { "key": "ContainerImageTags", "value": "${nextRelease.version};latest" },
                             { "key": "RepositoryCommit", "value": "${nextRelease.gitHead}" }
+                        ]
+                    },
+                    {
+                        "path": ["Directory.Build.props"],
+                        "type": "xml",
+                        "replacements": [
+                            { "key": "ContainerImageTags", "value": "${nextRelease.version};latest" }
                         ]
                     }
                 ]
