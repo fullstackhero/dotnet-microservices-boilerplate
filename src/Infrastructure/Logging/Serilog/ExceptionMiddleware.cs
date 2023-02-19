@@ -61,6 +61,7 @@ public class ExceptionMiddleware : IMiddleware
             {
                 CustomException e => (int)e.StatusCode,
                 KeyNotFoundException => (int)HttpStatusCode.NotFound,
+                FluentValidation.ValidationException => (int)HttpStatusCode.BadRequest,
                 _ => (int?)(int)HttpStatusCode.InternalServerError,
             };
             Log.Error($"Request failed with Status Code {errorResult.Status} and Error Id {errorId}.");
