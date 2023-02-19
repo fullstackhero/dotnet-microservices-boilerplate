@@ -46,6 +46,17 @@ public class ExceptionMiddleware : IMiddleware
                 }
             }
 
+            if (exception is FluentValidation.ValidationException fluentException)
+            {
+                errorResult.Detail = "Validation failed.";
+                var validationFailures = new List<string>();
+                foreach (var error in fluentException.Errors)
+                {
+                    validationFailures.Add(error.ErrorMessage);
+                }
+                errorResult.Extensions.Add(nameof(validationFailures), validationFailures);
+            }
+
             errorResult.Status = exception switch
             {
                 CustomException e => (int)e.StatusCode,
