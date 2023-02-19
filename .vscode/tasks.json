@@ -18,6 +18,33 @@
             }
         },
         {
+            "label": "dotnet run identity",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/projects/fluentpos-lite/src/identity-server/Host/Host.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "dotnet run catalog-api with dapr",
+            "command": "dapr",
+            "type": "process",
+            "args": [
+                "run",
+                "--app-id",
+                "catalog-api",
+                "--",
+                "dotnet",
+                "run",
+                "--project",
+                "${workspaceFolder}/projects/fluentpos-lite/src/services/catalog/Host/Host.csproj",
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
             "label": "publish : fluentpos-lite/catalog-api",
             "command": "dotnet",
             "type": "process",
