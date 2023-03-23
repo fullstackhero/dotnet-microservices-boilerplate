@@ -14,7 +14,7 @@
     <ContainerPort Include="5010" Type="tcp" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.3.2" />
+    <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.4.0" />
     <PackageReference Include="Yarp.ReverseProxy" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>

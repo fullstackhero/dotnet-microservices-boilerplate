@@ -14,12 +14,12 @@
 
   <ItemGroup>
       
-      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.3" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.3.2" />
+      <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.4.0" />
   </ItemGroup>
 
   <ItemGroup>
