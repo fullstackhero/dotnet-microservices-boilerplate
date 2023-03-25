@@ -1,7 +1,6 @@
 # .NET Microservices Boilerplate
 
-[![build-test](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/build.yml/badge.svg)](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/build.yml) [![release](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/release.yml/badge.svg)](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/release.yml)
-
+![ci-cd pipeline](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/ci-cd.yml/badge.svg)
 ## Roadmap
 
 Currently maintaining on Trello, might move to Github later on.
