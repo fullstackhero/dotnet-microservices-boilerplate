@@ -261,5 +261,28 @@
       "bearer": "{{access_token}}"
     },
     "tests": []
+  },
+  {
+    "_id": "a2adc238-18a8-40f4-826a-672d2efc63df",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "f32e3cdd-a751-4310-8792-7202791900d8",
+    "name": "create-update-cart",
+    "url": "{{api-gateway-url}}/cart/",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2023-03-25T18:59:21.654Z",
+    "modified": "2023-03-25T19:16:14.667Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"cartId\":\"db60b803-1974-4f14-894d-499ca76bc478\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{access_token}}"
+    },
+    "tests": []
   }
 ]

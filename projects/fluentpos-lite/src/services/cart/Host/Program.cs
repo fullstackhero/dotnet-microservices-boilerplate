@@ -45,7 +45,7 @@ app.MapGet("/", () => "Hello From Cart Service!").RequireAuthorization();
 
 // Add to Cart
 
-app.MapPost("api/carts/{customerId:guid}", async (CartDbContext context, [FromBody] CartDetail request) =>
+app.MapPost("/", async (CartDbContext context, [FromBody] CartDetail request) =>
 {
     //Assume each customer will have only one cart
     //Thus customer ID can be cart Id
@@ -79,6 +79,10 @@ app.MapPost("api/carts/{customerId:guid}", async (CartDbContext context, [FromBo
         }
         _ = await context.CartDetails.ReplaceOneAsync(x => x.CartId == request.CartId, cart);
         return Results.Created("carts", "updated existing cart");
+    }
+    else
+    {
+        return Results.BadRequest();
     }
 
 });
