@@ -229,12 +229,12 @@
     "method": "POST",
     "sortNum": 5000,
     "created": "2023-02-04T18:00:23.659Z",
-    "modified": "2023-03-25T09:25:24.049Z",
+    "modified": "2023-03-25T10:00:59.852Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Samsung S22\",\n  \"quantity\": 99,\n  \"price\": 99\n}",
+      "raw": "{\n  \"name\": \"Samsung S25\",\n  \"quantity\": 99,\n  \"price\": 99\n}",
       "form": []
     },
     "auth": {
@@ -249,11 +249,11 @@
     "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
     "containerId": "253fa856-2548-4c1f-a2d0-c9e909b93c9e",
     "name": "get-product-by-id",
-    "url": "{{api-gateway-url}}/catalog/api/products/db60b803-1974-4f14-894d-499ca76bc478",
+    "url": "{{api-gateway-url}}/catalog/api/products/24e28498-9d06-4ad1-a8b4-aa7aa08ff039",
     "method": "GET",
     "sortNum": 7500,
     "created": "2023-02-11T07:35:42.978Z",
-    "modified": "2023-03-25T07:56:52.898Z",
+    "modified": "2023-03-25T10:01:30.444Z",
     "headers": [],
     "params": [],
     "auth": {

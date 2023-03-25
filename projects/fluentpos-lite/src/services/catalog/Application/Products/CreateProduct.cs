@@ -6,7 +6,6 @@ using FluentValidation;
 using FSH.Core.Common;
 using FSH.Core.Dto;
 using FSH.Core.Mediator;
-using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
 namespace FluentPOS.Lite.Catalog.Application.Products;
@@ -14,7 +13,7 @@ namespace FluentPOS.Lite.Catalog.Application.Products;
 public static class CreateProduct
 {
     //Request
-    public record Request(string Name, int Quantity, decimal Price) : ICommand<Response>;
+    public record Request(string Name, string Details, string Code, decimal Cost, decimal Price, decimal Quantity = 0, decimal AlertQuantity = 10, bool TrackQuantity = true) : ICommand<Response>;
 
     //Response
     public record Response(Guid Id) : IDto;
@@ -24,10 +23,12 @@ public static class CreateProduct
     {
         public Validator(CatalogDbContext context)
         {
-            RuleFor(p => p.Name).NotEmpty().MaximumLength(75)
-                .MustAsync(async (name, ct) => !await context.Products.Find(doc => doc.Name == name).AnyAsync(cancellationToken: ct))
-                .WithMessage((_, name) => $"Product {name} already Exists.");
-            RuleFor(p => p.Price).GreaterThanOrEqualTo(1);
+            RuleFor(p => p.Name).NotEmpty().MaximumLength(75);
+            RuleFor(p => p.Code).NotEmpty().MaximumLength(10)
+                .MustAsync(async (code, ct) => !await context.Products.Find(doc => doc.Code == code).AnyAsync(cancellationToken: ct))
+                .WithMessage((_, code) => $"Product with Code : {code} already Exists.");
+            RuleFor(p => p.Cost).GreaterThanOrEqualTo(1);
+            RuleFor(p => p.Price).GreaterThanOrEqualTo(p => p.Cost);
         }
     }
 
@@ -45,10 +46,10 @@ public static class CreateProduct
             _mapper = mapper;
         }
 
-        public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(Request req, CancellationToken cancellationToken)
         {
-            Guard.Against.Null(request, nameof(request));
-            var product = Product.Create(request.Name, request.Quantity, request.Price);
+            Guard.Against.Null(req, nameof(req));
+            var product = Product.Create(req.Name, req.Details, req.Code, req.Cost, req.Price, req.Quantity, req.AlertQuantity, req.TrackQuantity);
             await _context.Products.InsertOneAsync(product, cancellationToken: cancellationToken);
             var productDto = _mapper.Map<ProductDto>(product);
             var cacheKey = Product.GetCacheKey(product.Id);

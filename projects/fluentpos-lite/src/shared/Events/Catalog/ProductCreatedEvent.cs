@@ -10,7 +10,7 @@ public class ProductCreatedEvent : EventBase
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = default!;
-    public int Quantity { get; set; }
+    public decimal Quantity { get; set; }
     public Guid ProductCodeId { get; set; }
     public decimal Price { get; set; }
 

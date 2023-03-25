@@ -13,7 +13,7 @@ public class ProductTests
 
         // Assert
         product.Name.Should().Be("Samsung S22");
-        product.Quantity.Should().Be(1);
+        product.AvailableStock.Should().Be(1);
         product.Price.Should().Be(20);
     }
 
@@ -28,7 +28,7 @@ public class ProductTests
 
         // Assert
         product.Name.Should().Be("Samsung S23");
-        product.Quantity.Should().Be(2);
+        product.AvailableStock.Should().Be(2);
         product.Price.Should().Be(40);
     }
 }

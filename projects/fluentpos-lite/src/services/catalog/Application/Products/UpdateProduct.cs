@@ -29,7 +29,7 @@ public static class UpdateProduct
             Guard.Against.Null(request, nameof(request));
             var product = _context.Products.AsQueryable().FirstOrDefault(a => a.Id == request.Id);
             if (product is null) throw new ProductNotFoundException(request.Id);
-            var updatedProduct = product.Update(request.Name, request.Quantity, request.Price);
+            var updatedProduct = product.Update(request.Name, request.Price);
             _ = await _context.Products.ReplaceOneAsync(x => x.Id == request.Id, updatedProduct, cancellationToken: cancellationToken);
             return new Response(product.Id);
         }
