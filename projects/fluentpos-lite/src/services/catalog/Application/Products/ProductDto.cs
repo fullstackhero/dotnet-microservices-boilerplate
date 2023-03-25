@@ -4,8 +4,14 @@ using FSH.Core.Dto;
 
 namespace FluentPOS.Lite.Catalog.Application.Products;
 
-public record ProductDto(Guid Id, string Name, string Slug, decimal Price, decimal AvailableQuantity) : IDto;
-
+public class ProductDto : IDto
+{
+    public Guid Id { get; set; }
+    public string? Name { get; set; }
+    public string? Slug { get; set; }
+    public decimal Price { get; set; }
+    public decimal AvailableQuantity { get; set; }
+}
 public class ProductProfile : Profile
 {
     public ProductProfile()
