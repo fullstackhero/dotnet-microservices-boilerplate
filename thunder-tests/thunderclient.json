@@ -229,12 +229,12 @@
     "method": "POST",
     "sortNum": 5000,
     "created": "2023-02-04T18:00:23.659Z",
-    "modified": "2023-02-04T18:00:49.849Z",
+    "modified": "2023-03-25T08:02:00.682Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Samsung S11\",\n  \"quantity\": 99,\n  \"price\": 99\n}",
+      "raw": "{\n  \"name\": \"Samsung S21\",\n  \"quantity\": 99,\n  \"price\": 99\n}",
       "form": []
     },
     "auth": {
@@ -249,11 +249,11 @@
     "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
     "containerId": "253fa856-2548-4c1f-a2d0-c9e909b93c9e",
     "name": "get-product-by-id",
-    "url": "{{api-gateway-url}}/catalog/api/products/0d6d1fef-d483-41c3-8010-ad8472c35301",
+    "url": "{{api-gateway-url}}/catalog/api/products/db60b803-1974-4f14-894d-499ca76bc478",
     "method": "GET",
     "sortNum": 7500,
     "created": "2023-02-11T07:35:42.978Z",
-    "modified": "2023-02-12T19:25:57.027Z",
+    "modified": "2023-03-25T07:56:52.898Z",
     "headers": [],
     "params": [],
     "auth": {

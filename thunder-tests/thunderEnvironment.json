@@ -2,7 +2,7 @@
   {
     "_id": "f78ffc63-1e4b-4865-b407-b446502a957d",
     "name": "local",
-    "default": true,
+    "default": false,
     "sortNum": 10000,
     "created": "2023-01-28T00:56:06.534Z",
     "modified": "2023-01-28T00:56:06.534Z",
@@ -33,5 +33,31 @@
     "created": "2023-01-28T00:57:50.602Z",
     "modified": "2023-01-28T00:57:50.602Z",
     "data": []
+  },
+  {
+    "_id": "45118717-4b9c-47e2-8107-60a9038ca611",
+    "name": "ec2 http",
+    "default": true,
+    "sortNum": 15000,
+    "created": "2023-03-25T07:38:21.479Z",
+    "modified": "2023-03-25T07:38:21.479Z",
+    "data": [
+      {
+        "name": "api-gateway-url",
+        "value": "http://65.0.86.162:5010"
+      },
+      {
+        "name": "identity-server-url",
+        "value": ""
+      },
+      {
+        "name": "catalog-api-url",
+        "value": ""
+      },
+      {
+        "name": "access_token",
+        "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkUxOTFFNjQ1RjkxNTUwOUQ3OEZGMTlDMTM4Qjg4REM4IiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwOi8vaWRlbnRpdHkiLCJuYmYiOjE2Nzk3MzEzMTQsImlhdCI6MTY3OTczMTMxNCwiZXhwIjoxNjc5NzM0OTE0LCJzY29wZSI6WyJjYXRhbG9nLWFwaSJdLCJhbXIiOlsiY3VzdG9tIl0sImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjQwYTdkOGYwLTRhYmYtNDM1Ni1hZDFmLWU0ZGY0NjhjYzA0ZCIsImF1dGhfdGltZSI6MTY3OTczMTMxNCwiaWRwIjoibG9jYWwiLCJqdGkiOiJCRTY0NzM4OEQ2ODFENTNFNzE2QThGMTQ5NzAxMUM1MiJ9.gwA_DRJvn3aUTO_5ju56vwwo6iO5feHbF9aOm5CDu80ZXq6eTP2ffF296SNTqMDHvVq1zBwhON3k6AdFpQBPPkt3sbVcLKOC58U8ylWn2ck9G7qr5AR2CmfXeEsDCAEGfMe0i99NCzQYf5Eo9WEUXVJoflx5p76IncU04S0p0odsi3WsoNhpMpxnEsdCrtW6qyCHH1h3CKXjj75royw_JkQAUf--SAryCa6fITXf7-ekJVfFlMht6jpaPSWuyAmqeM99mS2QzbjQXP9eZD5eb2u6wMxoEiIm8MBK5BPaTT4ghN-p8mUXV7rfYKUExhDIQQBbfFS80OTShlPjnVC8AQ"
+      }
+    ]
   }
 ]
