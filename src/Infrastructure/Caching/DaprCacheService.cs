@@ -24,7 +24,9 @@ public class DaprCacheService : ICacheService
     {
         try
         {
-            return await _daprClient.GetStateAsync<T>("statestore", key, ConsistencyMode.Eventual, cancellationToken: token);
+            var data = await _daprClient.GetStateAsync<T>("statestore", key, ConsistencyMode.Eventual, cancellationToken: token);
+            _logger.LogInformation("Getting Cache for Key : {key}", key);
+            return data;
         }
         catch (Exception ex)
         {
@@ -53,6 +55,7 @@ public class DaprCacheService : ICacheService
         try
         {
             await _daprClient.DeleteStateAsync("statestore", key, cancellationToken: token);
+            _logger.LogInformation("Removed Cache for Key : {key}", key);
         }
         catch (Exception ex)
         {
@@ -70,6 +73,7 @@ public class DaprCacheService : ICacheService
         try
         {
             await _daprClient.SaveStateAsync("statestore", key, value, cancellationToken: cancellationToken);
+            _logger.LogInformation("Set Cache for Key : {key}", key);
         }
         catch (Exception ex)
         {
