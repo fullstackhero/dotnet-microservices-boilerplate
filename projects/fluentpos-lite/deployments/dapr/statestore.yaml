@@ -7,7 +7,7 @@ spec:
   version: v1
   metadata:
   - name: redisHost
-    value: host.docker.internal:6379
+    value: dapr-redis:6379
   - name: redisPassword
     value: ""
   - name: actorStateStore
