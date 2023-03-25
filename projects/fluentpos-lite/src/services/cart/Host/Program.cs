@@ -45,26 +45,27 @@ app.MapGet("/", () => "Hello From Cart Service!").RequireAuthorization();
 
 // Add to Cart
 
-app.MapPost("api/carts/{customerId:guid}", async (CartDbContext context, [FromBody] CartDetail cartDetails, Guid customerId) =>
+app.MapPost("api/carts/{customerId:guid}", async (CartDbContext context, [FromBody] CartDetail request) =>
 {
     //Assume each customer will have only one cart
     //Thus customer ID can be cart Id
     //Check if cart if already present
 
-    var cart = await context.CartDetails.Find(c => c.CartId == customerId).FirstOrDefaultAsync();
-    if (cart is null && cartDetails.CartItems != null)
+    var cart = await context.CartDetails.Find(c => c.CartId == request.CartId).FirstOrDefaultAsync();
+    if (cart is null && request.CartItems != null)
     {
         // Create a cart with details
-        var newCart = new CartDetail() { CartId = customerId, CartItems = new List<CartItem>() };
-        foreach (CartItem item in cartDetails.CartItems)
+        var newCart = new CartDetail() { CartId = request.CartId, CartItems = new List<CartItem>() };
+        foreach (CartItem item in request.CartItems)
         {
             newCart.CartItems.Add(item);
         }
         await context.CartDetails.InsertOneAsync(newCart);
+        return Results.Created("carts", "added new cart");
     }
-    else if (cart is not null && cartDetails.CartItems != null)
+    else if (cart is not null && request.CartItems != null)
     {
-        foreach (CartItem item in cartDetails.CartItems)
+        foreach (CartItem item in request.CartItems)
         {
             var existingItem = cart.CartItems!.FirstOrDefault(i => i.ProductId == item.ProductId);
             if (existingItem != null)
@@ -76,7 +77,8 @@ app.MapPost("api/carts/{customerId:guid}", async (CartDbContext context, [FromBo
                 cart.CartItems!.Add(item);
             }
         }
-        _ = await context.CartDetails.ReplaceOneAsync(x => x.CartId == customerId, cart);
+        _ = await context.CartDetails.ReplaceOneAsync(x => x.CartId == request.CartId, cart);
+        return Results.Created("carts", "updated existing cart");
     }
 
 });
