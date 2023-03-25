@@ -35,9 +35,9 @@ services:
   placement:
     container_name: dapr-placement
     image: "daprio/dapr"
-    command: ["./placement", "-port", "50006"]
+    command: ["./placement", "-port", "6050"]
     ports:
-      - 50006:50006
+      - 6050:6050
     networks:
       - fluentpos-lite
 
@@ -49,18 +49,18 @@ services:
     networks:
       - fluentpos-lite
   
-  elk:
-    container_name:  elasticsearch-kibana
-    image: sebp/elk:oss-8.5.3
-    environment:
-      - LOGSTASH_START=0
-    volumes:
-      - sebp-elk-data:/usr/share/elk/data
-    ports:
-      - 5601:5601
-      - 9200:9200
-    networks:
-      - fluentpos-lite
+  # elk:
+  #   container_name:  elasticsearch-kibana
+  #   image: sebp/elk:oss-8.5.3
+  #   environment:
+  #     - LOGSTASH_START=0
+  #   volumes:
+  #     - sebp-elk-data:/usr/share/elk/data
+  #   ports:
+  #     - 5601:5601
+  #     - 9200:9200
+  #   networks:
+  #     - fluentpos-lite
 
 volumes:
   postgres-data:

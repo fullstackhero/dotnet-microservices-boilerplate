@@ -46,7 +46,7 @@ services:
     image: "daprio/daprd:edge"
     command: ["./daprd",
      "-app-id", "catalog",
-     "-placement-host-address", "placement:50006",
+     "-placement-host-address", "placement:6050",
      "-app-port", "80",
      "-components-path", ".././dapr"]
     volumes:

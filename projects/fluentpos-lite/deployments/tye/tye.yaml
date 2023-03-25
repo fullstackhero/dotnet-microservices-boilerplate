@@ -3,7 +3,6 @@ containerEngine: docker
 
 extensions:
   - name: dapr
-    log-level: debug
     app-ssl: true
 
 services:

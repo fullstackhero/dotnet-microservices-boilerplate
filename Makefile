@@ -20,3 +20,6 @@ services:
 
 all:
 	cd ./projects/fluentpos-lite/deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml up -d
+
+tye:
+	cd ./projects/fluentpos-lite/deployments/tye && tye run
