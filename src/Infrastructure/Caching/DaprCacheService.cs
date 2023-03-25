@@ -9,14 +9,10 @@ public class DaprCacheService : ICacheService
 {
     private readonly DaprClient _daprClient;
     private readonly ILogger<DaprCacheService> _logger;
-
-    private readonly ISerializationService _serializer;
-
-    public DaprCacheService(DaprClient daprClient, ILogger<DaprCacheService> logger, ISerializationService serializer)
+    public DaprCacheService(DaprClient daprClient, ILogger<DaprCacheService> logger)
     {
         _daprClient = daprClient;
         _logger = logger;
-        _serializer = serializer;
     }
 
     public T Get<T>(string key)
@@ -32,7 +28,7 @@ public class DaprCacheService : ICacheService
         }
         catch (Exception ex)
         {
-            _logger.LogError("Unable to Get Cache with Key {key} : {stackTrace}", key, ex.StackTrace);
+            _logger.LogError("Unable to Get Cache with Key {key} : {Message}", key, ex.Message);
             return default;
         }
     }
@@ -60,7 +56,7 @@ public class DaprCacheService : ICacheService
         }
         catch (Exception ex)
         {
-            _logger.LogError("Unable to Remove Cache with Key {key} : {stackTrace}", key, ex.StackTrace);
+            _logger.LogError("Unable to Remove Cache with Key {key} : {Message}", key, ex.Message);
         }
     }
 
@@ -77,7 +73,7 @@ public class DaprCacheService : ICacheService
         }
         catch (Exception ex)
         {
-            _logger.LogError("Unable to Set Cache with Key {key} : {stackTrace}", key, ex.StackTrace);
+            _logger.LogError("Unable to Set Cache with Key {key} : {Message}", key, ex.Message);
         }
     }
 }
