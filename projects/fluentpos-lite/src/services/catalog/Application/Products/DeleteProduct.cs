@@ -34,7 +34,7 @@ public static class DeleteProduct
             Guard.Against.Null(request, nameof(request));
             var result = await _context.Products.DeleteOneAsync(x => x.Id == request.Id, cancellationToken: cancellationToken);
             if (result.DeletedCount == 0) throw new ProductNotFoundException(request.Id);
-            await _cache.RemoveAsync(Product.GenerateCacheKey(request.Id), cancellationToken);
+            await _cache.RemoveAsync(Product.GetCacheKey(request.Id), cancellationToken);
             return new Response(request.Id);
         }
     }

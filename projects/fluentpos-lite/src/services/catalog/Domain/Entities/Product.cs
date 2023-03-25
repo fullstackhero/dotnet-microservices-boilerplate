@@ -48,7 +48,7 @@ public class Product : AuditableEntity
         return product;
     }
 
-    public static string GenerateCacheKey(Guid id)
+    public static string GetCacheKey(Guid id)
     {
         return $"Product:{id}";
     }

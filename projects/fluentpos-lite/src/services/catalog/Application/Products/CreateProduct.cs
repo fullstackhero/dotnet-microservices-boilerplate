@@ -53,7 +53,7 @@ public static class CreateProduct
             var product = Product.Create(request.Name, request.Quantity, request.Price);
             await _context.Products.InsertOneAsync(product, cancellationToken: cancellationToken);
             var productDto = _mapper.Map<ProductDto>(product);
-            var cacheKey = Product.GenerateCacheKey(product.Id);
+            var cacheKey = Product.GetCacheKey(product.Id);
             await _cache.SetAsync(cacheKey, productDto, cancellationToken: cancellationToken);
             _logger.LogInformation("Setting Cache with Key {cacheKey}", cacheKey);
             return new Response(product.Id);

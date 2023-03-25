@@ -34,7 +34,7 @@ public static class GetProductById
         public async Task<ProductDto> Handle(Request request, CancellationToken cancellationToken)
         {
             Guard.Against.Null(request, nameof(request));
-            var cacheKey = Product.GenerateCacheKey(request.Id);
+            var cacheKey = Product.GetCacheKey(request.Id);
             var productDto = await _cache.GetAsync<ProductDto>(cacheKey, cancellationToken);
             if (productDto is null)
             {

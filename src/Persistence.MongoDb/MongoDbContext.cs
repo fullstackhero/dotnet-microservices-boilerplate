@@ -7,10 +7,8 @@ namespace FSH.Persistence.MongoDb;
 
 public class MongoDbContext : IMongoDbContext
 {
-    public IClientSessionHandle? Session { get; set; }
     public IMongoDatabase Database { get; }
     public IMongoClient MongoClient { get; }
-    protected readonly IList<Func<Task>> _commands;
 
     public MongoDbContext(IOptions<MongoOptions> options)
     {
@@ -19,9 +17,6 @@ public class MongoDbContext : IMongoDbContext
         MongoClient = new MongoClient(options.Value.ConnectionString);
         var databaseName = options.Value.DatabaseName;
         Database = MongoClient.GetDatabase(databaseName);
-
-        // Every command will be stored and it'll be processed at SaveChanges
-        _commands = new List<Func<Task>>();
     }
 
     private static void RegisterConventions()
@@ -44,97 +39,6 @@ public class MongoDbContext : IMongoDbContext
 
     public void Dispose()
     {
-        while (Session is { IsInTransaction: true })
-            Thread.Sleep(TimeSpan.FromMilliseconds(100));
-
         GC.SuppressFinalize(this);
-    }
-
-    public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-    {
-        var result = _commands.Count;
-
-        using (Session = await MongoClient.StartSessionAsync(cancellationToken: cancellationToken))
-        {
-            Session.StartTransaction();
-
-            try
-            {
-                var commandTasks = _commands.Select(c => c());
-
-                await Task.WhenAll(commandTasks);
-
-                await Session.CommitTransactionAsync(cancellationToken);
-            }
-            catch
-            {
-                await Session.AbortTransactionAsync(cancellationToken);
-                _commands.Clear();
-                throw;
-            }
-        }
-
-        _commands.Clear();
-        return result;
-    }
-
-    public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
-    {
-        Session = await MongoClient.StartSessionAsync(cancellationToken: cancellationToken);
-        Session.StartTransaction();
-    }
-
-    public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
-    {
-        if (Session is { IsInTransaction: true })
-            await Session.CommitTransactionAsync(cancellationToken);
-
-        Session?.Dispose();
-    }
-
-    public async Task RollbackTransaction(CancellationToken cancellationToken = default)
-    {
-        await Session?.AbortTransactionAsync(cancellationToken)!;
-    }
-
-    public void AddCommand(Func<Task> func)
-    {
-        _commands.Add(func);
-    }
-
-    public async Task ExecuteTransactionalAsync(Func<Task> action, CancellationToken cancellationToken = default)
-    {
-        await BeginTransactionAsync(cancellationToken);
-        try
-        {
-            await action();
-
-            await CommitTransactionAsync(cancellationToken);
-        }
-        catch
-        {
-            await RollbackTransaction(cancellationToken);
-            throw;
-        }
-    }
-
-    public async Task<T> ExecuteTransactionalAsync<T>(
-        Func<Task<T>> action,
-        CancellationToken cancellationToken = default)
-    {
-        await BeginTransactionAsync(cancellationToken);
-        try
-        {
-            var result = await action();
-
-            await CommitTransactionAsync(cancellationToken);
-
-            return result;
-        }
-        catch
-        {
-            await RollbackTransaction(cancellationToken);
-            throw;
-        }
     }
 }
