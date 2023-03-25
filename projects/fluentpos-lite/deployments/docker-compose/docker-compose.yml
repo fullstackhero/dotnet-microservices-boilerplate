@@ -13,26 +13,22 @@ services:
       - ASPNETCORE_ENVIRONMENT=docker
       - ASPNETCORE_URLS=https://+:5100;http://+:5010
       - ASPNETCORE_Kestrel__Certificates__Default__Password=password!
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dev_cert.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/cert.pfx
     volumes:
-      - ${USERPROFILE}\.aspnet\https:/https
+      - ./https:/https:ro
     networks:
-     - fluentpos-lite
-  
+     - fluentpos-lite  
   # Identity 
   identity:
     container_name: identity
     image: fluentpos-lite.identity:latest
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
-    volumes:
-      - ${USERPROFILE}\.aspnet\https:/https
     depends_on:
       postgres:
         condition: service_healthy 
     networks:
      - fluentpos-lite
-
   # Catalog
   catalog:
     container_name: catalog-service
@@ -42,8 +38,6 @@ services:
       - placement
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
-    volumes:
-      - ${USERPROFILE}\.aspnet\https:/https
     networks:
      - fluentpos-lite
   catalog-dapr:
