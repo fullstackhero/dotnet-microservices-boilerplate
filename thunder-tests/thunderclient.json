@@ -229,12 +229,12 @@
     "method": "POST",
     "sortNum": 5000,
     "created": "2023-02-04T18:00:23.659Z",
-    "modified": "2023-03-25T10:00:59.852Z",
+    "modified": "2023-03-25T12:11:09.920Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Samsung S25\",\n  \"quantity\": 99,\n  \"price\": 99\n}",
+      "raw": "{\n  \"name\": \"Test Product\",\n  \"quantity\": 1,\n  \"code\": \"TC1\",\n  \"details\": \"this is a test product\",\n  \"cost\": 10,\n  \"price\":15\n}",
       "form": []
     },
     "auth": {
