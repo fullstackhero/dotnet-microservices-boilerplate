@@ -21,14 +21,12 @@ public static class GetProductById
         private readonly CatalogDbContext _context;
         private readonly IMapper _mapper;
         private readonly ICacheService _cache;
-        private readonly ILogger<Handler> _logger;
 
-        public Handler(CatalogDbContext context, IMapper mapper, ICacheService cache, ILogger<Handler> logger)
+        public Handler(CatalogDbContext context, IMapper mapper, ICacheService cache)
         {
             _context = context;
             _mapper = mapper;
             _cache = cache;
-            _logger = logger;
         }
 
         public async Task<ProductDto> Handle(Request request, CancellationToken cancellationToken)
@@ -41,12 +39,7 @@ public static class GetProductById
                 var product = await _context.Products.Find(doc => doc.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
                 if (product is null) throw new ProductNotFoundException(request.Id);
                 productDto = _mapper.Map<ProductDto>(product);
-                _logger.LogInformation("Setting Cache, Key {cacheKey}", cacheKey);
                 await _cache.SetAsync(cacheKey, productDto, cancellationToken: cancellationToken);
-            }
-            else
-            {
-                _logger.LogInformation("Fetching Data from Cache, Key {cacheKey}", cacheKey);
             }
             return productDto;
         }

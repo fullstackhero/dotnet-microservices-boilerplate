@@ -32,7 +32,7 @@ public class DaprCacheService : ICacheService
         }
         catch (Exception ex)
         {
-            _logger.LogError("{stackTrace}", ex.StackTrace);
+            _logger.LogError("Unable to Get Cache with Key {key} : {stackTrace}", key, ex.StackTrace);
             return default;
         }
     }
@@ -60,7 +60,7 @@ public class DaprCacheService : ICacheService
         }
         catch (Exception ex)
         {
-            _logger.LogError("{stackTrace}", ex.StackTrace);
+            _logger.LogError("Unable to Remove Cache with Key {key} : {stackTrace}", key, ex.StackTrace);
         }
     }
 
@@ -75,8 +75,9 @@ public class DaprCacheService : ICacheService
         {
             await _daprClient.SaveStateAsync("statestore", key, value, cancellationToken: cancellationToken);
         }
-        catch
+        catch (Exception ex)
         {
+            _logger.LogError("Unable to Set Cache with Key {key} : {stackTrace}", key, ex.StackTrace);
         }
     }
 }

@@ -37,14 +37,12 @@ public static class CreateProduct
         private readonly CatalogDbContext _context;
         private readonly ICacheService _cache;
         private readonly IMapper _mapper;
-        private readonly ILogger<Handler> _logger;
 
-        public Handler(CatalogDbContext context, ICacheService cache, IMapper mapper, ILogger<Handler> logger)
+        public Handler(CatalogDbContext context, ICacheService cache, IMapper mapper)
         {
             _context = context;
             _cache = cache;
             _mapper = mapper;
-            _logger = logger;
         }
 
         public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
@@ -55,7 +53,6 @@ public static class CreateProduct
             var productDto = _mapper.Map<ProductDto>(product);
             var cacheKey = Product.GetCacheKey(product.Id);
             await _cache.SetAsync(cacheKey, productDto, cancellationToken: cancellationToken);
-            _logger.LogInformation("Setting Cache with Key {cacheKey}", cacheKey);
             return new Response(product.Id);
         }
     }

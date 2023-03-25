@@ -21,20 +21,20 @@ public static class GetProducts
     {
         private readonly CatalogDbContext _context;
         private readonly IMapper _mapper;
-        private readonly ICacheService _cache;
 
-        public Handler(CatalogDbContext context, IMapper mapper, ICacheService cache)
+        public Handler(CatalogDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _cache = cache;
         }
 
         public async Task<PagedList<ProductDto>> Handle(Request request, CancellationToken cancellationToken)
         {
             Guard.Against.Null(request, nameof(request));
-            return await _context.Products.AsQueryable()
-                .ApplyPagingAsync<Product, ProductDto>(_mapper.ConfigurationProvider, request.PageNumber, request.PageSize, cancellationToken);
+            return await _context
+                            .Products
+                            .AsQueryable()
+                            .ApplyPagingAsync<Product, ProductDto>(_mapper.ConfigurationProvider, request.PageNumber, request.PageSize, cancellationToken);
         }
     }
 }
