@@ -38,18 +38,21 @@ public static class CreateProduct
         private readonly CatalogDbContext _context;
         private readonly ICacheService _cache;
         private readonly IMapper _mapper;
+        private readonly IAuthenticatedUser _user;
 
-        public Handler(CatalogDbContext context, ICacheService cache, IMapper mapper)
+        public Handler(CatalogDbContext context, ICacheService cache, IMapper mapper, IAuthenticatedUser user)
         {
             _context = context;
             _cache = cache;
             _mapper = mapper;
+            _user = user;
         }
 
         public async Task<Response> Handle(Request req, CancellationToken cancellationToken)
         {
             Guard.Against.Null(req, nameof(req));
             var product = Product.Create(req.Name, req.Details, req.Code, req.Cost, req.Price, req.Quantity, req.AlertQuantity, req.TrackQuantity);
+            product.CreatedBy = _user.Id;
             await _context.Products.InsertOneAsync(product, cancellationToken: cancellationToken);
             var productDto = _mapper.Map<ProductDto>(product);
             var cacheKey = Product.GetCacheKey(product.Id);
