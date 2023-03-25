@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FluentPOS.Lite.IDS.Data;
+﻿namespace FluentPOS.Lite.IDS.Data;
 
 public static class Constants
 {
@@ -17,5 +12,6 @@ public static class Constants
     {
         public const string Roles = "roles";
         public const string CatalogApi = "catalog-api";
+        public const string CartApi = "cart-api";
     }
 }

@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Duende.IdentityServer;
+﻿using Duende.IdentityServer;
 using Duende.IdentityServer.Models;
 
 namespace FluentPOS.Lite.IDS.Data;
@@ -23,13 +19,15 @@ public static class InMemoryConfiguration
     public static IEnumerable<ApiScope> ApiScopes =>
         new List<ApiScope>
         {
-            new(Constants.StandardScopes.CatalogApi)
+            new(Constants.StandardScopes.CatalogApi),
+            new(Constants.StandardScopes.CartApi)
         };
 
     public static IList<ApiResource> ApiResources =>
         new List<ApiResource>
         {
-            new(Constants.StandardScopes.CatalogApi)
+            new(Constants.StandardScopes.CatalogApi),
+            new(Constants.StandardScopes.CartApi)
         };
 
     public static IEnumerable<Client> Clients =>
@@ -50,7 +48,8 @@ public static class InMemoryConfiguration
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
-                    Constants.StandardScopes.CatalogApi
+                    Constants.StandardScopes.CatalogApi,
+                    Constants.StandardScopes.CartApi
                 }
             }
         };

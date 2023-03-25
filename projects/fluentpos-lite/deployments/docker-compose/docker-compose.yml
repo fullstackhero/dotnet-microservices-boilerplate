@@ -54,3 +54,28 @@ services:
     depends_on:
       - catalog
     network_mode: "service:catalog"
+
+  # Cart
+  cart:
+    container_name: cart-service
+    image: fluentpos-lite.cart:latest
+    depends_on:
+      - mongo
+      - placement
+    environment:
+      - ASPNETCORE_ENVIRONMENT=docker
+    networks:
+     - fluentpos-lite
+  cart-dapr:
+    container_name: cart-dapr
+    image: "daprio/daprd:edge"
+    command: ["./daprd",
+     "-app-id", "cart",
+     "-placement-host-address", "placement:6050",
+     "-app-port", "80",
+     "-components-path", ".././dapr"]
+    volumes:
+      - ".././dapr/:/dapr" 
+    depends_on:
+      - cart
+    network_mode: "service:cart"

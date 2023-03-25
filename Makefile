@@ -12,6 +12,10 @@ catalog:
 	echo "running dotnet publish.."
 	cd ./projects/fluentpos-lite/src/services/catalog/Host && dotnet publish --os linux --arch x64 -c $(BUILD_CONFIGURATION) /p:PublishProfile=DefaultContainer /p:ContainerImageTags=latest --self-contained
 
+cart:
+	echo "running dotnet publish.."
+	cd ./projects/fluentpos-lite/src/services/cart/Host && dotnet publish --os linux --arch x64 -c $(BUILD_CONFIGURATION) /p:PublishProfile=DefaultContainer /p:ContainerImageTags=latest --self-contained
+
 infra:
 	cd ./projects/fluentpos-lite/deployments/docker-compose && docker-compose -f infrastructure.yml up -d
 
