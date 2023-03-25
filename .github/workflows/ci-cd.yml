@@ -4,13 +4,13 @@ on:
     inputs:
       build_gateway_image:
         type: boolean
-        description: build_gateway_image
+        description: Push Gateway Image
       build_identity_image:
         type: boolean
-        description: build_identity_image
+        description: Push Identity Image
       build_catalog_image:
         type: boolean
-        description: build_catalog_image    
+        description: Push Catalog Image    
 jobs:
   build:
     name: Build & Test

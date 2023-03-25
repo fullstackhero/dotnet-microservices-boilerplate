@@ -28,7 +28,7 @@ public class Product : AuditableEntity
         return this;
     }
 
-    public static Product Create(string name, string details, string code, decimal cost, decimal price, decimal quantity, decimal alertQuantity, bool trackQuantity)
+    public static Product Create(string name, string details, string code, decimal cost, decimal price, decimal quantity, decimal alertQuantity = 10, bool trackQuantity = true)
     {
         return Create(Guid.NewGuid(), name, details, code, cost, price, quantity, alertQuantity, trackQuantity);
     }
