@@ -28,7 +28,6 @@ builder.Services.RegisterJWTAuthentication();
 builder.Services.RegisterSwagger(appName);
 
 var assembly = typeof(Program).GetTypeInfo().Assembly;
-builder.Services.RegisterJWTAuthentication();
 builder.Services.AddAutoMapper(assembly);
 builder.Services.RegisterMediatR(assembly);
 builder.Services.RegisterSwagger(appName);
