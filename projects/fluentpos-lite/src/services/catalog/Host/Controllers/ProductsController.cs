@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace FluentPOS.Lite.Catalog.Host.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("products")]
 public class ProductsController : BaseController
 {
     [HttpPost]

@@ -22,4 +22,17 @@ public static class QueryableExtensions
 
         return new PagedList<R>(data, totalItems, page, resultsPerPage);
     }
+
+    public static async Task<PagedList<T>> ApplyPagingAsync<T>(this IMongoQueryable<T> collection, int page = 1, int resultsPerPage = 10, CancellationToken cancellationToken = default)
+    {
+        if (page <= 0) page = 1;
+
+        if (resultsPerPage <= 0) resultsPerPage = 10;
+        var skipSize = (page - 1) * resultsPerPage;
+        var isEmpty = !await collection.AnyAsync(cancellationToken: cancellationToken);
+        if (isEmpty) return new(Enumerable.Empty<T>(), 0, 0, 0);
+        var totalItems = await collection.CountAsync(cancellationToken: cancellationToken);
+        var data = collection.Skip(skipSize).Take(resultsPerPage).ToList();
+        return new PagedList<T>(data, totalItems, page, resultsPerPage);
+    }
 }

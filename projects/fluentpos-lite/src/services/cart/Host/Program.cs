@@ -1,13 +1,16 @@
-﻿using FluentPOS.Lite.Cart.Data;
-using FluentPOS.Lite.Cart.Host.Models;
+﻿using System.Reflection;
+using FluentPOS.Lite.Cart.Data;
+using FluentPOS.Lite.Cart.Host.Carts;
+using FSH.Core.Mediator;
 using FSH.Infrastructure;
 using FSH.Infrastructure.Authentication;
 using FSH.Infrastructure.Caching;
 using FSH.Infrastructure.Logging.Serilog;
 using FSH.Infrastructure.Swagger;
+using FSH.Infrastructure.Validations;
 using FSH.Persistence.MongoDb;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 var appName = builder.RegisterSerilog();
@@ -23,6 +26,13 @@ builder.Services.AddMongoDbContext<CartDbContext>(builder.Configuration);
 
 builder.Services.RegisterJWTAuthentication();
 builder.Services.RegisterSwagger(appName);
+
+var assembly = typeof(Program).GetTypeInfo().Assembly;
+builder.Services.RegisterJWTAuthentication();
+builder.Services.AddAutoMapper(assembly);
+builder.Services.RegisterMediatR(assembly);
+builder.Services.RegisterSwagger(appName);
+builder.Services.RegisterValidators(assembly);
 builder.Services.AddCaching().AddInfrastructureServices();
 ///
 var app = builder.Build();
@@ -42,49 +52,19 @@ app.MapControllers();
 app.MapSubscribeHandler();
 app.MapGet("/", () => "Hello From Cart Service!").RequireAuthorization();
 
-
-// Add to Cart
-
-app.MapPost("/", async (CartDbContext context, [FromBody] CartDetail request) =>
+app.MapPost("/", async (IMediator mediator, [FromBody] CreateUpdateCart.Request request, CancellationToken cancellationToken) =>
 {
-    //Assume each customer will have only one cart
-    //Thus customer ID can be cart Id
-    //Check if cart if already present
+    return await mediator.Send(request, cancellationToken);
+}).RequireAuthorization();
 
-    var cart = await context.CartDetails.Find(c => c.CartId == request.CartId).FirstOrDefaultAsync();
-    if (cart is null && request.CartItems != null)
-    {
-        // Create a cart with details
-        var newCart = new CartDetail() { CartId = request.CartId, CartItems = new List<CartItem>() };
-        foreach (CartItem item in request.CartItems)
-        {
-            newCart.CartItems.Add(item);
-        }
-        await context.CartDetails.InsertOneAsync(newCart);
-        return Results.Created("carts", "added new cart");
-    }
-    else if (cart is not null && request.CartItems != null)
-    {
-        foreach (CartItem item in request.CartItems)
-        {
-            var existingItem = cart.CartItems!.FirstOrDefault(i => i.ProductId == item.ProductId);
-            if (existingItem != null)
-            {
-                existingItem.Quantity += item.Quantity;
-            }
-            else
-            {
-                cart.CartItems!.Add(item);
-            }
-        }
-        _ = await context.CartDetails.ReplaceOneAsync(x => x.CartId == request.CartId, cart);
-        return Results.Created("carts", "updated existing cart");
-    }
-    else
-    {
-        return Results.BadRequest();
-    }
+app.MapGet("/", async (IMediator mediator, int pageNumber, int pageSize, CancellationToken cancellationToken) =>
+{
+    return await mediator.Send(new GetCarts.Request(pageNumber, pageSize), cancellationToken);
+}).RequireAuthorization();
 
-});
+app.MapGet("/{customerId}", async (IMediator mediator, Guid customerId, CancellationToken cancellationToken) =>
+{
+    return await mediator.Send(new GetCartDetails.Request(customerId), cancellationToken);
+}).RequireAuthorization();
 
 app.Run();
