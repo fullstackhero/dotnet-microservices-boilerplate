@@ -49,7 +49,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.MapSubscribeHandler();
-app.MapGet("/", () => "Hello From Cart Service!").RequireAuthorization();
 
 app.MapPost("/", async (IMediator mediator, [FromBody] CreateUpdateCart.Request request, CancellationToken cancellationToken) =>
 {
