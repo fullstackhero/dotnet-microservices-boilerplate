@@ -268,17 +268,12 @@
     "containerId": "f32e3cdd-a751-4310-8792-7202791900d8",
     "name": "create-update-cart",
     "url": "{{api-gateway-url}}/api/carts/",
-    "method": "POST",
+    "method": "GET",
     "sortNum": 70000,
     "created": "2023-03-25T18:59:21.654Z",
-    "modified": "2023-03-26T04:57:14.139Z",
+    "modified": "2023-03-26T05:37:32.165Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n  \"cartId\":\"db60b803-1974-4f14-894d-499ca76bc418\"\n}",
-      "form": []
-    },
     "auth": {
       "type": "bearer",
       "bearer": "{{access_token}}"
