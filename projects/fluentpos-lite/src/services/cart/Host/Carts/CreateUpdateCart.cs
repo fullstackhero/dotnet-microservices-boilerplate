@@ -50,7 +50,7 @@ public static class CreateUpdateCart
                 }
                 newCart.CreatedBy = _user.Id;
                 await _context.CartDetails.InsertOneAsync(newCart);
-                return Results.Created("carts", "added new cart");
+                return Results.Created("cart", "added new cart");
             }
             else
             {
@@ -69,7 +69,7 @@ public static class CreateUpdateCart
                 cart.LastModifiedBy = _user.Id;
                 cart.LastModifiedOn = DateTime.UtcNow;
                 _ = await _context.CartDetails.ReplaceOneAsync(x => x.CartId == req.CustomerId, cart);
-                return Results.Created("carts", "updated existing cart");
+                return Results.Created("cart", "updated existing cart");
             }
         }
     }
