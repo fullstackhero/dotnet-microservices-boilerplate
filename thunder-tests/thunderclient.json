@@ -267,11 +267,29 @@
     "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
     "containerId": "f32e3cdd-a751-4310-8792-7202791900d8",
     "name": "create-update-cart",
-    "url": "{{api-gateway-url}}/api/carts/",
+    "url": "{{api-gateway-url}}/api/cart/",
     "method": "GET",
     "sortNum": 70000,
     "created": "2023-03-25T18:59:21.654Z",
-    "modified": "2023-03-26T05:37:32.165Z",
+    "modified": "2023-03-26T05:49:22.319Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{access_token}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "e6811b66-4e1b-4798-bf80-e9a0491f131f",
+    "colId": "95cfb08c-eb43-4216-ba48-e53740fde9bf",
+    "containerId": "0bca1a47-446c-4358-bd11-e8dedee18d76",
+    "name": "get-carts",
+    "url": "https://localhost:5400/",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2023-03-26T05:56:41.597Z",
+    "modified": "2023-03-26T05:59:19.991Z",
     "headers": [],
     "params": [],
     "auth": {

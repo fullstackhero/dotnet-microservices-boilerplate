@@ -30,7 +30,6 @@ builder.Services.RegisterSwagger(appName);
 var assembly = typeof(Program).GetTypeInfo().Assembly;
 builder.Services.AddAutoMapper(assembly);
 builder.Services.RegisterMediatR(assembly);
-builder.Services.RegisterSwagger(appName);
 builder.Services.RegisterValidators(assembly);
 builder.Services.AddCaching().AddInfrastructureServices();
 ///
