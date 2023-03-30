@@ -1,9 +1,9 @@
+using FluentPOS.Lite.IDS;
+using FluentPOS.Lite.IDS.Data;
 using FSH.Core.Common;
 using FSH.Infrastructure;
 using FSH.Infrastructure.Logging.Serilog;
 using FSH.Persistence.EfCore;
-using FluentPOS.Lite.IDS;
-using FluentPOS.Lite.IDS.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.RegisterSerilog();
@@ -19,4 +19,5 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseIdentityServer();
+app.MapGet("/", () => "Hello From Identity");
 app.Run();
