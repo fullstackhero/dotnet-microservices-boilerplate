@@ -18,43 +18,51 @@ public class SeedClients : IHostedService
 
         var manager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
 
-        if (await manager.FindByClientIdAsync("catalog.api") is null)
+        if (await manager.FindByClientIdAsync(Constants.Client) is null)
         {
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
-                ClientId = "catalog.api",
-                ClientSecret = "846B62D0-DEF9-4215-A99D-86E6B8DAB342",
+                ClientId = Constants.Client,
                 Permissions =
                 {
-                    Permissions.Endpoints.Introspection,
-                    Permissions.Endpoints.Authorization,
                     Permissions.Endpoints.Token,
                     Permissions.GrantTypes.ClientCredentials,
                     Permissions.ResponseTypes.Token,
                     Permissions.Scopes.Email,
                     Permissions.Scopes.Profile,
                     Permissions.Scopes.Roles,
-                    Permissions.Prefixes.Scope + "catalog.api"
+                    Permissions.Prefixes.Scope + Constants.CatalogScope
+                }
+            });
+        }
+
+        if (await manager.FindByClientIdAsync(Constants.CatalogResourceServer) is null)
+        {
+            await manager.CreateAsync(new OpenIddictApplicationDescriptor
+            {
+                ClientId = Constants.CatalogResourceServer,
+                ClientSecret = Constants.CatalogResourceServerSecret,
+                Permissions =
+                {
+                    Permissions.Endpoints.Introspection
                 }
             });
         }
 
         var scopesManager = scope.ServiceProvider.GetRequiredService<IOpenIddictScopeManager>();
-
-        if (await scopesManager.FindByNameAsync("catalog.api") is null)
+        if (await scopesManager.FindByNameAsync(Constants.CatalogScope) is null)
         {
             await scopesManager.CreateAsync(new OpenIddictScopeDescriptor
             {
-                Name = "catalog.api",
+                Name = Constants.CatalogScope,
                 Resources =
                 {
-                    "catalog.api"
+                    Constants.CatalogResourceServer
                 }
             });
         }
 
     }
-
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 }
 
