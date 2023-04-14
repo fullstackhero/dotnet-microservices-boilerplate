@@ -3,11 +3,11 @@ using static OpenIddict.Abstractions.OpenIddictConstants;
 
 namespace FluentPOS.Auth.Host.Database;
 
-public class SeedClients : IHostedService
+public class SeedClientsAndScopes : IHostedService
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public SeedClients(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
+    public SeedClientsAndScopes(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
@@ -23,6 +23,7 @@ public class SeedClients : IHostedService
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
                 ClientId = Constants.Client,
+                ClientSecret = Constants.ClientSecret,
                 Permissions =
                 {
                     Permissions.Endpoints.Token,
@@ -33,7 +34,7 @@ public class SeedClients : IHostedService
                     Permissions.Scopes.Roles,
                     Permissions.Prefixes.Scope + Constants.CatalogScope
                 }
-            });
+            }); ;
         }
 
         if (await manager.FindByClientIdAsync(Constants.CatalogResourceServer) is null)

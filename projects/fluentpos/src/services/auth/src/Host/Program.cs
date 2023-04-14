@@ -3,7 +3,6 @@ using FSH.Microservices.Infrastructure.Logging.Serilog;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
@@ -27,9 +26,19 @@ builder.Services.AddOpenIddict()
                .SetIntrospectionEndpointUris("/connect/introspect")
                .SetTokenEndpointUris("/connect/token");
         options.AllowClientCredentialsFlow();
-        options.AddDevelopmentEncryptionCertificate().AddDevelopmentSigningCertificate();
+        if (builder.Environment.IsDevelopment())
+        {
+            // Disable Payload Encryption in JWTs
+            options.DisableAccessTokenEncryption();
+            options.AddDevelopmentEncryptionCertificate().AddDevelopmentSigningCertificate();
+        }
         options.UseAspNetCore().EnableAuthorizationEndpointPassthrough().EnableTokenEndpointPassthrough();
     });
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddHostedService<SeedClientsAndScopes>();
+}
 var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseAuthorization();

@@ -21,9 +21,6 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Controllers\" />
-	</ItemGroup>
-	<ItemGroup>
 	  <ProjectReference Include="..\..\..\..\..\..\..\src\Infrastructure\FSH.Microservices.Infrastructure.csproj" />
 	</ItemGroup>
 </Project>
