@@ -11,5 +11,5 @@ public class SerilogOptions : IOptionsRoot
     public bool WriteToFile { get; set; } = false;
     public bool StructuredConsoleLogging { get; set; } = false;
     public string MinimumLogLevel { get; set; } = "Information";
-    public bool MinimalLogging { get; set; } = false;
+    public bool EnableErichers { get; set; } = true;
 }

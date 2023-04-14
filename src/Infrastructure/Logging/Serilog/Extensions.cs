@@ -16,7 +16,7 @@ public static class Extensions
         var serilogOptions = builder.Services.AddLoadValidateOptions<SerilogOptions>(config);
         _ = builder.Host.UseSerilog((_, sp, serilogConfig) =>
         {
-            if (!serilogOptions.MinimalLogging)
+            if (serilogOptions.EnableErichers)
             {
                 ConfigureEnrichers(serilogConfig, serilogOptions.AppName);
             }
