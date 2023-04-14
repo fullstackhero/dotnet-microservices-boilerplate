@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FSH.Microservices.Infrastructure.Options;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenIddict.Validation.AspNetCore;
 
@@ -8,12 +9,7 @@ public static class Extensions
 {
     public static IServiceCollection RegisterOIDAuthValidation(this IServiceCollection services, IConfiguration config)
     {
-        services.AddOptions<OpenIddictOptions>()
-            .BindConfiguration(OpenIddictOptions.SectionName)
-            .ValidateDataAnnotations()
-            .ValidateOnStart();
-
-        var authOptions = GetOIDAuthOptions(config);
+        var authOptions = services.AddLoadValidateOptions<OpenIddictOptions>(config);
 
         services.AddOpenIddict()
         .AddValidation(options =>
@@ -30,7 +26,4 @@ public static class Extensions
         services.AddAuthorization();
         return services;
     }
-
-    public static OpenIddictOptions GetOIDAuthOptions(this IConfiguration configuration)
-        => configuration.GetSection(OpenIddictOptions.SectionName).Get<OpenIddictOptions>()!;
 }

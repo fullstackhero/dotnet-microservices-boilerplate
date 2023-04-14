@@ -8,7 +8,7 @@ builder.Services.AddControllers();
 
 string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 Assembly assembly = Assembly.GetExecutingAssembly();
-builder.Services.ConfigureSerilog();
+builder.ConfigureSerilog(builder.Configuration);
 builder.Services.AddDbContext<IdentityDbContext>(options =>
 {
     options.UseNpgsql(connectionString, m => m.MigrationsAssembly(assembly.FullName));

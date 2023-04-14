@@ -25,7 +25,8 @@ namespace FluentPOS.Auth.Host.Controllers
         public async Task<IActionResult> Exchange()
         {
             var request = HttpContext.GetOpenIddictServerRequest();
-            if (request!.IsClientCredentialsGrantType())
+            if (request == null) { throw new ArgumentNullException(); }
+            if (request.IsClientCredentialsGrantType())
             {
                 var application = await _applicationManager.FindByClientIdAsync(request.ClientId!);
                 if (application == null)
