@@ -15,6 +15,7 @@
 	<PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
 	<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
 	<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="7.0.0" />
+	<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -33,6 +34,10 @@
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.0" />
 		<PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Core\FSH.Microservices.Core.csproj" />
 	</ItemGroup>
 
 </Project>
