@@ -72,21 +72,13 @@ public static class Extensions
     private static void SetMinimumLogLevel(LoggerConfiguration serilogConfig, string minLogLevel)
     {
         var loggingLevelSwitch = new LoggingLevelSwitch();
-        switch (minLogLevel.ToLower())
+        loggingLevelSwitch.MinimumLevel = minLogLevel.ToLower() switch
         {
-            case "debug":
-                loggingLevelSwitch.MinimumLevel = LogEventLevel.Debug;
-                break;
-            case "information":
-                loggingLevelSwitch.MinimumLevel = LogEventLevel.Information;
-                break;
-            case "warning":
-                loggingLevelSwitch.MinimumLevel = LogEventLevel.Warning;
-                break;
-            default:
-                loggingLevelSwitch.MinimumLevel = LogEventLevel.Information;
-                break;
-        }
+            "debug" => LogEventLevel.Debug,
+            "information" => LogEventLevel.Information,
+            "warning" => LogEventLevel.Warning,
+            _ => LogEventLevel.Information,
+        };
         serilogConfig.MinimumLevel.ControlledBy(loggingLevelSwitch);
     }
 
