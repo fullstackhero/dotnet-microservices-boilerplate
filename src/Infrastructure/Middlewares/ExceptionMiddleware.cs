@@ -31,13 +31,13 @@ internal class ExceptionMiddleware : IMiddleware
         {
 
             string errorId = Guid.NewGuid().ToString();
-            var dictionary = new Dictionary<string, object>
+            var properties = new Dictionary<string, object>
             {
                 { "ErrorId", errorId},
                 { "StackTrace", exception.StackTrace! }
             };
 
-            using (_logger.BeginScope(dictionary))
+            using (_logger.BeginScope(properties))
             {
                 _logger.LogError(exception.Message);
             }
