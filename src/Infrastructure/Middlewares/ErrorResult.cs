@@ -1,7 +1,7 @@
-﻿namespace FSH.Microservices.Infrastructure.Middlewares;
+﻿using Microsoft.AspNetCore.Mvc;
 
-public class ErrorResult
+namespace FSH.Microservices.Infrastructure.Middlewares;
+
+public class ErrorResult : ProblemDetails
 {
-    public List<string>? Errors { get; set; }
-    public string? ErrorId { get; set; }
 }
