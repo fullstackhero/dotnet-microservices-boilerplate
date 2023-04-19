@@ -1,6 +1,5 @@
 ﻿using FSH.Microservices.Infrastructure.Options;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -11,17 +10,18 @@ namespace FSH.Microservices.Infrastructure.Logging.Serilog;
 
 public static class Extensions
 {
-    public static void AddSerilogConfiguration(this WebApplicationBuilder builder, IConfiguration config)
+    public static void ConfigureSerilog(this WebApplicationBuilder builder, string appName)
     {
+        var config = builder.Configuration;
         var serilogOptions = builder.Services.AddLoadValidateOptions<SerilogOptions>(config);
         _ = builder.Host.UseSerilog((_, sp, serilogConfig) =>
         {
             if (serilogOptions.EnableErichers)
             {
-                ConfigureEnrichers(serilogConfig, serilogOptions.AppName);
+                ConfigureEnrichers(serilogConfig, appName);
             }
             ConfigureConsoleLogging(serilogConfig, serilogOptions.StructuredConsoleLogging);
-            ConfigureWriteToFile(serilogConfig, serilogOptions.WriteToFile, serilogOptions.AppName);
+            ConfigureWriteToFile(serilogConfig, serilogOptions.WriteToFile, appName);
             //ConfigureElasticSearch(builder, serilogConfig, appName, serilogOptions.ElasticSearchUrl);
             SetMinimumLogLevel(serilogConfig, serilogOptions.MinimumLogLevel);
             OverideMinimumLogLevel(serilogConfig);

@@ -2,10 +2,6 @@
 
 public class ErrorResult
 {
-    public List<string>? Messages { get; set; }
-    public string? Source { get; set; }
-    public string? Exception { get; set; }
+    public List<string>? Errors { get; set; }
     public string? ErrorId { get; set; }
-
-    public string? StackTrace { get; set; }
 }

@@ -15,9 +15,6 @@
 	  <None Remove="Logs\**" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="OpenIddict.AspNetCore" Version="4.2.0" />
-		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.2.0" />
-		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

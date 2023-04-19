@@ -2,7 +2,6 @@
 using FSH.Microservices.Core.Serializers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Serilog;
 
 namespace FSH.Microservices.Infrastructure.Middlewares;
 
@@ -31,23 +30,26 @@ internal class ExceptionMiddleware : IMiddleware
         {
 
             string errorId = Guid.NewGuid().ToString();
+
+
+            var errorResult = new ErrorResult
+            {
+                Errors = new() { exception.Message.Trim() },
+                ErrorId = errorId
+            };
+
             var properties = new Dictionary<string, object>
             {
-                { "ErrorId", errorId},
-                { "StackTrace", exception.StackTrace! }
+                { "ErrorId", errorResult.ErrorId},
+                { "StackTrace", exception.StackTrace! },
+                { "Source", exception.TargetSite?.DeclaringType?.FullName!},
+                { "Errors", errorResult.Errors }
             };
 
             using (_logger.BeginScope(properties))
             {
                 _logger.LogError(exception.Message);
             }
-
-            var errorResult = new ErrorResult
-            {
-                Source = exception.TargetSite?.DeclaringType?.FullName,
-                Exception = exception.Message.Trim(),
-                ErrorId = errorId
-            };
 
             var response = context.Response;
             if (!response.HasStarted)
@@ -57,7 +59,7 @@ internal class ExceptionMiddleware : IMiddleware
             }
             else
             {
-                Log.Warning("Can't write error response. Response has already started.");
+                _logger.LogWarning("Can't write error response. Response has already started.");
             }
         }
     }
