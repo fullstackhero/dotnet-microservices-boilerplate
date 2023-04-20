@@ -18,6 +18,7 @@ public class NewtonSoftService : ISerializerService
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             NullValueHandling = NullValueHandling.Ignore,
+
             Converters = new List<JsonConverter>
             {
                 new StringEnumConverter(new CamelCaseNamingStrategy())

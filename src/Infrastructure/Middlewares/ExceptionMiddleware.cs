@@ -2,7 +2,6 @@
 using FSH.Microservices.Core.Serializers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -23,7 +22,6 @@ internal class ExceptionMiddleware : IMiddleware
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-
         try
         {
             await next(context);
@@ -34,44 +32,49 @@ internal class ExceptionMiddleware : IMiddleware
         }
         catch (Exception exception)
         {
-
-            string errorId = Guid.NewGuid().ToString();
-
-
-            var errorResult = new ErrorResult
+            var errorResult = exception switch
             {
-                Title = ReasonPhrases.GetReasonPhrase(context.Response.StatusCode),
-                Instance = errorId,
-                Detail = exception.Message.Trim()
+                FluentValidation.ValidationException fluentException => ExceptionDetails.HandleFluentValidationException(fluentException),
+                UnauthorizedException unauthorizedException => ExceptionDetails.HandleUnauthorizedException(unauthorizedException),
+                _ => ExceptionDetails.HandleDefaultException(exception),
             };
 
-            if (_env.IsDevelopment())
-            {
-                errorResult.Extensions.Add("stackTrace", exception.StackTrace!.Trim());
-            }
-
-            var properties = new Dictionary<string, object>
-            {
-                { "traceId", errorResult.Instance},
-                { "StackTrace", exception.StackTrace!.Trim() },
-                { "Source", exception.TargetSite?.DeclaringType?.FullName!}
-            };
-
-            using (_logger.BeginScope(properties))
-            {
-                _logger.LogError(exception.Message);
-            }
+            LogErrorMessage(exception, errorResult);
 
             var response = context.Response;
             if (!response.HasStarted)
             {
                 response.ContentType = "application/json";
+                response.StatusCode = errorResult.Status!.Value;
                 await response.WriteAsync(_serializer.Serialize(errorResult));
             }
             else
             {
                 _logger.LogWarning("Can't write error response. Response has already started.");
             }
+        }
+    }
+
+    private void LogErrorMessage(Exception exception, ExceptionDetails details)
+    {
+        var properties = new Dictionary<string, object>
+        {
+            { "TraceId", details.TraceId }
+        };
+
+        if (details.Errors != null)
+        {
+            properties.Add("Errors", details.Errors);
+        }
+
+        if (_env.IsDevelopment())
+        {
+            properties.Add("StackTrace", exception.StackTrace!.Trim());
+        }
+
+        using (_logger.BeginScope(properties))
+        {
+            _logger.LogError(details.Title);
         }
     }
 }

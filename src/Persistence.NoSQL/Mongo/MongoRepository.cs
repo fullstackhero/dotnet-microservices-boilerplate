@@ -35,10 +35,9 @@ public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where
         return await _collection.AsQueryable().ToListAsync(cancellationToken);
     }
 
-    public async Task<TDocument> AddAsync(TDocument document, CancellationToken cancellationToken = default)
+    public async Task AddAsync(TDocument document, CancellationToken cancellationToken = default)
     {
         await _collection.InsertOneAsync(document, new InsertOneOptions(), cancellationToken);
-        return document;
     }
 
     public Task<TDocument> UpdateAsync(TDocument entity, CancellationToken cancellationToken = default)

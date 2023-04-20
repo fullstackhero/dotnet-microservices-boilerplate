@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 
-builder.AddInfrastructure(enableSwagger);
+builder.AddInfrastructure(enableSwagger: enableSwagger);
 
 
 builder.ConfigureOpenIddictServer<IdentityDbContext>();
