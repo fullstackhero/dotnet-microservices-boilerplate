@@ -38,9 +38,21 @@ public class ExceptionDetails
     {
         var errorResult = new ExceptionDetails()
         {
-            Title = exception.Message.Trim(),
-            Detail = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.InternalServerError),
+            Title = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.InternalServerError),
+            Detail = exception.Message.Trim(),
             Status = (int)HttpStatusCode.InternalServerError
+
+        };
+        return errorResult;
+    }
+
+    internal static ExceptionDetails HandleNotFoundException(NotFoundException exception)
+    {
+        var errorResult = new ExceptionDetails()
+        {
+            Title = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.NotFound),
+            Detail = exception.Message.Trim(),
+            Status = (int)HttpStatusCode.NotFound
 
         };
         return errorResult;
@@ -50,8 +62,8 @@ public class ExceptionDetails
     {
         return new ExceptionDetails()
         {
-            Title = unauthorizedException.Message.Trim(),
-            Detail = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.Unauthorized),
+            Title = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.Unauthorized),
+            Detail = unauthorizedException.Message.Trim(),
             Status = (int)HttpStatusCode.Unauthorized
         };
     }

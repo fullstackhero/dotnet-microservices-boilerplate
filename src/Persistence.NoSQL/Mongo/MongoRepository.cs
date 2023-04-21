@@ -72,6 +72,6 @@ public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+        _context?.Dispose();
     }
 }

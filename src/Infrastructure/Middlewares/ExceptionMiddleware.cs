@@ -36,6 +36,7 @@ internal class ExceptionMiddleware : IMiddleware
             {
                 FluentValidation.ValidationException fluentException => ExceptionDetails.HandleFluentValidationException(fluentException),
                 UnauthorizedException unauthorizedException => ExceptionDetails.HandleUnauthorizedException(unauthorizedException),
+                NotFoundException notFoundException => ExceptionDetails.HandleNotFoundException(notFoundException),
                 _ => ExceptionDetails.HandleDefaultException(exception),
             };
 

@@ -22,7 +22,6 @@ public static class Extensions
         builder.ConfigureSerilog(appOptions.Name);
         builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
-
         if (coreAssembly != null)
         {
             builder.Services.AddMapsterExtension(coreAssembly);
