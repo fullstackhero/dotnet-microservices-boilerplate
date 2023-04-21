@@ -6,6 +6,6 @@ public static class CatalogCore
 {
     public static void AddCoreCatalogService(this IServiceCollection services)
     {
-        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddTransient<IProductRepository, ProductRepository>();
     }
 }
