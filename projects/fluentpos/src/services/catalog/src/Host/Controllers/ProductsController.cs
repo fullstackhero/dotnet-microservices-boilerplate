@@ -16,6 +16,6 @@ public class ProductsController : BaseApiController
         var command = new AddProduct.Command(request);
         var commandResponse = await Mediator.Send(command);
 
-        return CreatedAtRoute("AddProductAsync", new { commandResponse.Id }, commandResponse);
+        return CreatedAtRoute("AddProductAsync", new { commandResponse.Id });
     }
 }

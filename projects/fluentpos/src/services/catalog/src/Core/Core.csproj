@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\..\src\Core\FSH.Microservices.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\..\src\Persistence.NoSQL\FSH.Microservices.Persistence.NoSQL.csproj" />
   </ItemGroup>
 
 </Project>

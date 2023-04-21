@@ -4,9 +4,10 @@ using FSH.Microservices.Infrastructure.Auth.OpenIddict;
 using FSH.Microservices.Infrastructure.Middlewares;
 using FSH.Microservices.Persistence.NoSQL.Mongo;
 
-var coreAssembly = typeof(CoreRoot).Assembly;
+var coreAssembly = typeof(CatalogCore).Assembly;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCoreCatalogService();
 builder.Services.AddExceptionMiddleware();
 builder.Services.AddControllers();
 builder.Services.AddMongoDbContext<MongoDbContext>(builder.Configuration);

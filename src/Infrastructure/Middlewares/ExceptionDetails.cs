@@ -23,6 +23,10 @@ public class ExceptionDetails
             Errors = new(),
 
         };
+        if (exception.Errors.Count() == 1)
+        {
+            errorResult.Detail = exception.Errors.FirstOrDefault()!.ErrorMessage;
+        }
         foreach (var error in exception.Errors)
         {
             errorResult.Errors.Add(error.ErrorMessage);

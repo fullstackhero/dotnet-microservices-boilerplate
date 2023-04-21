@@ -15,6 +15,11 @@ public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where
         _collection = _context.GetCollection<TDocument>();
     }
 
+    public async Task<bool> ExistsAsync(Expression<Func<TDocument, bool>> predicate, CancellationToken cancellationToken = default)
+    {
+        return await _collection.Find(predicate).AnyAsync(cancellationToken: cancellationToken)!;
+    }
+
     public async Task<IReadOnlyList<TDocument>> FindAsync(Expression<Func<TDocument, bool>> predicate, CancellationToken cancellationToken = default)
     {
         return await _collection.Find(predicate).ToListAsync(cancellationToken: cancellationToken)!;

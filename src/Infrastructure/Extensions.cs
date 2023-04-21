@@ -20,7 +20,8 @@ public static class Extensions
         var config = builder.Configuration;
         var appOptions = builder.Services.ValidateAndLoad<AppOptions>(config);
         builder.ConfigureSerilog(appOptions.Name);
-        builder.Services.AddProblemDetails();
+        builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
 
         if (coreAssembly != null)
         {

@@ -1,6 +1,5 @@
 ﻿using FluentPos.Catalog.Core.Products.Dtos;
 using FluentValidation;
-using FSH.Microservices.Core.Database;
 using MapsterMapper;
 using MediatR;
 
@@ -17,20 +16,36 @@ public static class AddProduct
     }
     public sealed class Validator : AbstractValidator<Command>
     {
-        public Validator()
+        public Validator(IProductRepository _repository)
         {
-            RuleFor(p => p.AddProductDto.Name).NotEmpty().MaximumLength(75).WithName("Name");
-            RuleFor(p => p.AddProductDto.Cost).GreaterThanOrEqualTo(1).WithName("Cost");
-            RuleFor(p => p.AddProductDto.Price).GreaterThanOrEqualTo(1).GreaterThanOrEqualTo(p => p.AddProductDto.Cost).WithName("Price");
-            RuleFor(p => p.AddProductDto.Code).NotEmpty().MaximumLength(75).WithName("Code");
+            RuleFor(p => p.AddProductDto.Name)
+                .NotEmpty()
+                .MaximumLength(75)
+                .WithName("Name");
+
+            RuleFor(p => p.AddProductDto.Cost)
+                .GreaterThanOrEqualTo(1)
+                .WithName("Cost");
+
+            RuleFor(p => p.AddProductDto.Price)
+                .GreaterThanOrEqualTo(1)
+                .GreaterThanOrEqualTo(p => p.AddProductDto.Cost)
+                .WithName("Price");
+
+            RuleFor(p => p.AddProductDto.Code)
+                .NotEmpty()
+                .MaximumLength(75)
+                .WithName("Code")
+                .MustAsync(async (code, ct) => !await _repository.ExistsAsync(p => p.Code == code))
+                .WithMessage((_, code) => $"Product with Code '{code}' already Exists.");
         }
     }
     public sealed class Handler : IRequestHandler<Command, ProductDto>
     {
-        private readonly IRepository<Product, Guid> _repository;
+        private readonly IProductRepository _repository;
         private readonly IMapper _mapper;
 
-        public Handler(IRepository<Product, Guid> repository, IMapper mapper)
+        public Handler(IProductRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

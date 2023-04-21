@@ -15,6 +15,7 @@ public interface IReadRepository<TDocument, in TId> where TDocument : class
     Task<IReadOnlyList<TDocument>> FindAsync(Expression<Func<TDocument, bool>> predicate, CancellationToken cancellationToken = default);
 
     Task<IReadOnlyList<TDocument>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task<bool> ExistsAsync(Expression<Func<TDocument, bool>> predicate, CancellationToken cancellationToken = default);
 }
 
 public interface IWriteRepository<TDocument, in TId> where TDocument : class
