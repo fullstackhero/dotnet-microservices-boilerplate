@@ -21,7 +21,7 @@ public static class Extensions
                 ConfigureEnrichers(serilogConfig, appName);
             }
             ConfigureConsoleLogging(serilogConfig, serilogOptions.StructuredConsoleLogging);
-            ConfigureWriteToFile(serilogConfig, serilogOptions.WriteToFile, appName);
+            ConfigureWriteToFile(serilogConfig, serilogOptions.WriteToFile, serilogOptions.RetentionFileCount, appName);
             //ConfigureElasticSearch(builder, serilogConfig, appName, serilogOptions.ElasticSearchUrl);
             SetMinimumLogLevel(serilogConfig, serilogOptions.MinimumLogLevel);
             OverideMinimumLogLevel(serilogConfig);
@@ -51,7 +51,7 @@ public static class Extensions
         }
     }
 
-    private static void ConfigureWriteToFile(LoggerConfiguration serilogConfig, bool writeToFile, string appName)
+    private static void ConfigureWriteToFile(LoggerConfiguration serilogConfig, bool writeToFile, int retainedFileCount, string appName)
     {
         if (writeToFile)
         {
@@ -60,7 +60,7 @@ public static class Extensions
              $"Logs/{appName.ToLower()}.logs.json",
              restrictedToMinimumLevel: LogEventLevel.Information,
              rollingInterval: RollingInterval.Day,
-             retainedFileCountLimit: 5);
+             retainedFileCountLimit: retainedFileCount);
         }
     }
 
