@@ -75,7 +75,7 @@ internal class ExceptionMiddleware : IMiddleware
 
         using (_logger.BeginScope(properties))
         {
-            _logger.LogError($"{details.Title} | {details.Detail}");
+            _logger.LogError("{title} | {details}", details.Title, details.Detail);
         }
     }
 }
