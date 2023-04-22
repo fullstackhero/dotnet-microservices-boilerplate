@@ -1,5 +1,6 @@
 ﻿using FluentPos.Catalog.Core.Products.Dtos;
 using FluentPos.Catalog.Core.Products.Exceptions;
+using FSH.Microservices.Core.Caching;
 using MapsterMapper;
 using MediatR;
 
@@ -20,11 +21,13 @@ public static class UpdateProduct
     {
         private readonly IProductRepository _repository;
         private readonly IMapper _mapper;
+        private readonly ICacheService _cacheService;
 
-        public Handler(IProductRepository repository, IMapper mapper)
+        public Handler(IProductRepository repository, IMapper mapper, ICacheService cacheService)
         {
             _repository = repository;
             _mapper = mapper;
+            _cacheService = cacheService;
         }
 
         public async Task<ProductDto> Handle(Command request, CancellationToken cancellationToken)
@@ -33,6 +36,7 @@ public static class UpdateProduct
             if (productToBeUpdated == null) throw new ProductNotFoundException(request.Id);
             productToBeUpdated.Update(request.UpdateProductDto);
             await _repository.UpdateAsync(productToBeUpdated, cancellationToken);
+            await _cacheService.RemoveAsync(Product.GetCacheKey(request.Id), cancellationToken);
             return _mapper.Map<ProductDto>(productToBeUpdated);
         }
     }

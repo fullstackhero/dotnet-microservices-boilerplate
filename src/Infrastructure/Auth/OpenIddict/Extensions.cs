@@ -13,7 +13,7 @@ public static class Extensions
 {
     public static IServiceCollection AddOpenIddictValidation(this IServiceCollection services, IConfiguration config)
     {
-        var authOptions = services.ValidateAndLoad<OpenIddictOptions>(config);
+        var authOptions = services.BindValidateReturn<OpenIddictOptions>(config);
 
         services.AddOpenIddict()
         .AddValidation(options =>

@@ -27,7 +27,7 @@ namespace FSH.Microservices.Infrastructure.Swagger
         }
         internal static void AddSwaggerExtension(this IServiceCollection services, IConfiguration configuration, string appName)
         {
-            var swaggerOptions = services.ValidateAndLoad<SwaggerOptions>(configuration);
+            var swaggerOptions = services.BindValidateReturn<SwaggerOptions>(configuration);
             services.AddSwaggerGen(config =>
             {
                 config.CustomSchemaIds(type => type.ToString());

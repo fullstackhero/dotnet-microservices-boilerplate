@@ -10,7 +10,7 @@ public static class Extensions
         return configuration.GetSection(sectionName).Get<T>()!;
     }
 
-    public static T ValidateAndLoad<T>(this IServiceCollection services, IConfiguration configuration) where T : class, IOptionsRoot
+    public static T BindValidateReturn<T>(this IServiceCollection services, IConfiguration configuration) where T : class, IOptionsRoot
     {
         services.AddOptions<T>()
             .BindConfiguration(typeof(T).Name)
@@ -18,4 +18,12 @@ public static class Extensions
             .ValidateOnStart();
         return configuration.LoadOptions<T>(typeof(T).Name);
     }
+    public static void BindValidate<T>(this IServiceCollection services, IConfiguration configuration) where T : class, IOptionsRoot
+    {
+        services.AddOptions<T>()
+            .BindConfiguration(typeof(T).Name)
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
+    }
+
 }

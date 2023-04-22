@@ -97,10 +97,10 @@ namespace FSH.Microservices.Infrastructure.Caching
             }
         }
 
-        public void Set<T>(string key, T value, TimeSpan? slidingExpiration = null) =>
+        public void Set<T>(string key, T value, TimeSpan? slidingExpiration = null, DateTimeOffset? absoluteExpiration = null) =>
             Set(key, Serialize(value), slidingExpiration);
 
-        private void Set(string key, byte[] value, TimeSpan? slidingExpiration = null)
+        private void Set(string key, byte[] value, TimeSpan? slidingExpiration = null, DateTimeOffset? absoluteExpiration = null)
         {
             try
             {
@@ -112,10 +112,10 @@ namespace FSH.Microservices.Infrastructure.Caching
             }
         }
 
-        public Task SetAsync<T>(string key, T value, TimeSpan? slidingExpiration = null, CancellationToken cancellationToken = default) =>
-            SetAsync(key, Serialize(value), slidingExpiration, cancellationToken);
+        public Task SetAsync<T>(string key, T value, TimeSpan? slidingExpiration = null, DateTimeOffset? absoluteExpiration = null, CancellationToken cancellationToken = default) =>
+            SetAsync(key, Serialize(value), slidingExpiration, absoluteExpiration, cancellationToken);
 
-        private async Task SetAsync(string key, byte[] value, TimeSpan? slidingExpiration = null, CancellationToken token = default)
+        private async Task SetAsync(string key, byte[] value, TimeSpan? slidingExpiration = null, DateTimeOffset? absoluteExpiration = null, CancellationToken token = default)
         {
             try
             {
@@ -137,6 +137,7 @@ namespace FSH.Microservices.Infrastructure.Caching
 
         private static DistributedCacheEntryOptions GetOptions(TimeSpan? slidingExpiration)
         {
+            //TODO : Fix this to read from appsettings
             var options = new DistributedCacheEntryOptions();
             if (slidingExpiration.HasValue)
             {

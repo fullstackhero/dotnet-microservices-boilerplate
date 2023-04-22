@@ -18,7 +18,7 @@ public static class Extensions
         where TContextService : IMongoDbContext
         where TContextImplementation : MongoDbContext, TContextService
     {
-        services.ValidateAndLoad<MongoOptions>(configuration);
+        services.BindValidateReturn<MongoOptions>(configuration);
         services.AddScoped(typeof(TContextService), typeof(TContextImplementation));
         services.AddScoped(typeof(TContextImplementation));
         services.AddScoped<IMongoDbContext>(sp => sp.GetRequiredService<TContextService>());

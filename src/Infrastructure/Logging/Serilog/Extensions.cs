@@ -13,7 +13,7 @@ public static class Extensions
     public static void ConfigureSerilog(this WebApplicationBuilder builder, string appName)
     {
         var config = builder.Configuration;
-        var serilogOptions = builder.Services.ValidateAndLoad<SerilogOptions>(config);
+        var serilogOptions = builder.Services.BindValidateReturn<SerilogOptions>(config);
         _ = builder.Host.UseSerilog((_, sp, serilogConfig) =>
         {
             if (serilogOptions.EnableErichers)
