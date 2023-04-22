@@ -15,11 +15,9 @@ public interface IProductRepository : IRepository<Product, Guid>
 public class ProductRepository : MongoRepository<Product, Guid>, IProductRepository
 {
     private readonly IMongoDbContext _dbContext;
-    private readonly IDateTimeService _dateTimeService;
     public ProductRepository(IMongoDbContext context, IDateTimeService dateTimeService) : base(context, dateTimeService)
     {
         _dbContext = context;
-        _dateTimeService = dateTimeService;
     }
 
     public async Task<PagedList<ProductDto>> GetPagedProductsAsync<ProductDto>(ProductsParametersDto parameters, CancellationToken cancellationToken = default)
