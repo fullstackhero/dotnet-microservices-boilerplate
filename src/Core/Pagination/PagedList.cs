@@ -6,7 +6,10 @@ public class PagedList<T>
     {
         PageNumber = pageNumber;
         TotalItems = totalItems;
-        TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+        if (totalItems > 0)
+        {
+            TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+        }
         Data = items as IList<T> ?? new List<T>(items);
     }
     public int PageNumber { get; }

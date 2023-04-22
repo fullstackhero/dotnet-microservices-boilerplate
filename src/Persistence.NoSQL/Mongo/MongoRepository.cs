@@ -1,5 +1,6 @@
 ﻿using FSH.Microservices.Core.Database;
 using FSH.Microservices.Core.Domain;
+using FSH.Microservices.Core.Services;
 using MongoDB.Driver;
 using System.Linq.Expressions;
 
@@ -8,11 +9,13 @@ public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where
 {
     private readonly IMongoDbContext _context;
     private readonly IMongoCollection<TDocument> _collection;
+    private readonly IDateTimeService _dateTimeProvider;
 
-    public MongoRepository(IMongoDbContext context)
+    public MongoRepository(IMongoDbContext context, IDateTimeService dateTimeProvider)
     {
         _context = context;
         _collection = _context.GetCollection<TDocument>();
+        _dateTimeProvider = dateTimeProvider;
     }
 
     public async Task<bool> ExistsAsync(Expression<Func<TDocument, bool>> predicate, CancellationToken cancellationToken = default)
@@ -45,9 +48,10 @@ public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where
         await _collection.InsertOneAsync(document, new InsertOneOptions(), cancellationToken);
     }
 
-    public Task<TDocument> UpdateAsync(TDocument entity, CancellationToken cancellationToken = default)
+    public async Task UpdateAsync(TDocument entity, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        entity.UpdateModifiedProperties(_dateTimeProvider.DateTimeUtcNow, string.Empty);
+        await _collection.ReplaceOneAsync(x => x.Id!.Equals(entity.Id), entity);
     }
 
     public Task DeleteRangeAsync(IReadOnlyList<TDocument> entities, CancellationToken cancellationToken = default)
@@ -65,9 +69,9 @@ public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where
         throw new NotImplementedException();
     }
 
-    public Task DeleteByIdAsync(TId id, CancellationToken cancellationToken = default)
+    public async Task DeleteByIdAsync(TId id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        await _collection.DeleteOneAsync(d => d.Id!.Equals(id), cancellationToken);
     }
 
     public void Dispose()

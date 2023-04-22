@@ -29,7 +29,7 @@ public class GetProducts
 
         public async Task<PagedList<ProductDto>> Handle(Query request, CancellationToken cancellationToken)
         {
-            return await _repository.GetPagedProductsAsync<ProductDto>(request.Parameters.PageNumber, request.Parameters.PageSize, request.Parameters.Keyword!, cancellationToken);
+            return await _repository.GetPagedProductsAsync<ProductDto>(request.Parameters, cancellationToken);
         }
     }
 }

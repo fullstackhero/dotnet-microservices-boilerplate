@@ -1,7 +1,7 @@
 ﻿namespace FSH.Microservices.Core.Services;
 
-public class IDateTimeService : IScopedService
+public interface IDateTimeService : IScopedService
 {
-    DateTime DateTimeUtcNow { get; }
-    DateOnly DateOnlyUtcNow { get; }
+    public DateTime DateTimeUtcNow { get; }
+    public DateOnly DateOnlyUtcNow { get; }
 }

@@ -4,9 +4,9 @@ using MapsterMapper;
 using MediatR;
 
 namespace FluentPos.Catalog.Core.Products.Features;
-public static class GetProduct
+public static class GetProductDetails
 {
-    public sealed record Query : IRequest<ProductDto>
+    public sealed record Query : IRequest<ProductDetailsDto>
     {
         public readonly Guid Id;
 
@@ -16,7 +16,7 @@ public static class GetProduct
         }
     }
 
-    public sealed class Handler : IRequestHandler<Query, ProductDto>
+    public sealed class Handler : IRequestHandler<Query, ProductDetailsDto>
     {
         private readonly IProductRepository _repository;
         private readonly IMapper _mapper;
@@ -27,11 +27,11 @@ public static class GetProduct
             _mapper = mapper;
         }
 
-        public async Task<ProductDto> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<ProductDetailsDto> Handle(Query request, CancellationToken cancellationToken)
         {
             var product = await _repository.FindByIdAsync(request.Id, cancellationToken);
             if (product == null) throw new ProductNotFoundException(request.Id);
-            return _mapper.Map<ProductDto>(product);
+            return _mapper.Map<ProductDetailsDto>(product);
         }
     }
 }

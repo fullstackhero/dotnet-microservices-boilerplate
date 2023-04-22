@@ -21,7 +21,7 @@ public interface IReadRepository<TDocument, in TId> where TDocument : class
 public interface IWriteRepository<TDocument, in TId> where TDocument : class
 {
     Task AddAsync(TDocument entity, CancellationToken cancellationToken = default);
-    Task<TDocument> UpdateAsync(TDocument entity, CancellationToken cancellationToken = default);
+    Task UpdateAsync(TDocument entity, CancellationToken cancellationToken = default);
     Task DeleteRangeAsync(IReadOnlyList<TDocument> entities, CancellationToken cancellationToken = default);
     Task DeleteAsync(Expression<Func<TDocument, bool>> predicate, CancellationToken cancellationToken = default);
     Task DeleteAsync(TDocument entity, CancellationToken cancellationToken = default);

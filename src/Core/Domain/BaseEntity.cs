@@ -12,7 +12,7 @@ public abstract class BaseEntity<TId> : IBaseEntity<TId>
     public TId Id { get; protected set; } = default!;
     public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
     public string? CreatedBy { get; private set; }
-    public DateTime? LastModifiedOn { get; private set; }
+    public DateTime? LastModifiedOn { get; private set; } = DateTime.UtcNow;
     public string? LastModifiedBy { get; private set; }
     public bool IsDeleted { get; private set; }
     [NotMapped]

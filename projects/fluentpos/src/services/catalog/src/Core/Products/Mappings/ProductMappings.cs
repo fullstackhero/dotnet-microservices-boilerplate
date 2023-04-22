@@ -7,5 +7,6 @@ public sealed class ProductMappings : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<Product, ProductDto>();
+        config.NewConfig<Product, ProductDetailsDto>();
     }
 }
