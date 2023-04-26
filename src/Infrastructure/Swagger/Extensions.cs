@@ -19,8 +19,8 @@ namespace FSH.Microservices.Infrastructure.Swagger
                 app.UseSwagger();
                 app.UseSwaggerUI(config =>
                 {
-                    config.SwaggerEndpoint("/swagger/v1/swagger.json", "");
-                    config.DocExpansion(DocExpansion.None);
+                    config.SwaggerEndpoint("/swagger/v1/swagger.json", "Version 1");
+                    config.DocExpansion(DocExpansion.List);
                     config.DisplayRequestDuration();
                 });
             }

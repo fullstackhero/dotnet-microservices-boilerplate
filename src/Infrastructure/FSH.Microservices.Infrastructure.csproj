@@ -26,7 +26,7 @@
 		<PackageReference Include="OpenIddict.Validation.SystemNetHttp" Version="4.2.0" />
 		<PackageReference Include="OpenIddict.AspNetCore" Version="4.2.0" />
 		<PackageReference Include="OpenIddict.EntityFrameworkCore" Version="4.2.0" />
-		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>
