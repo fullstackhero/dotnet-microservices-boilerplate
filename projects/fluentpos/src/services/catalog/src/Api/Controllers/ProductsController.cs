@@ -2,14 +2,12 @@
 using FluentPos.Catalog.Core.Products.Features;
 using FSH.Microservices.Core.Pagination;
 using FSH.Microservices.Infrastructure.Controllers;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Host.Controllers;
+namespace FluentPos.Catalog.Api.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 
-[Authorize]
 public class ProductsController : BaseApiController
 {
     [HttpPost(Name = "AddProductAsync")]

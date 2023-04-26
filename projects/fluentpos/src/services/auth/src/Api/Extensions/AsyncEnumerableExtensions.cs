@@ -1,4 +1,4 @@
-﻿namespace FluentPOS.Auth.Host.Extensions;
+﻿namespace FluentPOS.Auth.Api.Extensions;
 
 public static class AsyncEnumerableExtensions
 {

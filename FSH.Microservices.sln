@@ -25,17 +25,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth", "auth", "{6F683559-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{761610DB-29AF-4085-8CD0-03C2603771C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "projects\fluentpos\src\services\auth\src\Host\Host.csproj", "{817F80B8-B51E-4B73-A7B3-60DF44507117}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "projects\fluentpos\src\services\auth\src\Api\Api.csproj", "{817F80B8-B51E-4B73-A7B3-60DF44507117}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "catalog", "catalog", "{49CD3B7F-EFC4-4018-8E1B-C24C9355FDEC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{43EC0EDF-CDAE-4D52-B996-9AEAEB391FE0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "projects\fluentpos\src\services\catalog\src\Host\Host.csproj", "{557D9BA2-8BFD-46C7-A284-39CCC47C8FF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "projects\fluentpos\src\services\catalog\src\Api\Api.csproj", "{557D9BA2-8BFD-46C7-A284-39CCC47C8FF0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "projects\fluentpos\src\services\catalog\src\Core\Core.csproj", "{E12BE6E0-5543-4A3F-B765-9B2B2F804DBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "projects\fluentpos\src\services\auth\src\Core\Core.csproj", "{FE7C5380-AF27-4C89-A77E-3475365704EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "projects\fluentpos\src\services\auth\src\Core\Core.csproj", "{FE7C5380-AF27-4C89-A77E-3475365704EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

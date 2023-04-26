@@ -1,7 +1,7 @@
 ﻿using OpenIddict.Abstractions;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace FluentPOS.Auth.Host.Database;
+namespace FluentPOS.Auth.Api.Database;
 
 public class SeedClientsAndScopes : IHostedService
 {

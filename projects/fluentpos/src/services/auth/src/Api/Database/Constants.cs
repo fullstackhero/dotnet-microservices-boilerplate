@@ -1,4 +1,4 @@
-﻿namespace FluentPOS.Auth.Host.Database;
+﻿namespace FluentPOS.Auth.Api.Database;
 
 public class Constants
 {

@@ -4,8 +4,8 @@
 		<TargetFramework>net7.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<RootNamespace>FluentPOS.Auth.Host</RootNamespace>
-		<AssemblyName>FluentPOS.Auth.Host</AssemblyName>
+		<RootNamespace>FluentPOS.Auth.Api</RootNamespace>
+		<AssemblyName>FluentPOS.Auth.Api</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace FluentPOS.Auth.Host.Migrations
+namespace FluentPOS.Auth.Api.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
