@@ -3,9 +3,12 @@
 ![ci-cd pipeline](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/ci-cd.yml/badge.svg)
 ## Roadmap
 
-Currently maintaining on Trello, might move to Github later on.
+### Note
+Project is currently getting revamped on a different branch. 
 
-[View Trello Board](https://trello.com/b/fflwd3rl/dotnet-microservices-boilerplate-roadmap)
+Will merge to main once done.
+
+https://github.com/fullstackhero/dotnet-microservices-boilerplate/tree/revamp
 
 ## What's done till now?
 - Added Building Blocks for Services - Serilog, Swagger, Fluent Validation, MediatR, AutoMapper, and more.
