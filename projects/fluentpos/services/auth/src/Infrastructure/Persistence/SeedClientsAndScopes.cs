@@ -1,7 +1,9 @@
-﻿using OpenIddict.Abstractions;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using OpenIddict.Abstractions;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace FluentPOS.Auth.Api.Database;
+namespace FluentPOS.Auth.Infrastructure.Persistence;
 
 public class SeedClientsAndScopes : IHostedService
 {

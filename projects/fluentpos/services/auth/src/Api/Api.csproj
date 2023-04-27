@@ -25,7 +25,8 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\..\..\..\src\Infrastructure\FSH.Microservices.Infrastructure.csproj" />
+	  <ProjectReference Include="..\..\..\..\..\..\src\Infrastructure\FSH.Microservices.Infrastructure.csproj" />
 	  <ProjectReference Include="..\Core\Core.csproj" />
+	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>
 </Project>

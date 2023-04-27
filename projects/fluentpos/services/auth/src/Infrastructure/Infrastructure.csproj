@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+	    <RootNamespace>FluentPOS.Auth.Infrastructure</RootNamespace>
+	    <AssemblyName>FluentPOS.Auth.Infrastructure</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\..\..\..\src\Infrastructure\FSH.Microservices.Infrastructure.csproj" />
+        <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
+</Project>

@@ -1,4 +1,4 @@
-using FluentPOS.Auth.Api.Database;
+using FluentPOS.Auth.Infrastructure.Persistence;
 using FSH.Microservices.Infrastructure;
 using FSH.Microservices.Infrastructure.Auth.OpenIddict;
 using FSH.Microservices.Infrastructure.Middlewares;

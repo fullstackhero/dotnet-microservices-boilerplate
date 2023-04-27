@@ -8,8 +8,8 @@
         <InvariantGlobalization>true</InvariantGlobalization>
     </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\..\..\..\..\..\..\src\Infrastructure\FSH.Microservices.Infrastructure.csproj" />
-      <ProjectReference Include="..\..\..\..\..\..\..\src\Persistence.NoSQL\FSH.Microservices.Persistence.NoSQL.csproj" />
+      <ProjectReference Include="..\..\..\..\..\..\src\Infrastructure\FSH.Microservices.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\..\..\..\..\src\Persistence.NoSQL\FSH.Microservices.Persistence.NoSQL.csproj" />
       <ProjectReference Include="..\Core\Core.csproj" />
     </ItemGroup>
 </Project>

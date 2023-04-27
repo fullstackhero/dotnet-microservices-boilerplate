@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace FluentPOS.Auth.Api.Database;
+namespace FluentPOS.Auth.Infrastructure.Persistence;
 
 public class IdentityDbContext : DbContext
 {
