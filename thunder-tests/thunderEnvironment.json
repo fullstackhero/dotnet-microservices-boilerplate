@@ -6,7 +6,20 @@
     "sortNum": 10000,
     "created": "2023-04-13T00:39:48.305Z",
     "modified": "2023-04-13T00:39:48.305Z",
-    "data": []
+    "data": [
+      {
+        "name": "auth_service",
+        "value": "https://localhost:7001"
+      },
+      {
+        "name": "catalog_service",
+        "value": "https://localhost:7003"
+      },
+      {
+        "name": "access_token",
+        "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg2QzBFNTUwRDU3MjU0QUQwQTE4QUZBQ0Y0RDY2MTNGOUMyQjgwNTgiLCJ4NXQiOiJoc0RsVU5WeVZLMEtHSy1zOU5aaFA1d3JnRmciLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiJjb25zb2xlIiwib2lfcHJzdCI6ImNvbnNvbGUiLCJjbGllbnRfaWQiOiJjb25zb2xlIiwib2lfdGtuX2lkIjoiYTg5ZmU3YWItYWY5My00OTcxLTlkYjQtNTgxZTFlYmI0MjE4IiwiYXVkIjoiY2F0YWxvZy5yZXNvdXJjZS5zZXJ2ZXIiLCJzY29wZSI6ImNhdGFsb2ciLCJqdGkiOiI2OGUxYjI5Mi1lMzY2LTQxODYtYTc0Zi1lOWYzMGNmOTNmOWMiLCJleHAiOjE2ODI2MTY0ODYsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcwMDEvIiwiaWF0IjoxNjgyNjEyODg2fQ.MC0m8i7fB6bRJ63td_eEGArT5yZAX1OAPxLBTXobwN8NrWdXu4G8hpj8FePzwna3lqJFuGHMjwm-97jsdCeKSkWjn35KdL10omaqilrg2Vo3caw6hxZfhRcZugbrR3T0u6ClKtXnuALW3fmefW_5iiYAn6Zab4iAG6r3U6gCY8JwgCfA6R3V_iHi0u3nEfe3U8yLLztFjYedvrC0ydzzbsJPb4EP8xnOtgzk-7EzkZVuuuSgwIupso8BnlT-FtBFT5yuZe6GBW8XAfTeg7YPh8jFQCbuURJ-x0U73BYfga-FgNzvoxGoCEWpn2MmYqhXguQud2yfK1w6AP6Clwmryw"
+      }
+    ]
   },
   {
     "_id": "856a1423-5f3c-4d76-835f-b917dd0cb954",

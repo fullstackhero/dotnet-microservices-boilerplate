@@ -1,9 +1,31 @@
 [
   {
-    "_id": "a833ff0b-8fa0-4eef-81cb-29961bce8a7f",
+    "_id": "0f68643a-8467-4469-8cc1-47839e89ca8c",
     "colName": "fluentpos.microservices",
-    "created": "2023-04-13T00:39:34.808Z",
-    "sortNum": 10000,
-    "folders": []
+    "created": "2023-04-27T16:23:27.257Z",
+    "sortNum": 20000,
+    "folders": [
+      {
+        "_id": "eaf54ff4-b545-4688-b323-87d0277ad3b3",
+        "name": "auth",
+        "containerId": "",
+        "created": "2023-04-27T16:23:27.261Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "b77142ba-65a9-4071-97b1-474e15013955",
+        "name": "catalog",
+        "containerId": "",
+        "created": "2023-04-27T16:23:27.262Z",
+        "sortNum": 20000
+      }
+    ],
+    "settings": {
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{access_token}}"
+      },
+      "envId": "42790850-814d-4065-89da-b37693eb75f5"
+    }
   }
 ]
