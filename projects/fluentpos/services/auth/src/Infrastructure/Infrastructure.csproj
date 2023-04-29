@@ -1,11 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-	    <RootNamespace>FluentPOS.Auth.Infrastructure</RootNamespace>
-	    <AssemblyName>FluentPOS.Auth.Infrastructure</AssemblyName>
+	    <RootNamespace>FluentPOS.Identity.Infrastructure</RootNamespace>
+	    <AssemblyName>FluentPOS.Identity.Infrastructure</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
+    </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\..\..\..\..\src\Infrastructure\FSH.Microservices.Infrastructure.csproj" />

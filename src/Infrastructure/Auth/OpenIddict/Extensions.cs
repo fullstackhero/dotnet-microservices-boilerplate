@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OpenIddict.Validation.AspNetCore;
 using System.Reflection;
+using static OpenIddict.Abstractions.OpenIddictConstants;
 
 namespace FSH.Microservices.Infrastructure.Auth.OpenIddict;
 
@@ -31,7 +32,7 @@ public static class Extensions
         return services;
     }
 
-    public static void ConfigureOpenIddictServer<T>(this WebApplicationBuilder builder, string connectionName = "DefaultConnection") where T : DbContext
+    public static void ConfigureOpenIddictServer<T>(this WebApplicationBuilder builder, Assembly dbContextAssembly, string connectionName = "DefaultConnection") where T : DbContext
     {
         builder.Services.AddOpenIddict()
         .AddCore(options =>
@@ -42,8 +43,10 @@ public static class Extensions
         {
             options.SetAuthorizationEndpointUris("/connect/authorize")
                    .SetIntrospectionEndpointUris("/connect/introspect")
+                   .SetUserinfoEndpointUris("connect/userinfo")
                    .SetTokenEndpointUris("/connect/token");
             options.AllowClientCredentialsFlow();
+            options.RegisterScopes(Scopes.Email, Scopes.Profile, Scopes.Roles);
             if (builder.Environment.IsDevelopment())
             {
                 // Disable Payload Encryption in JWTs
@@ -51,14 +54,21 @@ public static class Extensions
                 options.AddDevelopmentEncryptionCertificate().AddDevelopmentSigningCertificate();
             }
             options.UseAspNetCore().EnableTokenEndpointPassthrough();
+        })
+        .AddValidation(options =>
+        {
+            options.UseLocalServer();
+            options.UseAspNetCore();
         });
 
+        builder.Services.AddAuthentication(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
+        builder.Services.AddAuthorization();
+
         string? connectionString = builder.Configuration.GetConnectionString(connectionName);
-        Assembly assembly = Assembly.GetExecutingAssembly();
 
         builder.Services.AddDbContext<T>(options =>
         {
-            options.UseNpgsql(connectionString, m => m.MigrationsAssembly(assembly.FullName));
+            options.UseNpgsql(connectionString, m => m.MigrationsAssembly(dbContextAssembly.FullName));
             options.UseOpenIddict();
         });
     }

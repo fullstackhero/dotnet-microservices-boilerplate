@@ -1,4 +1,4 @@
-﻿using FluentPOS.Auth.Api.Extensions;
+﻿using FluentPOS.Identity.Api.Extensions;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -7,7 +7,7 @@ using OpenIddict.Server.AspNetCore;
 using System.Security.Claims;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace FluentPOS.Auth.Api.Controllers;
+namespace FluentPOS.Identity.Api.Controllers;
 
 [ApiController]
 public class TokensController : ControllerBase

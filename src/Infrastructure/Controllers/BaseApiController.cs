@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace FSH.Microservices.Infrastructure.Controllers;
 
 [ApiController]
-[Authorize]
+[Route("api/[controller]")]
 public class BaseApiController : ControllerBase
 {
     private ISender _mediator = null!;

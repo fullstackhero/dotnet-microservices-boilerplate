@@ -8,7 +8,7 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-04-27T16:23:27.261Z",
-    "modified": "2023-04-27T16:28:06.764Z",
+    "modified": "2023-04-29T10:22:15.196Z",
     "headers": [
       {
         "name": "Content-Type",
@@ -125,6 +125,25 @@
     "modified": "2023-04-27T16:30:03.087Z",
     "headers": [],
     "params": [],
+    "tests": []
+  },
+  {
+    "_id": "44290d95-2e77-461b-adc4-2062052b3770",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "eaf54ff4-b545-4688-b323-87d0277ad3b3",
+    "name": "register",
+    "url": "{{auth_service}}/api/users",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2023-04-29T09:42:38.186Z",
+    "modified": "2023-04-29T10:20:33.629Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"userName\":\"mukesh.murugan\",\n  \"email\":\"mukesh@cwm.com\",\n  \"password\":\"123P@$$word!\"\n}",
+      "form": []
+    },
     "tests": []
   }
 ]

@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using OpenIddict.Abstractions;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace FluentPOS.Auth.Infrastructure.Persistence;
+namespace FluentPOS.Identity.Infrastructure.Persistence;
 
 public class SeedClientsAndScopes : IHostedService
 {
@@ -15,7 +15,7 @@ public class SeedClientsAndScopes : IHostedService
     {
         await using var scope = _serviceProvider.CreateAsyncScope();
 
-        var context = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
+        var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
         await context.Database.EnsureCreatedAsync();
 
         var manager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
@@ -26,6 +26,7 @@ public class SeedClientsAndScopes : IHostedService
             {
                 ClientId = Constants.Client,
                 ClientSecret = Constants.ClientSecret,
+                DisplayName = Constants.ClientDisplayName,
                 Permissions =
                 {
                     Permissions.Endpoints.Token,

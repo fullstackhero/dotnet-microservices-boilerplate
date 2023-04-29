@@ -18,6 +18,5 @@ var app = builder.Build();
 app.UseInfrastructure(builder.Configuration, builder.Environment);
 app.UseExceptionMiddleware();
 app.UseHttpsRedirection();
-app.UseAuthorization();
 app.MapControllers();
 app.Run();

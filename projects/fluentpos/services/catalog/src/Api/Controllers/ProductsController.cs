@@ -5,22 +5,20 @@ using FSH.Microservices.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FluentPos.Catalog.Api.Controllers;
-[Route("api/[controller]")]
-[ApiController]
 
 public class ProductsController : BaseApiController
 {
-    [HttpPost(Name = "AddProductAsync")]
+    [HttpPost(Name = nameof(AddProductAsync))]
     [ProducesResponseType(201, Type = typeof(ProductDto))]
     public async Task<IActionResult> AddProductAsync(AddProductDto request)
     {
         var command = new AddProduct.Command(request);
         var commandResponse = await Mediator.Send(command);
 
-        return CreatedAtRoute("AddProductAsync", commandResponse);
+        return CreatedAtRoute(nameof(GetProductAsync), new { commandResponse.Id }, commandResponse);
     }
 
-    [HttpGet("{id:guid}", Name = "GetProductAsync")]
+    [HttpGet("{id:guid}", Name = nameof(GetProductAsync))]
     [ProducesResponseType(200, Type = typeof(ProductDetailsDto))]
     public async Task<IActionResult> GetProductAsync(Guid id)
     {
@@ -30,7 +28,7 @@ public class ProductsController : BaseApiController
         return Ok(queryResponse);
     }
 
-    [HttpGet(Name = "GetProductsAsync")]
+    [HttpGet(Name = nameof(GetProductsAsync))]
     [ProducesResponseType(200, Type = typeof(PagedList<ProductDto>))]
     public async Task<IActionResult> GetProductsAsync([FromQuery] ProductsParametersDto parameters)
     {
@@ -40,7 +38,7 @@ public class ProductsController : BaseApiController
         return Ok(queryResponse);
     }
 
-    [HttpDelete("{id:guid}", Name = "DeleteProductsAsync")]
+    [HttpDelete("{id:guid}", Name = nameof(DeleteProductsAsync))]
     [ProducesResponseType(204)]
     public async Task<IActionResult> DeleteProductsAsync(Guid id)
     {
@@ -50,7 +48,7 @@ public class ProductsController : BaseApiController
         return NoContent();
     }
 
-    [HttpPut("{id:guid}", Name = "UpdateProductsAsync")]
+    [HttpPut("{id:guid}", Name = nameof(UpdateProductsAsync))]
     [ProducesResponseType(204)]
     public async Task<IActionResult> UpdateProductsAsync(Guid id, UpdateProductDto updateProductDto)
     {
