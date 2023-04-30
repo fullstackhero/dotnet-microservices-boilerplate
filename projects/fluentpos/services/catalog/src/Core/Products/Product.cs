@@ -1,4 +1,5 @@
 ﻿using FluentPos.Catalog.Core.Products.Dtos;
+using FluentPos.Shared.Events.Catalog;
 using FSH.Microservices.Core.Domain;
 using System.Text.RegularExpressions;
 
@@ -44,13 +45,8 @@ public class Product : BaseEntity
             Price = productDto.Price
         };
 
-        //product.AddDomainEvent(new ProductCreatedEvent
-        //{
-        //    Id = product.Id,
-        //    Name = product.Name,
-        //    Quantity = product.Quantity,
-        //    Price = product.Price
-        //});
+        var @event = new ProductCreatedEvent(product.Id, product.Name);
+        product.AddDomainEvent(@event);
 
         return product;
     }

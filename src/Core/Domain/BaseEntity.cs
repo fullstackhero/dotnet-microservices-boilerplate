@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using FSH.Microservices.Core.Events;
+using MassTransit;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FSH.Microservices.Core.Domain;
@@ -16,7 +17,9 @@ public abstract class BaseEntity<TId> : IBaseEntity<TId>
     public string? LastModifiedBy { get; private set; }
     public bool IsDeleted { get; private set; }
     [NotMapped]
-    public List<DomainEvent> DomainEvents { get; } = new List<DomainEvent>();
+    private readonly List<IDomainEvent> _domainEvents = new();
+    [NotMapped]
+    public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
     public void UpdateIsDeleted(bool isDeleted)
     {
         IsDeleted = isDeleted;
@@ -26,8 +29,15 @@ public abstract class BaseEntity<TId> : IBaseEntity<TId>
         LastModifiedOn = lastModifiedOn;
         LastModifiedBy = lastModifiedBy;
     }
-    public void AddDomainEvent(DomainEvent @event)
+    public void AddDomainEvent(IDomainEvent @event)
     {
-        DomainEvents.Add(@event);
+        _domainEvents.Add(@event);
+    }
+
+    public IDomainEvent[] ClearDomainEvents()
+    {
+        var dequeuedEvents = _domainEvents.ToArray();
+        _domainEvents.Clear();
+        return dequeuedEvents;
     }
 }

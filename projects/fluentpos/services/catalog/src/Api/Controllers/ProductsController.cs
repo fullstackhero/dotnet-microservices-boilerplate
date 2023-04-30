@@ -8,6 +8,14 @@ namespace FluentPos.Catalog.Api.Controllers;
 
 public class ProductsController : BaseApiController
 {
+    private readonly ILogger<ProductsController> _logger;
+    private const string PubSubName = "pubsub";
+
+    public ProductsController(ILogger<ProductsController> logger)
+    {
+        _logger = logger;
+    }
+
     [HttpPost(Name = nameof(AddProductAsync))]
     [ProducesResponseType(201, Type = typeof(ProductDto))]
     public async Task<IActionResult> AddProductAsync(AddProductDto request)

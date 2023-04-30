@@ -1,5 +1,6 @@
 ﻿using FluentPos.Catalog.Core.Products.Dtos;
 using FluentValidation;
+using FSH.Microservices.Core.Events;
 using MapsterMapper;
 using MediatR;
 
@@ -44,17 +45,23 @@ public static class AddProduct
     {
         private readonly IProductRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IEventBus _eventBus;
 
-        public Handler(IProductRepository repository, IMapper mapper)
+        public Handler(IProductRepository repository, IMapper mapper, IEventBus eventBus)
         {
             _repository = repository;
             _mapper = mapper;
+            _eventBus = eventBus;
         }
 
         public async Task<ProductDto> Handle(Command request, CancellationToken cancellationToken)
         {
             var productToAdd = Product.Create(request.AddProductDto);
             await _repository.AddAsync(productToAdd);
+            foreach (var @event in productToAdd.DomainEvents)
+            {
+                await _eventBus.PublishAsync(@event);
+            }
             return _mapper.Map<ProductDto>(productToAdd);
         }
     }

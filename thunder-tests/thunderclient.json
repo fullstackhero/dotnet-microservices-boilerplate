@@ -84,12 +84,12 @@
     "method": "POST",
     "sortNum": 40000,
     "created": "2023-04-27T16:23:27.264Z",
-    "modified": "2023-04-27T16:28:40.195Z",
+    "modified": "2023-04-29T18:38:21.706Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\":\"Crucial DDR4 32GB\",\n    \"details\":\"Crucial DDR4 32GB\",\n    \"code\": \"CD3201\",\n    \"cost\":6000,\n    \"price\":7000\n}",
+      "raw": "{\n    \"name\":\"Crucial DDR4 32GB\",\n    \"details\":\"Crucial DDR4 32GB\",\n    \"code\": \"CD3207\",\n    \"cost\":6000,\n    \"price\":7000\n}",
       "form": []
     },
     "tests": []

@@ -1,0 +1,27 @@
+name: fluentpos
+containerEngine: docker
+
+extensions:
+  - name: dapr
+    log-level: debug
+    components-path: "./dapr/components"
+
+services:
+  - name: identity
+    project: services/identity/src/Api/Api.csproj
+    bindings:
+      - port: 7001
+        name:  secure
+        protocol: https
+      - port: 5001
+        name:  non-secure
+        protocol: http
+  - name: catalog
+    project: services/catalog/src/Api/Api.csproj
+    bindings:
+      - port: 7003
+        name:  secure
+        protocol: https
+      - port: 5003
+        name:  non-secure
+        protocol: http

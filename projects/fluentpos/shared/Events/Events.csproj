@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+      <RootNamespace>FluentPos.Shared.Events</RootNamespace>
+      <AssemblyName>FluentPos.Shared.Events</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Core\FSH.Microservices.Core.csproj" />
+  </ItemGroup>
+
+</Project>
