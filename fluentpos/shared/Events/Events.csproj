@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Core\FSH.Microservices.Core.csproj" />
+    <ProjectReference Include="..\..\..\framework\Core\FSH.Microservices.Core.csproj" />
   </ItemGroup>
 
 </Project>
