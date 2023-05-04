@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace FSH.Microservices.Infrastructure.Behaviors;
+namespace FSH.Framework.Infrastructure.Behaviors;
 public static class Extensions
 {
     public static IServiceCollection AddBehaviors(this IServiceCollection services, Assembly assemblyContainingValidators)

@@ -1,6 +1,6 @@
-﻿using FSH.Microservices.Core.Services;
+﻿using FSH.Framework.Core.Services;
 
-namespace FSH.Microservices.Core.Serializers;
+namespace FSH.Framework.Core.Serializers;
 
 public interface ISerializerService : ITransientService
 {

@@ -1,4 +1,4 @@
-﻿using FSH.Microservices.Infrastructure.Options;
+﻿using FSH.Framework.Infrastructure.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +8,7 @@ using OpenIddict.Validation.AspNetCore;
 using System.Reflection;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace FSH.Microservices.Infrastructure.Auth.OpenIddict;
+namespace FSH.Framework.Infrastructure.Auth.OpenIddict;
 
 public static class Extensions
 {

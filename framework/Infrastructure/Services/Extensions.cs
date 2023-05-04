@@ -1,7 +1,7 @@
-﻿using FSH.Microservices.Core.Services;
+﻿using FSH.Framework.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FSH.Microservices.Infrastructure.Services;
+namespace FSH.Framework.Infrastructure.Services;
 
 internal static class Extensions
 {

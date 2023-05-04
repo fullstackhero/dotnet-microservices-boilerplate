@@ -1,8 +1,8 @@
 ﻿using Dapr.Client;
-using FSH.Microservices.Core.Events;
+using FSH.Framework.Core.Events;
 using Microsoft.Extensions.Logging;
 
-namespace FSH.Microservices.Infrastructure.Dapr;
+namespace FSH.Framework.Infrastructure.Dapr;
 internal class DaprEventBus : IEventBus
 {
     private readonly DaprClient _daprClient;
@@ -14,15 +14,14 @@ internal class DaprEventBus : IEventBus
         _logger = logger;
     }
 
-    public async Task PublishAsync<TEvent>(TEvent @event, string[] topics = default!, CancellationToken token = default) where TEvent : IEvent
+    public async Task PublishAsync<TEvent>(TEvent @event, string pubSubName = default!, CancellationToken token = default) where TEvent : IEvent
     {
-        //Assume single topic
+        if (string.IsNullOrEmpty(pubSubName)) pubSubName = DaprConstants.RMQPubSub;
         string topicName = @event.GetType().Name;
-
-        _logger.LogInformation("Publishing event {@Event} to {PubsubName}.{TopicName}", @event, DaprConstants.PubSubName, topicName);
+        _logger.LogInformation("Publishing event {@Event} to {PubsubName}.{TopicName}", @event, pubSubName, topicName);
         try
         {
-            await _daprClient.PublishEventAsync(DaprConstants.PubSubName, topicName, (object)@event, token);
+            await _daprClient.PublishEventAsync(pubSubName, topicName, (object)@event, token);
         }
         catch (Exception ex)
         {

@@ -1,11 +1,11 @@
-﻿using FSH.Microservices.Core.Exceptions;
-using FSH.Microservices.Core.Serializers;
+﻿using FSH.Framework.Core.Exceptions;
+using FSH.Framework.Core.Serializers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace FSH.Microservices.Infrastructure.Middlewares;
+namespace FSH.Framework.Infrastructure.Middlewares;
 
 internal class ExceptionMiddleware : IMiddleware
 {

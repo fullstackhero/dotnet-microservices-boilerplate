@@ -1,10 +1,10 @@
-﻿using FSH.Microservices.Core.Database;
-using FSH.Microservices.Core.Domain;
-using FSH.Microservices.Core.Services;
+﻿using FSH.Framework.Core.Database;
+using FSH.Framework.Core.Domain;
+using FSH.Framework.Core.Services;
 using MongoDB.Driver;
 using System.Linq.Expressions;
 
-namespace FSH.Microservices.Persistence.NoSQL.Mongo;
+namespace FSH.Framework.Persistence.NoSQL.Mongo;
 public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where TDocument : class, IBaseEntity<TId>
 {
     private readonly IMongoDbContext _context;

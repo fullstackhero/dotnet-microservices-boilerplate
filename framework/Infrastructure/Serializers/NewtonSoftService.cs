@@ -1,9 +1,9 @@
-﻿using FSH.Microservices.Core.Serializers;
+﻿using FSH.Framework.Core.Serializers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace FSH.Microservices.Infrastructure.Serializers;
+namespace FSH.Framework.Infrastructure.Serializers;
 
 public class NewtonSoftService : ISerializerService
 {

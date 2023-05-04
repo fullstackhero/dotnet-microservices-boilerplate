@@ -1,4 +1,4 @@
-﻿namespace FSH.Microservices.Core.Events;
+﻿namespace FSH.Framework.Core.Events;
 public interface IIntegrationEvent : IEvent
 {
 }

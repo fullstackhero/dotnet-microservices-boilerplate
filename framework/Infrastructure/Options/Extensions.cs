@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FSH.Microservices.Infrastructure.Options;
+namespace FSH.Framework.Infrastructure.Options;
 
 public static class Extensions
 {

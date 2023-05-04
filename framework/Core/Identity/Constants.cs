@@ -1,4 +1,4 @@
-﻿namespace FSH.Microservices.Core.Identity;
+﻿namespace FSH.Framework.Core.Identity;
 public static class RoleConstants
 {
     public const string AdministratorRole = "Administrator";

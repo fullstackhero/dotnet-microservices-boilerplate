@@ -1,9 +1,9 @@
-﻿using FSH.Microservices.Core.Caching;
+﻿using FSH.Framework.Core.Caching;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace FSH.Microservices.Infrastructure.Caching;
+namespace FSH.Framework.Infrastructure.Caching;
 
 public class InMemoryCacheService : ICacheService
 {

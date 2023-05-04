@@ -1,4 +1,4 @@
-﻿namespace FSH.Microservices.Core.Pagination;
+﻿namespace FSH.Framework.Core.Pagination;
 public abstract class PaginationParameters
 {
     internal virtual int MaxPageSize { get; } = 20;

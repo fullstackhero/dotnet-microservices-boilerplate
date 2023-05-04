@@ -1,5 +1,5 @@
-﻿namespace FSH.Microservices.Infrastructure.Dapr;
+﻿namespace FSH.Framework.Infrastructure.Dapr;
 public static class DaprConstants
 {
-    public const string PubSubName = "fluentpos-pubsub";
+    public const string RMQPubSub = "rabbitmq";
 }

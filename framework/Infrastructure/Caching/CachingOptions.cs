@@ -1,6 +1,6 @@
-﻿using FSH.Microservices.Infrastructure.Options;
+﻿using FSH.Framework.Infrastructure.Options;
 
-namespace FSH.Microservices.Infrastructure.Caching;
+namespace FSH.Framework.Infrastructure.Caching;
 public class CachingOptions : IOptionsRoot
 {
     public bool EnableDistributedCaching { get; set; } = false;

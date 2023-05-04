@@ -1,6 +1,6 @@
-﻿using FSH.Microservices.Infrastructure.Options;
+﻿using FSH.Framework.Infrastructure.Options;
 
-namespace FSH.Microservices.Infrastructure.Swagger
+namespace FSH.Framework.Infrastructure.Swagger
 {
     public class SwaggerOptions : IOptionsRoot
     {

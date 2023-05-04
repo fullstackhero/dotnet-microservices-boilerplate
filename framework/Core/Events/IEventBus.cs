@@ -1,5 +1,5 @@
-﻿namespace FSH.Microservices.Core.Events;
+﻿namespace FSH.Framework.Core.Events;
 public interface IEventBus
 {
-    Task PublishAsync<TEvent>(TEvent @event, string[] topics = default!, CancellationToken token = default) where TEvent : IEvent;
+    Task PublishAsync<TEvent>(TEvent @event, string pubSubName = default!, CancellationToken token = default) where TEvent : IEvent;
 }

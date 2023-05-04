@@ -1,4 +1,4 @@
-﻿using FSH.Microservices.Core.Domain;
+﻿using FSH.Framework.Core.Domain;
 
 namespace FluentPos.Shared.Events.Catalog;
 

@@ -1,8 +1,8 @@
-﻿using FSH.Microservices.Core.Events;
+﻿using FSH.Framework.Core.Events;
 using MassTransit;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FSH.Microservices.Core.Domain;
+namespace FSH.Framework.Core.Domain;
 public abstract class BaseEntity : BaseEntity<DefaultIdType>
 {
     protected BaseEntity() => Id = NewId.Next().ToGuid();

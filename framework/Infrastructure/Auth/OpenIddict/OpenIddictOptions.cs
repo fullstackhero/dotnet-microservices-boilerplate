@@ -1,7 +1,7 @@
-﻿using FSH.Microservices.Infrastructure.Options;
+﻿using FSH.Framework.Infrastructure.Options;
 using System.ComponentModel.DataAnnotations;
 
-namespace FSH.Microservices.Infrastructure.Auth.OpenIddict;
+namespace FSH.Framework.Infrastructure.Auth.OpenIddict;
 
 public class OpenIddictOptions : IOptionsRoot
 {

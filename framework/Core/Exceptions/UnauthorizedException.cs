@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace FSH.Microservices.Core.Exceptions;
+namespace FSH.Framework.Core.Exceptions;
 
 public class UnauthorizedException : CustomException
 {

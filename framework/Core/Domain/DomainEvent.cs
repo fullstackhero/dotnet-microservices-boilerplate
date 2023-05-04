@@ -1,6 +1,6 @@
-﻿using FSH.Microservices.Core.Events;
+﻿using FSH.Framework.Core.Events;
 
-namespace FSH.Microservices.Core.Domain;
+namespace FSH.Framework.Core.Domain;
 public abstract class DomainEvent : IDomainEvent
 {
     public Guid Id { get; }

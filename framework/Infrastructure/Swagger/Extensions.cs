@@ -1,4 +1,4 @@
-﻿using FSH.Microservices.Infrastructure.Options;
+﻿using FSH.Framework.Infrastructure.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace FSH.Microservices.Infrastructure.Swagger
+namespace FSH.Framework.Infrastructure.Swagger
 {
     internal static class Extensions
     {

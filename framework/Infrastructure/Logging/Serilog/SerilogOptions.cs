@@ -1,6 +1,6 @@
-﻿using FSH.Microservices.Infrastructure.Options;
+﻿using FSH.Framework.Infrastructure.Options;
 
-namespace FSH.Microservices.Infrastructure.Logging.Serilog;
+namespace FSH.Framework.Infrastructure.Logging.Serilog;
 
 public class SerilogOptions : IOptionsRoot
 {

@@ -1,4 +1,4 @@
-﻿namespace FSH.Microservices.Core.Domain;
+﻿namespace FSH.Framework.Core.Domain;
 
 public interface IBaseEntity
 {

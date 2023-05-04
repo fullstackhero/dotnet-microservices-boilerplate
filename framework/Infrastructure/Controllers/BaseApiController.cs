@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FSH.Microservices.Infrastructure.Controllers;
+namespace FSH.Framework.Infrastructure.Controllers;
 
 [ApiController]
 [Authorize]

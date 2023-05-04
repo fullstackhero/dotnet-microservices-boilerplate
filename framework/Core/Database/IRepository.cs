@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace FSH.Microservices.Core.Database;
+namespace FSH.Framework.Core.Database;
 
 public interface IRepository<TDocument, in TId> : IReadRepository<TDocument, TId>, IWriteRepository<TDocument, TId>, IDisposable where TDocument : class
 {

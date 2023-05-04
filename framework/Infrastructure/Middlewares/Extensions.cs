@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FSH.Microservices.Infrastructure.Middlewares;
+namespace FSH.Framework.Infrastructure.Middlewares;
 
 public static class Extensions
 {

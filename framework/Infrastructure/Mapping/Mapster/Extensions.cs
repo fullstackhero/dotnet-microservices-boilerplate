@@ -3,7 +3,7 @@ using MapsterMapper;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace FSH.Microservices.Infrastructure.Mapping.Mapster;
+namespace FSH.Framework.Infrastructure.Mapping.Mapster;
 public static class Extensions
 {
     public static IServiceCollection AddMapsterExtension(this IServiceCollection services, Assembly coreAssembly)

@@ -1,9 +1,9 @@
-﻿using FSH.Microservices.Core.Database;
-using FSH.Microservices.Infrastructure.Options;
+﻿using FSH.Framework.Core.Database;
+using FSH.Framework.Infrastructure.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FSH.Microservices.Persistence.NoSQL.Mongo;
+namespace FSH.Framework.Persistence.NoSQL.Mongo;
 public static class Extensions
 {
     public static IServiceCollection AddMongoDbContext<TContext>(

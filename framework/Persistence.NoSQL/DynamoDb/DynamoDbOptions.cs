@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FSH.Microservices.Persistence.NoSQL.DynamoDb;
+namespace FSH.Framework.Persistence.NoSQL.DynamoDb;
 internal class DynamoDbOptions
 {
 }

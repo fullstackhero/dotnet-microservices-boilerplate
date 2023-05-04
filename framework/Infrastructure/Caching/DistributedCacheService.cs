@@ -1,10 +1,10 @@
-﻿using FSH.Microservices.Core.Caching;
-using FSH.Microservices.Core.Serializers;
+﻿using FSH.Framework.Core.Caching;
+using FSH.Framework.Core.Serializers;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using System.Text;
 
-namespace FSH.Microservices.Infrastructure.Caching
+namespace FSH.Framework.Infrastructure.Caching
 {
     internal class DistributedCacheService : ICacheService
     {

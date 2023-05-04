@@ -1,7 +1,7 @@
-﻿using FSH.Microservices.Core.Events;
+﻿using FSH.Framework.Core.Events;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FSH.Microservices.Infrastructure.Dapr;
+namespace FSH.Framework.Infrastructure.Dapr;
 public static class Extensions
 {
     internal static IServiceCollection AddDaprBuildingBlocks(this IServiceCollection services)

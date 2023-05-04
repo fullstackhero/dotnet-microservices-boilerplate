@@ -1,6 +1,6 @@
-﻿using FSH.Microservices.Core.Services;
+﻿using FSH.Framework.Core.Services;
 
-namespace FSH.Microservices.Infrastructure.Services;
+namespace FSH.Framework.Infrastructure.Services;
 
 public class DateTimeService : IDateTimeService
 {

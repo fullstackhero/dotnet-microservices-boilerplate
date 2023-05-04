@@ -1,20 +1,20 @@
 ﻿using FluentValidation;
-using FSH.Microservices.Infrastructure.Behaviors;
-using FSH.Microservices.Infrastructure.Caching;
-using FSH.Microservices.Infrastructure.Dapr;
-using FSH.Microservices.Infrastructure.Logging.Serilog;
-using FSH.Microservices.Infrastructure.Mapping.Mapster;
-using FSH.Microservices.Infrastructure.Middlewares;
-using FSH.Microservices.Infrastructure.Options;
-using FSH.Microservices.Infrastructure.Services;
-using FSH.Microservices.Infrastructure.Swagger;
+using FSH.Framework.Infrastructure.Behaviors;
+using FSH.Framework.Infrastructure.Caching;
+using FSH.Framework.Infrastructure.Dapr;
+using FSH.Framework.Infrastructure.Logging.Serilog;
+using FSH.Framework.Infrastructure.Mapping.Mapster;
+using FSH.Framework.Infrastructure.Middlewares;
+using FSH.Framework.Infrastructure.Options;
+using FSH.Framework.Infrastructure.Services;
+using FSH.Framework.Infrastructure.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace FSH.Microservices.Infrastructure;
+namespace FSH.Framework.Infrastructure;
 
 public static class Extensions
 {

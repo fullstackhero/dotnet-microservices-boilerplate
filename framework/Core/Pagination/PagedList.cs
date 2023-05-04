@@ -1,4 +1,4 @@
-﻿namespace FSH.Microservices.Core.Pagination;
+﻿namespace FSH.Framework.Core.Pagination;
 public class PagedList<T>
 {
     public IList<T> Data { get; }

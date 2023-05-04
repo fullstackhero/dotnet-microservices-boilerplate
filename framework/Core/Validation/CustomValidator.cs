@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace FSH.Microservices.Core.Validation;
+namespace FSH.Framework.Core.Validation;
 public class CustomValidator<T> : AbstractValidator<T>
 {
 }

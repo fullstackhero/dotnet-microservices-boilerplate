@@ -1,6 +1,6 @@
-﻿using FSH.Microservices.Infrastructure.Options;
+﻿using FSH.Framework.Infrastructure.Options;
 
-namespace FSH.Microservices.Persistence.NoSQL.Mongo;
+namespace FSH.Framework.Persistence.NoSQL.Mongo;
 
 public class MongoOptions : IOptionsRoot
 {

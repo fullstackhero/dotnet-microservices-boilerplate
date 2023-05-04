@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace FSH.Microservices.Core.Events;
+namespace FSH.Framework.Core.Events;
 public interface IEvent : INotification
 {
     DefaultIdType Id { get; }

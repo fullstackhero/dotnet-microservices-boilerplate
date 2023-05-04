@@ -1,4 +1,4 @@
-﻿using FSH.Microservices.Infrastructure.Options;
+﻿using FSH.Framework.Infrastructure.Options;
 using Microsoft.AspNetCore.Builder;
 using Serilog;
 using Serilog.Core;
@@ -6,7 +6,7 @@ using Serilog.Events;
 using Serilog.Exceptions;
 using Serilog.Formatting.Compact;
 
-namespace FSH.Microservices.Infrastructure.Logging.Serilog;
+namespace FSH.Framework.Infrastructure.Logging.Serilog;
 
 public static class Extensions
 {

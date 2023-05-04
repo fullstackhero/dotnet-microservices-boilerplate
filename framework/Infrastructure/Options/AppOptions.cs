@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FSH.Microservices.Infrastructure.Options
+namespace FSH.Framework.Infrastructure.Options
 {
     public class AppOptions : IOptionsRoot
     {

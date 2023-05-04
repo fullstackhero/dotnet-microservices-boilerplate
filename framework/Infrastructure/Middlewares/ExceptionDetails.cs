@@ -1,8 +1,8 @@
-﻿using FSH.Microservices.Core.Exceptions;
+﻿using FSH.Framework.Core.Exceptions;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Net;
 
-namespace FSH.Microservices.Infrastructure.Middlewares;
+namespace FSH.Framework.Infrastructure.Middlewares;
 
 public class ExceptionDetails
 {
