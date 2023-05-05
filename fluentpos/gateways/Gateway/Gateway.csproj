@@ -12,4 +12,10 @@
       <ProjectReference Include="..\..\..\framework\Core\FSH.Framework.Core.csproj" />
       <ProjectReference Include="..\..\..\framework\Infrastructure\FSH.Framework.Infrastructure.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.4.0" />
+    </ItemGroup>
+    <PropertyGroup>
+        <ContainerImageName>fluentpos.gateway</ContainerImageName>
+    </PropertyGroup>
 </Project>
