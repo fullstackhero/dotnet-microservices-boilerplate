@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FSH.Framework.Core.Exceptions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FSH.Framework.Infrastructure.Options;
@@ -8,9 +9,7 @@ public static class Extensions
     public static T LoadOptions<T>(this IConfiguration configuration, string sectionName) where T : IOptionsRoot
     {
         var options = configuration.GetSection(sectionName).Get<T>();
-        // handle case where options is null
-        // create a new instance and returns the default class
-        if (options == null) return (T)Activator.CreateInstance(typeof(T))!;
+        if (options == null) throw new ConfigurationMissingException(sectionName);
         return options;
     }
 
