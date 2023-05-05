@@ -19,7 +19,6 @@ public class SeedClientsAndScopes : IHostedService
         await context.Database.EnsureCreatedAsync();
 
         var manager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
-
         if (await manager.FindByClientIdAsync(Constants.Client) is null)
         {
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
@@ -35,9 +34,23 @@ public class SeedClientsAndScopes : IHostedService
                     Permissions.Scopes.Email,
                     Permissions.Scopes.Profile,
                     Permissions.Scopes.Roles,
+                    Permissions.Prefixes.Scope + Constants.GatewayScope,
                     Permissions.Prefixes.Scope + Constants.CatalogScope
                 }
             }); ;
+        }
+
+        if (await manager.FindByClientIdAsync(Constants.GatewayResourceServer) is null)
+        {
+            await manager.CreateAsync(new OpenIddictApplicationDescriptor
+            {
+                ClientId = Constants.GatewayResourceServer,
+                ClientSecret = Constants.GatewayResourceServerSecret,
+                Permissions =
+                {
+                    Permissions.Endpoints.Introspection
+                }
+            });
         }
 
         if (await manager.FindByClientIdAsync(Constants.CatalogResourceServer) is null)
@@ -54,6 +67,18 @@ public class SeedClientsAndScopes : IHostedService
         }
 
         var scopesManager = scope.ServiceProvider.GetRequiredService<IOpenIddictScopeManager>();
+        if (await scopesManager.FindByNameAsync(Constants.GatewayScope) is null)
+        {
+            await scopesManager.CreateAsync(new OpenIddictScopeDescriptor
+            {
+                Name = Constants.GatewayScope,
+                Resources =
+                {
+                    Constants.CatalogResourceServer,
+                    Constants.GatewayResourceServer
+                }
+            });
+        }
         if (await scopesManager.FindByNameAsync(Constants.CatalogScope) is null)
         {
             await scopesManager.CreateAsync(new OpenIddictScopeDescriptor

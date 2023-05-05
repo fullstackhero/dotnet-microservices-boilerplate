@@ -16,6 +16,15 @@ services:
       - port: 5001
         name:  non-secure
         protocol: http
+  - name: gateway
+    project: gateways/Gateway/Gateway.csproj
+    bindings:
+      - port: 7002
+        name:  secure
+        protocol: https
+      - port: 5002
+        name:  non-secure
+        protocol: http
   - name: catalog
     project: services/catalog/Api/Api.csproj
     bindings:

@@ -8,7 +8,7 @@ namespace FSH.Framework.Infrastructure.Controllers;
 
 [ApiController]
 [Authorize]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class BaseApiController : ControllerBase
 {
     private ISender _mediator = null!;

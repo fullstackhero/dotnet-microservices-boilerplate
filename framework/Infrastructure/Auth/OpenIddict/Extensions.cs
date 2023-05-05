@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using OpenIddict.Validation.AspNetCore;
 using System.Reflection;
 using static OpenIddict.Abstractions.OpenIddictConstants;
@@ -61,11 +62,19 @@ public static class Extensions
         builder.Services.AddAuthorization();
 
         string? connectionString = builder.Configuration.GetConnectionString(connectionName);
-        if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
+        if (!builder.Environment.IsDevelopment())
+            if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
 
         builder.Services.AddDbContext<T>(options =>
         {
-            options.UseNpgsql(connectionString, m => m.MigrationsAssembly(dbContextAssembly.FullName));
+            if (builder.Environment.IsDevelopment())
+            {
+                options.UseInMemoryDatabase("authDb");
+            }
+            else
+            {
+                options.UseNpgsql(connectionString, m => m.MigrationsAssembly(dbContextAssembly.FullName));
+            }
             options.UseOpenIddict();
         });
     }

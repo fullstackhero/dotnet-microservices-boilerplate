@@ -53,6 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateways", "gateways", "{B5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "terraform", "terraform", "{CB3E1603-E0AE-4A72-A70A-26407928FD14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "gateways\Gateway\Gateway.csproj", "{EF9E1169-389E-4524-AD55-C70E29E1A600}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{A9D2FFCF-D961-44C2-B9F6-96BE0E650B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9D2FFCF-D961-44C2-B9F6-96BE0E650B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9D2FFCF-D961-44C2-B9F6-96BE0E650B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF9E1169-389E-4524-AD55-C70E29E1A600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF9E1169-389E-4524-AD55-C70E29E1A600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF9E1169-389E-4524-AD55-C70E29E1A600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF9E1169-389E-4524-AD55-C70E29E1A600}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,6 +130,7 @@ Global
 		{3E71369A-E973-44B9-A5A3-5E4558E549C7} = {858EF293-2379-450B-B452-C8829667CF0A}
 		{B5547F19-C409-4E67-BDA7-AFD64E1AE9C7} = {858EF293-2379-450B-B452-C8829667CF0A}
 		{CB3E1603-E0AE-4A72-A70A-26407928FD14} = {858EF293-2379-450B-B452-C8829667CF0A}
+		{EF9E1169-389E-4524-AD55-C70E29E1A600} = {B5547F19-C409-4E67-BDA7-AFD64E1AE9C7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D2BAFB8-DB68-49E6-B4A9-8CC3E7F0DF2C}
