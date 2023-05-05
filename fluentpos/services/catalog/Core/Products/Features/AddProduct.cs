@@ -37,7 +37,7 @@ public static class AddProduct
                 .NotEmpty()
                 .MaximumLength(75)
                 .WithName("Code")
-                .MustAsync(async (code, ct) => !await _repository.ExistsAsync(p => p.Code == code))
+                .MustAsync(async (code, ct) => !await _repository.ExistsAsync(p => p.Code == code, ct))
                 .WithMessage((_, code) => $"Product with Code '{code}' already Exists.");
         }
     }
@@ -57,10 +57,10 @@ public static class AddProduct
         public async Task<ProductDto> Handle(Command request, CancellationToken cancellationToken)
         {
             var productToAdd = Product.Create(request.AddProductDto);
-            await _repository.AddAsync(productToAdd);
+            await _repository.AddAsync(productToAdd, cancellationToken);
             foreach (var @event in productToAdd.DomainEvents)
             {
-                await _eventBus.PublishAsync(@event);
+                await _eventBus.PublishAsync(@event, token: cancellationToken);
             }
             return _mapper.Map<ProductDto>(productToAdd);
         }

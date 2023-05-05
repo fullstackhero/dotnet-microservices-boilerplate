@@ -6,9 +6,9 @@
     "name": "token",
     "url": "{{auth_service}}/connect/token",
     "method": "POST",
-    "sortNum": 10000,
+    "sortNum": 35000,
     "created": "2023-04-27T16:23:27.261Z",
-    "modified": "2023-04-29T10:22:15.196Z",
+    "modified": "2023-05-05T19:00:21.352Z",
     "headers": [
       {
         "name": "Content-Type",
@@ -144,6 +144,82 @@
       "raw": "{\n  \"userName\":\"mukesh.murugan\",\n  \"email\":\"mukesh@cwm.com\",\n  \"password\":\"123P@$$word!\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "f92c86ab-8574-4371-b090-4c93e0df5f9d",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "7a625064-1e04-4bca-895a-3ab51e8e8f71",
+    "name": "token",
+    "url": "{{gateway_url}}/api/identity/connect/token",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-05-05T19:00:19.591Z",
+    "modified": "2023-05-05T19:01:37.405Z",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "grant_type",
+          "value": "client_credentials"
+        },
+        {
+          "name": "client_id",
+          "value": "console"
+        },
+        {
+          "name": "client_secret",
+          "value": "858b39fd-3908-45cb-ab14-aa58220f6d69"
+        },
+        {
+          "name": "scope",
+          "value": "gateway"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{access_token}}"
+      }
+    ]
+  },
+  {
+    "_id": "df85d61d-7c31-4b98-b3bb-351f8300545b",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "7a625064-1e04-4bca-895a-3ab51e8e8f71",
+    "name": "get-products",
+    "url": "{{gateway_url}}/api/catalog/products/",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-05-05T19:01:46.617Z",
+    "modified": "2023-05-05T19:02:07.259Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ed6de0d7-5eab-462c-9890-3d0616064749",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "7a625064-1e04-4bca-895a-3ab51e8e8f71",
+    "name": "get-product-by-id",
+    "url": "{{gateway_url}}/api/catalog/products/623e0000-3f5a-3c7c-ea5e-08db44707b19",
+    "method": "GET",
+    "sortNum": 15000,
+    "created": "2023-05-05T19:02:22.178Z",
+    "modified": "2023-05-05T19:02:25.287Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

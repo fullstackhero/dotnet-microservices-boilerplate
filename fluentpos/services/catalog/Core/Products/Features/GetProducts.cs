@@ -4,7 +4,7 @@ using MapsterMapper;
 using MediatR;
 
 namespace FluentPos.Catalog.Core.Products.Features;
-public class GetProducts
+public static class GetProducts
 {
     public sealed record Query : IRequest<PagedList<ProductDto>>
     {
@@ -19,12 +19,10 @@ public class GetProducts
     public sealed class Handler : IRequestHandler<Query, PagedList<ProductDto>>
     {
         private readonly IProductRepository _repository;
-        private readonly IMapper _mapper;
 
-        public Handler(IProductRepository repository, IMapper mapper)
+        public Handler(IProductRepository repository)
         {
             _repository = repository;
-            _mapper = mapper;
         }
 
         public async Task<PagedList<ProductDto>> Handle(Query request, CancellationToken cancellationToken)

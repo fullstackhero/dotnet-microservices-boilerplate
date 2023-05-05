@@ -32,8 +32,7 @@ public static class UpdateProduct
 
         public async Task<ProductDto> Handle(Command request, CancellationToken cancellationToken)
         {
-            var productToBeUpdated = await _repository.FindByIdAsync(request.Id, cancellationToken);
-            if (productToBeUpdated == null) throw new ProductNotFoundException(request.Id);
+            var productToBeUpdated = await _repository.FindByIdAsync(request.Id, cancellationToken) ?? throw new ProductNotFoundException(request.Id);
             productToBeUpdated.Update(request.UpdateProductDto);
             await _repository.UpdateAsync(productToBeUpdated, cancellationToken);
             await _cacheService.RemoveAsync(Product.GetCacheKey(request.Id), cancellationToken);
@@ -41,4 +40,3 @@ public static class UpdateProduct
         }
     }
 }
-

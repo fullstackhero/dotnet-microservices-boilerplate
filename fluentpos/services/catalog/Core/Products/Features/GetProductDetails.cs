@@ -36,8 +36,7 @@ public static class GetProductDetails
             var productDto = await _cache.GetAsync<ProductDetailsDto>(cacheKey, cancellationToken);
             if (productDto == null)
             {
-                var product = await _repository.FindByIdAsync(request.Id, cancellationToken);
-                if (product == null) throw new ProductNotFoundException(request.Id);
+                var product = await _repository.FindByIdAsync(request.Id, cancellationToken) ?? throw new ProductNotFoundException(request.Id);
                 productDto = _mapper.Map<ProductDetailsDto>(product);
                 await _cache.SetAsync(cacheKey, productDto, cancellationToken: cancellationToken);
             }
@@ -45,4 +44,3 @@ public static class GetProductDetails
         }
     }
 }
-

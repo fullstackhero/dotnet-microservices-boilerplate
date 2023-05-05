@@ -16,13 +16,11 @@ public static class DeleteProduct
     public sealed class Handler : IRequestHandler<Command>
     {
         private readonly IProductRepository _repository;
-        private readonly IMapper _mapper;
         private readonly ICacheService _cacheService;
 
-        public Handler(IProductRepository repository, IMapper mapper, ICacheService cacheService)
+        public Handler(IProductRepository repository, ICacheService cacheService)
         {
             _repository = repository;
-            _mapper = mapper;
             _cacheService = cacheService;
         }
 
