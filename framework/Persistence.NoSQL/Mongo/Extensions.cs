@@ -18,7 +18,9 @@ public static class Extensions
         where TContextService : IMongoDbContext
         where TContextImplementation : MongoDbContext, TContextService
     {
-        services.BindValidateReturn<MongoOptions>(configuration);
+        var options = services.BindValidateReturn<MongoOptions>(configuration);
+        if (string.IsNullOrEmpty(options.DatabaseName)) throw new ArgumentNullException(nameof(options.DatabaseName));
+        if (string.IsNullOrEmpty(options.ConnectionString)) throw new ArgumentNullException(nameof(options.ConnectionString));
         services.AddScoped(typeof(TContextService), typeof(TContextImplementation));
         services.AddScoped(typeof(TContextImplementation));
         services.AddScoped<IMongoDbContext>(sp => sp.GetRequiredService<TContextService>());

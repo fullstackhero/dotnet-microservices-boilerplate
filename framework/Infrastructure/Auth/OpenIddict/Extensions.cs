@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using OpenIddict.Validation.AspNetCore;
 using System.Reflection;
 using static OpenIddict.Abstractions.OpenIddictConstants;
@@ -47,12 +46,9 @@ public static class Extensions
                    .SetTokenEndpointUris("/connect/token");
             options.AllowClientCredentialsFlow();
             options.RegisterScopes(Scopes.Email, Scopes.Profile, Scopes.Roles);
-            if (builder.Environment.IsDevelopment())
-            {
-                // Disable Payload Encryption in JWTs
-                options.DisableAccessTokenEncryption();
-                options.AddDevelopmentEncryptionCertificate().AddDevelopmentSigningCertificate();
-            }
+            // Disable Payload Encryption in JWTs
+            options.DisableAccessTokenEncryption();
+            options.AddDevelopmentEncryptionCertificate().AddDevelopmentSigningCertificate();
             options.UseAspNetCore().EnableTokenEndpointPassthrough();
         })
         .AddValidation(options =>
@@ -65,6 +61,7 @@ public static class Extensions
         builder.Services.AddAuthorization();
 
         string? connectionString = builder.Configuration.GetConnectionString(connectionName);
+        if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
 
         builder.Services.AddDbContext<T>(options =>
         {

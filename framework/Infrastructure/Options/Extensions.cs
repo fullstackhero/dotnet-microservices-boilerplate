@@ -7,7 +7,11 @@ public static class Extensions
 {
     public static T LoadOptions<T>(this IConfiguration configuration, string sectionName) where T : IOptionsRoot
     {
-        return configuration.GetSection(sectionName).Get<T>()!;
+        var options = configuration.GetSection(sectionName).Get<T>();
+        // handle case where options is null
+        // create a new instance and returns the default class
+        if (options == null) return (T)Activator.CreateInstance(typeof(T))!;
+        return options;
     }
 
     public static T BindValidateReturn<T>(this IServiceCollection services, IConfiguration configuration) where T : class, IOptionsRoot
