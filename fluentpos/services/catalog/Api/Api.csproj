@@ -17,5 +17,7 @@
     </ItemGroup>
     <PropertyGroup>
         <ContainerImageName>fluentpos.catalog</ContainerImageName>
+        <ContainerImageTags>1.0.0;latest</ContainerImageTags>
+        <PublishProfile>DefaultContainer</PublishProfile>
     </PropertyGroup>
 </Project>

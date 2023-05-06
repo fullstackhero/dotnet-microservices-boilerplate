@@ -1,8 +1,8 @@
-﻿using FluentPOS.Identity.Core.Users;
+﻿using FluentPos.Identity.Core.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace FluentPOS.Identity.Infrastructure.Persistence;
+namespace FluentPos.Identity.Infrastructure.Persistence;
 
 public class AppDbContext : IdentityDbContext<AppUser>
 {

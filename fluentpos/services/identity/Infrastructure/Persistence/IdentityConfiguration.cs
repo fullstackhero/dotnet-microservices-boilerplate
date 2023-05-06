@@ -1,8 +1,8 @@
-﻿using FluentPOS.Identity.Core.Users;
+﻿using FluentPos.Identity.Core.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FluentPOS.Identity.Infrastructure.Persistence;
+namespace FluentPos.Identity.Infrastructure.Persistence;
 internal class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
 {
     public void Configure(EntityTypeBuilder<AppUser> builder)

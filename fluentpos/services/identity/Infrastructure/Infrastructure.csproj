@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-	    <RootNamespace>FluentPOS.Identity.Infrastructure</RootNamespace>
-	    <AssemblyName>FluentPOS.Identity.Infrastructure</AssemblyName>
+	    <RootNamespace>FluentPos.Identity.Infrastructure</RootNamespace>
+	    <AssemblyName>FluentPos.Identity.Infrastructure</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     </PropertyGroup>

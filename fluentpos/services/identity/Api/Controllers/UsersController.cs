@@ -1,10 +1,10 @@
-﻿using FluentPOS.Identity.Core.Users.Dtos;
-using FluentPOS.Identity.Core.Users.Features;
+﻿using FluentPos.Identity.Core.Users.Dtos;
+using FluentPos.Identity.Core.Users.Features;
 using FSH.Framework.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FluentPOS.Identity.Api.Controllers;
+namespace FluentPos.Identity.Api.Controllers;
 
 public class UsersController : BaseApiController
 {

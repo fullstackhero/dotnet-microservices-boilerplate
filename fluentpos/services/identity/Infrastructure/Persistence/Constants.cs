@@ -1,4 +1,4 @@
-﻿namespace FluentPOS.Identity.Infrastructure.Persistence;
+﻿namespace FluentPos.Identity.Infrastructure.Persistence;
 
 public class Constants
 {

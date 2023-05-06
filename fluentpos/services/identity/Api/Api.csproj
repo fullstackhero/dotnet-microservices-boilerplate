@@ -4,8 +4,8 @@
 		<TargetFramework>net7.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<RootNamespace>FluentPOS.Identity.Api</RootNamespace>
-		<AssemblyName>FluentPOS.Identity.Api</AssemblyName>
+		<RootNamespace>FluentPos.Identity.Api</RootNamespace>
+		<AssemblyName>FluentPos.Identity.Api</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -34,5 +34,7 @@
     </ItemGroup>
     <PropertyGroup>
         <ContainerImageName>fluentpos.identity</ContainerImageName>
+        <ContainerImageTags>1.0.0;latest</ContainerImageTags>
+        <PublishProfile>DefaultContainer</PublishProfile>
     </PropertyGroup>
 </Project>

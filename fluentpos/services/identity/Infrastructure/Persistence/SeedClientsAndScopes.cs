@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using OpenIddict.Abstractions;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace FluentPOS.Identity.Infrastructure.Persistence;
+namespace FluentPos.Identity.Infrastructure.Persistence;
 
 public class SeedClientsAndScopes : IHostedService
 {

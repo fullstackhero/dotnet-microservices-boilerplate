@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
+      <RootNamespace>FluentPos.Gateway</RootNamespace>
+      <AssemblyName>FluentPos.Gateway</AssemblyName>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -17,5 +19,7 @@
     </ItemGroup>
     <PropertyGroup>
         <ContainerImageName>fluentpos.gateway</ContainerImageName>
+        <ContainerImageTags>1.0.0;latest</ContainerImageTags>
+        <PublishProfile>DefaultContainer</PublishProfile>
     </PropertyGroup>
 </Project>

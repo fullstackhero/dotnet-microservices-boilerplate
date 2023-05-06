@@ -1,10 +1,10 @@
-﻿using FluentPOS.Identity.Core.Users;
-using FluentPOS.Identity.Infrastructure.Persistence;
+﻿using FluentPos.Identity.Core.Users;
+using FluentPos.Identity.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace FluentPOS.Identity.Infrastructure;
+namespace FluentPos.Identity.Infrastructure;
 public static class Extensions
 {
     public static IServiceCollection AddIdentityExtensions(this IServiceCollection services)

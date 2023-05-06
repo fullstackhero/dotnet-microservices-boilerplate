@@ -1,6 +1,6 @@
-using FluentPOS.Identity.Core;
-using FluentPOS.Identity.Infrastructure;
-using FluentPOS.Identity.Infrastructure.Persistence;
+using FluentPos.Identity.Core;
+using FluentPos.Identity.Infrastructure;
+using FluentPos.Identity.Infrastructure.Persistence;
 using FSH.Framework.Infrastructure;
 using FSH.Framework.Infrastructure.Auth.OpenIddict;
 

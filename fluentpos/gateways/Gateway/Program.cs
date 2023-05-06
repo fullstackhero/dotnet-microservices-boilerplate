@@ -10,9 +10,6 @@ builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSecti
 var app = builder.Build();
 app.UseInfrastructure(builder.Configuration, builder.Environment, enableSwagger: enableSwagger);
 app.MapGet("/", () => "Hello From Gateway");
-app.UseStaticFiles(); // The middleware runs before routing happens => no route was found
-app.UseAuthentication();
-app.UseAuthorization();
 app.UseRouting();
 app.MapReverseProxy(config =>
 {

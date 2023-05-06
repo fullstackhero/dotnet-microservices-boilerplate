@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-		<RootNamespace>FluentPOS.Identity.Core</RootNamespace>
-		<AssemblyName>FluentPOS.Identity.Core</AssemblyName>
+		<RootNamespace>FluentPos.Identity.Core</RootNamespace>
+		<AssemblyName>FluentPos.Identity.Core</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>

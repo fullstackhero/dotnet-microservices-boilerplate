@@ -1,4 +1,4 @@
-﻿namespace FluentPOS.Identity.Core;
+﻿namespace FluentPos.Identity.Core;
 public class IdentityCore
 {
 }
