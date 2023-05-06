@@ -1,4 +1,5 @@
-﻿using FSH.Framework.Infrastructure.Options;
+﻿using FSH.Framework.Core.Exceptions;
+using FSH.Framework.Infrastructure.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,20 @@ public static class Extensions
             {
                 RequireAudience = true,
                 ValidateAudience = true
+            };
+            options.Events = new JwtBearerEvents
+            {
+                OnChallenge = context =>
+                {
+                    context.HandleResponse();
+                    if (!context.Response.HasStarted)
+                    {
+                        throw new UnauthorizedException(context.Error!, context.ErrorDescription!);
+                    }
+
+                    return Task.CompletedTask;
+                },
+                OnForbidden = _ => throw new ForbiddenException()
             };
         });
 

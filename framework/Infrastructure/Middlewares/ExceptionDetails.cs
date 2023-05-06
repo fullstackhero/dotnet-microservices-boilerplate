@@ -62,8 +62,8 @@ public class ExceptionDetails
     {
         return new ExceptionDetails()
         {
-            Title = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.Unauthorized),
-            Detail = unauthorizedException.Message.Trim(),
+            Title = string.IsNullOrEmpty(unauthorizedException.Error) ? ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.Unauthorized) : unauthorizedException.Error,
+            Detail = string.IsNullOrEmpty(unauthorizedException.Description) ? unauthorizedException.Message.Trim() : unauthorizedException.Description,
             Status = (int)HttpStatusCode.Unauthorized
         };
     }

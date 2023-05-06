@@ -25,10 +25,6 @@ internal class ExceptionMiddleware : IMiddleware
         try
         {
             await next(context);
-            if (context.Response.StatusCode == StatusCodes.Status401Unauthorized)
-            {
-                throw new UnauthorizedException();
-            }
         }
         catch (Exception exception)
         {
@@ -40,7 +36,13 @@ internal class ExceptionMiddleware : IMiddleware
                 _ => ExceptionDetails.HandleDefaultException(exception),
             };
 
-            LogErrorMessage(exception, errorResult);
+            var errorLogLevel = exception switch
+            {
+                FluentValidation.ValidationException or UnauthorizedException => LogLevel.Warning,
+                _ => LogLevel.Error
+            };
+
+            LogErrorMessage(errorLogLevel, exception, errorResult);
 
             var response = context.Response;
             if (!response.HasStarted)
@@ -56,7 +58,7 @@ internal class ExceptionMiddleware : IMiddleware
         }
     }
 
-    private void LogErrorMessage(Exception exception, ExceptionDetails details)
+    private void LogErrorMessage(LogLevel errorLogLevel, Exception exception, ExceptionDetails details)
     {
         var properties = new Dictionary<string, object>
         {
@@ -75,7 +77,7 @@ internal class ExceptionMiddleware : IMiddleware
 
         using (_logger.BeginScope(properties))
         {
-            _logger.LogError("{title} | {details}", details.Title, details.Detail);
+            _logger.Log(errorLogLevel, "{title} | {details} | {traceId}", details.Title, details.Detail, details.TraceId);
         }
     }
 }

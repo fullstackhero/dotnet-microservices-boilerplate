@@ -4,7 +4,7 @@ using FluentPos.Identity.Infrastructure.Persistence;
 using FSH.Framework.Infrastructure;
 using FSH.Framework.Infrastructure.Auth.OpenIddict;
 
-bool enableSwagger = true;
+bool enableSwagger = false;
 var coreAssembly = typeof(IdentityCore).Assembly;
 var dbContextAssembly = typeof(AppDbContext).Assembly;
 
@@ -16,7 +16,6 @@ if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddHostedService<SeedClientsAndScopes>();
 }
-
 var app = builder.Build();
 app.UseInfrastructure(builder.Configuration, builder.Environment, enableSwagger);
 app.Run();

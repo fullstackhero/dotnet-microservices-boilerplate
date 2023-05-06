@@ -44,12 +44,13 @@ public static class Extensions
 
     public static void UseInfrastructure(this WebApplication app, IConfiguration configuration, IWebHostEnvironment env, bool enableSwagger = true)
     {
+        //Preserve Order
+        app.UseExceptionMiddleware();
         app.UseAuthentication();
         app.UseAuthorization();
         app.UseCloudEvents();
         app.MapSubscribeHandler();
         app.MapControllers();
         if (enableSwagger) app.UseSwaggerExtension(configuration, env);
-        app.UseExceptionMiddleware();
     }
 }
