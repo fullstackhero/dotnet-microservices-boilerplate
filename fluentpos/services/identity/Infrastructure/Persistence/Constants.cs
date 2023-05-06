@@ -1,6 +1,6 @@
 ﻿namespace FluentPos.Identity.Infrastructure.Persistence;
 
-public class Constants
+public static class Constants
 {
     public const string Client = "console";
     public const string ClientSecret = "858b39fd-3908-45cb-ab14-aa58220f6d69";

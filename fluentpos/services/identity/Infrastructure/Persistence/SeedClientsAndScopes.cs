@@ -16,10 +16,10 @@ public class SeedClientsAndScopes : IHostedService
         await using var scope = _serviceProvider.CreateAsyncScope();
 
         var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        await context.Database.EnsureCreatedAsync();
+        _ = await context.Database.EnsureCreatedAsync(cancellationToken);
 
         var manager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
-        if (await manager.FindByClientIdAsync(Constants.Client) is null)
+        if (await manager.FindByClientIdAsync(Constants.Client, cancellationToken) is null)
         {
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
@@ -37,10 +37,10 @@ public class SeedClientsAndScopes : IHostedService
                     Permissions.Prefixes.Scope + Constants.CatalogReadScope,
                     Permissions.Prefixes.Scope + Constants.CatalogWriteScope
                 }
-            }); ;
+            }, cancellationToken);
         }
 
-        if (await manager.FindByClientIdAsync(Constants.GatewayResourceServer) is null)
+        if (await manager.FindByClientIdAsync(Constants.GatewayResourceServer, cancellationToken) is null)
         {
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
@@ -50,10 +50,10 @@ public class SeedClientsAndScopes : IHostedService
                 {
                     Permissions.Endpoints.Introspection
                 }
-            });
+            }, cancellationToken);
         }
 
-        if (await manager.FindByClientIdAsync(Constants.CatalogResourceServer) is null)
+        if (await manager.FindByClientIdAsync(Constants.CatalogResourceServer, cancellationToken) is null)
         {
             await manager.CreateAsync(new OpenIddictApplicationDescriptor
             {
@@ -63,12 +63,12 @@ public class SeedClientsAndScopes : IHostedService
                 {
                     Permissions.Endpoints.Introspection
                 }
-            });
+            }, cancellationToken);
         }
 
         var scopesManager = scope.ServiceProvider.GetRequiredService<IOpenIddictScopeManager>();
 
-        if (await scopesManager.FindByNameAsync(Constants.CatalogWriteScope) is null)
+        if (await scopesManager.FindByNameAsync(Constants.CatalogWriteScope, cancellationToken) is null)
         {
             await scopesManager.CreateAsync(new OpenIddictScopeDescriptor
             {
@@ -78,10 +78,10 @@ public class SeedClientsAndScopes : IHostedService
                     Constants.CatalogResourceServer,
                     Constants.GatewayResourceServer
                 }
-            });
+            }, cancellationToken);
         }
 
-        if (await scopesManager.FindByNameAsync(Constants.CatalogReadScope) is null)
+        if (await scopesManager.FindByNameAsync(Constants.CatalogReadScope, cancellationToken) is null)
         {
             await scopesManager.CreateAsync(new OpenIddictScopeDescriptor
             {
@@ -91,10 +91,8 @@ public class SeedClientsAndScopes : IHostedService
                     Constants.CatalogResourceServer,
                     Constants.GatewayResourceServer
                 }
-            });
+            }, cancellationToken);
         }
-
     }
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 }
-

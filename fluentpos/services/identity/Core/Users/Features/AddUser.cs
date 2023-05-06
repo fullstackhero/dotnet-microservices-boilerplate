@@ -66,7 +66,7 @@ public static class AddUser
 
             foreach (var error in result.Errors)
             {
-                _logger.LogError(error.Description);
+                _logger.LogError("{error}", error.Description);
             }
 
             throw new UserRegistrationException("Identity Exception");

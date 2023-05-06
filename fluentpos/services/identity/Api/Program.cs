@@ -12,10 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentityExtensions();
 builder.AddInfrastructure(coreAssembly: coreAssembly, enableSwagger: enableSwagger);
 builder.ConfigureAuthServer<AppDbContext>(dbContextAssembly);
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddHostedService<SeedClientsAndScopes>();
-}
+builder.Services.AddHostedService<SeedClientsAndScopes>();
 var app = builder.Build();
 app.UseInfrastructure(builder.Configuration, builder.Environment, enableSwagger);
 app.Run();
