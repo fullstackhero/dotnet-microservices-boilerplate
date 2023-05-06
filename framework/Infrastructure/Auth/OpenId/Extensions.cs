@@ -20,10 +20,11 @@ public static class Extensions
         {
             options.Authority = authOptions.Authority;
             options.Audience = authOptions.Audience;
+            options.RequireHttpsMetadata = false;
             options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
             {
                 RequireAudience = true,
-                ValidateAudience = true
+                ValidateAudience = true,
             };
             options.Events = new JwtBearerEvents
             {
@@ -41,7 +42,7 @@ public static class Extensions
             };
         });
 
-        if (policyNames != null && policyNames.Count > 0)
+        if (policyNames?.Count > 0)
         {
             services.AddAuthorization(options =>
             {
