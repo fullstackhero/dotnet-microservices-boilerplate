@@ -6,7 +6,7 @@ services:
     container_name: postgres
     image: postgres:15-alpine
     environment:
-      - POSTGRES_USER=admin
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
       - PGPORT=5430
     ports:
@@ -14,7 +14,7 @@ services:
     volumes:
       - postgres-data:/data/db
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5

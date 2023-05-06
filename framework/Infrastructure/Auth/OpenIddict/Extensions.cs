@@ -61,8 +61,8 @@ public static class Extensions
         builder.Services.AddAuthorization();
 
         string? connectionString = builder.Configuration.GetConnectionString(connectionName);
-        if (!builder.Environment.IsDevelopment())
-            if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
+        if (!builder.Environment.IsDevelopment() && connectionString == null)
+            throw new ArgumentNullException(nameof(connectionString));
 
         builder.Services.AddDbContext<T>(options =>
         {
