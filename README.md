@@ -10,6 +10,9 @@ The goal is to build a framework that can make building microservices in .NET ea
 - [Table of Contents](#table-of-contents)
   - [Goals](#goals)
   - [FluentPos](#fluentpos)
+  - [How to Run ?](#how-to-run-)
+    - [Tye](#tye)
+    - [Docker \& Docker-Compose](#docker--docker-compose)
   - [Technologies \& Libraries](#technologies--libraries)
   - [Documentation](#documentation)
   - [Changelogs](#changelogs)
@@ -51,6 +54,60 @@ FluentPos is a sample project that consumes the microservice framework. You will
 | Cart              | WIP       🚧   |
 | Ordering          | WIP       🚧   |
 | Payment           | WIP       🚧   |
+
+## How to Run ?
+
+### Tye
+Tye is a super-awesome way to run your applications quickly. The `fluentpos` project already has this support. Simply run the following:
+
+```
+make tye
+```
+
+That's it! 
+> You can find the specification of services under the ./fluentpos/tye.yaml file.
+### Docker & Docker-Compose
+The `fluentpos` project comes included with the required docker-compose.yaml and makefile file for your reference.
+
+There are some prerequisites for using these included docker-compose.yml files:
+
+1) Make sure you have docker installed (on windows install docker desktop)
+
+2) Create and install an https certificate:
+
+    ```
+    dotnet dev-certs https -ep $env:USERPROFILE\.aspnet\https\cert.pfx -p password!
+    ```
+
+    Note that the certificate name and password should match the ones that are mentioned in the docker-compose.yaml file.
+
+3) It's possible that the above step gives you an `A valid HTTPS certificate is already present` error.
+   In that case you will have to run the following command, and then  `Re-Run Step #2`.
+
+    ```
+     dotnet dev-certs https --clean
+    ```
+
+4) Trust the certificate
+
+    ```
+     dotnet dev-certs https --trust
+    ```
+Once your certificate is trusted, simply navigate into the `./fluentpos` folder of the project and run the following command.
+
+```
+make docker-up
+```
+
+This will spin up all the containers required. Your Gateway URL will be available on `https://localhost:7001`.
+
+To bring down all the `fluentpos` container, simply run the following.
+
+```
+make docker-down
+```
+
+*Note that the default Docker Images that will be pulled are from my public Image Repository (for eg, `iammukeshm/fluentpos.identity:latest`). You can switch it your variants if required.*
 
 ## Technologies & Libraries
 
