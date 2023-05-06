@@ -1,16 +1,17 @@
 build:
 	dotnet build
+
 tye:
 	tye run
 
-infra:
-	cd ./deployments/docker-compose && docker-compose -f infrastructure.yml up -d
-
-services:
-	cd ./deployments/docker-compose && docker-compose -f docker-compose.yml up -d
-
-all-up:
+docker-up:
 	cd ./deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml pull
 	cd ./deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml up -d
-all-down:
+
+docker-down:
 	cd ./deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml down
+
+dotnet-publish:
+	cd ./gateways/gateway && dotnet publish --os linux --arch x64 -c Release --self-contained
+	cd ./services/catalog/api && dotnet publish --os linux --arch x64 -c Release --self-contained
+	cd ./services/identity/api && dotnet publish --os linux --arch x64 -c Release --self-contained

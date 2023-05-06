@@ -6,14 +6,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>FluentPos.Identity.Api</RootNamespace>
 		<AssemblyName>FluentPos.Identity.Api</AssemblyName>
+        <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Remove="Logs\**" />
-	  <Content Remove="Logs\**" />
-	  <EmbeddedResource Remove="Logs\**" />
-	  <None Remove="Logs\**" />
-	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
 			<PrivateAssets>all</PrivateAssets>
@@ -29,9 +23,6 @@
 	  <ProjectReference Include="..\Core\Core.csproj" />
 	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.4.0" />
-    </ItemGroup>
     <PropertyGroup>
         <ContainerImageName>fluentpos.identity</ContainerImageName>
         <ContainerImageTags>1.0.0;latest</ContainerImageTags>
