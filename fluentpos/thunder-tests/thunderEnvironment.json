@@ -1,0 +1,46 @@
+[
+  {
+    "_id": "42790850-814d-4065-89da-b37693eb75f5",
+    "name": "local",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2023-04-13T00:39:48.305Z",
+    "modified": "2023-04-13T00:39:48.305Z",
+    "data": [
+      {
+        "name": "auth_service",
+        "value": "https://localhost:7001"
+      },
+      {
+        "name": "catalog_service",
+        "value": "https://localhost:7003"
+      },
+      {
+        "name": "access_token",
+        "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg2QzBFNTUwRDU3MjU0QUQwQTE4QUZBQ0Y0RDY2MTNGOUMyQjgwNTgiLCJ4NXQiOiJoc0RsVU5WeVZLMEtHSy1zOU5aaFA1d3JnRmciLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiJjb25zb2xlIiwibmFtZSI6ImNvbnNvbGUiLCJvaV9wcnN0IjoiY29uc29sZSIsImNsaWVudF9pZCI6ImNvbnNvbGUiLCJvaV90a25faWQiOiI2MTJiNTQzMy0zYTU3LTQzODUtOTljMy02NmIyOWZmMDc1ZWQiLCJhdWQiOlsiY2F0YWxvZy5yZXNvdXJjZS5zZXJ2ZXIiLCJnYXRld2F5LnJlc291cmNlLnNlcnZlciJdLCJzY29wZSI6ImdhdGV3YXkiLCJqdGkiOiI3MWE2Y2NkNy02YjVlLTQ5NGUtODZjOC00YjhiNDA1NGMyMzAiLCJleHAiOjE2ODMzMTY4NzEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcwMDEvIiwiaWF0IjoxNjgzMzEzMjcxfQ.Qa-EM_uPl6hBTLPup59w6JpOXwJDsSmpqogADXjuHe1HVqFhxaIm6oBn-8f0qK9AmS4VehG3o8J7zp3FYaQ1OlDWoobT-sQ9YKCWXHzvcKe6k1uy0-MCnQNTLxohqs6BaGrcfiGeoN7A_deu9ykMvr6Zj2zbjN7GMBpy2khxbljvr4Nd33xDPe__gc1FWpawP6cjS0bg6kMgnBOFWnk7Hlbr39a8E0_dlAPlxhwLBMbe2tDFwcIylYDCVKdRq45XINkXO85-X1tX_ZSH8FIWmedHVNeW4rGLeIvwlQsdTLgQ8lOAt7gTb-CrjuX4Oa0MfVCTxzDws6Ai2ud6zHG9LQ"
+      },
+      {
+        "name": "gateway_url",
+        "value": "https://localhost:7002"
+      }
+    ]
+  },
+  {
+    "_id": "856a1423-5f3c-4d76-835f-b917dd0cb954",
+    "name": "aws.staging",
+    "default": false,
+    "sortNum": 20000,
+    "created": "2023-04-13T00:40:05.757Z",
+    "modified": "2023-04-13T00:40:05.757Z",
+    "data": []
+  },
+  {
+    "_id": "dc4dcffa-0430-4fa9-ae92-4e192e5d6b81",
+    "name": "docker",
+    "default": false,
+    "sortNum": 30000,
+    "created": "2023-04-13T00:40:10.681Z",
+    "modified": "2023-04-13T00:40:10.681Z",
+    "data": []
+  }
+]

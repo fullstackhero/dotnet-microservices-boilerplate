@@ -1,74 +1,81 @@
 # .NET Microservices Boilerplate
 
-![ci-cd pipeline](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/ci-cd.yml/badge.svg)
-## Roadmap
+![ci-cd pipeline](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/fluentpos-cicd.yml/badge.svg)
 
-### Note
-Project is currently getting revamped on a different branch. 
+The goal is to build a framework that can make building microservices in .NET easy for developers. This project follows Vertical Slice Architecture and is built using Dapr as the core framework, along with other latest best practices and tools like CQRS, NoSQL, SQL, MediatR, Serilog, FluentValidations and more.🚀
 
-Will merge to main once done.
+# Table of Contents
 
-https://github.com/fullstackhero/dotnet-microservices-boilerplate/tree/revamp
-
-## What's done till now?
-- Added Building Blocks for Services - Serilog, Swagger, Fluent Validation, MediatR, AutoMapper, and more.
-- ThunderClient Support for API Testing - Love this! 🚀 🚀
-- YARP API Gateway - Reverse Proxy
-- Identity Server 6 - Separate Microservice for serving and validating JWTs based on API Scope and GrantType as Password.
-- DapR Integration - Currently using only the state-store component of Dapr for Caching purposes. Should research more on this. 🚀 🚀
-- EFCore with PostgreSQL Integration for Identity Server.
-- MongoDB Integration for Catalog API Service.
-- GitHub Workflow for Building the Projects in Pipeline.
-- Exception Handling Middleware
-- Semantic Release - Love this! With this, it's easy now to auto-version your applications based on your commits in a semantic way. It even creates GitHub releases for you! 🚀 🚀
-- Tye support for running multiple microservices (and Dapr Side-cars) and managing logs.
-
-## How to Run
-
- Generate Development certificate by running the following:
-
- ```
-dotnet dev-certs https --trust
-dotnet dev-certs https -ep $env:USERPROFILE\.aspnet\https\dev_cert.pfx -p password!
-dotnet dev-certs https --trust
- ```
-
-### Docker-Compose
-
- Once the certificates are installed, you will have to build and push the required docker images to your local instance of docker, and run `docker-compose up`.
-
- Note that, the docker-compose, tye and any deployment related file would live within the `./deployments` folder.
- 
- But first, let's build the docker images. There are 2 ways for this:
-  - Navigate to each of the service, api-gateway & identity server and run the following command to build and push the docker image to your local docker-desktop setup.
-  ```
-  dotnet publish --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageTags=latest --self-contained
-  ```
-- Else, to make your lives simpler, I have also included the commands in the Visual Code Tasks. Simply hit CTRL+SHIFT+P and type in Tasks. Here select the required publish:xxxxxx task. This would also push the docker image. 
-
-Once all the images are built and pushed, you can run the following commands from the root of the solution. 
-
-- If you want to bring up only the infrastructure, run this command `docker compose -f "./deployments/docker-compose/infrastructure.yml" up`
-- To bring up both the services + infrastructure, `docker compose -f "./deployments/docker-compose/infrastructure.yml" -f "./deployments/docker-compose/docker-compose.yml" up`
+- [.NET Microservices Boilerplate](#net-microservices-boilerplate)
+- [Table of Contents](#table-of-contents)
+  - [Goals](#goals)
+  - [FluentPos](#fluentpos)
+  - [Technologies \& Libraries](#technologies--libraries)
+  - [Documentation](#documentation)
+  - [Changelogs](#changelogs)
+  - [Community](#community)
+  - [License](#license)
+  - [Support ⭐](#support-)
+  - [Code Contributors](#code-contributors)
+  - [Financial Contributors](#financial-contributors)
 
 
-If everything goes well, all the required containers would spin up and you will have access to https://localhost:5100 AKA, the API Gateway. You can use the Thunder-Tests in Visual Code to test the gateway! 
+## Goals
 
-P.S, you find the API Tests at `./thunder-tests` folder. Ensure that you are using Visual Code with the ThunderClient extension installed.
+- :sparkle: Using `Vertical Slice Architecture` for architecture level.
+- :sparkle: Using `Dapr` building blocks for microservice development and communication.
+- :sparkle: Using `Domain Driven Design (DDD)` to implement all business processes in microservices.
+- :sparkle: Using `Rabbitmq` on top of `Dapr` for `Event Driven Architecture` between our microservices.
+- :sparkle: Using `CQRS` implementation with `MediatR` library.
+- :sparkle: Using `Entity Framework Core` for some microservices.
+- :sparkle: Using `MongoDB` for some microservices.
+- :sparkle: Using `Fluent Validation` and a `Validation Pipeline Behaviour` on top of `MediatR`.
+- :sparkle: Using `Minimal API` for all endpoints.
+- :sparkle: Using `Health Check` for reporting the health of app infrastructure components.
+- :sparkle: Using `Tye` for local development and debugging.
+- :sparkle: Using `Built-In Containerization` for `Docker` images.
+- :sparkle: Using `Zipkin` for distributed tracing.
+- :sparkle: Using `OpenIddict` for authentication and authorization base on `OpenID-Connect` and `OAuth2`.
+- :sparkle: Using `Yarp` as a microservices gateway.
 
-### Tye
+## FluentPos
 
-To run locally, you can also use the `tye` tool. I use this for rapid development. Simply run the `tye run` command at the `./deployments/tye/` directory. You can view all the application logs at the tye dashboard which is available at http://127.0.0.1:8000
-## Contributing
-#### PS, Currently not accepting any contributions. Once the project is stable, will start accepting PRs.
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request.
+FluentPos is a sample project that consumes the microservice framework. You will learn a lot by exploring this project, which is located under the `./fluentpos` folder.
 
 
+| Services          | Status         |
+| ----------------- | -------------- |
+| Gateway           | Completed ✔️   |
+| Identity          | Completed ✔️   |
+| Catalog           | Completed ✔️   |
+| Cart              | WIP       🚧   |
+| Ordering          | WIP       🚧   |
+| Payment           | WIP       🚧   |
+
+## Technologies & Libraries
+
+- **[`.NET 7`](https://dotnet.microsoft.com/download)** - .NET Framework and .NET Core, including ASP.NET and ASP.NET Core
+- **[`MVC Versioning API`](https://github.com/microsoft/aspnet-api-versioning)** - Set of libraries which add service API versioning to ASP.NET Web API, OData with ASP.NET Web API, and ASP.NET Core
+- **[`EF Core`](https://github.com/dotnet/efcore)** - Modern object-database mapper for .NET. It supports LINQ queries, change tracking, updates, and schema migrations
+- **[`MediatR`](https://github.com/jbogard/MediatR)** - Simple, unambitious mediator implementation in .NET.
+- **[`FluentValidation`](https://github.com/FluentValidation/FluentValidation)** - Popular .NET validation library for building strongly-typed validation rules
+- **[`Swagger & Swagger UI`]()** - Swagger tools for documenting API's built on ASP.NET Core
+- **[`Serilog`](https://github.com/serilog/serilog)** - Simple .NET logging with fully-structured events
+- **[`OpenIddict`](https://github.com/openiddict/openiddict-core)** - OpenIddict aims at providing a versatile solution to implement OpenID Connect client, server and token validation support.
+- **[`Mapster`](https://github.com/MapsterMapper/Mapster)** - Convention-based object-object mapper in .NET.
+- **[`Yarp`](https://github.com/microsoft/reverse-proxy)** - Reverse proxy toolkit for building fast proxy servers in .NET
+- **[`Tye`](https://github.com/dotnet/tye)** - Developer tool that makes developing, testing, and deploying microservices and distributed applications easier.
+- **[`MongoDB.Driver`](https://github.com/mongodb/mongo-csharp-driver)** - .NET Driver for MongoDB.
+
+## Documentation
+
+Read Documentation related to this Boilerplate here - https://fullstackhero.net/dotnet-microservices-boilerplate/
+> Feel free to contribute to the Documentation Repository - https://github.com/fullstackhero/docs
+> Docs are not yet updated.
+
+## Changelogs
+
+[View Complete Changelogs.](https://github.com/fullstackhero/dotnet-microservices-boilerplate/blob/main/CHANGELOGS.md)
 
 ## Community
 
@@ -78,7 +85,8 @@ To run locally, you can also use the `tye` tool. I use this for rapid developmen
 
 ## License
 
-Code released under [the MIT license](https://github.com/fullstackhero/dotnet-microservices-boilerplate/blob/master/LICENSE).
+This project is licensed with the [MIT license](LICENSE).
+
 
 ## Support ⭐
 
@@ -88,10 +96,19 @@ Here are a few ways by which you can support.
 -   Leave a star! ⭐
 -   Recommend this awesome project to your colleagues. 🥇
 -   Do consider endorsing me on LinkedIn for ASP.NET Core - [Connect via LinkedIn](https://codewithmukesh.com/linkedin) 🦸
--   Or, If you want to support this project in the long run, [consider buying me a coffee](https://www.buymeacoffee.com/codewithmukesh)! ☕
-
-<br>
-
-<a href="https://www.buymeacoffee.com/codewithmukesh"><img width="250" alt="black-button" src="https://user-images.githubusercontent.com/31455818/138557309-27587d91-7b82-4cab-96bb-90f4f4e600f1.png" ></a>
+-   Sponsor the project - [opencollective/fullstackhero](https://opencollective.com/fullstackhero) ❤️
+-   Or, [consider buying me a coffee](https://www.buymeacoffee.com/codewithmukesh)! ☕
 
 
+## Code Contributors
+
+This project exists thanks to all the people who contribute. [Submit your PR and join the elite list!](CONTRIBUTING.md)
+
+[![fsh dotnet microservices contributors](https://contrib.rocks/image?repo=fullstackhero/dotnet-microservices-boilerplate "fsh dotnet microservices contributors")](https://github.com/fullstackhero/dotnet-microservices-boilerplate/graphs/contributors)
+
+
+## Financial Contributors
+
+Become a financial contributor and help me sustain the project. [Support the Project!](https://opencollective.com/fullstackhero/contribute)
+
+<a href="https://opencollective.com/fullstackhero"><img src="https://opencollective.com/fullstackhero/individuals.svg?width=890"></a>

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+      <RootNamespace>FluentPos.Gateway</RootNamespace>
+      <AssemblyName>FluentPos.Gateway</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Yarp.ReverseProxy" Version="2.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\framework\Core\FSH.Framework.Core.csproj" />
+      <ProjectReference Include="..\..\..\framework\Infrastructure\FSH.Framework.Infrastructure.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.4.0" />
+    </ItemGroup>
+    <PropertyGroup>
+        <ContainerImageName>fluentpos.gateway</ContainerImageName>
+        <ContainerImageTags>1.0.0;latest</ContainerImageTags>
+        <PublishProfile>DefaultContainer</PublishProfile>
+    </PropertyGroup>
+</Project>

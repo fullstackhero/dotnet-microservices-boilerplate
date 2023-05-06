@@ -1,0 +1,225 @@
+[
+  {
+    "_id": "ad4b65df-fc23-4cfe-ad6d-992f61004c8f",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "eaf54ff4-b545-4688-b323-87d0277ad3b3",
+    "name": "token",
+    "url": "{{auth_service}}/connect/token",
+    "method": "POST",
+    "sortNum": 35000,
+    "created": "2023-04-27T16:23:27.261Z",
+    "modified": "2023-05-05T19:00:21.352Z",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "grant_type",
+          "value": "client_credentials"
+        },
+        {
+          "name": "client_id",
+          "value": "console"
+        },
+        {
+          "name": "client_secret",
+          "value": "858b39fd-3908-45cb-ab14-aa58220f6d69"
+        },
+        {
+          "name": "scope",
+          "value": "catalog"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{access_token}}"
+      }
+    ]
+  },
+  {
+    "_id": "2c3d2f84-635b-4e15-86fc-d26e9f87b0fa",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "b77142ba-65a9-4071-97b1-474e15013955",
+    "name": "get-product-details",
+    "url": "{{catalog_service}}/api/products/623e0000-3f5a-3c7c-9d61-08db473c75b0",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-04-27T16:23:27.262Z",
+    "modified": "2023-04-27T16:29:05.086Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "48c0c105-9922-4e6d-adaf-b71539c13388",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "b77142ba-65a9-4071-97b1-474e15013955",
+    "name": "get-products",
+    "url": "{{catalog_service}}/api/products/",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-04-27T16:23:27.263Z",
+    "modified": "2023-04-27T16:28:49.062Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "03ff2ffb-36a6-45dd-bfc0-885837a0ceff",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "b77142ba-65a9-4071-97b1-474e15013955",
+    "name": "add-product",
+    "url": "{{catalog_service}}/api/products",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2023-04-27T16:23:27.264Z",
+    "modified": "2023-04-29T18:38:21.706Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\":\"Crucial DDR4 32GB\",\n    \"details\":\"Crucial DDR4 32GB\",\n    \"code\": \"CD3207\",\n    \"cost\":6000,\n    \"price\":7000\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "af5dd60c-ff64-48f0-9ea5-918b7ffa46a1",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "b77142ba-65a9-4071-97b1-474e15013955",
+    "name": "update-product",
+    "url": "{{catalog_service}}/api/products/623e0000-3f5a-3c7c-9d61-08db473c75b0",
+    "method": "PUT",
+    "sortNum": 50000,
+    "created": "2023-04-27T16:23:27.265Z",
+    "modified": "2023-04-27T16:29:51.318Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\":\"Crucial DDR4 32GB\",\n    \"details\":\"Crucial DDR4 32GB\",\n    \"code\": \"CD3201\",\n    \"cost\":6000,\n    \"price\":70\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "33b82e08-585b-47a9-be05-a4e19753966c",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "b77142ba-65a9-4071-97b1-474e15013955",
+    "name": "delete-product",
+    "url": "{{catalog_service}}/api/products/623e0000-3f5a-3c7c-9d61-08db473c75b0",
+    "method": "DELETE",
+    "sortNum": 60000,
+    "created": "2023-04-27T16:23:27.266Z",
+    "modified": "2023-04-27T16:30:03.087Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "44290d95-2e77-461b-adc4-2062052b3770",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "eaf54ff4-b545-4688-b323-87d0277ad3b3",
+    "name": "register",
+    "url": "{{auth_service}}/api/users",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2023-04-29T09:42:38.186Z",
+    "modified": "2023-04-29T10:20:33.629Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"userName\":\"mukesh.murugan\",\n  \"email\":\"mukesh@cwm.com\",\n  \"password\":\"123P@$$word!\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f92c86ab-8574-4371-b090-4c93e0df5f9d",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "7a625064-1e04-4bca-895a-3ab51e8e8f71",
+    "name": "token",
+    "url": "{{gateway_url}}/api/identity/connect/token",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-05-05T19:00:19.591Z",
+    "modified": "2023-05-05T19:01:37.405Z",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "grant_type",
+          "value": "client_credentials"
+        },
+        {
+          "name": "client_id",
+          "value": "console"
+        },
+        {
+          "name": "client_secret",
+          "value": "858b39fd-3908-45cb-ab14-aa58220f6d69"
+        },
+        {
+          "name": "scope",
+          "value": "gateway"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{access_token}}"
+      }
+    ]
+  },
+  {
+    "_id": "df85d61d-7c31-4b98-b3bb-351f8300545b",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "7a625064-1e04-4bca-895a-3ab51e8e8f71",
+    "name": "get-products",
+    "url": "{{gateway_url}}/api/catalog/products/",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-05-05T19:01:46.617Z",
+    "modified": "2023-05-05T19:02:07.259Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ed6de0d7-5eab-462c-9890-3d0616064749",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "7a625064-1e04-4bca-895a-3ab51e8e8f71",
+    "name": "get-product-by-id",
+    "url": "{{gateway_url}}/api/catalog/products/623e0000-3f5a-3c7c-ea5e-08db44707b19",
+    "method": "GET",
+    "sortNum": 15000,
+    "created": "2023-05-05T19:02:22.178Z",
+    "modified": "2023-05-05T19:02:25.287Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
