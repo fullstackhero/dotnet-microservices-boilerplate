@@ -7,7 +7,10 @@ public class HasScopeHandler : AuthorizationHandler<HasScopeRequirement>
     {
         Console.WriteLine(requirement.Issuer);
         Console.WriteLine(requirement.Scope);
-
+        foreach (var item in context.User.Claims)
+        {
+            Console.WriteLine($"{item.Type} : {item.Issuer}");
+        }
         // If user does not have the scope claim, get out of here
         if (!context.User.HasClaim(c => c.Type == "scope" && c.Issuer == requirement.Issuer))
             return Task.CompletedTask;

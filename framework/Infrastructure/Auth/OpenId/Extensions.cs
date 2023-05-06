@@ -21,6 +21,7 @@ public static class Extensions
             options.Authority = authOptions.Authority;
             options.Audience = authOptions.Audience;
             options.RequireHttpsMetadata = false;
+            options.SaveToken = true;
             options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
             {
                 RequireAudience = true,
