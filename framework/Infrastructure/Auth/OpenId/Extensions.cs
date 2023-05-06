@@ -1,13 +1,14 @@
 ﻿using FSH.Framework.Core.Exceptions;
 using FSH.Framework.Infrastructure.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FSH.Framework.Infrastructure.Auth.OpenId;
 public static class Extensions
 {
-    public static IServiceCollection AddOpenIdAuthentication(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddOpenIdAuth(this IServiceCollection services, IConfiguration config, List<string> policyNames)
     {
         var authOptions = services.BindValidateReturn<OpenIdOptions>(config);
 
@@ -40,6 +41,18 @@ public static class Extensions
             };
         });
 
+        if (policyNames != null && policyNames.Count > 0)
+        {
+            services.AddAuthorization(options =>
+            {
+                foreach (string policyName in policyNames)
+                {
+                    options.AddPolicy(policyName, policy => policy.Requirements.Add(new HasScopeRequirement(policyName, authOptions.Authority!)));
+                }
+            });
+        }
+
+        services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
         return services;
     }
 }

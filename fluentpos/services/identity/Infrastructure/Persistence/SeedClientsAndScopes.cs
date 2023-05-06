@@ -34,8 +34,8 @@ public class SeedClientsAndScopes : IHostedService
                     Permissions.Scopes.Email,
                     Permissions.Scopes.Profile,
                     Permissions.Scopes.Roles,
-                    Permissions.Prefixes.Scope + Constants.GatewayScope,
-                    Permissions.Prefixes.Scope + Constants.CatalogScope
+                    Permissions.Prefixes.Scope + Constants.CatalogReadScope,
+                    Permissions.Prefixes.Scope + Constants.CatalogWriteScope
                 }
             }); ;
         }
@@ -67,11 +67,12 @@ public class SeedClientsAndScopes : IHostedService
         }
 
         var scopesManager = scope.ServiceProvider.GetRequiredService<IOpenIddictScopeManager>();
-        if (await scopesManager.FindByNameAsync(Constants.GatewayScope) is null)
+
+        if (await scopesManager.FindByNameAsync(Constants.CatalogWriteScope) is null)
         {
             await scopesManager.CreateAsync(new OpenIddictScopeDescriptor
             {
-                Name = Constants.GatewayScope,
+                Name = Constants.CatalogWriteScope,
                 Resources =
                 {
                     Constants.CatalogResourceServer,
@@ -79,14 +80,16 @@ public class SeedClientsAndScopes : IHostedService
                 }
             });
         }
-        if (await scopesManager.FindByNameAsync(Constants.CatalogScope) is null)
+
+        if (await scopesManager.FindByNameAsync(Constants.CatalogReadScope) is null)
         {
             await scopesManager.CreateAsync(new OpenIddictScopeDescriptor
             {
-                Name = Constants.CatalogScope,
+                Name = Constants.CatalogReadScope,
                 Resources =
                 {
-                    Constants.CatalogResourceServer
+                    Constants.CatalogResourceServer,
+                    Constants.GatewayResourceServer
                 }
             });
         }

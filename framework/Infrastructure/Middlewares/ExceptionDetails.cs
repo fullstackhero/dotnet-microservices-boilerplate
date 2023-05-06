@@ -40,7 +40,7 @@ public class ExceptionDetails
         {
             Title = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.InternalServerError),
             Detail = exception.Message.Trim(),
-            Status = (int)HttpStatusCode.InternalServerError
+            Status = (int)HttpStatusCode.InternalServerError,
 
         };
         return errorResult;
@@ -53,7 +53,6 @@ public class ExceptionDetails
             Title = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.NotFound),
             Detail = exception.Message.Trim(),
             Status = (int)HttpStatusCode.NotFound
-
         };
         return errorResult;
     }
@@ -65,6 +64,16 @@ public class ExceptionDetails
             Title = string.IsNullOrEmpty(unauthorizedException.Error) ? ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.Unauthorized) : unauthorizedException.Error,
             Detail = string.IsNullOrEmpty(unauthorizedException.Description) ? unauthorizedException.Message.Trim() : unauthorizedException.Description,
             Status = (int)HttpStatusCode.Unauthorized
+        };
+    }
+
+    internal static ExceptionDetails HandleForbiddenException(ForbiddenException forbiddenException)
+    {
+        return new ExceptionDetails()
+        {
+            Title = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.Forbidden),
+            Detail = forbiddenException.Message.Trim(),
+            Status = ((int)HttpStatusCode.Forbidden)
         };
     }
 }

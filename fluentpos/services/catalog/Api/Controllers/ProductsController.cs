@@ -2,6 +2,7 @@
 using FluentPos.Catalog.Core.Products.Features;
 using FSH.Framework.Core.Pagination;
 using FSH.Framework.Infrastructure.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FluentPos.Catalog.Api.Controllers;
@@ -17,6 +18,7 @@ public class ProductsController : BaseApiController
     }
 
     [HttpPost(Name = nameof(AddProductAsync))]
+    [Authorize("catalog:write")]
     [ProducesResponseType(201, Type = typeof(ProductDto))]
     public async Task<IActionResult> AddProductAsync(AddProductDto request)
     {
@@ -27,6 +29,7 @@ public class ProductsController : BaseApiController
     }
 
     [HttpGet("{id:guid}", Name = nameof(GetProductAsync))]
+    [Authorize("catalog:read")]
     [ProducesResponseType(200, Type = typeof(ProductDetailsDto))]
     public async Task<IActionResult> GetProductAsync(Guid id)
     {
@@ -37,6 +40,7 @@ public class ProductsController : BaseApiController
     }
 
     [HttpGet(Name = nameof(GetProductsAsync))]
+    [Authorize("catalog:read")]
     [ProducesResponseType(200, Type = typeof(PagedList<ProductDto>))]
     public async Task<IActionResult> GetProductsAsync([FromQuery] ProductsParametersDto parameters)
     {
@@ -47,6 +51,7 @@ public class ProductsController : BaseApiController
     }
 
     [HttpDelete("{id:guid}", Name = nameof(DeleteProductsAsync))]
+    [Authorize("catalog:write")]
     [ProducesResponseType(204)]
     public async Task<IActionResult> DeleteProductsAsync(Guid id)
     {
@@ -57,6 +62,7 @@ public class ProductsController : BaseApiController
     }
 
     [HttpPut("{id:guid}", Name = nameof(UpdateProductsAsync))]
+    [Authorize("catalog:write")]
     [ProducesResponseType(204)]
     public async Task<IActionResult> UpdateProductsAsync(Guid id, UpdateProductDto updateProductDto)
     {

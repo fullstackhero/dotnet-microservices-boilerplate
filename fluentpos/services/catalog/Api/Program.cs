@@ -8,7 +8,10 @@ using FSH.Framework.Persistence.NoSQL.Mongo;
 
 var coreAssembly = typeof(CatalogCore).Assembly;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddOpenIdAuthentication(builder.Configuration);
+
+var policyNames = new List<string> { "catalog:read", "catalog:write" };
+builder.Services.AddOpenIdAuth(builder.Configuration, policyNames);
+
 builder.Services.AddCoreCatalogService();
 builder.Services.AddMongoDbContext<MongoDbContext>(builder.Configuration);
 builder.AddInfrastructure(coreAssembly);

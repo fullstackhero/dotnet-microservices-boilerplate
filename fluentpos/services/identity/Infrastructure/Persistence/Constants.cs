@@ -7,8 +7,8 @@ public class Constants
     public const string ClientDisplayName = "console";
     public const string CatalogResourceServer = "catalog.resource.server";
     public const string CatalogResourceServerSecret = "846B62D0-DEF9-4215-A99D-86E6B8DAB342";
-    public const string CatalogScope = "catalog";
+    public const string CatalogReadScope = "catalog:read";
+    public const string CatalogWriteScope = "catalog:write";
     public const string GatewayResourceServer = "gateway.resource.server";
     public const string GatewayResourceServerSecret = "846B62D0-DEF9-4215-A99D-86E6B8DAB343";
-    public const string GatewayScope = "gateway";
 }

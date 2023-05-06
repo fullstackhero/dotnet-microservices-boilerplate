@@ -4,7 +4,10 @@ using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 bool enableSwagger = false;
-builder.Services.AddOpenIdAuthentication(builder.Configuration);
+
+var policyNames = new List<string> { "catalog:read", "catalog:write" };
+builder.Services.AddOpenIdAuth(builder.Configuration, policyNames);
+
 builder.AddInfrastructure(enableSwagger: enableSwagger);
 builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 var app = builder.Build();
