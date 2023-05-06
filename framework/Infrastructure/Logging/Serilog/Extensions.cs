@@ -24,7 +24,7 @@ public static class Extensions
             ConfigureWriteToFile(serilogConfig, serilogOptions.WriteToFile, serilogOptions.RetentionFileCount, appName);
             //ConfigureElasticSearch(builder, serilogConfig, appName, serilogOptions.ElasticSearchUrl);
             SetMinimumLogLevel(serilogConfig, serilogOptions.MinimumLogLevel);
-            OverideMinimumLogLevel(serilogConfig);
+            //OverideMinimumLogLevel(serilogConfig);
         });
     }
 

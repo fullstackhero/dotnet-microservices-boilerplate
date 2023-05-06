@@ -11,7 +11,7 @@ var dbContextAssembly = typeof(AppDbContext).Assembly;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentityExtensions();
 builder.AddInfrastructure(enableSwagger: enableSwagger, coreAssembly: coreAssembly);
-builder.ConfigureOpenIddictServer<AppDbContext>(dbContextAssembly);
+builder.ConfigureAuthServer<AppDbContext>(dbContextAssembly);
 if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddHostedService<SeedClientsAndScopes>();

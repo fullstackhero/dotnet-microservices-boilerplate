@@ -12,7 +12,7 @@ namespace FSH.Framework.Infrastructure.Auth.OpenIddict;
 
 public static class Extensions
 {
-    public static IServiceCollection AddOpenIddictValidation(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddAuthValidation(this IServiceCollection services, IConfiguration config)
     {
         var authOptions = services.BindValidateReturn<OpenIddictOptions>(config);
 
@@ -32,7 +32,7 @@ public static class Extensions
         return services;
     }
 
-    public static void ConfigureOpenIddictServer<T>(this WebApplicationBuilder builder, Assembly dbContextAssembly, string connectionName = "DefaultConnection") where T : DbContext
+    public static void ConfigureAuthServer<T>(this WebApplicationBuilder builder, Assembly dbContextAssembly, string connectionName = "DefaultConnection") where T : DbContext
     {
         builder.Services.AddOpenIddict()
         .AddCore(options =>
@@ -47,7 +47,6 @@ public static class Extensions
                    .SetTokenEndpointUris("/connect/token");
             options.AllowClientCredentialsFlow();
             options.RegisterScopes(Scopes.Email, Scopes.Profile, Scopes.Roles);
-            // Disable Payload Encryption in JWTs
             options.DisableAccessTokenEncryption();
             options.AddDevelopmentEncryptionCertificate().AddDevelopmentSigningCertificate();
             options.UseAspNetCore().EnableTokenEndpointPassthrough();
