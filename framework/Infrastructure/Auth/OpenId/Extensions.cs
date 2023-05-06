@@ -49,7 +49,6 @@ public static class Extensions
             {
                 foreach (string policyName in policyNames)
                 {
-                    Console.WriteLine(policyName);
                     options.AddPolicy(policyName, policy => policy.Requirements.Add(new HasScopeRequirement(policyName, authOptions.Authority!)));
                 }
             });
