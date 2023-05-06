@@ -44,37 +44,23 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - if: github.event.inputs.build_gateway_image == 'true'
+      - if: github.event.inputs.build_gateway_image == 'true' || github.ref == 'refs/heads/main'
         name: Build Gateway Image
         working-directory: ./
         run: |
           dotnet publish fluentpos/gateways/Gateway/Gateway.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fluentpos.gateway
           docker push ${{ secrets.DOCKER_USERNAME }}/fluentpos.gateway --all-tags
 
-      - if: github.event.inputs.build_identity_image == 'true'
+      - if: github.event.inputs.build_identity_image == 'true' || github.ref == 'refs/heads/main'
         name: Build Identity Server Image
         working-directory: ./
         run: |
           dotnet publish fluentpos/services/identity/Api/Api.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fluentpos.identity
           docker push ${{ secrets.DOCKER_USERNAME }}/fluentpos.identity --all-tags
 
-      - if: github.event.inputs.build_catalog_image == 'true'
+      - if: github.event.inputs.build_catalog_image == 'true' || github.ref == 'refs/heads/main'
         name: Build Catalog Service Image
         working-directory: ./
         run: |
           dotnet publish fluentpos/services/catalog/Api/Api.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fluentpos.catalog
           docker push ${{ secrets.DOCKER_USERNAME }}/fluentpos.catalog --all-tags
-  cleanup:
-    name: Cleanup
-    needs:
-      - docker
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: "Removes Build Artifacts"
-        uses: geekyeggo/delete-artifact@v1
-        with:
-          name: |
-            build
-            test
-            docker
