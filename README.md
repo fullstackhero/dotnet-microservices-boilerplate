@@ -1,6 +1,6 @@
 # .NET Microservices Boilerplate
 
-![ci-cd pipeline](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/fluentpos-cicd.yml/badge.svg)
+[![fluentpos](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/fluentpos-cicd.yaml/badge.svg?branch=main)](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/fluentpos-cicd.yaml)
 
 The goal is to build a framework that can make building microservices in .NET easy for developers. This project follows Vertical Slice Architecture and is built using Dapr as the core framework, along with other latest best practices and tools like CQRS, NoSQL, SQL, MediatR, Serilog, FluentValidations and more.🚀
 
