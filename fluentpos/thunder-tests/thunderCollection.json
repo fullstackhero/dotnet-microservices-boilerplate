@@ -1,7 +1,7 @@
 [
   {
     "_id": "0f68643a-8467-4469-8cc1-47839e89ca8c",
-    "colName": "fluentpos.microservices",
+    "colName": "fluentpos",
     "created": "2023-04-27T16:23:27.257Z",
     "sortNum": 20000,
     "folders": [
