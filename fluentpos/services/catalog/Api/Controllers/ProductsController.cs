@@ -10,7 +10,6 @@ namespace FluentPos.Catalog.Api.Controllers;
 public class ProductsController : BaseApiController
 {
     private readonly ILogger<ProductsController> _logger;
-    private const string PubSubName = "pubsub";
 
     public ProductsController(ILogger<ProductsController> logger)
     {
