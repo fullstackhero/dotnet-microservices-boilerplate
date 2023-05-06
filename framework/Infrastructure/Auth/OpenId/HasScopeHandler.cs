@@ -5,8 +5,8 @@ public class HasScopeHandler : AuthorizationHandler<HasScopeRequirement>
 {
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, HasScopeRequirement requirement)
     {
-        Console.WriteLine("Required Issuer : {issuer}", requirement.Issuer);
-        Console.WriteLine("Required Scope : {scope}", requirement.Scope);
+        Console.WriteLine(requirement.Issuer);
+        Console.WriteLine(requirement.Scope);
 
         // If user does not have the scope claim, get out of here
         if (!context.User.HasClaim(c => c.Type == "scope" && c.Issuer == requirement.Issuer))
