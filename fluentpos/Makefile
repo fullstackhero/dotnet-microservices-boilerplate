@@ -9,5 +9,8 @@ infra:
 services:
 	cd ./deployments/docker-compose && docker-compose -f docker-compose.yml up -d
 
-all:
+all-up:
+	cd ./deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml pull
 	cd ./deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml up -d
+all-down:
+	cd ./deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml down

@@ -1,11 +1,11 @@
-﻿using FSH.Framework.Infrastructure.Options;
+﻿using System.Reflection;
+using FSH.Framework.Infrastructure.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OpenIddict.Validation.AspNetCore;
-using System.Reflection;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
 namespace FSH.Framework.Infrastructure.Auth.OpenIddict;
@@ -49,7 +49,7 @@ public static class Extensions
             options.RegisterScopes(Scopes.Email, Scopes.Profile, Scopes.Roles);
             options.DisableAccessTokenEncryption();
             options.AddDevelopmentEncryptionCertificate().AddDevelopmentSigningCertificate();
-            options.UseAspNetCore().EnableTokenEndpointPassthrough();
+            options.UseAspNetCore().EnableTokenEndpointPassthrough().DisableTransportSecurityRequirement();
         })
         .AddValidation(options =>
         {

@@ -10,7 +10,7 @@ var dbContextAssembly = typeof(AppDbContext).Assembly;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentityExtensions();
-builder.AddInfrastructure(enableSwagger: enableSwagger, coreAssembly: coreAssembly);
+builder.AddInfrastructure(coreAssembly: coreAssembly, enableSwagger: enableSwagger);
 builder.ConfigureAuthServer<AppDbContext>(dbContextAssembly);
 if (builder.Environment.IsDevelopment())
 {

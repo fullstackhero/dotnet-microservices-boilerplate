@@ -4,7 +4,7 @@ name: fluentpos
 services:
   gateway:
     container_name: "gateway"
-    image: fluentpos.gateway:latest
+    image: iammukeshm/fluentpos.gateway:latest
     ports:
       - 7002:7002
       - 5002:5002
@@ -20,7 +20,7 @@ services:
      - fluentpos
   identity:
     container_name: identity
-    image: fluentpos.identity:latest
+    image: iammukeshm/fluentpos.identity:latest
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
     depends_on:
@@ -30,7 +30,7 @@ services:
      - fluentpos
   catalog:
     container_name: catalog-service
-    image: fluentpos.catalog:latest
+    image: iammukeshm/fluentpos.catalog:latest
     depends_on:
       - mongo
       - placement
