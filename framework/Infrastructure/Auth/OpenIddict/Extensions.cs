@@ -35,10 +35,7 @@ public static class Extensions
     public static void ConfigureAuthServer<T>(this WebApplicationBuilder builder, Assembly dbContextAssembly, string connectionName = "DefaultConnection") where T : DbContext
     {
         builder.Services.AddOpenIddict()
-        .AddCore(options =>
-        {
-            options.UseEntityFrameworkCore().UseDbContext<T>();
-        })
+        .AddCore(options => options.UseEntityFrameworkCore().UseDbContext<T>())
         .AddServer(options =>
         {
             options.SetAuthorizationEndpointUris("/connect/authorize")
