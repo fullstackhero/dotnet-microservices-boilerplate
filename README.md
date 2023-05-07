@@ -58,13 +58,21 @@ FluentPos is a sample project that consumes the microservice framework. You will
 ## How to Run ?
 
 ### Tye
-Tye is a super-awesome way to run your applications quickly. The `fluentpos` project already has this support. Simply run the following:
+Tye is a super-awesome way to run your applications quickly. The `fluentpos` project already has this support. Simply run the following at the `./fluentpos` directory :
 
 ```
 make tye
 ```
 
 That's it! 
+
+This will spin up all the containers required. 
+- Your Gateway will be available on `https://localhost:7002`.
+- Your Identity Service will be available on `https://localhost:7001`.
+- Your Catalog Service will be available on `https://localhost:7003`.
+
+To Test these APIs, you can use open up Visual Code from the `./fluentpos` directory, install the `Thunder Client` extension. I have already included the required Test collections at `./fluentpos/thunder-tests`.
+
 > You can find the specification of services under the ./fluentpos/tye.yaml file.
 ### Docker & Docker-Compose
 The `fluentpos` project comes included with the required docker-compose.yaml and makefile file for your reference.
@@ -99,7 +107,7 @@ Once your certificate is trusted, simply navigate into the `./fluentpos` folder 
 make docker-up
 ```
 
-This will spin up all the containers required. Your Gateway URL will be available on `https://localhost:7001`.
+This will spin up all the containers required. Your Gateway URL will be available on `https://localhost:7002`.
 
 To bring down all the `fluentpos` container, simply run the following.
 
