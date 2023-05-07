@@ -8,9 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 var policyNames = new List<string> { "cart:read", "cart:write" };
 builder.Services.AddOpenIdAuth(builder.Configuration, policyNames);
-
-
-builder.Services.AddMongoDbContext<MongoDbContext>(builder.Configuration);
 builder.AddInfrastructure(coreAssembly);
 var app = builder.Build();
 app.UseInfrastructure(builder.Configuration, builder.Environment);
