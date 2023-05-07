@@ -1,6 +1,5 @@
 ﻿using FluentPos.Catalog.Core.Products.Dtos;
 using FSH.Framework.Core.Pagination;
-using MapsterMapper;
 using MediatR;
 
 namespace FluentPos.Catalog.Core.Products.Features;

@@ -8,7 +8,7 @@
     "method": "POST",
     "sortNum": 35000,
     "created": "2023-04-27T16:23:27.261Z",
-    "modified": "2023-05-06T11:32:08.040Z",
+    "modified": "2023-05-07T18:53:39.555Z",
     "headers": [
       {
         "name": "Content-Type",
@@ -34,7 +34,7 @@
         },
         {
           "name": "scope",
-          "value": "catalog:read"
+          "value": "catalog:read cart:read"
         }
       ]
     },
@@ -52,11 +52,11 @@
     "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
     "containerId": "b77142ba-65a9-4071-97b1-474e15013955",
     "name": "get-product-details",
-    "url": "{{catalog_service}}/products/623e0000-3f5a-3c7c-02fe-08db4debf69b",
+    "url": "{{catalog_service}}/products/623e0000-3f5a-3c7c-b35b-08db4f2c9456",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-04-27T16:23:27.262Z",
-    "modified": "2023-05-06T04:40:16.549Z",
+    "modified": "2023-05-07T18:55:38.822Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -84,12 +84,12 @@
     "method": "POST",
     "sortNum": 40000,
     "created": "2023-04-27T16:23:27.264Z",
-    "modified": "2023-05-06T04:40:05.454Z",
+    "modified": "2023-05-07T18:55:23.375Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\":\"Crucial DDR4 32GB\",\n    \"details\":\"Crucial DDR4 32GB\",\n    \"code\": \"CD3204\",\n    \"cost\":6000,\n    \"price\":7000\n}",
+      "raw": "{\n    \"name\":\"Crucial DDR4 32GB\",\n    \"details\":\"Crucial DDR4 32GB\",\n    \"code\": \"CD32af\",\n    \"cost\":6000,\n    \"price\":7000\n}",
       "form": []
     },
     "tests": []
@@ -155,7 +155,7 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2023-05-05T19:00:19.591Z",
-    "modified": "2023-05-06T20:42:58.845Z",
+    "modified": "2023-05-07T18:54:07.485Z",
     "headers": [
       {
         "name": "Content-Type",
@@ -181,7 +181,7 @@
         },
         {
           "name": "scope",
-          "value": "catalog:write catalog:read"
+          "value": "catalog:write catalog:read cart:write cart:read"
         }
       ]
     },
@@ -237,6 +237,39 @@
     "body": {
       "type": "json",
       "raw": "{\n    \"name\":\"Crucial DDR4 32GB\",\n    \"details\":\"Crucial DDR4 32GB\",\n    \"code\": \"CD3204\",\n    \"cost\":6000,\n    \"price\":7000\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "64d8f15f-c4f9-4e84-afc7-9407ccb60b15",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "d3986885-e28a-4557-bbf5-a05eed19169c",
+    "name": "get-cart",
+    "url": "{{cart_service}}/carts/623e0000-3f5a-3c7c-02fe-08db4debf69c",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2023-05-07T11:55:32.804Z",
+    "modified": "2023-05-07T15:50:04.462Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "51426385-7a98-4171-85c5-810fae111918",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "d3986885-e28a-4557-bbf5-a05eed19169c",
+    "name": "update-cart",
+    "url": "{{cart_service}}/carts/623e0000-3f5a-3c7c-02fe-08db4debf69c",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2023-05-07T13:21:38.495Z",
+    "modified": "2023-05-07T16:27:43.780Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"items\": [\n    {\n      \"productId\":\"623e0000-3f5a-3c7c-02fe-08db4debf692\",\n      \"quantity\":100\n    }\n  ]\n}",
       "form": []
     },
     "tests": []

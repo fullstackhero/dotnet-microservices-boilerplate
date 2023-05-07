@@ -1,6 +1,6 @@
 ﻿using FSH.Framework.Core.Events;
 using MassTransit;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace FSH.Framework.Core.Domain;
 public abstract class BaseEntity : BaseEntity<DefaultIdType>
@@ -10,15 +10,19 @@ public abstract class BaseEntity : BaseEntity<DefaultIdType>
 
 public abstract class BaseEntity<TId> : IBaseEntity<TId>
 {
+    [JsonPropertyOrder(-1)]
     public TId Id { get; protected set; } = default!;
     public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? CreatedBy { get; private set; }
     public DateTime? LastModifiedOn { get; private set; } = DateTime.UtcNow;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? LastModifiedBy { get; private set; }
+    [JsonIgnore]
     public bool IsDeleted { get; private set; }
-    [NotMapped]
+    [JsonIgnore]
     private readonly List<IDomainEvent> _domainEvents = new();
-    [NotMapped]
+    [JsonIgnore]
     public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
     public void UpdateIsDeleted(bool isDeleted)
     {

@@ -15,3 +15,4 @@ dotnet-publish:
 	@cd ./gateways/gateway && dotnet publish --os linux --arch x64 -c Release --self-contained
 	@cd ./services/catalog/api && dotnet publish --os linux --arch x64 -c Release --self-contained
 	@cd ./services/identity/api && dotnet publish --os linux --arch x64 -c Release --self-contained
+	@cd ./services/cart/api && dotnet publish --os linux --arch x64 -c Release --self-contained

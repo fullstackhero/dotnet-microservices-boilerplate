@@ -34,3 +34,12 @@ services:
       - port: 5003
         name:  non-secure
         protocol: http
+  - name: cart
+    project: services/cart/Api/Api.csproj
+    bindings:
+      - port: 7004
+        name:  secure
+        protocol: https
+      - port: 5004
+        name:  non-secure
+        protocol: http

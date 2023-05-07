@@ -1,0 +1,20 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: redis
+spec:
+  type: state.redis
+  version: v1
+  metadata:
+  - name: redisHost
+    value: localhost:6379
+  - name: redisPassword
+    secretKeyRef:
+      name: state:redisPassword
+      key: state:redisPassword
+auth:
+  secretStore: secretstore
+scopes:
+- cart
+- catalog
+- gateway

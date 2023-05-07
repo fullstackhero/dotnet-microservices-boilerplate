@@ -35,7 +35,9 @@ public class SeedClientsAndScopes : IHostedService
                     Permissions.Scopes.Profile,
                     Permissions.Scopes.Roles,
                     Permissions.Prefixes.Scope + Constants.CatalogReadScope,
-                    Permissions.Prefixes.Scope + Constants.CatalogWriteScope
+                    Permissions.Prefixes.Scope + Constants.CatalogWriteScope,
+                    Permissions.Prefixes.Scope + Constants.CartReadScope,
+                    Permissions.Prefixes.Scope + Constants.CartWriteScope
                 }
             }, cancellationToken);
         }
@@ -89,6 +91,32 @@ public class SeedClientsAndScopes : IHostedService
                 Resources =
                 {
                     Constants.CatalogResourceServer,
+                    Constants.GatewayResourceServer
+                }
+            }, cancellationToken);
+        }
+
+        if (await scopesManager.FindByNameAsync(Constants.CartWriteScope, cancellationToken) is null)
+        {
+            await scopesManager.CreateAsync(new OpenIddictScopeDescriptor
+            {
+                Name = Constants.CartWriteScope,
+                Resources =
+                {
+                    Constants.CartResourceServer,
+                    Constants.GatewayResourceServer
+                }
+            }, cancellationToken);
+        }
+
+        if (await scopesManager.FindByNameAsync(Constants.CartReadScope, cancellationToken) is null)
+        {
+            await scopesManager.CreateAsync(new OpenIddictScopeDescriptor
+            {
+                Name = Constants.CartReadScope,
+                Resources =
+                {
+                    Constants.CartResourceServer,
                     Constants.GatewayResourceServer
                 }
             }, cancellationToken);

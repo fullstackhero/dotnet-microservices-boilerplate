@@ -13,6 +13,9 @@ on:
       build_catalog_image:
         type: boolean
         description: push catalog image
+      build_cart_image:
+        type: boolean
+        description: push cart image        
 jobs:
   build:
     name: Build
@@ -64,3 +67,10 @@ jobs:
         run: |
           dotnet publish fluentpos/services/catalog/Api/Api.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fluentpos.catalog
           docker push ${{ secrets.DOCKER_USERNAME }}/fluentpos.catalog --all-tags
+      
+      - if: github.event.inputs.build_cart_image == 'true' || github.ref == 'refs/heads/main'
+        name: Build Cart Service Image
+        working-directory: ./
+        run: |
+          dotnet publish fluentpos/services/cart/Api/Api.csproj --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer -p:ContainerImageName=${{ secrets.DOCKER_USERNAME }}/fluentpos.cart
+          docker push ${{ secrets.DOCKER_USERNAME }}/fluentpos.cart --all-tags    

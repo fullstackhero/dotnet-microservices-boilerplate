@@ -7,7 +7,7 @@ spec:
   version: v1
   metadata:
   - name: connectionString
-    value: amqp://localhost:5672
+    value: amqp://localhost:5673
   - name: durable
     value: false
   - name: deletedWhenUnused

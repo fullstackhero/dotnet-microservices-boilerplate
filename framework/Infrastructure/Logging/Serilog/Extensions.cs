@@ -14,7 +14,7 @@ public static class Extensions
     {
         var config = builder.Configuration;
         var serilogOptions = builder.Services.BindValidateReturn<SerilogOptions>(config);
-        _ = builder.Host.UseSerilog((_, sp, serilogConfig) =>
+        _ = builder.Host.UseSerilog((_, _, serilogConfig) =>
         {
             if (serilogOptions.EnableErichers)
             {

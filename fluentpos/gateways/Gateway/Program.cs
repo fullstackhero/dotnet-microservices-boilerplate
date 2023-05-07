@@ -5,7 +5,14 @@ using Microsoft.AspNetCore.Authentication;
 var builder = WebApplication.CreateBuilder(args);
 bool enableSwagger = false;
 
-var policyNames = new List<string> { "catalog:read", "catalog:write" };
+var policyNames = new List<string>
+{
+    "catalog:read",
+    "catalog:write",
+    "cart:read",
+    "cart:write"
+};
+
 builder.Services.AddOpenIdAuth(builder.Configuration, policyNames);
 
 builder.AddInfrastructure(enableSwagger: enableSwagger);

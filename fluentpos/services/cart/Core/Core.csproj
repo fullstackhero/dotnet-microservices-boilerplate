@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+      <TargetFramework>net7.0</TargetFramework>
+      <RootNamespace>FluentPos.Cart.Core</RootNamespace>
+      <AssemblyName>FluentPos.Cart.Core</AssemblyName>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\catalog\Core\Core.csproj" />
+  </ItemGroup>
+
+</Project>
