@@ -66,10 +66,10 @@ make tye
 
 That's it! 
 
-This will spin up all the containers required. 
-- Your Gateway will be available on `https://localhost:7002`.
-- Your Identity Service will be available on `https://localhost:7001`.
-- Your Catalog Service will be available on `https://localhost:7003`.
+This will spin up all the services required. 
+- Gateway will be available on `https://localhost:7002`.
+- Identity Service will be available on `https://localhost:7001`.
+- Catalog Service will be available on `https://localhost:7003`.
 
 To Test these APIs, you can use open up Visual Code from the `./fluentpos` directory, install the `Thunder Client` extension. I have already included the required Test collections at `./fluentpos/thunder-tests`.
 
