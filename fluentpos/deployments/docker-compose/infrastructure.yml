@@ -42,7 +42,7 @@ services:
       - fluentpos
 
   redis:
-    container_name: dapr-redis
+    container_name: redis
     image: redis:alpine
     ports:
       - 6379:6379
