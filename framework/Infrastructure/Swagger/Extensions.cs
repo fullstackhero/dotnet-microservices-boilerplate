@@ -16,12 +16,18 @@ namespace FSH.Framework.Infrastructure.Swagger
         {
             if (!env.IsProduction())
             {
-                app.UseSwagger();
+                app.UseSwagger(c =>
+                {
+                    c.RouteTemplate = "docs/{documentName}/openapi.json";
+                    c.PreSerializeFilters.Add((swagger, httpReq) => swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"{httpReq.Scheme}://{httpReq.Host.Value}{httpReq.PathBase.Value}" } });
+                });
                 app.UseSwaggerUI(config =>
                 {
-                    config.SwaggerEndpoint("/swagger/v1/swagger.json", "Version 1");
+                    config.SwaggerEndpoint("v1/openapi.json", "Version 1");
+                    config.RoutePrefix = "docs";
                     config.DocExpansion(DocExpansion.List);
                     config.DisplayRequestDuration();
+                    config.DefaultModelsExpandDepth(-1);
                 });
             }
         }

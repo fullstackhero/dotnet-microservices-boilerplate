@@ -22,4 +22,6 @@ app.MapPost("/test", [Topic(DaprConstants.RMQPubSub, nameof(ProductCreatedEvent)
     Console.WriteLine($"Received Message \n Product Id : {item.ProductId} \n ProductName: {item.ProductName}");
     return Results.Ok();
 });
+
+app.MapGet("/", () => "Hello From Catalog Service").AllowAnonymous();
 app.Run();

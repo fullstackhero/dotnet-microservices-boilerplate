@@ -18,10 +18,20 @@ namespace FSH.Framework.Infrastructure;
 
 public static class Extensions
 {
+    public const string AllowAllOrigins = "AllowAll";
     public static void AddInfrastructure(this WebApplicationBuilder builder, Assembly? coreAssembly = null, bool enableSwagger = true)
     {
         var config = builder.Configuration;
         var appOptions = builder.Services.BindValidateReturn<AppOptions>(config);
+
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(name: AllowAllOrigins,
+                              builder =>
+                              {
+                                  builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                              });
+        });
 
         builder.Services.AddExceptionMiddleware();
         builder.Services.AddControllers();
@@ -45,6 +55,7 @@ public static class Extensions
     public static void UseInfrastructure(this WebApplication app, IConfiguration configuration, IWebHostEnvironment env, bool enableSwagger = true)
     {
         //Preserve Order
+        app.UseCors(AllowAllOrigins);
         app.UseExceptionMiddleware();
         app.UseAuthentication();
         app.UseAuthorization();
