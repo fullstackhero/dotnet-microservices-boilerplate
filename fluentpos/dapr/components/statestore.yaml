@@ -7,14 +7,15 @@ spec:
   version: v1
   metadata:
   - name: redisHost
-    value: localhost:6379
-  - name: redisPassword
     secretKeyRef:
-      name: state:redisPassword
-      key: state:redisPassword
+      name: redis.host
+      key: redis.host
+  - name: redisPassword
+    value: ""
 auth:
   secretStore: secretstore
 scopes:
 - cart
 - catalog
+- identity
 - gateway

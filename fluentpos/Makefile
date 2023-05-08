@@ -5,11 +5,11 @@ tye:
 	@tye run
 
 docker-up:
-	@cd ./deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml pull
-	@cd ./deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml up -d
+	@docker-compose -f docker-compose.infrastructure.yml -f docker-compose.yml pull
+	@docker-compose -f docker-compose.infrastructure.yml -f docker-compose.yml up -d
 
 docker-down:
-	@cd ./deployments/docker-compose && docker-compose -f infrastructure.yml -f docker-compose.yml down
+	@docker-compose -f docker-compose.infrastructure.yml -f docker-compose.yml down
 
 dotnet-publish:
 	@cd ./gateways/gateway && dotnet publish --os linux --arch x64 -c Release --self-contained

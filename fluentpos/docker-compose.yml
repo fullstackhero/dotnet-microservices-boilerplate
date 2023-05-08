@@ -45,9 +45,10 @@ services:
      "-app-id", "catalog",
      "-placement-host-address", "placement:6050",
      "-app-port", "80",
-     "-components-path", ".././dapr"]
+     "-components-path", "/dapr/components"]
     volumes:
-      - ".././dapr/:/dapr"
+      - "./dapr/components:/dapr/components"
+      - "./dapr/secrets:/dapr/secrets"
     depends_on:
       - catalog
     network_mode: "service:catalog"
@@ -68,9 +69,10 @@ services:
      "-app-id", "cart",
      "-placement-host-address", "placement:6050",
      "-app-port", "80",
-     "-components-path", ".././dapr"]
+     "-components-path", "/dapr/components"]
     volumes:
-      - ".././dapr/:/dapr"
+      - "./dapr/components:/dapr/components"
+      - "./dapr/secrets:/dapr/secrets"
     depends_on:
       - cart
     network_mode: "service:cart"

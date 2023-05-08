@@ -213,11 +213,11 @@
     "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
     "containerId": "7a625064-1e04-4bca-895a-3ab51e8e8f71",
     "name": "get-product-by-id",
-    "url": "{{gateway_url}}/api/catalog/products/00060000-ac1b-0242-b75d-08db4e727ddf",
+    "url": "{{gateway_url}}/api/catalog/products/00080000-ac19-0242-ae22-08db4f34b30c",
     "method": "GET",
     "sortNum": 15000,
     "created": "2023-05-05T19:02:22.178Z",
-    "modified": "2023-05-06T20:43:20.776Z",
+    "modified": "2023-05-07T19:53:53.682Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -231,12 +231,12 @@
     "method": "POST",
     "sortNum": 12500,
     "created": "2023-05-06T19:28:31.708Z",
-    "modified": "2023-05-06T19:28:43.274Z",
+    "modified": "2023-05-08T14:53:22.511Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\":\"Crucial DDR4 32GB\",\n    \"details\":\"Crucial DDR4 32GB\",\n    \"code\": \"CD3204\",\n    \"cost\":6000,\n    \"price\":7000\n}",
+      "raw": "{\n    \"name\":\"Crucial DDR4 32GB\",\n    \"details\":\"Crucial DDR4 32GB\",\n    \"code\": \"CDd31xgg2fgdd0ca1g1g3\",\n    \"cost\":6000,\n    \"price\":7000\n}",
       "form": []
     },
     "tests": []
@@ -283,7 +283,7 @@
     "method": "PUT",
     "sortNum": 17500,
     "created": "2023-05-07T19:07:15.529Z",
-    "modified": "2023-05-07T19:08:17.259Z",
+    "modified": "2023-05-08T10:11:23.294Z",
     "headers": [],
     "params": [],
     "body": {
@@ -298,11 +298,11 @@
     "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
     "containerId": "7a625064-1e04-4bca-895a-3ab51e8e8f71",
     "name": "get-cart",
-    "url": "{{cart_service}}/carts/623e0000-3f5a-3c7c-02fe-08db4debf69c",
+    "url": "{{gateway_url}}/api/cart/carts/623e0000-3f5a-3c7c-02fe-08db4debf69c",
     "method": "GET",
     "sortNum": 18750,
     "created": "2023-05-07T19:07:19.607Z",
-    "modified": "2023-05-07T19:07:21.666Z",
+    "modified": "2023-05-08T09:38:23.809Z",
     "headers": [],
     "params": [],
     "tests": []
