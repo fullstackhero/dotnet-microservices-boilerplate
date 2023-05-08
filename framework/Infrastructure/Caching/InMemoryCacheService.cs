@@ -24,11 +24,11 @@ public class InMemoryCacheService : ICacheService
         var data = Get<T>(key)!;
         if (data != null)
         {
-            _logger.LogDebug($"Get From Cache : {key}", key);
+            _logger.LogDebug("Get From Cache : {key}", key);
         }
         else
         {
-            _logger.LogDebug($"Key Not Found in Cache : {key}", key);
+            _logger.LogDebug("Key Not Found in Cache : {key}", key);
         }
         return Task.FromResult(data);
     }
@@ -54,7 +54,7 @@ public class InMemoryCacheService : ICacheService
         slidingExpiration ??= TimeSpan.FromMinutes(_cacheOptions.SlidingExpirationInMinutes);
         absoluteExpiration ??= DateTime.UtcNow.AddMinutes(_cacheOptions.AbsoluteExpirationInMinutes);
         _cache.Set(key, value, new MemoryCacheEntryOptions { SlidingExpiration = slidingExpiration, AbsoluteExpiration = absoluteExpiration });
-        _logger.LogDebug($"Added to Cache : {key}", key);
+        _logger.LogDebug("Added to Cache : {key}", key);
     }
 
     public Task SetAsync<T>(string key, T value, TimeSpan? slidingExpiration = null, DateTimeOffset? absoluteExpiration = null, CancellationToken token = default)

@@ -8,8 +8,7 @@ public static class Extensions
 {
     public static T LoadOptions<T>(this IConfiguration configuration, string sectionName) where T : IOptionsRoot
     {
-        var options = configuration.GetSection(sectionName).Get<T>();
-        if (options == null) throw new ConfigurationMissingException(sectionName);
+        var options = configuration.GetSection(sectionName).Get<T>() ?? throw new ConfigurationMissingException(sectionName);
         return options;
     }
 

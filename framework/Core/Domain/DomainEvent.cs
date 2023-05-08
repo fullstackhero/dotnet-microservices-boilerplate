@@ -8,7 +8,7 @@ public abstract class DomainEvent : IDomainEvent
 
     public IDictionary<string, object> MetaData { get; }
 
-    public DomainEvent()
+    protected DomainEvent()
     {
         Id = Guid.NewGuid();
         CreationDate = DateTime.UtcNow;

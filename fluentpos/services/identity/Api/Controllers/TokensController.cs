@@ -1,10 +1,10 @@
-﻿using FluentPos.Identity.Api.Extensions;
+﻿using System.Security.Claims;
+using FluentPos.Identity.Api.Extensions;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
-using System.Security.Claims;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
 namespace FluentPos.Identity.Api.Controllers;
@@ -24,8 +24,7 @@ public class TokensController : ControllerBase
     [HttpPost("~/connect/token"), IgnoreAntiforgeryToken, Produces("application/json")]
     public async Task<IActionResult> Exchange()
     {
-        var request = HttpContext.GetOpenIddictServerRequest();
-        if (request == null) { throw new ArgumentNullException(); }
+        var request = HttpContext.GetOpenIddictServerRequest() ?? throw new ArgumentNullException();
         if (request.IsClientCredentialsGrantType())
         {
             return await HandleClientCredentialsGrantType(request);
@@ -35,11 +34,7 @@ public class TokensController : ControllerBase
 
     private async Task<IActionResult> HandleClientCredentialsGrantType(OpenIddictRequest? request)
     {
-        object? application = await _applicationManager.FindByClientIdAsync(request!.ClientId!);
-        if (application == null)
-        {
-            throw new InvalidOperationException("The application details cannot be found in the database.");
-        }
+        object? application = await _applicationManager.FindByClientIdAsync(request!.ClientId!) ?? throw new InvalidOperationException("The application details cannot be found in the database.");
         var identity = new ClaimsIdentity(
             authenticationType: TokenValidationParameters.DefaultAuthenticationType,
             nameType: Claims.Name,

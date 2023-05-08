@@ -72,7 +72,6 @@ namespace FluentPos.Identity.Infrastructure.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Users",
-                schema: "Identity",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
@@ -91,6 +90,7 @@ namespace FluentPos.Identity.Infrastructure.Migrations
                     LockoutEnabled = table.Column<bool>(type: "boolean", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "integer", nullable: false)
                 },
+                schema: "Identity",
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
@@ -157,9 +157,9 @@ namespace FluentPos.Identity.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserClaims_Users_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Identity",
                         principalTable: "Users",
                         principalColumn: "Id",
+                        principalSchema: "Identity",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -178,9 +178,9 @@ namespace FluentPos.Identity.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_Users_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Identity",
                         principalTable: "Users",
                         principalColumn: "Id",
+                        principalSchema: "Identity",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -203,9 +203,9 @@ namespace FluentPos.Identity.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_Users_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Identity",
                         principalTable: "Users",
                         principalColumn: "Id",
+                        principalSchema: "Identity",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -224,9 +224,9 @@ namespace FluentPos.Identity.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserTokens_Users_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Identity",
                         principalTable: "Users",
                         principalColumn: "Id",
+                        principalSchema: "Identity",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -324,15 +324,15 @@ namespace FluentPos.Identity.Infrastructure.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                schema: "Identity",
                 table: "Users",
-                column: "NormalizedEmail");
+                column: "NormalizedEmail",
+                schema: "Identity");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                schema: "Identity",
                 table: "Users",
                 column: "NormalizedUserName",
+                schema: "Identity",
                 unique: true);
         }
 
