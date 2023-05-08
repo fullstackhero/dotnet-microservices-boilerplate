@@ -1,0 +1,41 @@
+[
+  {
+    "_id": "42790850-814d-4065-89da-b37693eb75f5",
+    "name": "local",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2023-04-13T00:39:48.305Z",
+    "modified": "2023-04-13T00:39:48.305Z",
+    "data": [
+      {
+        "name": "auth_service",
+        "value": "https://localhost:7001"
+      },
+      {
+        "name": "catalog_service",
+        "value": "https://localhost:7003"
+      },
+      {
+        "name": "access_token",
+        "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgwNEFFM0UxQzZCMEVFQTBGMTk1RkRDRjM5QzlFNTc1MTc3Rjg3MDYiLCJ4NXQiOiJnRXJqNGNhdzdxRHhsZjNQT2NubGRSZF9od1kiLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiJjb25zb2xlIiwibmFtZSI6ImNvbnNvbGUiLCJvaV9wcnN0IjoiY29uc29sZSIsImNsaWVudF9pZCI6ImNvbnNvbGUiLCJvaV90a25faWQiOiI0NmYyOTg5Ni03NWZhLTQ2N2YtYjEyYS02NzFjYjNmZDRjYTkiLCJhdWQiOlsiY2F0YWxvZy5yZXNvdXJjZS5zZXJ2ZXIiLCJnYXRld2F5LnJlc291cmNlLnNlcnZlciIsImNhcnQucmVzb3VyY2Uuc2VydmVyIl0sInNjb3BlIjoiY2F0YWxvZzp3cml0ZSBjYXRhbG9nOnJlYWQgY2FydDp3cml0ZSBjYXJ0OnJlYWQiLCJqdGkiOiIxZDg5ZTYyZS05NjExLTRmZjEtYTllNi1mNzc4ZWQ0NDM2YzYiLCJleHAiOjE2ODM1NzU5NDIsImlzcyI6Imh0dHA6Ly9pZGVudGl0eS8iLCJpYXQiOjE2ODM1NzIzNDJ9.gdbHpAX5NOYpK5Vw-j346KWevisKxnDA0G0b2R_DZ1av9zGFrEcqZmenQ6RF2eGkX2OE6hY4kwekT4T8x1xODotKTrmOVxmcIn7F-KSDjR8JGklm-rJ52d7_HARAYQRhR7YtCa3bCJ1RuWSm5qHLNILBEcECfkiQLzcFMRb3dP6zzP4TQfKux0SASq5Gj60EbfxEyd7gfF_pJYBVu86jhyKd0VuszQLK0U3p0E9UgoG5qsn0uvGIo_FcSh_kFE5L4CXP0oBEE9eXBAF5uBZ-D4d8oHYeFhvjVS2lFlunCo2FiOuwx_mWAUO9JYrc73uo4mkULHGmCH2sfdBlh8AfdQ"
+      },
+      {
+        "name": "gateway_url",
+        "value": "https://localhost:7002"
+      },
+      {
+        "name": "cart_service",
+        "value": "https://localhost:7004"
+      }
+    ]
+  },
+  {
+    "_id": "856a1423-5f3c-4d76-835f-b917dd0cb954",
+    "name": "aws.staging",
+    "default": false,
+    "sortNum": 20000,
+    "created": "2023-04-13T00:40:05.757Z",
+    "modified": "2023-04-13T00:40:05.757Z",
+    "data": []
+  }
+]

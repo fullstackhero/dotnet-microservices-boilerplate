@@ -283,12 +283,12 @@
     "method": "PUT",
     "sortNum": 17500,
     "created": "2023-05-07T19:07:15.529Z",
-    "modified": "2023-05-08T18:52:21.552Z",
+    "modified": "2023-05-08T19:01:34.317Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"items\": [\n    {\n      \"productId\":\"623e0000-3f5a-3c7c-02fe-08db4debf692\",\n      \"quantity\":1\n    }\n  ]\n}",
+      "raw": "{\n  \"items\": [\n    {\n      \"productId\":\"623e0000-3f5a-3c7c-02fe-081db4debf69\",\n      \"quantity\":1\n    }\n  ]\n}",
       "form": []
     },
     "tests": []
