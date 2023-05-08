@@ -16,7 +16,7 @@ public class CartsController : BaseApiController
         _logger = logger;
     }
 
-    [HttpGet("{id:guid}", Name = nameof(GetCartAsync))]
+    [HttpGet("/{id:guid}", Name = nameof(GetCartAsync))]
     [Authorize("cart:read")]
     [ProducesResponseType(200, Type = typeof(CustomerCart))]
     public async Task<IActionResult> GetCartAsync(Guid id)
@@ -27,7 +27,7 @@ public class CartsController : BaseApiController
         return Ok(queryResponse);
     }
 
-    [HttpPut("{id:guid}", Name = nameof(UpdateCartAsync))]
+    [HttpPut("/{id:guid}", Name = nameof(UpdateCartAsync))]
     [Authorize("cart:write")]
     [ProducesResponseType(201, Type = typeof(CustomerCart))]
     public async Task<IActionResult> UpdateCartAsync(Guid id, UpdateCartDto updateCartDto)

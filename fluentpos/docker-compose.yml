@@ -29,7 +29,7 @@ services:
     networks:
      - fluentpos
   catalog:
-    container_name: catalog-service
+    container_name: catalog
     image: iammukeshm/fluentpos.catalog:latest
     depends_on:
       - mongo
@@ -47,14 +47,13 @@ services:
      "-app-port", "80",
      "-components-path", "/dapr/components"]
     volumes:
-      - "./dapr/components:/dapr/components"
-      - "./dapr/secrets:/dapr/secrets"
+      - "./dapr/:/dapr"
     depends_on:
       - catalog
     network_mode: "service:catalog"
 
   cart:
-    container_name: cart-service
+    container_name: cart
     image: iammukeshm/fluentpos.cart:latest
     depends_on:
       - placement
@@ -71,8 +70,7 @@ services:
      "-app-port", "80",
      "-components-path", "/dapr/components"]
     volumes:
-      - "./dapr/components:/dapr/components"
-      - "./dapr/secrets:/dapr/secrets"
+      - "./dapr/:/dapr"
     depends_on:
       - cart
     network_mode: "service:cart"

@@ -8,8 +8,8 @@ spec:
   metadata:
   - name: redisHost
     secretKeyRef:
-      name: redis.host
-      key: redis.host
+      name: redisHost
+      key: redisHost
   - name: redisPassword
     value: ""
 auth:

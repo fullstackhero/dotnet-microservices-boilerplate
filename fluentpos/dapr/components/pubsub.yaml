@@ -8,8 +8,8 @@ spec:
   metadata:
   - name: connectionString
     secretKeyRef:
-      name: rabbitmq.connectionString
-      key: rabbitmq.connectionString
+      name: rmqConnectionString
+      key: rmqConnectionString
   - name: durable
     value: false
   - name: deletedWhenUnused

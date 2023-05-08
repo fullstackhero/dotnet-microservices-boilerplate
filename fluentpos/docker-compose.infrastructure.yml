@@ -48,7 +48,19 @@ services:
       - DISABLE_COMMANDS=FLUSHDB,FLUSHALL,CONFIG
     image: redis:alpine
     ports:
-      - 6379:6379
+      - 6380:6379
+    volumes:
+      - redis-data:/data/redis
+    networks:
+      - fluentpos
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 5680:5672
+    volumes:
+      - rabbitmq-data:/data/rabbitmq
     networks:
       - fluentpos
 
@@ -67,6 +79,8 @@ services:
 
 volumes:
   postgres-data:
+  redis-data:
+  rabbitmq-data:
   mongo-data:
   sebp-elk-data:
 
