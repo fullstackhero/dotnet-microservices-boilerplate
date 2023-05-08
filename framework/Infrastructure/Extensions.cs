@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System.Reflection;
+using FluentValidation;
 using FSH.Framework.Infrastructure.Behaviors;
 using FSH.Framework.Infrastructure.Caching;
 using FSH.Framework.Infrastructure.Dapr;
@@ -12,7 +13,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace FSH.Framework.Infrastructure;
 
@@ -27,10 +27,7 @@ public static class Extensions
         builder.Services.AddCors(options =>
         {
             options.AddPolicy(name: AllowAllOrigins,
-                              builder =>
-                              {
-                                  builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-                              });
+                              builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         });
 
         builder.Services.AddExceptionMiddleware();

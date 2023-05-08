@@ -1,8 +1,8 @@
-﻿using FSH.Framework.Core.Database;
+﻿using System.Linq.Expressions;
+using FSH.Framework.Core.Database;
 using FSH.Framework.Core.Domain;
 using FSH.Framework.Core.Services;
 using MongoDB.Driver;
-using System.Linq.Expressions;
 
 namespace FSH.Framework.Persistence.NoSQL.Mongo;
 public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where TDocument : class, IBaseEntity<TId>
@@ -51,7 +51,7 @@ public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where
     public async Task UpdateAsync(TDocument entity, CancellationToken cancellationToken = default)
     {
         entity.UpdateModifiedProperties(_dateTimeProvider.DateTimeUtcNow, string.Empty);
-        await _collection.ReplaceOneAsync(x => x.Id!.Equals(entity.Id), entity);
+        _ = await _collection.ReplaceOneAsync(x => x.Id!.Equals(entity.Id), entity, cancellationToken: cancellationToken);
     }
 
     public Task DeleteRangeAsync(IReadOnlyList<TDocument> entities, CancellationToken cancellationToken = default)

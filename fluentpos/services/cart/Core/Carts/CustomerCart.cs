@@ -14,7 +14,7 @@ public class CustomerCart : BaseEntity
 
     public CustomerCart AddItem(Guid productId, int quantity)
     {
-        var existingItem = Items.FirstOrDefault(i => i.ProductId == productId);
+        var existingItem = Items.Find(i => i.ProductId == productId);
         if (existingItem != null)
         {
             existingItem.Quantity += quantity;

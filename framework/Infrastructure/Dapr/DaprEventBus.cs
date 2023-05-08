@@ -25,7 +25,7 @@ internal class DaprEventBus : IEventBus
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex.StackTrace);
+            _logger.LogError("{error}", ex.StackTrace);
         }
     }
 }

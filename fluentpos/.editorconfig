@@ -26,6 +26,8 @@ csharp_new_line_before_members_in_anonymous_types = true:warning
 # Asynchronous method name should end with 'Async'.
 dotnet_diagnostic.RCS1046.severity = none
 
+dotnet_diagnostic.RCS1194.severity = none
+
 # SA1623: Property summary documentation should match accessors
 dotnet_diagnostic.SA1623.severity = none
 

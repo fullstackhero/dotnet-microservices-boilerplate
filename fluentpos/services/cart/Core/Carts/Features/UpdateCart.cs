@@ -34,24 +34,21 @@ public static class UpdateCart
     public sealed class Handler : IRequestHandler<Command, CustomerCart>
     {
         private readonly DaprClient _daprClient;
-        private readonly IEventBus _eventBus;
 
-        public Handler(DaprClient daprClient, IEventBus eventBus)
+        public Handler(DaprClient daprClient)
         {
             _daprClient = daprClient;
-            _eventBus = eventBus;
         }
 
         public async Task<CustomerCart> Handle(Command request, CancellationToken cancellationToken)
         {
-            var customerId = request.CustomerId.ToString();
-            var cart = await _daprClient.GetStateAsync<CustomerCart>(DaprConstants.RedisStateStore, customerId);
-            if (cart == null) cart = new CustomerCart(request.CustomerId);
+            string customerId = request.CustomerId.ToString();
+            var cart = await _daprClient.GetStateAsync<CustomerCart>(DaprConstants.RedisStateStore, customerId, cancellationToken: cancellationToken) ?? new CustomerCart(request.CustomerId);
             foreach (var item in request.UpdateCartDto.Items)
             {
                 cart.AddItem(item.ProductId, item.Quantity);
             }
-            await _daprClient.SaveStateAsync(DaprConstants.RedisStateStore, customerId, cart);
+            await _daprClient.SaveStateAsync(DaprConstants.RedisStateStore, customerId, cart, cancellationToken: cancellationToken);
             return cart!;
         }
     }

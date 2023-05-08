@@ -34,7 +34,7 @@ namespace FSH.Framework.Infrastructure.Swagger
         internal static void AddSwaggerExtension(this IServiceCollection services, IConfiguration configuration, string appName)
         {
             var swaggerOptions = services.BindValidateReturn<SwaggerOptions>(configuration);
-            services.AddSwaggerGen(config =>
+            _ = services.AddSwaggerGen(config =>
             {
                 config.CustomSchemaIds(type => type.ToString());
                 config.MapType<DateOnly>(() => new OpenApiSchema
@@ -65,7 +65,7 @@ namespace FSH.Framework.Infrastructure.Swagger
                                 Id = JwtBearerDefaults.AuthenticationScheme
                         }
                     },
-                    new string[] {}
+                    Array.Empty<string>()
                 }});
 
                 config.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
