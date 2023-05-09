@@ -52,6 +52,7 @@ FluentPos is a sample project that consumes the microservice framework. You will
 | Identity          | Completed ✔️   |
 | Catalog           | Completed ✔️   |
 | Cart              | WIP       🚧   |
+| People            | WIP       🚧   |
 | Ordering          | WIP       🚧   |
 | Payment           | WIP       🚧   |
 
