@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\Infrastructure\FSH.Framework.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\..\shared\Events\Events.csproj" />
+    <ProjectReference Include="..\..\..\Events\Events.csproj" />
   </ItemGroup>
 
 </Project>
