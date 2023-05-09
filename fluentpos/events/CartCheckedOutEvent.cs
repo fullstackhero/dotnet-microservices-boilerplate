@@ -1,6 +1,6 @@
 ﻿using FSH.Framework.Core.Events;
 
-namespace FluentPos.Shared.Events.Cart;
+namespace FluentPos.Shared.Events;
 public class CartCheckedOutEvent : IntegrationEvent
 {
     public Guid CustomerId { get; }

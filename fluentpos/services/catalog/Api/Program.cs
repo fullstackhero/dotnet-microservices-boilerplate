@@ -1,7 +1,6 @@
 using Dapr;
 using FluentPos.Catalog.Core;
-using FluentPos.Shared.Events.Cart;
-using FluentPos.Shared.Events.Catalog;
+using FluentPos.Shared.Events;
 using FSH.Framework.Infrastructure;
 using FSH.Framework.Infrastructure.Auth.OpenId;
 using FSH.Framework.Infrastructure.Dapr;

@@ -1,6 +1,6 @@
 ﻿using FSH.Framework.Core.Events;
 
-namespace FluentPos.Shared.Events.Catalog;
+namespace FluentPos.Shared.Events;
 
 public class ProductCreatedEvent : DomainEvent
 {

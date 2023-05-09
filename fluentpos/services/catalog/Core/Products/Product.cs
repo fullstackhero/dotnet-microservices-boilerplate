@@ -1,5 +1,5 @@
 ﻿using FluentPos.Catalog.Core.Products.Dtos;
-using FluentPos.Shared.Events.Catalog;
+using FluentPos.Shared.Events;
 using FSH.Framework.Core.Domain;
 using System.Text.RegularExpressions;
 

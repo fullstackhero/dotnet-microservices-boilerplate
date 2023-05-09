@@ -1,7 +1,7 @@
 ﻿using Dapr.Client;
 using FluentPos.Cart.Core.Carts.Dtos;
 using FluentPos.Cart.Core.Carts.Exceptions;
-using FluentPos.Shared.Events.Cart;
+using FluentPos.Shared.Events;
 using FluentValidation;
 using FSH.Framework.Core.Events;
 using FSH.Framework.Infrastructure.Dapr;
