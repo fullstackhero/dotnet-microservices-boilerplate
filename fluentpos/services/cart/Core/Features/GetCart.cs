@@ -4,7 +4,7 @@ using FSH.Framework.Core.Events;
 using FSH.Framework.Infrastructure.Dapr;
 using MediatR;
 
-namespace FluentPos.Cart.Core.Carts.Features;
+namespace FluentPos.Cart.Core.Features;
 public static class GetCart
 {
     public sealed record Query : IRequest<CustomerCart>

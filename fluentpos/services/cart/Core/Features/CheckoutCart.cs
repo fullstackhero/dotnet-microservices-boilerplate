@@ -1,13 +1,13 @@
 ﻿using Dapr.Client;
-using FluentPos.Cart.Core.Carts.Dtos;
-using FluentPos.Cart.Core.Carts.Exceptions;
+using FluentPos.Cart.Core.Dtos;
+using FluentPos.Cart.Core.Exceptions;
 using FluentPos.Shared.Events;
 using FluentValidation;
 using FSH.Framework.Core.Events;
 using FSH.Framework.Infrastructure.Dapr;
 using MediatR;
 
-namespace FluentPos.Cart.Core.Carts.Features;
+namespace FluentPos.Cart.Core.Features;
 public static class CheckoutCart
 {
     public sealed record Command : IRequest

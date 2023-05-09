@@ -1,6 +1,6 @@
 ﻿using FSH.Framework.Core.Domain;
 
-namespace FluentPos.Cart.Core.Carts;
+namespace FluentPos.Cart.Core;
 
 public class CustomerCart : BaseEntity
 {
@@ -23,7 +23,7 @@ public class CustomerCart : BaseEntity
         {
             Items.Add(new CartItem { ProductId = productId, Quantity = quantity });
         }
-        this.UpdateModifiedProperties(DateTime.UtcNow, null!);
+        UpdateModifiedProperties(DateTime.UtcNow, null!);
         return this;
     }
 }

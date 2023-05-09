@@ -1,10 +1,10 @@
 ﻿using Dapr.Client;
-using FluentPos.Cart.Core.Carts.Dtos;
+using FluentPos.Cart.Core.Dtos;
 using FluentValidation;
 using FSH.Framework.Infrastructure.Dapr;
 using MediatR;
 
-namespace FluentPos.Cart.Core.Carts.Features;
+namespace FluentPos.Cart.Core.Features;
 public static class UpdateCart
 {
     public sealed record Command : IRequest<CustomerCart>

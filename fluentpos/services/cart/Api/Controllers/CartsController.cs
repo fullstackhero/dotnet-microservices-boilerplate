@@ -1,6 +1,6 @@
-﻿using FluentPos.Cart.Core.Carts;
-using FluentPos.Cart.Core.Carts.Dtos;
-using FluentPos.Cart.Core.Carts.Features;
+﻿using FluentPos.Cart.Core;
+using FluentPos.Cart.Core.Dtos;
+using FluentPos.Cart.Core.Features;
 using FSH.Framework.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

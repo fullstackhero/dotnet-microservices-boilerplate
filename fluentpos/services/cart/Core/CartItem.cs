@@ -1,4 +1,4 @@
-﻿namespace FluentPos.Cart.Core.Carts;
+﻿namespace FluentPos.Cart.Core;
 public class CartItem
 {
     public Guid ProductId { get; set; }
