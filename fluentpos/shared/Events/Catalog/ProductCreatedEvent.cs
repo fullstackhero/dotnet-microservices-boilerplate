@@ -1,4 +1,4 @@
-﻿using FSH.Framework.Core.Domain;
+﻿using FSH.Framework.Core.Events;
 
 namespace FluentPos.Shared.Events.Catalog;
 

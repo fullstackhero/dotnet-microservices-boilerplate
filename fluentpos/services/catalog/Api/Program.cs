@@ -1,5 +1,6 @@
 using Dapr;
 using FluentPos.Catalog.Core;
+using FluentPos.Shared.Events.Cart;
 using FluentPos.Shared.Events.Catalog;
 using FSH.Framework.Infrastructure;
 using FSH.Framework.Infrastructure.Auth.OpenId;
@@ -17,9 +18,21 @@ builder.Services.AddMongoDbContext<MongoDbContext>(builder.Configuration);
 builder.AddInfrastructure(coreAssembly);
 var app = builder.Build();
 app.UseInfrastructure(builder.Configuration, builder.Environment);
-app.MapPost("/test", [Topic(DaprConstants.RMQPubSub, nameof(ProductCreatedEvent))] (ProductCreatedEvent item) =>
+
+// this will be invoked when a new product is created
+// this will be handled in some other way
+// keeping it here to demonstrate cross-container/cross-service communication via RMQ topics
+app.MapPost("/handleProductCreation", [Topic(DaprConstants.RMQPubSub, nameof(ProductCreatedEvent))] (ProductCreatedEvent item) =>
 {
-    Console.WriteLine($"Received Message \n Product Id : {item.ProductId} \n ProductName: {item.ProductName}");
+    Console.WriteLine($"Received ProductCreatedEvent Notification - Product Id : {item.ProductId} & ProductName: {item.ProductName}");
+    return Results.Ok();
+});
+
+// this will be invoked when a cart is checked out using the cart/{customerId}/checkout [POST] endpoint.
+// this will be moved to order api later on
+app.MapPost("/handleCheckout", [Topic(DaprConstants.RMQPubSub, nameof(CartCheckedOutEvent))] (CartCheckedOutEvent @event) =>
+{
+    Console.WriteLine($"Received CartCheckedOutEvent Notification - Customer Id : {@event.CustomerId} & Credit Card Number: {@event.CreditCardNumber}");
     return Results.Ok();
 });
 

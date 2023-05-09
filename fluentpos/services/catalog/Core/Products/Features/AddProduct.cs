@@ -60,7 +60,7 @@ public static class AddProduct
             await _repository.AddAsync(productToAdd, cancellationToken);
             foreach (var @event in productToAdd.DomainEvents)
             {
-                await _eventBus.PublishAsync(@event, token: cancellationToken);
+                await _eventBus.PublishDomainEventAsync(@event, token: cancellationToken);
             }
             return _mapper.Map<ProductDto>(productToAdd);
         }

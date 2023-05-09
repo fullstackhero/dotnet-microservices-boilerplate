@@ -41,7 +41,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{1E3BB5B7-F23F-4C8D-9F92-299C159ACE23}"
 	ProjectSection(SolutionItems) = preProject
 		dapr\components\pubsub.yaml = dapr\components\pubsub.yaml
-		dapr\components\secrets.json = dapr\components\secrets.json
 		dapr\components\secretstore.yaml = dapr\components\secretstore.yaml
 		dapr\components\statestore.yaml = dapr\components\statestore.yaml
 	EndProjectSection

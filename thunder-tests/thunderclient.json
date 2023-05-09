@@ -306,5 +306,43 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "6a1f7a7b-2cdb-4b93-a734-1285c55b6f60",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "d3986885-e28a-4557-bbf5-a05eed19169c",
+    "name": "checkout",
+    "url": "{{cart_service}}/623e0000-3f5a-3c7c-02fe-08db4debf69c/checkout",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2023-05-09T16:02:20.992Z",
+    "modified": "2023-05-09T16:03:11.835Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"creditCardNumber\": \"350176793563689\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "d0462d20-1f61-467c-8274-f9c11537b26a",
+    "colId": "0f68643a-8467-4469-8cc1-47839e89ca8c",
+    "containerId": "7a625064-1e04-4bca-895a-3ab51e8e8f71",
+    "name": "checkout",
+    "url": "{{gateway_url}}/api/cart/623e0000-3f5a-3c7c-02fe-08db4debf69c/checkout",
+    "method": "POST",
+    "sortNum": 18125,
+    "created": "2023-05-09T16:04:09.494Z",
+    "modified": "2023-05-09T16:04:52.698Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"creditCardNumber\": \"350176793563689\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

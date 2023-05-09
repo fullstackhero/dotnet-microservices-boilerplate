@@ -1,7 +1,6 @@
 ﻿using Dapr.Client;
 using FluentPos.Cart.Core.Carts.Dtos;
 using FluentValidation;
-using FSH.Framework.Core.Events;
 using FSH.Framework.Infrastructure.Dapr;
 using MediatR;
 
@@ -12,9 +11,9 @@ public static class UpdateCart
     {
 
         public readonly Guid CustomerId;
-        public readonly UpdateCartDto UpdateCartDto;
+        public readonly UpdateCartRequestDto UpdateCartDto;
 
-        public Command(UpdateCartDto updateCartDto, Guid customerId)
+        public Command(UpdateCartRequestDto updateCartDto, Guid customerId)
         {
             UpdateCartDto = updateCartDto;
             CustomerId = customerId;

@@ -14,18 +14,19 @@ internal class DaprEventBus : IEventBus
         _logger = logger;
     }
 
-    public async Task PublishAsync<TEvent>(TEvent @event, string pubSubName = default!, CancellationToken token = default) where TEvent : IEvent
+    public async Task PublishDomainEventAsync<TEvent>(TEvent @event, string pubSubName = default!, CancellationToken token = default) where TEvent : IDomainEvent
     {
         if (string.IsNullOrEmpty(pubSubName)) pubSubName = DaprConstants.RMQPubSub;
         string topicName = @event.GetType().Name;
         _logger.LogInformation("Publishing event {@Event} to {PubsubName}.{TopicName}", @event, pubSubName, topicName);
-        try
-        {
-            await _daprClient.PublishEventAsync(pubSubName, topicName, (object)@event, token);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError("{error}", ex.StackTrace);
-        }
+        await _daprClient.PublishEventAsync(pubSubName, topicName, (object)@event, token);
+    }
+
+    public async Task PublishIntegrationEventAsync<TEvent>(TEvent @event, string pubSubName = default!, CancellationToken token = default) where TEvent : IIntegrationEvent
+    {
+        if (string.IsNullOrEmpty(pubSubName)) pubSubName = DaprConstants.RMQPubSub;
+        string topicName = @event.GetType().Name;
+        _logger.LogInformation("Publishing event {@Event} to {PubsubName}.{TopicName}", @event, pubSubName, topicName);
+        await _daprClient.PublishEventAsync(pubSubName, topicName, (object)@event, token);
     }
 }
