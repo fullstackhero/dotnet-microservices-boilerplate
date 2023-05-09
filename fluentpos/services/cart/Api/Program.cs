@@ -1,7 +1,6 @@
 using FluentPos.Cart.Core;
 using FSH.Framework.Infrastructure;
 using FSH.Framework.Infrastructure.Auth.OpenId;
-using FSH.Framework.Persistence.NoSQL.Mongo;
 
 var coreAssembly = typeof(CartCore).Assembly;
 var builder = WebApplication.CreateBuilder(args);
