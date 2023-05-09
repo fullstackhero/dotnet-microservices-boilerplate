@@ -11,7 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\Core\FSH.Framework.Core.csproj" />
     <ProjectReference Include="..\..\..\..\framework\Persistence.NoSQL\FSH.Framework.Persistence.NoSQL.csproj" />
-    <ProjectReference Include="..\..\..\Events\Events.csproj" />
+    <ProjectReference Include="..\..\..\events\Events.csproj" />
   </ItemGroup>
 
 </Project>
