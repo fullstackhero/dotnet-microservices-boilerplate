@@ -9,7 +9,6 @@ public static class UpdateCart
 {
     public sealed record Command : IRequest<CustomerCart>
     {
-
         public readonly Guid CustomerId;
         public readonly UpdateCartRequestDto UpdateCartDto;
 

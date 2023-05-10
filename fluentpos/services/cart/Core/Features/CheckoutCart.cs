@@ -12,7 +12,6 @@ public static class CheckoutCart
 {
     public sealed record Command : IRequest
     {
-
         public readonly Guid CustomerId;
         public readonly CheckoutCartRequestDto CheckoutRequest;
 
@@ -42,14 +41,9 @@ public static class CheckoutCart
 
         public async Task Handle(Command request, CancellationToken cancellationToken)
         {
-            var cart = await _daprClient.GetStateAsync<CustomerCart>(DaprConstants.RedisStateStore, request.CustomerId.ToString());
-            if (cart == null)
-            {
-                throw new CartNotFoundException(request.CustomerId);
-            }
-
+            _ = await _daprClient.GetStateAsync<CustomerCart>(DaprConstants.RedisStateStore, request.CustomerId.ToString(), cancellationToken: cancellationToken) ?? throw new CartNotFoundException(request.CustomerId);
             var cartCheckedOutEvent = new CartCheckedOutEvent(request.CustomerId, request.CheckoutRequest.CreditCardNumber!);
-            await _eventBus.PublishIntegrationEventAsync(cartCheckedOutEvent);
+            await _eventBus.PublishIntegrationEventAsync(cartCheckedOutEvent, token: cancellationToken);
         }
     }
 }

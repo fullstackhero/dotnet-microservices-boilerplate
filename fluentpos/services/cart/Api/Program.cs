@@ -24,7 +24,6 @@ app.MapGet("/{id:guid}", async (Guid id, ISender _mediatr) =>
 .Produces(200, responseType: typeof(CustomerCart))
 .Produces(400);
 
-
 // Update Customer Cart
 app.MapPut("/{id:guid}", async (Guid id, UpdateCartRequestDto updateRequest, ISender _mediatr) =>
 {
@@ -34,7 +33,6 @@ app.MapPut("/{id:guid}", async (Guid id, UpdateCartRequestDto updateRequest, ISe
 .RequireAuthorization("cart:write")
 .Produces(200)
 .Produces(400);
-
 
 // Checkout Customer Cart
 app.MapPost("/{id:guid}/checkout", async (Guid id, CheckoutCartRequestDto checkoutRequest, ISender _mediatr) =>

@@ -36,8 +36,7 @@ public static class GetCart
 
         public async Task<CustomerCart> Handle(Query request, CancellationToken cancellationToken)
         {
-            var cart = await _daprClient.GetStateAsync<CustomerCart>(DaprConstants.RedisStateStore,
-                request.CustomerId.ToString());
+            var cart = await _daprClient.GetStateAsync<CustomerCart>(DaprConstants.RedisStateStore, request.CustomerId.ToString(), cancellationToken: cancellationToken);
             return cart!;
         }
     }
