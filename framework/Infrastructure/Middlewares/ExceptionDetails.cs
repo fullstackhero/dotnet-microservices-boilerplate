@@ -1,6 +1,6 @@
-﻿using FSH.Framework.Core.Exceptions;
+﻿using System.Net;
+using FSH.Framework.Core.Exceptions;
 using Microsoft.AspNetCore.WebUtilities;
-using System.Net;
 
 namespace FSH.Framework.Infrastructure.Middlewares;
 
@@ -21,7 +21,6 @@ public class ExceptionDetails
             Detail = "One or More Validations failed",
             Status = (int)HttpStatusCode.BadRequest,
             Errors = new(),
-
         };
         if (exception.Errors.Count() == 1)
         {
@@ -41,7 +40,6 @@ public class ExceptionDetails
             Title = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.InternalServerError),
             Detail = exception.Message.Trim(),
             Status = (int)HttpStatusCode.InternalServerError,
-
         };
         return errorResult;
     }

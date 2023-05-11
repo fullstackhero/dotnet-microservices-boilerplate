@@ -16,15 +16,11 @@ public static class Extensions
         var serilogOptions = builder.Services.BindValidateReturn<SerilogOptions>(config);
         _ = builder.Host.UseSerilog((_, _, serilogConfig) =>
         {
-            if (serilogOptions.EnableErichers)
-            {
-                ConfigureEnrichers(serilogConfig, appName);
-            }
+            if (serilogOptions.EnableErichers) ConfigureEnrichers(serilogConfig, appName);
             ConfigureConsoleLogging(serilogConfig, serilogOptions.StructuredConsoleLogging);
             ConfigureWriteToFile(serilogConfig, serilogOptions.WriteToFile, serilogOptions.RetentionFileCount, appName);
-            //ConfigureElasticSearch(builder, serilogConfig, appName, serilogOptions.ElasticSearchUrl);
             SetMinimumLogLevel(serilogConfig, serilogOptions.MinimumLogLevel);
-            //OverideMinimumLogLevel(serilogConfig);
+            if (serilogOptions.OverideMinimumLogLevel) OverideMinimumLogLevel(serilogConfig);
         });
     }
 

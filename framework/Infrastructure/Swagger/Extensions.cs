@@ -12,7 +12,7 @@ namespace FSH.Framework.Infrastructure.Swagger
 {
     internal static class Extensions
     {
-        public static void UseSwaggerExtension(this IApplicationBuilder app, IConfiguration configuration, IWebHostEnvironment env)
+        public static void UseSwaggerExtension(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (!env.IsProduction())
             {
@@ -31,7 +31,7 @@ namespace FSH.Framework.Infrastructure.Swagger
                 });
             }
         }
-        internal static void AddSwaggerExtension(this IServiceCollection services, IConfiguration configuration, string appName)
+        internal static void AddSwaggerExtension(this IServiceCollection services, IConfiguration configuration)
         {
             var swaggerOptions = services.BindValidateReturn<SwaggerOptions>(configuration);
             _ = services.AddSwaggerGen(config =>

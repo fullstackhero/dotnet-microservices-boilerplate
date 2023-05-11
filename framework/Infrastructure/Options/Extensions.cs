@@ -20,12 +20,11 @@ public static class Extensions
             .ValidateOnStart();
         return configuration.LoadOptions<T>(typeof(T).Name);
     }
-    public static void BindValidate<T>(this IServiceCollection services, IConfiguration configuration) where T : class, IOptionsRoot
+    public static void BindValidate<T>(this IServiceCollection services) where T : class, IOptionsRoot
     {
         services.AddOptions<T>()
             .BindConfiguration(typeof(T).Name)
             .ValidateDataAnnotations()
             .ValidateOnStart();
     }
-
 }
