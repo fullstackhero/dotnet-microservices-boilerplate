@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using FluentValidation;
+﻿using FluentValidation;
 using FSH.Framework.Infrastructure.Behaviors;
 using FSH.Framework.Infrastructure.Caching;
 using FSH.Framework.Infrastructure.Dapr;
@@ -13,6 +12,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace FSH.Framework.Infrastructure;
 
@@ -44,7 +44,7 @@ public static class Extensions
             builder.Services.AddMediatR(o => o.RegisterServicesFromAssembly(coreAssembly));
         }
 
-        if (enableSwagger) builder.Services.AddSwaggerExtension(config, appOptions.Name);
+        if (enableSwagger) builder.Services.AddSwaggerExtension(config);
         builder.Services.AddCachingService(config);
         builder.Services.AddInternalServices();
     }
@@ -59,6 +59,6 @@ public static class Extensions
         app.UseCloudEvents();
         app.MapSubscribeHandler();
         app.MapControllers();
-        if (enableSwagger) app.UseSwaggerExtension(configuration, env);
+        if (enableSwagger) app.UseSwaggerExtension(env);
     }
 }

@@ -8,7 +8,7 @@ public static class Extensions
 {
     public static IServiceCollection AddCachingService(this IServiceCollection services, IConfiguration config)
     {
-        services.BindValidate<CachingOptions>(config);
+        services.BindValidate<CachingOptions>();
         services.AddTransient<ICacheService, InMemoryCacheService>();
         services.AddMemoryCache();
 
