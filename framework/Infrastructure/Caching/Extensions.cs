@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace FSH.Framework.Infrastructure.Caching;
 public static class Extensions
 {
-    public static IServiceCollection AddCachingService(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddCachingService(this IServiceCollection services)
     {
         services.BindValidate<CachingOptions>();
         services.AddTransient<ICacheService, InMemoryCacheService>();

@@ -18,7 +18,7 @@ builder.Services.AddOpenIdAuth(builder.Configuration, policyNames);
 builder.AddInfrastructure(enableSwagger: enableSwagger);
 builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 var app = builder.Build();
-app.UseInfrastructure(builder.Configuration, builder.Environment, enableSwagger: enableSwagger);
+app.UseInfrastructure(builder.Environment, enableSwagger: enableSwagger);
 app.MapGet("/", () => "Hello From Gateway");
 app.UseRouting();
 app.MapReverseProxy(config =>

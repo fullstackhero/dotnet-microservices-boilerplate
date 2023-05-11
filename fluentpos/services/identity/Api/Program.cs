@@ -14,5 +14,5 @@ builder.AddInfrastructure(coreAssembly: coreAssembly, enableSwagger: enableSwagg
 builder.ConfigureAuthServer<AppDbContext>(dbContextAssembly);
 builder.Services.AddHostedService<SeedClientsAndScopes>();
 var app = builder.Build();
-app.UseInfrastructure(builder.Configuration, builder.Environment, enableSwagger);
+app.UseInfrastructure(builder.Environment, enableSwagger);
 app.Run();

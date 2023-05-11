@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System.Reflection;
+using FluentValidation;
 using FSH.Framework.Infrastructure.Behaviors;
 using FSH.Framework.Infrastructure.Caching;
 using FSH.Framework.Infrastructure.Dapr;
@@ -12,7 +13,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace FSH.Framework.Infrastructure;
 
@@ -39,17 +39,17 @@ public static class Extensions
         if (coreAssembly != null)
         {
             builder.Services.AddMapsterExtension(coreAssembly);
-            builder.Services.AddBehaviors(coreAssembly);
+            builder.Services.AddBehaviors();
             builder.Services.AddValidatorsFromAssembly(coreAssembly);
             builder.Services.AddMediatR(o => o.RegisterServicesFromAssembly(coreAssembly));
         }
 
         if (enableSwagger) builder.Services.AddSwaggerExtension(config);
-        builder.Services.AddCachingService(config);
+        builder.Services.AddCachingService();
         builder.Services.AddInternalServices();
     }
 
-    public static void UseInfrastructure(this WebApplication app, IConfiguration configuration, IWebHostEnvironment env, bool enableSwagger = true)
+    public static void UseInfrastructure(this WebApplication app, IWebHostEnvironment env, bool enableSwagger = true)
     {
         //Preserve Order
         app.UseCors(AllowAllOrigins);

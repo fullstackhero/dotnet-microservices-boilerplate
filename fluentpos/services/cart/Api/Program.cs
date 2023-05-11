@@ -12,7 +12,7 @@ var policyNames = new List<string> { "cart:read", "cart:write" };
 builder.Services.AddOpenIdAuth(builder.Configuration, policyNames);
 builder.AddInfrastructure(coreAssembly);
 var app = builder.Build();
-app.UseInfrastructure(builder.Configuration, builder.Environment);
+app.UseInfrastructure(builder.Environment);
 
 // Get Customer Cart Details
 app.MapGet("/{id:guid}", async (Guid id, ISender _mediatr) =>

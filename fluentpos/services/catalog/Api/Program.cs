@@ -16,7 +16,7 @@ builder.Services.AddCoreCatalogService();
 builder.Services.AddMongoDbContext<MongoDbContext>(builder.Configuration);
 builder.AddInfrastructure(coreAssembly);
 var app = builder.Build();
-app.UseInfrastructure(builder.Configuration, builder.Environment);
+app.UseInfrastructure(builder.Environment);
 
 // this will be invoked when a new product is created
 // this will be handled in some other way
