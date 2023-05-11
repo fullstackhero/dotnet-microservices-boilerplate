@@ -1,8 +1,8 @@
-﻿using FSH.Framework.Core.Caching;
+﻿using System.Text;
+using FSH.Framework.Core.Caching;
 using FSH.Framework.Core.Serializers;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
-using System.Text;
 
 namespace FSH.Framework.Infrastructure.Caching
 {
@@ -104,7 +104,7 @@ namespace FSH.Framework.Infrastructure.Caching
         {
             try
             {
-                _cache.Set(key, value, GetOptions(slidingExpiration));
+                _cache.Set(key, value, GetOptions(slidingExpiration, absoluteExpiration));
                 _logger.LogDebug("Added to Cache : {key}", key);
             }
             catch
@@ -119,7 +119,7 @@ namespace FSH.Framework.Infrastructure.Caching
         {
             try
             {
-                await _cache.SetAsync(key, value, GetOptions(slidingExpiration), token);
+                await _cache.SetAsync(key, value, GetOptions(slidingExpiration, absoluteExpiration), token);
                 _logger.LogDebug("Added to Cache : {key}", key);
             }
             catch
@@ -135,9 +135,8 @@ namespace FSH.Framework.Infrastructure.Caching
         private T Deserialize<T>(byte[] cachedData) =>
             _serializer.Deserialize<T>(Encoding.Default.GetString(cachedData));
 
-        private static DistributedCacheEntryOptions GetOptions(TimeSpan? slidingExpiration)
+        private static DistributedCacheEntryOptions GetOptions(TimeSpan? slidingExpiration, DateTimeOffset? absoluteExpiration)
         {
-            //TODO : Fix this to read from appsettings
             var options = new DistributedCacheEntryOptions();
             if (slidingExpiration.HasValue)
             {
@@ -146,6 +145,15 @@ namespace FSH.Framework.Infrastructure.Caching
             else
             {
                 options.SetSlidingExpiration(TimeSpan.FromMinutes(10)); // Default expiration time of 10 minutes.
+            }
+
+            if (absoluteExpiration.HasValue)
+            {
+                options.SetAbsoluteExpiration(absoluteExpiration.Value);
+            }
+            else
+            {
+                options.SetAbsoluteExpiration(TimeSpan.FromMinutes(15)); // Default expiration time of 10 minutes.
             }
 
             return options;
