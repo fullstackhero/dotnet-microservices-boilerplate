@@ -1,7 +1,8 @@
-﻿using FluentPos.Catalog.Core.Products.Dtos;
+﻿using FluentPos.Catalog.Application.Products.Dtos;
+using FluentPos.Catalog.Domain.Products;
 using Mapster;
 
-namespace FluentPos.Catalog.Core.Products.Mappings;
+namespace FluentPos.Catalog.Application.Products.Mappings;
 public sealed class ProductMappings : IRegister
 {
     public void Register(TypeAdapterConfig config)

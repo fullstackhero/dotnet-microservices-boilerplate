@@ -1,10 +1,11 @@
-﻿using FluentPos.Catalog.Core.Products.Dtos;
-using FluentPos.Catalog.Core.Products.Exceptions;
+﻿using FluentPos.Catalog.Application.Products.Dtos;
+using FluentPos.Catalog.Application.Products.Exceptions;
+using FluentPos.Catalog.Domain.Products;
 using FSH.Framework.Core.Caching;
 using MapsterMapper;
 using MediatR;
 
-namespace FluentPos.Catalog.Core.Products.Features;
+namespace FluentPos.Catalog.Application.Products.Features;
 public static class UpdateProduct
 {
     public sealed record Command : IRequest<ProductDto>
@@ -33,7 +34,15 @@ public static class UpdateProduct
         public async Task<ProductDto> Handle(Command request, CancellationToken cancellationToken)
         {
             var productToBeUpdated = await _repository.FindByIdAsync(request.Id, cancellationToken) ?? throw new ProductNotFoundException(request.Id);
-            productToBeUpdated.Update(request.UpdateProductDto);
+            productToBeUpdated.Update(
+                request.UpdateProductDto.Name,
+                request.UpdateProductDto.Details,
+                request.UpdateProductDto.Price,
+                request.UpdateProductDto.Cost,
+                request.UpdateProductDto.TrackQuantity,
+                request.UpdateProductDto.AlertQuantity,
+                request.UpdateProductDto.Quantity);
+
             await _repository.UpdateAsync(productToBeUpdated, cancellationToken);
             await _cacheService.RemoveAsync(Product.GetCacheKey(request.Id), cancellationToken);
             return _mapper.Map<ProductDto>(productToBeUpdated);

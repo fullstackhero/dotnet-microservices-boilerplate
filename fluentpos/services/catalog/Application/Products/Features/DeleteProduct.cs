@@ -1,8 +1,8 @@
-﻿using FSH.Framework.Core.Caching;
-using MapsterMapper;
+﻿using FluentPos.Catalog.Domain.Products;
+using FSH.Framework.Core.Caching;
 using MediatR;
 
-namespace FluentPos.Catalog.Core.Products.Features;
+namespace FluentPos.Catalog.Application.Products.Features;
 public static class DeleteProduct
 {
     public sealed record Command : IRequest

@@ -1,4 +1,4 @@
-﻿namespace FluentPos.Catalog.Core.Products.Dtos;
+﻿namespace FluentPos.Catalog.Application.Products.Dtos;
 public sealed class AddProductDto
 {
     public string? Name { get; set; }

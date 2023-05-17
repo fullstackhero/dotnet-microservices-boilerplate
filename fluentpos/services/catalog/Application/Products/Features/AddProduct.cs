@@ -1,10 +1,11 @@
-﻿using FluentPos.Catalog.Core.Products.Dtos;
+﻿using FluentPos.Catalog.Application.Products.Dtos;
+using FluentPos.Catalog.Domain.Products;
 using FluentValidation;
 using FSH.Framework.Core.Events;
 using MapsterMapper;
 using MediatR;
 
-namespace FluentPos.Catalog.Core.Products.Features;
+namespace FluentPos.Catalog.Application.Products.Features;
 public static class AddProduct
 {
     public sealed record Command : IRequest<ProductDto>
@@ -56,7 +57,16 @@ public static class AddProduct
 
         public async Task<ProductDto> Handle(Command request, CancellationToken cancellationToken)
         {
-            var productToAdd = Product.Create(request.AddProductDto);
+            var productToAdd = Product.Create(
+                request.AddProductDto.Name,
+                request.AddProductDto.Details,
+                request.AddProductDto.Code,
+                request.AddProductDto.Cost,
+                request.AddProductDto.Price,
+                request.AddProductDto.AlertQuantity,
+                request.AddProductDto.TrackQuantity,
+                request.AddProductDto.Quantity);
+
             await _repository.AddAsync(productToAdd, cancellationToken);
             foreach (var @event in productToAdd.DomainEvents)
             {

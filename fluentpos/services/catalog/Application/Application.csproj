@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-      <RootNamespace>FluentPos.Catalog.Core</RootNamespace>
-      <AssemblyName>FluentPos.Catalog.Core</AssemblyName>
+      <RootNamespace>FluentPos.Catalog.Application</RootNamespace>
+      <AssemblyName>FluentPos.Catalog.Application</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -12,6 +12,7 @@
     <ProjectReference Include="..\..\..\..\framework\Core\FSH.Framework.Core.csproj" />
     <ProjectReference Include="..\..\..\..\framework\Persistence.NoSQL\FSH.Framework.Persistence.NoSQL.csproj" />
     <ProjectReference Include="..\..\..\events\Events.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

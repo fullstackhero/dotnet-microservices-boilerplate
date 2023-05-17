@@ -1,5 +1,5 @@
-﻿using FluentPos.Catalog.Core.Products.Dtos;
-using FluentPos.Catalog.Core.Products.Features;
+﻿using FluentPos.Catalog.Application.Products.Dtos;
+using FluentPos.Catalog.Application.Products.Features;
 using FSH.Framework.Core.Pagination;
 using FSH.Framework.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;

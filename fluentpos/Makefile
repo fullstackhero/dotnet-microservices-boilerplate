@@ -1,5 +1,5 @@
 build:
-	@dotnet build
+	@dotnet build /ll
 
 tye:
 	@tye run

@@ -1,20 +1,21 @@
 using Dapr;
-using FluentPos.Catalog.Core;
+using FluentPos.Catalog.Application;
+using FluentPos.Catalog.Infrastructure;
 using FluentPos.Shared.Events;
 using FSH.Framework.Infrastructure;
 using FSH.Framework.Infrastructure.Auth.OpenId;
 using FSH.Framework.Infrastructure.Dapr;
 using FSH.Framework.Persistence.NoSQL.Mongo;
 
-var coreAssembly = typeof(CatalogCore).Assembly;
+var applicationAssembly = typeof(CatalogApplication).Assembly;
 var builder = WebApplication.CreateBuilder(args);
 
 var policyNames = new List<string> { "catalog:read", "catalog:write" };
 builder.Services.AddOpenIdAuth(builder.Configuration, policyNames);
 
-builder.Services.AddCoreCatalogService();
+builder.Services.AddCatalogRepositories();
 builder.Services.AddMongoDbContext<MongoDbContext>(builder.Configuration);
-builder.AddInfrastructure(coreAssembly);
+builder.AddInfrastructure(applicationAssembly);
 var app = builder.Build();
 app.UseInfrastructure(builder.Environment);
 

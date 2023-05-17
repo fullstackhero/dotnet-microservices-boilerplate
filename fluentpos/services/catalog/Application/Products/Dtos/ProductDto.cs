@@ -1,5 +1,5 @@
-﻿namespace FluentPos.Catalog.Core.Products.Dtos;
-public class ProductDetailsDto
+﻿namespace FluentPos.Catalog.Application.Products.Dtos;
+public class ProductDto
 {
     public Guid Id { get; set; }
     public string? Name { get; set; }
@@ -8,6 +8,4 @@ public class ProductDetailsDto
     public string? Slug { get; set; }
     public decimal? Price { get; set; }
     public decimal? Quantity { get; set; }
-    public DateTime CreatedOn { get; set; }
-    public DateTime? LastModifiedOn { get; set; } = null;
 }

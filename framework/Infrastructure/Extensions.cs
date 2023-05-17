@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using FluentValidation;
+﻿using FluentValidation;
 using FSH.Framework.Infrastructure.Behaviors;
 using FSH.Framework.Infrastructure.Caching;
 using FSH.Framework.Infrastructure.Dapr;
@@ -11,15 +10,15 @@ using FSH.Framework.Infrastructure.Services;
 using FSH.Framework.Infrastructure.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace FSH.Framework.Infrastructure;
 
 public static class Extensions
 {
     public const string AllowAllOrigins = "AllowAll";
-    public static void AddInfrastructure(this WebApplicationBuilder builder, Assembly? coreAssembly = null, bool enableSwagger = true)
+    public static void AddInfrastructure(this WebApplicationBuilder builder, Assembly? applicationAssembly = null, bool enableSwagger = true)
     {
         var config = builder.Configuration;
         var appOptions = builder.Services.BindValidateReturn<AppOptions>(config);
@@ -36,12 +35,12 @@ public static class Extensions
         builder.ConfigureSerilog(appOptions.Name);
         builder.Services.AddRouting(options => options.LowercaseUrls = true);
         builder.Services.AddDaprBuildingBlocks();
-        if (coreAssembly != null)
+        if (applicationAssembly != null)
         {
-            builder.Services.AddMapsterExtension(coreAssembly);
+            builder.Services.AddMapsterExtension(applicationAssembly);
             builder.Services.AddBehaviors();
-            builder.Services.AddValidatorsFromAssembly(coreAssembly);
-            builder.Services.AddMediatR(o => o.RegisterServicesFromAssembly(coreAssembly));
+            builder.Services.AddValidatorsFromAssembly(applicationAssembly);
+            builder.Services.AddMediatR(o => o.RegisterServicesFromAssembly(applicationAssembly));
         }
 
         if (enableSwagger) builder.Services.AddSwaggerExtension(config);

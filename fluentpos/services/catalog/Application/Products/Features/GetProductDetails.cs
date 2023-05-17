@@ -1,10 +1,11 @@
-﻿using FluentPos.Catalog.Core.Products.Dtos;
-using FluentPos.Catalog.Core.Products.Exceptions;
+﻿using FluentPos.Catalog.Application.Products.Dtos;
+using FluentPos.Catalog.Application.Products.Exceptions;
+using FluentPos.Catalog.Domain.Products;
 using FSH.Framework.Core.Caching;
 using MapsterMapper;
 using MediatR;
 
-namespace FluentPos.Catalog.Core.Products.Features;
+namespace FluentPos.Catalog.Application.Products.Features;
 public static class GetProductDetails
 {
     public sealed record Query : IRequest<ProductDetailsDto>

@@ -1,8 +1,8 @@
-﻿using FluentPos.Catalog.Core.Products.Dtos;
+﻿using FluentPos.Catalog.Application.Products.Dtos;
 using FSH.Framework.Core.Pagination;
 using MediatR;
 
-namespace FluentPos.Catalog.Core.Products.Features;
+namespace FluentPos.Catalog.Application.Products.Features;
 public static class GetProducts
 {
     public sealed record Query : IRequest<PagedList<ProductDto>>
