@@ -10,7 +10,7 @@
     </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\framework\Infrastructure\FSH.Framework.Infrastructure.csproj" />
-      <ProjectReference Include="..\..\..\..\framework\Persistence.NoSQL\FSH.Framework.Persistence.NoSQL.csproj" />
+      <ProjectReference Include="..\..\..\..\framework\Persistence.NoSQL\FSH.Framework.Persistence.Mongo.csproj" />
       <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     </ItemGroup>

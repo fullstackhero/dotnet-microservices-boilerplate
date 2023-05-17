@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSH.Framework.Infrastructur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSH.Framework.Persistence.EntityFrameworkCore", "..\framework\Persistence.EntityFrameworkCore\FSH.Framework.Persistence.EntityFrameworkCore.csproj", "{D8E63BDB-EB19-4A12-BE4F-72FD2DE91F69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSH.Framework.Persistence.NoSQL", "..\framework\Persistence.NoSQL\FSH.Framework.Persistence.NoSQL.csproj", "{C0B0281C-E900-4E73-BB63-21AF2C66A19B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSH.Framework.Persistence.Mongo", "..\framework\Persistence.NoSQL\FSH.Framework.Persistence.Mongo.csproj", "{C0B0281C-E900-4E73-BB63-21AF2C66A19B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fluentpos", "fluentpos", "{858EF293-2379-450B-B452-C8829667CF0A}"
 	ProjectSection(SolutionItems) = preProject
@@ -61,9 +61,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "events", "events", "{26900E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events", "events\Events.csproj", "{CFBB612C-ABEC-4E8A-96EB-CCA51393FB84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "services\catalog\Infrastructure\Infrastructure.csproj", "{75F2D80A-EB8E-484E-A677-093397E702A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "services\catalog\Infrastructure\Infrastructure.csproj", "{75F2D80A-EB8E-484E-A677-093397E702A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "services\catalog\Domain\Domain.csproj", "{93672F1F-9E97-4384-AB93-4C9CA6C8F0FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "services\catalog\Domain\Domain.csproj", "{93672F1F-9E97-4384-AB93-4C9CA6C8F0FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

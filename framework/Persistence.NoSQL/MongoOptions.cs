@@ -1,6 +1,6 @@
 ﻿using FSH.Framework.Infrastructure.Options;
 
-namespace FSH.Framework.Persistence.NoSQL.Mongo;
+namespace FSH.Framework.Persistence.Mongo;
 
 public class MongoOptions : IOptionsRoot
 {

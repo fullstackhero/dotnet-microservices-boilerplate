@@ -2,7 +2,7 @@
 using Mapster;
 using MongoDB.Driver.Linq;
 
-namespace FSH.Framework.Persistence.NoSQL.Mongo;
+namespace FSH.Framework.Persistence.Mongo;
 public static class QueryableExtensions
 {
     public static async Task<PagedList<T>> ApplyPagingAsync<T>(this IMongoQueryable<T> collection, int page = 1, int resultsPerPage = 10, CancellationToken cancellationToken = default)

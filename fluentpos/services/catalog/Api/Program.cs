@@ -5,7 +5,7 @@ using FluentPos.Shared.Events;
 using FSH.Framework.Infrastructure;
 using FSH.Framework.Infrastructure.Auth.OpenId;
 using FSH.Framework.Infrastructure.Dapr;
-using FSH.Framework.Persistence.NoSQL.Mongo;
+using FSH.Framework.Persistence.Mongo;
 
 var applicationAssembly = typeof(CatalogApplication).Assembly;
 var builder = WebApplication.CreateBuilder(args);

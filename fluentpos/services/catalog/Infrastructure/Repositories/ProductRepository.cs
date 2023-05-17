@@ -3,7 +3,7 @@ using FluentPos.Catalog.Application.Products.Dtos;
 using FluentPos.Catalog.Domain.Products;
 using FSH.Framework.Core.Pagination;
 using FSH.Framework.Core.Services;
-using FSH.Framework.Persistence.NoSQL.Mongo;
+using FSH.Framework.Persistence.Mongo;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 

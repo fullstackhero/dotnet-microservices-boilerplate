@@ -4,7 +4,7 @@ using FSH.Framework.Core.Domain;
 using FSH.Framework.Core.Services;
 using MongoDB.Driver;
 
-namespace FSH.Framework.Persistence.NoSQL.Mongo;
+namespace FSH.Framework.Persistence.Mongo;
 public class MongoRepository<TDocument, TId> : IRepository<TDocument, TId> where TDocument : class, IBaseEntity<TId>
 {
     private readonly IMongoDbContext _context;

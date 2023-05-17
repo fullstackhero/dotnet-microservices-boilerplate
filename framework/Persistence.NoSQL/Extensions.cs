@@ -3,7 +3,7 @@ using FSH.Framework.Infrastructure.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FSH.Framework.Persistence.NoSQL.Mongo;
+namespace FSH.Framework.Persistence.Mongo;
 public static class Extensions
 {
     public static IServiceCollection AddMongoDbContext<TContext>(
