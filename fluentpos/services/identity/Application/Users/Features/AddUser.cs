@@ -1,12 +1,13 @@
-﻿using FluentPos.Identity.Core.Users.Dtos;
-using FluentPos.Identity.Core.Users.Exceptions;
+﻿using FluentPos.Identity.Application.Users.Dtos;
+using FluentPos.Identity.Application.Users.Exceptions;
+using FluentPos.Identity.Domain.Users;
 using FluentValidation;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 
-namespace FluentPos.Identity.Core.Users.Features;
+namespace FluentPos.Identity.Application.Users.Features;
 
 public static class AddUser
 {

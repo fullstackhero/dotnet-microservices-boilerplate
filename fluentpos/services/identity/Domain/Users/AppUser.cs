@@ -1,4 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace FluentPos.Identity.Core.Users;
+namespace FluentPos.Identity.Domain.Users;
 public class AppUser : IdentityUser { }

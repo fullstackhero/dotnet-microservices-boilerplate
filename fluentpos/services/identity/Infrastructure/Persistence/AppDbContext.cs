@@ -1,4 +1,4 @@
-﻿using FluentPos.Identity.Core.Users;
+﻿using FluentPos.Identity.Domain.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

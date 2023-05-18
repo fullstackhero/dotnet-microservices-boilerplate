@@ -12,6 +12,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\..\..\framework\Infrastructure\FSH.Framework.Infrastructure.csproj" />
-        <ProjectReference Include="..\Core\Core.csproj" />
+        <ProjectReference Include="..\Application\Application.csproj" />
     </ItemGroup>
 </Project>

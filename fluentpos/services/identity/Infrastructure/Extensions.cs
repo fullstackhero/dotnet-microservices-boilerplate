@@ -1,5 +1,9 @@
-﻿using FluentPos.Identity.Core.Users;
+﻿using FluentPos.Identity.Application;
+using FluentPos.Identity.Domain.Users;
 using FluentPos.Identity.Infrastructure.Persistence;
+using FSH.Framework.Infrastructure;
+using FSH.Framework.Infrastructure.Auth.OpenIddict;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using static OpenIddict.Abstractions.OpenIddictConstants;
@@ -7,7 +11,23 @@ using static OpenIddict.Abstractions.OpenIddictConstants;
 namespace FluentPos.Identity.Infrastructure;
 public static class Extensions
 {
-    public static IServiceCollection AddIdentityExtensions(this IServiceCollection services)
+    internal static bool enableSwagger = false;
+    public static void AddIdentityInfrastructure(this WebApplicationBuilder builder)
+    {
+        var coreAssembly = typeof(IdentityCore).Assembly;
+        var dbContextAssembly = typeof(AppDbContext).Assembly;
+
+        builder.Services.AddIdentityExtensions();
+        builder.AddInfrastructure(applicationAssembly: coreAssembly, enableSwagger: enableSwagger);
+        builder.ConfigureAuthServer<AppDbContext>(dbContextAssembly);
+        builder.Services.AddHostedService<SeedClientsAndScopes>();
+    }
+
+    public static void UseIdentityInfrastructure(this WebApplication app)
+    {
+        app.UseInfrastructure(app.Environment, enableSwagger);
+    }
+    internal static IServiceCollection AddIdentityExtensions(this IServiceCollection services)
     {
         services
             .AddIdentity<AppUser, IdentityRole>(options =>

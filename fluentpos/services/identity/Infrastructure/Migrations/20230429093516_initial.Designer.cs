@@ -25,7 +25,7 @@ namespace FluentPos.Identity.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("FluentPOS.Identity.Core.Users.AppUser", b =>
+            modelBuilder.Entity("FluentPos.Identity.Application.Users.AppUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -430,7 +430,7 @@ namespace FluentPos.Identity.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("FluentPOS.Identity.Core.Users.AppUser", null)
+                    b.HasOne("FluentPos.Identity.Application.Users.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -439,7 +439,7 @@ namespace FluentPos.Identity.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("FluentPOS.Identity.Core.Users.AppUser", null)
+                    b.HasOne("FluentPos.Identity.Application.Users.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -454,7 +454,7 @@ namespace FluentPos.Identity.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FluentPOS.Identity.Core.Users.AppUser", null)
+                    b.HasOne("FluentPos.Identity.Application.Users.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -463,7 +463,7 @@ namespace FluentPos.Identity.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("FluentPOS.Identity.Core.Users.AppUser", null)
+                    b.HasOne("FluentPos.Identity.Application.Users.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

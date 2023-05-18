@@ -1,4 +1,4 @@
-﻿namespace FluentPos.Identity.Core.Users.Dtos;
+﻿namespace FluentPos.Identity.Application.Users.Dtos;
 public class AddUserDto
 {
     public string? UserName { get; set; }

@@ -1,5 +1,5 @@
-﻿using FluentPos.Identity.Core.Users.Dtos;
-using FluentPos.Identity.Core.Users.Features;
+﻿using FluentPos.Identity.Application.Users.Dtos;
+using FluentPos.Identity.Application.Users.Features;
 using FSH.Framework.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
