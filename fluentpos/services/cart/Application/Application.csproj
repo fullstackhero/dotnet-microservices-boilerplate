@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
       <TargetFramework>net7.0</TargetFramework>
-      <RootNamespace>FluentPos.Cart.Core</RootNamespace>
-      <AssemblyName>FluentPos.Cart.Core</AssemblyName>
+      <RootNamespace>FluentPos.Cart.Application</RootNamespace>
+      <AssemblyName>FluentPos.Cart.Application</AssemblyName>
       <ImplicitUsings>enable</ImplicitUsings>
       <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\Infrastructure\FSH.Framework.Infrastructure.csproj" />
     <ProjectReference Include="..\..\..\events\Events.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

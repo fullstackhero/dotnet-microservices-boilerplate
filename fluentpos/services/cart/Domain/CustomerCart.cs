@@ -1,6 +1,6 @@
 ﻿using FSH.Framework.Core.Domain;
 
-namespace FluentPos.Cart.Core;
+namespace FluentPos.Cart.Domain;
 
 public class CustomerCart : BaseEntity
 {

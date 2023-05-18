@@ -1,13 +1,11 @@
-﻿using Dapr.Client;
-using FluentPos.Cart.Core.Dtos;
-using FluentPos.Cart.Core.Exceptions;
+﻿using FluentPos.Cart.Application.Dtos;
+using FluentPos.Cart.Application.Exceptions;
 using FluentPos.Shared.Events;
 using FluentValidation;
 using FSH.Framework.Core.Events;
-using FSH.Framework.Infrastructure.Dapr;
 using MediatR;
 
-namespace FluentPos.Cart.Core.Features;
+namespace FluentPos.Cart.Application.Features;
 public static class CheckoutCart
 {
     public sealed record Command : IRequest
@@ -30,18 +28,18 @@ public static class CheckoutCart
     }
     public sealed class Handler : IRequestHandler<Command>
     {
-        private readonly DaprClient _daprClient;
+        private readonly ICartRepository _cartRepository;
         private readonly IEventBus _eventBus;
 
-        public Handler(DaprClient daprClient, IEventBus eventBus)
+        public Handler(IEventBus eventBus, ICartRepository cartRepository)
         {
-            _daprClient = daprClient;
             _eventBus = eventBus;
+            _cartRepository = cartRepository;
         }
 
         public async Task Handle(Command request, CancellationToken cancellationToken)
         {
-            _ = await _daprClient.GetStateAsync<CustomerCart>(DaprConstants.RedisStateStore, request.CustomerId.ToString(), cancellationToken: cancellationToken) ?? throw new CartNotFoundException(request.CustomerId);
+            _ = await _cartRepository.GetCustomerCartAsync(request.CustomerId.ToString(), cancellationToken) ?? throw new CartNotFoundException(request.CustomerId);
             var cartCheckedOutEvent = new CartCheckedOutEvent(request.CustomerId, request.CheckoutRequest.CreditCardNumber!);
             await _eventBus.PublishIntegrationEventAsync(cartCheckedOutEvent, token: cancellationToken);
         }

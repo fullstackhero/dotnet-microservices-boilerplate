@@ -1,10 +1,11 @@
 ﻿using Dapr.Client;
+using FluentPos.Cart.Domain;
 using FluentValidation;
 using FSH.Framework.Core.Events;
 using FSH.Framework.Infrastructure.Dapr;
 using MediatR;
 
-namespace FluentPos.Cart.Core.Features;
+namespace FluentPos.Cart.Application.Features;
 public static class GetCart
 {
     public sealed record Query : IRequest<CustomerCart>

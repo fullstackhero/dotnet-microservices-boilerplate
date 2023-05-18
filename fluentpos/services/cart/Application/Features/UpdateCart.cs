@@ -1,10 +1,9 @@
-﻿using Dapr.Client;
-using FluentPos.Cart.Core.Dtos;
+﻿using FluentPos.Cart.Application.Dtos;
+using FluentPos.Cart.Domain;
 using FluentValidation;
-using FSH.Framework.Infrastructure.Dapr;
 using MediatR;
 
-namespace FluentPos.Cart.Core.Features;
+namespace FluentPos.Cart.Application.Features;
 public static class UpdateCart
 {
     public sealed record Command : IRequest<CustomerCart>
@@ -31,22 +30,22 @@ public static class UpdateCart
     }
     public sealed class Handler : IRequestHandler<Command, CustomerCart>
     {
-        private readonly DaprClient _daprClient;
+        private readonly ICartRepository _cartRepository;
 
-        public Handler(DaprClient daprClient)
+        public Handler(ICartRepository cartRepository)
         {
-            _daprClient = daprClient;
+            _cartRepository = cartRepository;
         }
 
         public async Task<CustomerCart> Handle(Command request, CancellationToken cancellationToken)
         {
             string customerId = request.CustomerId.ToString();
-            var cart = await _daprClient.GetStateAsync<CustomerCart>(DaprConstants.RedisStateStore, customerId, cancellationToken: cancellationToken) ?? new CustomerCart(request.CustomerId);
+            var cart = await _cartRepository.GetCustomerCartAsync(customerId, cancellationToken) ?? new CustomerCart(request.CustomerId);
             foreach (var item in request.UpdateCartDto.Items)
             {
                 cart.AddItem(item.ProductId, item.Quantity);
             }
-            await _daprClient.SaveStateAsync(DaprConstants.RedisStateStore, customerId, cart, cancellationToken: cancellationToken);
+            await _cartRepository.UpdateCustomerCartAsync(customerId, cart, cancellationToken);
             return cart!;
         }
     }
