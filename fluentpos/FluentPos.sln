@@ -36,15 +36,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "services\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cart", "cart", "{24FED133-2BF8-49AF-B69D-456761874B02}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dapr", "dapr", "{13D3F0D6-4705-4EDB-8415-FEB0A62E80E4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{1E3BB5B7-F23F-4C8D-9F92-299C159ACE23}"
-	ProjectSection(SolutionItems) = preProject
-		dapr\components\pubsub.yaml = dapr\components\pubsub.yaml
-		dapr\components\secretstore.yaml = dapr\components\secretstore.yaml
-		dapr\components\statestore.yaml = dapr\components\statestore.yaml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployments", "deployments", "{3E71369A-E973-44B9-A5A3-5E4558E549C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateways", "gateways", "{B5547F19-C409-4E67-BDA7-AFD64E1AE9C7}"
@@ -67,9 +58,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "services\catalog\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "services\identity\Domain\Domain.csproj", "{3274AB80-04C5-4DAD-AE35-DD0BA55F38C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "services\cart\Infrastructure\Infrastructure.csproj", "{8B721EFA-CE95-46E5-BB5E-0F7BCF9BFEBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "services\cart\Infrastructure\Infrastructure.csproj", "{8B721EFA-CE95-46E5-BB5E-0F7BCF9BFEBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "services\cart\Domain\Domain.csproj", "{BFD0C29B-D3BE-4444-ACC0-9AB941117469}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "services\cart\Domain\Domain.csproj", "{BFD0C29B-D3BE-4444-ACC0-9AB941117469}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -167,8 +158,6 @@ Global
 		{FE7C5380-AF27-4C89-A77E-3475365704EE} = {6F683559-D696-43DC-982E-2D9CA685F9DF}
 		{858999A1-9FE4-4B3C-88D7-92BA2D49BC2A} = {6F683559-D696-43DC-982E-2D9CA685F9DF}
 		{24FED133-2BF8-49AF-B69D-456761874B02} = {9DEB2340-DDF1-4949-BD92-971A489DBAC2}
-		{13D3F0D6-4705-4EDB-8415-FEB0A62E80E4} = {858EF293-2379-450B-B452-C8829667CF0A}
-		{1E3BB5B7-F23F-4C8D-9F92-299C159ACE23} = {13D3F0D6-4705-4EDB-8415-FEB0A62E80E4}
 		{3E71369A-E973-44B9-A5A3-5E4558E549C7} = {858EF293-2379-450B-B452-C8829667CF0A}
 		{B5547F19-C409-4E67-BDA7-AFD64E1AE9C7} = {858EF293-2379-450B-B452-C8829667CF0A}
 		{CB3E1603-E0AE-4A72-A70A-26407928FD14} = {858EF293-2379-450B-B452-C8829667CF0A}

@@ -1,8 +1,6 @@
-﻿using Dapr.Client;
+﻿using FluentPos.Cart.Application.Exceptions;
 using FluentPos.Cart.Domain;
 using FluentValidation;
-using FSH.Framework.Core.Events;
-using FSH.Framework.Infrastructure.Dapr;
 using MediatR;
 
 namespace FluentPos.Cart.Application.Features;
@@ -26,19 +24,18 @@ public static class GetCart
     }
     public sealed class Handler : IRequestHandler<Query, CustomerCart>
     {
-        private readonly DaprClient _daprClient;
-        private readonly IEventBus _eventBus;
+        private readonly ICartRepository _cartRepository;
 
-        public Handler(DaprClient daprClient, IEventBus eventBus)
+        public Handler(ICartRepository cartRepository)
         {
-            _daprClient = daprClient;
-            _eventBus = eventBus;
+            _cartRepository = cartRepository;
         }
 
         public async Task<CustomerCart> Handle(Query request, CancellationToken cancellationToken)
         {
-            var cart = await _daprClient.GetStateAsync<CustomerCart>(DaprConstants.RedisStateStore, request.CustomerId.ToString(), cancellationToken: cancellationToken);
-            return cart!;
+            var cart = await _cartRepository.GetCustomerCartAsync(request.CustomerId.ToString(), cancellationToken);
+            if (cart == null) throw new CartNotFoundException(request.CustomerId.ToString());
+            return cart;
         }
     }
 }
