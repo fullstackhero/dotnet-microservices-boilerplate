@@ -12,6 +12,11 @@ public static class Endpoints
     public static void MapCartEnpoints(this IEndpointRouteBuilder builder)
     {
         // Get Customer Cart Details
+        builder.MapGet("/", () => "Hello!")
+        .AllowAnonymous()
+        .Produces(200);
+
+        // Get Customer Cart Details
         builder.MapGet("/{id:guid}", async (Guid id, ISender _mediatr) =>
         {
             var query = new GetCart.Query(id);
