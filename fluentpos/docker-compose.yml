@@ -2,25 +2,30 @@ version: '3.8'
 name: fluentpos
 
 services:
-  gateway:
-    container_name: "gateway"
-    image: iammukeshm/fluentpos.gateway:latest
+  traefik:
+    container_name: traefik
+    image: traefik:latest
+    command:
+      - --log.level=DEBUG
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
     ports:
-      - 7002:7002
-      - 5002:5002
-    environment:
-      - ASPNETCORE_ENVIRONMENT=docker
-      - ASPNETCORE_URLS=https://+:7002;http://+:5002
-      - ASPNETCORE_HTTPS_PORT=7002
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=password!
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/cert.pfx
+      - 80:80
+      - 8080:8080
     volumes:
-      - ~/.aspnet/https:/https:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
      - fluentpos
   identity:
     container_name: identity
     image: iammukeshm/fluentpos.identity:latest
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.identity.rule=(Host(`app.localhost`) && PathPrefix(`/identity`))
+      - traefik.http.routers.identity.entrypoints=web
+      - traefik.http.services.identity.loadbalancer.server.port=80
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
     depends_on:
@@ -31,46 +36,26 @@ services:
   catalog:
     container_name: catalog
     image: iammukeshm/fluentpos.catalog:latest
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.catalog.rule=(Host(`app.localhost`) && PathPrefix(`/catalog`))
+      - traefik.http.routers.catalog.entrypoints=web
+      - traefik.http.services.catalog.loadbalancer.server.port=80
     depends_on:
       - mongo
-      - placement
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
     networks:
      - fluentpos
-  catalog-dapr:
-    container_name: catalog-dapr
-    image: "daprio/daprd:edge"
-    command: ["./daprd",
-     "-app-id", "catalog",
-     "-placement-host-address", "placement:6050",
-     "-app-port", "80",
-     "-components-path", "/dapr/components"]
-    volumes:
-      - "./dapr/:/dapr"
-    depends_on:
-      - catalog
-    network_mode: "service:catalog"
-
   cart:
     container_name: cart
     image: iammukeshm/fluentpos.cart:latest
-    depends_on:
-      - placement
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.cart.rule=(Host(`app.localhost`) && PathPrefix(`/cart`))
+      - traefik.http.routers.cart.entrypoints=web
+      - traefik.http.services.cart.loadbalancer.server.port=80
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
     networks:
      - fluentpos
-  cart-dapr:
-    container_name: cart-dapr
-    image: "daprio/daprd:edge"
-    command: ["./daprd",
-     "-app-id", "cart",
-     "-placement-host-address", "placement:6050",
-     "-app-port", "80",
-     "-components-path", "/dapr/components"]
-    volumes:
-      - "./dapr/:/dapr"
-    depends_on:
-      - cart
-    network_mode: "service:cart"

@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using FSH.Framework.Infrastructure.Behaviors;
 using FSH.Framework.Infrastructure.Caching;
-using FSH.Framework.Infrastructure.Dapr;
 using FSH.Framework.Infrastructure.Logging.Serilog;
 using FSH.Framework.Infrastructure.Mapping.Mapster;
 using FSH.Framework.Infrastructure.Middlewares;
@@ -28,13 +27,11 @@ public static class Extensions
             options.AddPolicy(name: AllowAllOrigins,
                               builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         });
-
         builder.Services.AddExceptionMiddleware();
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.ConfigureSerilog(appOptions.Name);
         builder.Services.AddRouting(options => options.LowercaseUrls = true);
-        builder.Services.AddDaprBuildingBlocks();
         if (applicationAssembly != null)
         {
             builder.Services.AddMapsterExtension(applicationAssembly);
@@ -44,7 +41,7 @@ public static class Extensions
         }
 
         if (enableSwagger) builder.Services.AddSwaggerExtension(config);
-        builder.Services.AddCachingService();
+        builder.Services.AddCachingService(config);
         builder.Services.AddInternalServices();
     }
 
@@ -55,8 +52,6 @@ public static class Extensions
         app.UseExceptionMiddleware();
         app.UseAuthentication();
         app.UseAuthorization();
-        app.UseCloudEvents();
-        app.MapSubscribeHandler();
         app.MapControllers();
         if (enableSwagger) app.UseSwaggerExtension(env);
     }

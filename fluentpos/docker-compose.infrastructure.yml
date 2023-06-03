@@ -32,15 +32,6 @@ services:
     networks:
       - fluentpos
 
-  placement:
-    container_name: dapr-placement
-    image: "daprio/dapr"
-    command: ["./placement", "-port", "6050"]
-    ports:
-      - 6050:6050
-    networks:
-      - fluentpos
-
   redis:
     container_name: redis
     environment:

@@ -46,9 +46,9 @@ public static class AddProduct
     {
         private readonly IProductRepository _repository;
         private readonly IMapper _mapper;
-        private readonly IEventBus _eventBus;
+        private readonly IEventPublisher _eventBus;
 
-        public Handler(IProductRepository repository, IMapper mapper, IEventBus eventBus)
+        public Handler(IProductRepository repository, IMapper mapper, IEventPublisher eventBus)
         {
             _repository = repository;
             _mapper = mapper;
@@ -70,7 +70,7 @@ public static class AddProduct
             await _repository.AddAsync(productToAdd, cancellationToken);
             foreach (var @event in productToAdd.DomainEvents)
             {
-                await _eventBus.PublishDomainEventAsync(@event, token: cancellationToken);
+                await _eventBus.PublishAsync(@event, token: cancellationToken);
             }
             return _mapper.Map<ProductDto>(productToAdd);
         }

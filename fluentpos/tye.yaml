@@ -1,11 +1,6 @@
 name: fluentpos
 containerEngine: docker
 
-extensions:
-  - name: dapr
-    log-level: debug
-    components-path: "./dapr/components"
-
 services:
   - name: identity
     project: services/identity/Api/Api.csproj
