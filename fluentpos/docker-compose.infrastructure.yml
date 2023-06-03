@@ -48,8 +48,6 @@ services:
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3-management-alpine
-    ports:
-      - 5680:5672
     volumes:
       - rabbitmq-data:/data/rabbitmq
     networks:
