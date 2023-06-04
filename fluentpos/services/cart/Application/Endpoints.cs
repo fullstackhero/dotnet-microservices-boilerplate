@@ -11,7 +11,6 @@ public static class Endpoints
 {
     public static void MapCartEnpoints(this IEndpointRouteBuilder builder)
     {
-        // Get Customer Cart Details
         builder.MapGet("/", () => "Hello!")
         .AllowAnonymous()
         .Produces(200);
