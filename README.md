@@ -2,7 +2,7 @@
 
 [![fluentpos](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/fluentpos-cicd.yaml/badge.svg?branch=main)](https://github.com/fullstackhero/dotnet-microservices-boilerplate/actions/workflows/fluentpos-cicd.yaml)
 
-The goal is to build a framework that can make building microservices in .NET easy for developers. This project follows Vertical Slice Architecture and is built using Dapr as the core framework, along with other latest best practices and tools like CQRS, NoSQL, SQL, MediatR, Serilog, FluentValidations and more.🚀
+The goal is to build a framework that can make building microservices in .NET easy for developers. This project follows Vertical Slice Architecture along with other latest best practices and tools like CQRS, NoSQL, SQL, MediatR, Serilog, FluentValidations and more.🚀
 
 # Table of Contents
 
@@ -26,9 +26,8 @@ The goal is to build a framework that can make building microservices in .NET ea
 ## Goals
 
 - :sparkle: Using `Vertical Slice Architecture` for architecture level.
-- :sparkle: Using `Dapr` building blocks for microservice development and communication.
 - :sparkle: Using `Domain Driven Design (DDD)` to implement all business processes in microservices.
-- :sparkle: Using `Rabbitmq` on top of `Dapr` for `Event Driven Architecture` between our microservices.
+- :sparkle: Using `Rabbitmq` on top of `MassTranit` for `Event Driven Architecture` between our microservices.
 - :sparkle: Using `CQRS` implementation with `MediatR` library.
 - :sparkle: Using `Entity Framework Core` for some microservices.
 - :sparkle: Using `MongoDB` for some microservices.
